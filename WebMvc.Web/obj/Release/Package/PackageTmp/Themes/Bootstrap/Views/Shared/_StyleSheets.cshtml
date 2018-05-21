@@ -1,0 +1,9 @@
+﻿@model MVCForum.Domain.DomainModel.General.Theme
+@(
+ Bundle.Css()
+    .Add(Model.ThemePath + "/Content/css/bootstrap.css")
+    .Add("~/Content/slideoutpanel.css")
+    .Add("~/Scripts/fancybox/jquery.fancybox.css")
+    .Add(Model.ThemePath + "/Content/css/Site.css")
+    .MvcRender("~/content/cache/combined_" + Model.ThemeName + "_#.css")
+)

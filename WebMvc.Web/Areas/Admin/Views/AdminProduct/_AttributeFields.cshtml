@@ -1,0 +1,19 @@
+﻿@using WebMvc.Web.Application.ExtensionMethods
+@model WebMvc.Web.Areas.Admin.ViewModels.AdminCreateProductAttributeViewModel
+<div class="form-group">
+    @Html.LabelFor(model => model.LangName)
+    @Html.TextBoxFor(model => model.LangName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.LangName)
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.ValueType)
+    @Html.DropDownListFor(model => model.ValueType, Model.AllValueType, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.ValueType)
+</div>
+<div class="checkbox">
+    @using (Html.BeginLabelFor(m => m.IsNull, new { @class = "checkbox" }))
+    {
+        @Html.CheckBoxFor(m => m.IsNull)
+    }
+    @Html.ValidationMessageFor(m => m.IsNull)
+</div>

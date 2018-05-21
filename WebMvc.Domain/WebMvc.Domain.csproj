@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{40B1966C-0C21-484A-BF4A-82D5667858FD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebMvc.Domain</RootNamespace>
+    <AssemblyName>WebMvc.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants\AppConstants.cs" />
+    <Compile Include="Constants\CacheKeys.cs" />
+    <Compile Include="Constants\SiteConstants.cs" />
+    <Compile Include="DomainModel\Entities\Booking.cs" />
+    <Compile Include="DomainModel\Entities\Category.cs" />
+    <Compile Include="DomainModel\Entities\Contact.cs" />
+    <Compile Include="DomainModel\Entities\Entity.cs" />
+    <Compile Include="DomainModel\Entities\Language.cs" />
+    <Compile Include="DomainModel\Entities\LocaleResourceKey.cs" />
+    <Compile Include="DomainModel\Entities\LocaleStringResource.cs" />
+    <Compile Include="DomainModel\Entities\MembershipRole.cs" />
+    <Compile Include="DomainModel\Entities\MembershipUser.cs" />
+    <Compile Include="DomainModel\Entities\Permission.cs" />
+    <Compile Include="DomainModel\Entities\PollAnswer.cs" />
+    <Compile Include="DomainModel\Entities\Post.cs" />
+    <Compile Include="DomainModel\Entities\ProductAttribute.cs" />
+    <Compile Include="DomainModel\Entities\ProductAttributeValue.cs" />
+    <Compile Include="DomainModel\Entities\ProductClass.cs" />
+    <Compile Include="DomainModel\Entities\ProductClassAttribute.cs" />
+    <Compile Include="DomainModel\Entities\Product.cs" />
+    <Compile Include="DomainModel\Entities\Topic.cs" />
+    <Compile Include="DomainModel\Entities\TypeRoom.cs" />
+    <Compile Include="DomainModel\Enums\CacheTimes.cs" />
+    <Compile Include="DomainModel\General\LanguageCsvReport.cs" />
+    <Compile Include="DomainModel\General\LogEntry.cs" />
+    <Compile Include="DomainModel\General\Theme.cs" />
+    <Compile Include="DomainModel\General\UploadFileResult.cs" />
+    <Compile Include="Interfaces\IModelAttribute.cs" />
+    <Compile Include="Interfaces\Providers\IStorageProvider.cs" />
+    <Compile Include="Interfaces\Services\IBookingSevice.cs" />
+    <Compile Include="Interfaces\Services\ICacheService.cs" />
+    <Compile Include="Interfaces\Services\ICategoryService.cs" />
+    <Compile Include="Interfaces\Services\IConfigService.cs" />
+    <Compile Include="Interfaces\Services\IContactService.cs" />
+    <Compile Include="Interfaces\Services\ILocalizationService.cs" />
+    <Compile Include="Interfaces\Services\ILoggingService.cs" />
+    <Compile Include="Interfaces\Services\IMembershipService.cs" />
+    <Compile Include="Interfaces\Services\IPermissionService.cs" />
+    <Compile Include="Interfaces\Services\IPostSevice.cs" />
+    <Compile Include="Interfaces\Services\IProductSevice.cs" />
+    <Compile Include="Interfaces\Services\IRoleSevice.cs" />
+    <Compile Include="Interfaces\Services\ITopicService.cs" />
+    <Compile Include="Interfaces\Services\ISettingsService.cs" />
+    <Compile Include="Interfaces\Services\ITypeRoomSevice.cs" />
+    <Compile Include="Interfaces\UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="Interfaces\UnitOfWork\IUnitOfWorkManager.cs" />
+    <Compile Include="Interfaces\IWebMvcContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebMvc.Utilities\WebMvc.Utilities.csproj">
+      <Project>{fc243c93-d32a-46e2-bd8a-6eccf75dd92a}</Project>
+      <Name>WebMvc.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

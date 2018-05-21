@@ -1,0 +1,40 @@
+﻿<!--start-banner-->
+@{
+    var themeName = Html.Settings("Theme");
+    var ThemePath = string.Concat(SiteConstants.Instance.ThemeRootFolder, themeName);
+
+    var currentController = ViewContext.RouteData.GetRequiredString("controller").ToLower();
+    var currentAction = ViewContext.RouteData.GetRequiredString("action").ToLower();
+}
+
+<div class="banner1" id="home">
+    <div class="container">
+        <div class="header">
+            <div class="menu">
+                <a class="toggleMenu" href="#"><img src="@Url.Content(ThemePath + "/content/images/menu-icon.png")" alt="" /> </a>
+                <ul class="nav" id="nav">
+                    <li class="@(currentController == "home"? "active" : "")"><a href="/" class="@(currentController == "home"? "active" : "")">Trang chủ</a></li>
+                    <li class="@(currentController == "about"? "active" : "")"><a href="/about" class="@(currentController == "about"? "active" : "")">Giới thiệu</a></li>
+                    @*<li class="@(currentController == "services"? "active" : "")"><a href="/services" class="@(currentController == "services"? "active" : "")">Lam Giang Hotel</a></li>*@
+                    @*<li class="@(currentController == "services"? "active" : "")"><a href="/services" class="@(currentController == "services"? "active" : "")">Lam Giang Cửa Lò Hotel</a></li>*@
+                    <li class="@(currentController == "services"? "active" : "")"><a href="/services" class="@(currentController == "services"? "active" : "")">Dịch vụ</a></li>
+                    <li class="@(currentController == "booking"? "active" : "")"><a href="/booking" class="@(currentController == "booking"? "active" : "")">Đặt phòng</a></li>
+                    <li class="@(currentController == "contact"? "active" : "")"><a href="/contact" class="@(currentController == "contact"? "active" : "")">Liên hệ</a></li>
+                </ul>
+                <!----start-top-nav-script---->
+                <script type="text/javascript" src="@Url.Content(ThemePath + "/content/js/responsive-nav.js")"></script>
+                <script type="text/javascript">
+                    jQuery(document).ready(function ($) {
+                        $(".scroll").click(function (event) {
+                            event.preventDefault();
+                            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+                        });
+                    });
+                </script>
+                <!----//End-top-nav-script---->
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!--end-banner-->

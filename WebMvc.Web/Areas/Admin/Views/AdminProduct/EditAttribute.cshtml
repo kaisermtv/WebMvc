@@ -1,0 +1,30 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.AdminCreateProductAttributeViewModel
+
+@{
+    ViewBag.Title = "Edit Product Attribute";
+}
+
+@Html.Partial("_ProductNavButtons")
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        @using (Html.BeginForm("EditAttribute", "AdminProduct", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(false)
+            @Html.HiddenFor(model => model.Id)
+
+            @Html.Partial("_AttributeFields", Model)
+
+            <div class="submit-holder">
+                <input type="submit" class="btn-mvc-green btn-mvc-large" value="Update" />
+            </div>
+        }
+
+    </div>
+</div>
+

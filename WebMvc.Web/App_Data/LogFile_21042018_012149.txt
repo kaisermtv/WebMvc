@@ -1,0 +1,112 @@
+14/04/2018 15:38:28 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+14/04/2018 15:38:29 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The partial view '_TopicNavButtons' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/Admin/Views/AdminBooking/_TopicNavButtons.cshtml
+~/Areas/Admin/Views/AdminBooking/_TopicNavButtons.vbhtml
+~/Areas/Admin/Views/Shared/_TopicNavButtons.cshtml
+~/Areas/Admin/Views/Shared/_TopicNavButtons.vbhtml
+~/Themes/LamGiangHotel/Views/AdminBooking/_TopicNavButtons.cshtml
+~/Themes/LamGiangHotel/Views/Shared/_TopicNavButtons.cshtml
+~/Themes/LamGiangHotel/Views/Shared/AdminBooking/_TopicNavButtons.cshtml
+~/Themes/LamGiangHotel/Views/Extensions/AdminBooking/_TopicNavButtons.cshtml
+~/Views/Extensions/AdminBooking/_TopicNavButtons.cshtml
+~/Views/AdminBooking/_TopicNavButtons.cshtml
+~/Views/AdminBooking/_TopicNavButtons.vbhtml
+~/Views/Shared/_TopicNavButtons.cshtml
+~/Views/Shared/_TopicNavButtons.vbhtml
+14/04/2018 15:42:19 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+14/04/2018 15:50:17 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+14/04/2018 15:50:23 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The current request for action 'NewTypeRoom' on controller type 'AdminBookingController' is ambiguous between the following action methods:
+System.Web.Mvc.ActionResult NewTypeRoom() on type WebMvc.Web.Areas.Admin.Controllers.AdminBookingController
+System.Web.Mvc.ActionResult NewTypeRoom(WebMvc.Web.Areas.Admin.ViewModels.AdminTypeRoomEditViewModel) on type WebMvc.Web.Areas.Admin.Controllers.AdminBookingController
+14/04/2018 15:50:52 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+14/04/2018 15:51:09 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Column 'CheckIn' does not belong to table Table.
+14/04/2018 15:51:38 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+14/04/2018 16:14:24 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+14/04/2018 16:14:47 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The view 'EditTypeRoom' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/Admin/Views/AdminBooking/EditTypeRoom.cshtml
+~/Areas/Admin/Views/AdminBooking/EditTypeRoom.vbhtml
+~/Areas/Admin/Views/Shared/EditTypeRoom.cshtml
+~/Areas/Admin/Views/Shared/EditTypeRoom.vbhtml
+~/Themes/LamGiangHotel/Views/AdminBooking/EditTypeRoom.cshtml
+~/Themes/LamGiangHotel/Views/Extensions/AdminBooking/EditTypeRoom.cshtml
+~/Views/Extensions/AdminBooking/EditTypeRoom.cshtml
+~/Views/AdminBooking/EditTypeRoom.cshtml
+~/Views/AdminBooking/EditTypeRoom.vbhtml
+~/Views/Shared/EditTypeRoom.cshtml
+~/Views/Shared/EditTypeRoom.vbhtml
+14/04/2018 16:17:39 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The required anti-forgery form field "__RequestVerificationToken" is not present.
+14/04/2018 16:18:54 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A potentially dangerous Request.Form value was detected from the client (Note="<p>dfbdfb</p>
+").
+14/04/2018 16:20:33 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A potentially dangerous Request.Form value was detected from the client (Note="<p>df bdf</p>
+").
+14/04/2018 16:20:44 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+15/04/2018 04:28:01 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+15/04/2018 04:28:03 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The parameters dictionary contains a null entry for parameter 'Id' of non-nullable type 'System.Guid' for method 'System.Web.Mvc.ActionResult EditTypeRoom(System.Guid)' in 'WebMvc.Web.Areas.Admin.Controllers.AdminBookingController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+15/04/2018 07:05:21 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+16/04/2018 05:04:14 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+16/04/2018 05:04:15 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Path '/Themes/LamGiangHotel/Views/Booking/Index.cshtml' was not found.
+16/04/2018 05:04:28 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'Index.cshtml' was not found on controller 'WebMvc.Web.Controllers.BookingController'.
+16/04/2018 06:01:51 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+16/04/2018 06:03:08 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Templates can be used only with field access, property access, single-dimension array index, or single-parameter custom indexer expressions.
+16/04/2018 06:03:10 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Templates can be used only with field access, property access, single-dimension array index, or single-parameter custom indexer expressions.
+20/04/2018 12:02:14 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+20/04/2018 14:27:35 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+20/04/2018 14:28:07 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'ManageLanguageResourceValues' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.AdminLanguageController'.
+21/04/2018 11:07:44 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+21/04/2018 11:08:18 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+21/04/2018 12:27:38 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'AddResourceKey' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.AdminLanguageController'.
+21/04/2018 12:38:26 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+21/04/2018 12:38:41 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The view 'AddResourceKey' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/Admin/Views/AdminLanguage/AddResourceKey.cshtml
+~/Areas/Admin/Views/AdminLanguage/AddResourceKey.vbhtml
+~/Areas/Admin/Views/Shared/AddResourceKey.cshtml
+~/Areas/Admin/Views/Shared/AddResourceKey.vbhtml
+~/Themes/LamGiangHotel/Views/AdminLanguage/AddResourceKey.cshtml
+~/Themes/LamGiangHotel/Views/Extensions/AdminLanguage/AddResourceKey.cshtml
+~/Views/Extensions/AdminLanguage/AddResourceKey.cshtml
+~/Views/AdminLanguage/AddResourceKey.cshtml
+~/Views/AdminLanguage/AddResourceKey.vbhtml
+~/Views/Shared/AddResourceKey.cshtml
+~/Views/Shared/AddResourceKey.vbhtml
+21/04/2018 12:39:53 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'ManageResourceKeys' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.AdminLanguageController'.
+21/04/2018 13:02:32 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+21/04/2018 13:02:41 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The view 'ListKeys' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/Admin/Views/AdminLanguage/ListKeys.cshtml
+~/Areas/Admin/Views/AdminLanguage/ListKeys.vbhtml
+~/Areas/Admin/Views/Shared/ListKeys.cshtml
+~/Areas/Admin/Views/Shared/ListKeys.vbhtml
+~/Themes/LamGiangHotel/Views/AdminLanguage/ListKeys.cshtml
+~/Themes/LamGiangHotel/Views/Extensions/AdminLanguage/ListKeys.cshtml
+~/Views/Extensions/AdminLanguage/ListKeys.cshtml
+~/Views/AdminLanguage/ListKeys.cshtml
+~/Views/AdminLanguage/ListKeys.vbhtml
+~/Views/Shared/ListKeys.cshtml
+~/Views/Shared/ListKeys.vbhtml
+21/04/2018 13:03:38 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The view 'ListKeys' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/Admin/Views/AdminLanguage/ListKeys.cshtml
+~/Areas/Admin/Views/AdminLanguage/ListKeys.vbhtml
+~/Areas/Admin/Views/Shared/ListKeys.cshtml
+~/Areas/Admin/Views/Shared/ListKeys.vbhtml
+~/Themes/LamGiangHotel/Views/AdminLanguage/ListKeys.cshtml
+~/Themes/LamGiangHotel/Views/Extensions/AdminLanguage/ListKeys.cshtml
+~/Views/Extensions/AdminLanguage/ListKeys.cshtml
+~/Views/AdminLanguage/ListKeys.cshtml
+~/Views/AdminLanguage/ListKeys.vbhtml
+~/Views/Shared/ListKeys.cshtml
+~/Views/Shared/ListKeys.vbhtml
+21/04/2018 13:03:40 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The view 'ListKeys' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/Admin/Views/AdminLanguage/ListKeys.cshtml
+~/Areas/Admin/Views/AdminLanguage/ListKeys.vbhtml
+~/Areas/Admin/Views/Shared/ListKeys.cshtml
+~/Areas/Admin/Views/Shared/ListKeys.vbhtml
+~/Themes/LamGiangHotel/Views/AdminLanguage/ListKeys.cshtml
+~/Themes/LamGiangHotel/Views/Extensions/AdminLanguage/ListKeys.cshtml
+~/Views/Extensions/AdminLanguage/ListKeys.cshtml
+~/Views/AdminLanguage/ListKeys.cshtml
+~/Views/AdminLanguage/ListKeys.vbhtml
+~/Views/Shared/ListKeys.cshtml
+~/Views/Shared/ListKeys.vbhtml
+21/04/2018 13:04:47 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+21/04/2018 13:16:50 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The parameters dictionary contains a null entry for parameter 'languageId' of non-nullable type 'System.Guid' for method 'System.Web.Mvc.ActionResult ManageLanguageResourceValues(System.Guid, System.Nullable`1[System.Int32], System.String)' in 'WebMvc.Web.Areas.Admin.Controllers.AdminLanguageController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters

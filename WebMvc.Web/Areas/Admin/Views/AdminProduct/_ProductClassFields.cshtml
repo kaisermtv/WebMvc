@@ -1,0 +1,64 @@
+﻿@using WebMvc.Web.Application.ExtensionMethods
+@model WebMvc.Web.Areas.Admin.ViewModels.AdminEditProductClassViewModel
+<div class="form-group">
+    @Html.LabelFor(model => model.Colour)
+    @Html.EditorFor(model => model.Colour)
+    @Html.ValidationMessageFor(model => model.Colour)
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Name)
+</div>
+<div class="row categoryimage">
+    @if (!string.IsNullOrEmpty(Model.Image))
+    {
+        <div class="col-md-2">
+            <img src="@AppHelpers.CategoryImage(Model.Image, Model.Id,110)" alt="@Model.Name" />
+        </div>
+    }
+    <div class="col-md-10">
+        @Html.LabelFor(x => x.Files)
+        <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-default btn-file">
+                    @Html.LanguageString("Post.Browse") <input type="file" name="files" id="files" value="">
+                </span>
+            </span>
+            <input type="text" class="form-control" readonly="">
+        </div>
+        @Html.ValidationMessageFor(x => x.Files)
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Description)
+    @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @style = "resize:vertical" })
+    @Html.ValidationMessageFor(model => model.Description)
+</div>
+<div class="form-group">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th style="width:30px">Check</th>
+            <th>Tên thuộc tính</th>
+            <th style="width:80px">Hiển thị</th>
+        </tr>
+        @for (int i = 0;i< Model.AllAttribute.Count;i++)
+        {
+        <tr>
+            <td>
+                <input type="hidden" name="AllAttribute[@i].Id" value="@Model.AllAttribute[i].Id" id="AllAttribute_@(i)_id" />
+                <input type="checkbox" value="true" name="AllAttribute[@i].IsCheck" id="AllAttribute_@(i)_IsCheck" />
+            </td>
+            <td>@Model.AllAttribute[i].Name</td>
+            <td><input type="checkbox" value="true" name="AllAttribute[@i].IsShow" id="AllAttribute_@(i)_IsShow"  /></td>
+        </tr>
+        }
+    </table>
+</div>
+<div class="checkbox">
+    @using (Html.BeginLabelFor(m => m.IsLocked, new { @class = "checkbox" }))
+    {
+        @Html.CheckBoxFor(m => m.IsLocked)
+    }
+    @Html.ValidationMessageFor(m => m.IsLocked)
+</div>

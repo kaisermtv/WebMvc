@@ -1,0 +1,81 @@
+16/05/2018 07:07:16 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+16/05/2018 07:20:39 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+16/05/2018 07:25:11 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+16/05/2018 07:25:30 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This SqlTransaction has completed; it is no longer usable.
+16/05/2018 07:33:53 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+16/05/2018 07:33:58 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | "@" is not valid at the start of a code block.  Only identifiers, keywords, comments, "(" and "{" are valid.
+
+16/05/2018 07:35:35 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+16/05/2018 08:16:39 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+16/05/2018 08:17:22 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+16/05/2018 08:24:04 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+16/05/2018 08:24:35 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+16/05/2018 08:29:18 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+16/05/2018 08:30:22 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+16/05/2018 08:32:13 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This SqlTransaction has completed; it is no longer usable.
+16/05/2018 08:42:12 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+16/05/2018 08:42:14 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | 
+16/05/2018 08:42:22 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | 
+16/05/2018 08:42:25 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | 
+16/05/2018 13:56:45 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'Product' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.AdminProductController'.
+17/05/2018 04:52:36 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 04:54:35 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 04:54:45 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The parameters dictionary contains a null entry for parameter 'id' of non-nullable type 'System.Guid' for method 'System.Web.Mvc.ActionResult Product(System.Guid)' in 'WebMvc.Web.Areas.Admin.Controllers.AdminProductController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+17/05/2018 04:56:11 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Incorrect syntax near '@limit'.
+Incorrect syntax near the keyword 'AS'.
+17/05/2018 04:57:56 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Incorrect syntax near '@limit'.
+Incorrect syntax near the keyword 'AS'.
+17/05/2018 04:59:34 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 04:59:42 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | No column name was specified for column 15 of 'MyDerivedTable'.
+Invalid column name 'RowNum'.
+17/05/2018 04:59:45 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | No column name was specified for column 15 of 'MyDerivedTable'.
+Invalid column name 'RowNum'.
+17/05/2018 05:00:48 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 05:15:55 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Areas\Admin\Views\AdminProduct\Product.cshtml(12): error CS1061: 'AdminProductViewModel' does not contain a definition for 'ProductClass' and no extension method 'ProductClass' accepting a first argument of type 'AdminProductViewModel' could be found (are you missing a using directive or an assembly reference?)
+17/05/2018 05:16:08 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 05:16:08 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The parameters dictionary contains a null entry for parameter 'id' of non-nullable type 'System.Guid' for method 'System.Web.Mvc.ActionResult Product(System.Guid)' in 'WebMvc.Web.Areas.Admin.Controllers.AdminProductController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+17/05/2018 05:16:17 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The model item passed into the dictionary is of type 'WebMvc.Web.Areas.Admin.ViewModels.AdminEditProductViewModel', but this dictionary requires a model item of type 'WebMvc.Web.ViewModels.CreateEditTopicViewModel'.
+17/05/2018 05:21:50 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The partial view '_TopicNavButtons' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/Admin/Views/AdminProduct/_TopicNavButtons.cshtml
+~/Areas/Admin/Views/AdminProduct/_TopicNavButtons.vbhtml
+~/Areas/Admin/Views/Shared/_TopicNavButtons.cshtml
+~/Areas/Admin/Views/Shared/_TopicNavButtons.vbhtml
+~/Themes/Gland/Views/AdminProduct/_TopicNavButtons.cshtml
+~/Themes/Gland/Views/Shared/_TopicNavButtons.cshtml
+~/Themes/Gland/Views/Shared/AdminProduct/_TopicNavButtons.cshtml
+~/Themes/Gland/Views/Extensions/AdminProduct/_TopicNavButtons.cshtml
+~/Views/Extensions/AdminProduct/_TopicNavButtons.cshtml
+~/Views/AdminProduct/_TopicNavButtons.cshtml
+~/Views/AdminProduct/_TopicNavButtons.vbhtml
+~/Views/Shared/_TopicNavButtons.cshtml
+~/Views/Shared/_TopicNavButtons.vbhtml
+17/05/2018 07:32:16 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 07:32:17 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Must declare the scalar variable "@ProductClassId".
+17/05/2018 07:34:17 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 07:34:18 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Invalid column name 'Name'.
+17/05/2018 07:34:23 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Invalid column name 'Name'.
+17/05/2018 07:35:02 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 07:35:02 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Invalid column name 'LangName'.
+17/05/2018 07:36:27 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Invalid column name 'LangName'.
+17/05/2018 07:36:59 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 11:06:02 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 11:07:20 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 11:10:35 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 11:11:05 | WebMvc.Web.dll | CreateProduct | WebMvc.Web.Areas.Admin.Controllers.AdminProductController | 232 | Object reference not set to an instance of an object.
+17/05/2018 11:12:18 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 11:15:38 | WebMvc.Web.dll | CreateProduct | WebMvc.Web.Areas.Admin.Controllers.AdminProductController | 232 | Object reference not set to an instance of an object.
+17/05/2018 11:17:22 | WebMvc.Web.dll | CreateProduct | WebMvc.Web.Areas.Admin.Controllers.AdminProductController | 0 | Must declare the scalar variable "@Post_Id".
+17/05/2018 11:18:13 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 11:19:57 | WebMvc.Web.dll | CreateProduct | WebMvc.Web.Areas.Admin.Controllers.AdminProductController | 232 | Must declare the scalar variable "@Post_Id".
+17/05/2018 11:20:16 | WebMvc.Web.dll | CreateProduct | WebMvc.Web.Areas.Admin.Controllers.AdminProductController | 232 | Must declare the scalar variable "@Post_Id".
+17/05/2018 11:20:45 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 11:20:46 | WebMvc.Web.dll | CreateProduct | WebMvc.Web.Areas.Admin.Controllers.AdminProductController | 232 | The parameterized query '(@Id uniqueidentifier,@ProductClassId uniqueidentifier,@Name nva' expects the parameter '@MembershipUser_Id', which was not supplied.
+17/05/2018 11:23:38 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 11:24:14 | WebMvc.Web.dll | CreateProduct | WebMvc.Web.Areas.Admin.Controllers.AdminProductController | 232 | The parameterized query '(@Id uniqueidentifier,@ProductClassId uniqueidentifier,@Name nva' expects the parameter '@MembershipUser_Id', which was not supplied.
+17/05/2018 11:25:53 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 13:09:35 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 13:54:51 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 13:54:59 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'Edit' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.AdminProductController'.
+17/05/2018 13:55:28 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Object reference not set to an instance of an object.

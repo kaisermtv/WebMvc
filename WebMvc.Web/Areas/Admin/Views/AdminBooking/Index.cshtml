@@ -1,0 +1,57 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.AdminBookingListViewModel
+@{
+    ViewBag.Title = "Booking Manage";
+}
+
+@Html.Partial("_BookingNavButtons")
+
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>List Booking</h5>
+    </div>
+    <div class="panel-content">
+        <div id="container">
+            <div class="tablescroll">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width:50px">Edit</th>
+                            <th>NamePartner</th>
+                            <th style="width:250px">Phone</th>
+                            <th style="width:250px">Email</th>
+                            <th style="width:250px">CheckIn</th>
+                            <th style="width:150px">Create Date</th>
+                            <th style="width:50px">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var it in Model.ListBooking)
+                        {
+                            <tr>
+                                <td>
+                                    <span>
+                                        <a href="@Url.Action("Edit", new { id = it.Id })" class="btn-mvc">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+                                    </span>
+                                </td>
+                                <td>@it.NamePartner</td>
+                                <td>@it.Phone</td>
+                                <td>@it.Email</td>
+                                <td>@it.CheckIn.ToString("hh:mm dd/MM/yyyy")</td>
+                                <td>@it.CreateDate.ToString("hh:mm dd/MM/yyyy")</td>
+                                <td>
+                                    <a href="@Url.Action("Delete", new { id = it.Id })" class="btn-mvc">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

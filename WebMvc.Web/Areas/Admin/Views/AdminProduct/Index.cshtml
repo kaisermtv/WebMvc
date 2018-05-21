@@ -1,0 +1,59 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.AdminProductClassViewModel
+@{
+    ViewBag.Title = "Quản lý nhóm sản phẩm";
+}
+
+@Html.Partial("_ProductNavButtons")
+
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        <div id="container">
+            <div class="tablescroll">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width:50px">Edit</th>
+                            <th style="width:50px">List</th>
+                            <th>Name</th>
+                            <th style="width:150px">Create Date</th>
+                            <th style="width:50px">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var it in Model.ListProductClass)
+                        {
+                            <tr>
+                                <td>
+                                    <span>
+                                        <a href="@Url.Action("Edit", new { id = it.Id })" class="btn-mvc">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span>
+                                        <a href="@Url.Action("Product", new { id = it.Id })" class="btn-mvc">
+                                            <span class="glyphicon glyphicon-list-alt"></span>
+                                        </a>
+                                    </span>
+                                </td>
+                                <td>@it.Name</td>
+                                <td>@it.DateCreated.ToString("hh:mm dd/MM/yyyy")</td>
+                                <td>
+                                    <a href="@Url.Action("Delete", new { id = it.Id })" class="btn-mvc">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

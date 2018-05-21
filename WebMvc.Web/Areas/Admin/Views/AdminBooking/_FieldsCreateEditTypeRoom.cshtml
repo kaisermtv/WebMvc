@@ -1,0 +1,28 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.AdminTypeRoomEditViewModel
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.IsShow, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.CheckBoxFor(model => model.IsShow, new { @class = "form-control" } )
+        @Html.ValidationMessageFor(model => model.IsShow, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Note, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.TextAreaFor(model => model.Note, new { @class = "form-control", @style = "resize:vertical" })
+        @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
+    </div>
+    <script>
+        CKEDITOR.replace("Note");
+    </script>
+</div>

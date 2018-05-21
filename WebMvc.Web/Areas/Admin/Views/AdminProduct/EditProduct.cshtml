@@ -1,0 +1,35 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.AdminEditProductViewModel
+
+@{
+    ViewBag.Title = "Chỉnh sửa thông tin sản phẩm";
+}
+
+@Html.Partial("_ProductNavButtons")
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        @using (Html.BeginForm("EditProduct", "AdminProduct", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @Html.Partial("_FieldsCreateEditProduct", Model)
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Cập nhật" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+

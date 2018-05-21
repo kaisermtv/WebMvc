@@ -1,0 +1,27 @@
+﻿@using WebMvc.Web.Application.ExtensionMethods
+@model WebMvc.Web.Areas.Admin.ViewModels.AdminTermsConditionsSettingViewModel
+
+@{
+    ViewBag.Title = "Terms & Conditions Setting";
+}
+
+@using (Html.BeginForm("TermsConditions", "Setting", FormMethod.Post))
+{
+    @Html.ValidationSummary(false)
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Terms & Conditions Setting</h4>
+        </div>
+        <div class="panel-collapse">
+            <div class="panel-body">
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="submit-holder">
+        <button type="submit" class="btn-mvc-green btn-mvc-large">Save Settings</button>
+    </div>
+}

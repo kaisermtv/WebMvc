@@ -1,0 +1,33 @@
+﻿@model WebMvc.Web.ViewModels.CreateEditTopicViewModel
+
+@{
+    ViewBag.Title = "Create topic";
+}
+
+@Html.Partial("_TopicNavButtons")
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>Create Topic</h5>
+    </div>
+    <div class="panel-content">
+        <div id="container">
+            @using (Html.BeginForm("Create", "AdminTopic", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @Html.Partial("_FieldsCreateEditTopic", Model)
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿@using WebMvc.Domain.Interfaces.Services;
+@{
+    ViewBag.Title = "Themes Manages";
+var currentTheme = DependencyResolver.Current.GetService<ISettingsService>().GetSetting("Theme");
+}
+
+@section AdminHeader {
+
+}
+
+<div class="row">
+    @foreach (var item in ThemesSetting.getThemesInfo())
+    {
+        <div class="col-sm-6 col-lg-4">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h5>@item.Name</h5>
+                </div>
+                <div class="panel-content">
+
+                </div>
+                <div class="panel-footer" style="min-height:55px;">
+                    @using (Html.BeginForm("Themes", "Setting", FormMethod.Post,new { @style = "display: contents;" }))
+                    {
+                        <input name="activetheme" type="hidden" value="@item.Name" />
+                        if (currentTheme == @item.Name)
+                        {
+                            <input name="atv" type="hidden" value="Deaactive" />
+                            <button type="submit" class="btn btn-danger">Deactive</button>
+                        }
+                        else
+                        {
+                            <input name="atv" type="hidden" value="Active" />
+                            <button type="submit" class="btn btn-primary">Active</button>
+                        }
+                        
+                    }
+                    @if (item.Config)
+                    {
+                        <a class="btn btn-danger" href="@Url.Action("ThemeConfig",new { id = item.Name })">Config</a>
+                    }
+                </div>
+            </div>
+
+        </div>
+    }
+
+
+
+</div>
+
+
+

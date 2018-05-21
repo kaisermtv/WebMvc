@@ -1,0 +1,52 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.AdminProductViewModel
+@{
+    ViewBag.Title = "Quản lý sản phẩm";
+}
+
+@Html.Partial("_ProductNavButtons")
+
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+        <a class="btn btn-mvc-green" href="@Url.Action("CreateProduct",new { g = Model.ProductClass })" style="float:right;">Thêm sản phẩm</a>
+    </div>
+    <div class="panel-content">
+        <div id="container">
+            <div class="tablescroll">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width:50px">Edit</th>
+                            <th>Name</th>
+                            <th style="width:150px">Create Date</th>
+                            <th style="width:50px">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var it in Model.ListProduct)
+                        {
+                            <tr>
+                                <td>
+                                    <span>
+                                        <a href="@Url.Action("EditProduct", new { id = it.Id })" class="btn-mvc">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+                                    </span>
+                                </td>
+                                <td>@it.Name</td>
+                                <td>@it.CreateDate.ToString("hh:mm dd/MM/yyyy")</td>
+                                <td>
+                                    <a href="@Url.Action("Delete", new { id = it.Id })" class="btn-mvc">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

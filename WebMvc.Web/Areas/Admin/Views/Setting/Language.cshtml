@@ -1,0 +1,31 @@
+﻿@using WebMvc.Web.Application.ExtensionMethods
+@model WebMvc.Web.Areas.Admin.ViewModels.AdminLanguageSettingViewModel
+
+@{
+    ViewBag.Title = "Language Setting";
+}
+
+@using (Html.BeginForm("Language", "Setting", FormMethod.Post))
+{
+    @Html.ValidationSummary(false)
+    @Html.AntiForgeryToken()
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">Language Setting</h4>
+        </div>
+        <div class="panel-collapse">
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LanguageDefault)
+                    @Html.DropDownListFor(model => model.LanguageDefault, Model.AllLanguage, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.LanguageDefault)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="submit-holder">
+        <button type="submit" class="btn-mvc-green btn-mvc-large">Save Settings</button>
+    </div>
+}

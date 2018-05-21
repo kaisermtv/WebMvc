@@ -1,0 +1,51 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.AdminProductAttributeViewModel
+@{
+    ViewBag.Title = "Attribute Product Manage";
+}
+
+@Html.Partial("_ProductNavButtons")
+
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>List Attribute</h5>
+    </div>
+    <div class="panel-content">
+        <div id="container">
+            <div class="tablescroll">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width:50px">Edit</th>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th style="width:50px">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var it in Model.ListProductAttribute)
+                        {
+                            <tr>
+                                <td>
+                                    <span>
+                                        <a href="@Url.Action("EditAttribute", new { id = it.Id })" class="btn-mvc">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+                                    </span>
+                                </td>
+                                <td>@it.LangName</td>
+                                <td>@it.ValueType</td>
+                                <td>
+                                    <a href="@Url.Action("DeleteAttribute", new { id = it.Id })" class="btn-mvc">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

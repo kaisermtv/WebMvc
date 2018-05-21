@@ -1,0 +1,80 @@
+21/04/2018 13:51:17 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+21/04/2018 14:00:21 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+21/04/2018 14:00:28 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Object reference not set to an instance of an object.
+21/04/2018 14:02:26 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+21/04/2018 14:07:46 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'UpdateResourceValue' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.AdminLanguageController'.
+21/04/2018 15:52:14 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+21/04/2018 16:53:55 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/04/2018 13:26:59 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/04/2018 13:27:24 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/04/2018 14:17:05 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/04/2018 14:26:23 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'DeleteLanguageConfirmation' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.AdminLanguageController'.
+22/04/2018 14:34:25 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'CustomCode' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.SettingController'.
+22/04/2018 14:34:51 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/04/2018 14:34:57 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | C:\Users\kaisermtv\AppData\Local\Temp\Temporary ASP.NET Files\vs\3f96eacd\179bf639\App_Web_customcode.cshtml.e4b088b.gm6nhy96.0.cs(33): error CS0246: The type or namespace name 'MVCForum' could not be found (are you missing a using directive or an assembly reference?)
+24/04/2018 16:14:59 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+24/04/2018 16:15:01 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The action 'MainAdminNav' is accessible only by a child request.
+24/04/2018 16:15:02 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'Index' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.DashboardController'.
+24/04/2018 16:15:05 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'Index' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.DashboardController'.
+30/04/2018 06:33:43 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+10/05/2018 02:40:54 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+10/05/2018 09:01:14 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+10/05/2018 09:38:37 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\Gland\Views\Shared\_Layout.cshtml(21): error CS0103: The name 'uptitle' does not exist in the current context
+10/05/2018 09:38:50 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The "RenderBody" method has not been called for layout page "~/Themes/Gland/Views/Shared/_Layout.cshtml".
+10/05/2018 10:05:50 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The given path's format is not supported.
+10/05/2018 10:05:56 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The given path's format is not supported.
+10/05/2018 10:06:13 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The given path's format is not supported.
+10/05/2018 10:20:36 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The partial view '_Header.cshtml' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Themes/Gland/Views/Home/_Header.cshtml.cshtml
+~/Themes/Gland/Views/Shared/_Header.cshtml.cshtml
+~/Themes/Gland/Views/Shared/Home/_Header.cshtml.cshtml
+~/Themes/Gland/Views/Extensions/Home/_Header.cshtml.cshtml
+~/Views/Extensions/Home/_Header.cshtml.cshtml
+~/Views/Home/_Header.cshtml.cshtml
+~/Views/Home/_Header.cshtml.vbhtml
+~/Views/Shared/_Header.cshtml.cshtml
+~/Views/Shared/_Header.cshtml.vbhtml
+10/05/2018 14:17:15 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+11/05/2018 08:50:24 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+11/05/2018 08:50:25 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Path '/Themes/Gland/Views/Home/Index.cshtml' was not found.
+11/05/2018 09:43:59 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+11/05/2018 10:13:34 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The view 'Registration' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/Admin/Views/Setting/Registration.cshtml
+~/Areas/Admin/Views/Setting/Registration.vbhtml
+~/Areas/Admin/Views/Shared/Registration.cshtml
+~/Areas/Admin/Views/Shared/Registration.vbhtml
+~/Themes/Gland/Views/Setting/Registration.cshtml
+~/Themes/Gland/Views/Extensions/Setting/Registration.cshtml
+~/Views/Extensions/Setting/Registration.cshtml
+~/Views/Setting/Registration.cshtml
+~/Views/Setting/Registration.vbhtml
+~/Views/Shared/Registration.cshtml
+~/Views/Shared/Registration.vbhtml
+11/05/2018 10:39:04 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\Gland\Views\Shared\_TopMenu.cshtml(148): error CS1525: Invalid expression term '}'
+11/05/2018 10:40:04 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Error executing child request for handler 'System.Web.Mvc.HttpHandlerUtil+ServerExecuteHttpHandlerAsyncWrapper'. INNER EXCEPTION: Execution of the child request failed. Please examine the InnerException for more information. INNER EXCEPTION: A public action method 'SideAdminPanel' was not found on controller 'WebMvc.Web.Controllers.MembersController'.
+11/05/2018 10:40:57 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\Gland\Views\Shared\_TopMenu.cshtml(152): error CS1002: ; expected
+11/05/2018 10:41:07 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\Gland\Views\Shared\_TopMenu.cshtml(152): error CS1002: ; expected
+11/05/2018 10:49:44 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | C:\Users\kaisermtv\AppData\Local\Temp\Temporary ASP.NET Files\vs\3f96eacd\179bf639\App_Web__topmenu.cshtml.ae55ddd3.n0s9onnf.0.cs(1210): error CS1525: Invalid expression term '|'
+11/05/2018 10:49:55 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\Gland\Views\Shared\_TopMenu.cshtml(151): error CS1002: ; expected
+11/05/2018 10:51:31 | WebMvc.Web.dll | AddResourceKey | WebMvc.Web.Areas.Admin.Controllers.AdminLanguageController | 156 | Violation of UNIQUE KEY constraint 'UQ__LocaleRe__737584F66CD863A8'. Cannot insert duplicate key in object 'dbo.LocaleResourceKey'. The duplicate key value is (LogOn.LogOff).
+The statement has been terminated.
+11/05/2018 10:52:48 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The view 'TermsConditions' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Areas/Admin/Views/Setting/TermsConditions.cshtml
+~/Areas/Admin/Views/Setting/TermsConditions.vbhtml
+~/Areas/Admin/Views/Shared/TermsConditions.cshtml
+~/Areas/Admin/Views/Shared/TermsConditions.vbhtml
+~/Themes/Gland/Views/Setting/TermsConditions.cshtml
+~/Themes/Gland/Views/Extensions/Setting/TermsConditions.cshtml
+~/Views/Extensions/Setting/TermsConditions.cshtml
+~/Views/Setting/TermsConditions.cshtml
+~/Views/Setting/TermsConditions.vbhtml
+~/Views/Shared/TermsConditions.cshtml
+~/Views/Shared/TermsConditions.vbhtml
+11/05/2018 10:57:56 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'ManageLanguageResourceKeys' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.AdminLanguageController'.
+11/05/2018 11:51:49 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+11/05/2018 11:51:49 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'Languege' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.SettingController'.
+11/05/2018 11:51:56 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'Languege' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.SettingController'.
+11/05/2018 11:52:21 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'Languege' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.SettingController'.
+11/05/2018 11:52:32 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'Languege' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.SettingController'.
+11/05/2018 11:53:13 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'Languege' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.SettingController'.
+11/05/2018 11:53:25 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'Languege' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.SettingController'.

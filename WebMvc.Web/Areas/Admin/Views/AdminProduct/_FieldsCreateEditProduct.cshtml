@@ -1,0 +1,127 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.AdminEditProductViewModel
+@using WebMvc.Web.Areas.Admin.ViewModels
+@Html.HiddenFor(model => model.ProductClass)
+<div class="form-group">
+    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DropDownListFor(model => model.Category, Model.Categories, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(x => x.Files, htmlAttributes: new { @class = "control-label col-md-2" })
+
+    <div class="col-md-10">
+        <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-default btn-file">
+                    @Html.LanguageString("Post.Browse") <input type="file" name="files" id="files" value="">
+                </span>
+            </span>
+            <input type="text" class="form-control" readonly="">
+        </div>
+        @Html.ValidationMessageFor(x => x.Files)
+
+
+        @if (!string.IsNullOrEmpty(Model.Image))
+        {
+            <img src="@AppHelpers.CategoryImage(Model.Image, Model.Id, 110)" alt="@Model.Name" />
+        }
+    </div>
+</div>
+@for (int i = 0; i < Model.AllAttribute.Count; i++)
+{
+    <div class="form-group">
+        <label class="control-label col-md-2" for="AllAttribute_@(i)_@Model.AllAttribute[i].Name">@Model.AllAttribute[i].Name</label>
+        <div class="col-md-10">
+            <input type="hidden" value="@Model.AllAttribute[i].AttriId" name="AllAttribute[@i].AttriId" />
+            <input class="form-control text-box single-line" id="AllAttribute_@(i)_@Model.AllAttribute[i].Name" name="AllAttribute[@i].Value" type="text" value="@Model.AllAttribute[i].Value">
+        </div>
+    </div>
+}
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.TextAreaFor(model => model.Content, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+        <script>
+            CKEDITOR.replace("Content");
+        </script>
+    </div>
+</div>
+
+@*<div class="form-group">
+        @Html.LabelFor(model => model.IsSticky, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.IsSticky)
+                @Html.ValidationMessageFor(model => model.IsSticky, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>*@
+
+@*<div class="form-group">
+        @Html.LabelFor(model => model.IsLocked, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.IsLocked)
+                @Html.ValidationMessageFor(model => model.IsLocked, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>*@
+
+
+
+@*<div class="form-group">
+        @Html.LabelFor(model => model.Tags, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Tags, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+
+@*<div class="form-group">
+        @Html.LabelFor(model => model.PollCloseAfterDays, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PollCloseAfterDays, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PollCloseAfterDays, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+
+@*<div class="form-group">
+        @Html.LabelFor(model => model.SubscribeToTopic, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.SubscribeToTopic)
+                @Html.ValidationMessageFor(model => model.SubscribeToTopic, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>*@
+
+@*<div class="form-group">
+        @Html.LabelFor(model => model.TopicId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TopicId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TopicId, "", new { @class = "text-danger" })
+        </div>
+    </div>*@
+
+@*<div class="form-group">
+        @Html.LabelFor(model => model.IsTopicStarter, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.IsTopicStarter)
+                @Html.ValidationMessageFor(model => model.IsTopicStarter, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>*@
+

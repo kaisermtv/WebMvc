@@ -1,0 +1,34 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.AdminTypeRoomEditViewModel
+
+@{
+    ViewBag.Title = "Edit Type Room";
+}
+
+@Html.Partial("_BookingNavButtons")
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(false)
+            @Html.HiddenFor(model => model.Id)
+            <div class="form-horizontal">
+                @Html.Partial("_FieldsCreateEditTypeRoom", Model)
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn-mvc-green btn-mvc-large" value="Update" />
+                        <a href="@Url.Action("DeleteTypeRoomConfirmation", new { id = Model.Id })" class="btn-mvc btn-mvc-large" role="button">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+

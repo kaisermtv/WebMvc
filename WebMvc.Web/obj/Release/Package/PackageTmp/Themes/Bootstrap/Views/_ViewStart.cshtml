@@ -1,0 +1,14 @@
+﻿@using MVCForum.Domain.Interfaces.Services
+@{
+    // Get the current theme
+    var currentTheme = DependencyResolver.Current.GetService<ISettingsService>().GetSettings().Theme;
+
+    // Set if this is a mobile device
+    PageData[AppConstants.IsMobileDevice] = Context.IsMobileDevice();
+
+    // Set the Layout view
+    const string layoutName = "_Layout";
+    Layout = string.Concat("~/Themes/", currentTheme, "/Views/Shared/", layoutName, ".cshtml");
+
+
+}

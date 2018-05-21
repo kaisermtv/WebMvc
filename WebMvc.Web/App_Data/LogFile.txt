@@ -1,0 +1,15 @@
+17/05/2018 13:58:33 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 14:02:01 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+18/05/2018 05:09:24 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+18/05/2018 06:16:22 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Error executing child request for handler 'System.Web.Mvc.HttpHandlerUtil+ServerExecuteHttpHandlerAsyncWrapper'. INNER EXCEPTION: Execution of the child request failed. Please examine the InnerException for more information. INNER EXCEPTION: A public action method 'Slider' was not found on controller 'WebMvc.Web.Controllers.HomeController'.
+18/05/2018 06:16:47 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+18/05/2018 07:08:11 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\Gland\Views\Shared\_JavaScript.cshtml(15): error CS1061: 'HtmlHelper<Theme>' does not contain a definition for 'ThemeUrl' and no extension method 'ThemeUrl' accepting a first argument of type 'HtmlHelper<Theme>' could be found (are you missing a using directive or an assembly reference?)
+18/05/2018 07:08:31 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+19/05/2018 05:25:06 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+19/05/2018 15:17:40 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+19/05/2018 15:23:57 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+19/05/2018 15:26:25 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+20/05/2018 06:54:33 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+20/05/2018 13:07:43 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+20/05/2018 13:07:44 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'Edit' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.AdminProductController'.
+21/05/2018 05:05:26 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP

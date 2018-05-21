@@ -1,0 +1,55 @@
+﻿@model WebMvc.Web.ViewModels.TopicListViewModel
+
+@{
+    ViewBag.Title = "List Topic";
+}
+
+
+@Html.Partial("_TopicNavButtons")
+
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>List Topic</h5>
+    </div>
+    <div class="panel-content">
+        <div id="container">
+             <div class="tablescroll">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width:50px">Edit</th>
+                            <th>Title</th>
+                            <th style="width:150px">Create date</th>
+                            <th style="width:250px">User post</th>
+                            <th style="width:50px">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var it in Model.ListTopic)
+                        {
+                            <tr>
+                                <td>
+                                    <span>
+                                        <a href="@Url.Action("Edit", new { id = it.Id })" class="btn-mvc">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+                                    </span>
+                                </td>
+                                <td>@it.Name</td>
+                                <td>@it.CreateDate.ToString("hh:mm dd/MM/yyyy")</td>
+                                <td>@it.MembershipUser_Id</td>
+                                <td>
+                                    <a href="@Url.Action("Delete", new { id = it.Id })" class="btn-mvc">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

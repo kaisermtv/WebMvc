@@ -1,0 +1,38 @@
+﻿@model WebMvc.Web.ViewModels.TopicListViewModel
+
+@{
+    ViewBag.Title = "";
+    var themeName = Html.Settings("Theme");
+    var ThemePath = string.Concat(SiteConstants.Instance.ThemeRootFolder, themeName);
+}
+@Html.Partial("_Header")
+<!--start-about-->
+<div class="about">
+    <div class="container">
+        <div class="about-top">
+            <h3>TIN TỨC</h3>
+            <div class="about-main">
+                <div class="col-md-8 about-top-left">
+                    <!--<h4>A Few Words About Us</h4>-->
+                    @foreach (var it in Model.ListTopic)
+                    {
+                    <div class="abt-top">
+                        <div class="col-md-5 abt-left">
+                            <img src="@Url.Content(ThemePath + "/content/images/abt-1.jpg")">
+                        </div>
+                        <div class="col-md-7 abt-right">
+                            <h5>@it.Name</h5>
+                            <p> Curabitur interdum vehicula justo, in ultrices metus efficitur a. Vestibulum volutpat mauris sed felis dapibus tincidunt. Fusce eleifend sagittis lacus eu lobortis.Curabitur pharetra vel eros nec vulputate.</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    }
+
+                </div>
+                @Html.Action("ListCategorySideMenu","Category")
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end-about-->
