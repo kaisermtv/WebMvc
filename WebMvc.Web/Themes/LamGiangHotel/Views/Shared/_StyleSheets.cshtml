@@ -1,8 +1,0 @@
-﻿@model WebMvc.Domain.DomainModel.General.Theme
-@(
-             Bundle.Css()
-                .Add(Model.ThemePath + "/Content/css/bootstrap.css")
-                .Add(Model.ThemePath + "/Content/css/style.css")
-                .MvcRender("~/content/cache/combined_" + Model.ThemeName + "_#.css")
-)
-<link href='http://fonts.googleapis.com/css?family=Exo:100,200,300,400,500,600,700,800,900,100italic,200italic,300italic,400italic,500italic,600italic,700italic,800italic,900italic' rel='stylesheet' type='text/css'>
