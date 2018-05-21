@@ -1,0 +1,127 @@
+﻿@model WebMvc.Domain.DomainModel.Entities.MembershipUser
+
+@{
+    ViewBag.Title = "Dịch vụ";
+    var themeName = Html.Settings("Theme");
+    var ThemePath = string.Concat(SiteConstants.Instance.ThemeRootFolder, themeName);
+}
+
+@Html.Partial("_Header")
+<!--start-services-->
+<div class="services">
+    <div class="container">
+        <div class="services-main">
+            <h3>DỊCH VỤ NỔI BẬT</h3>
+            <div class="services-top">
+                <div class="col-md-4 service-left">
+                    <img src="@Url.Content(ThemePath + "/content/images/s-1.jpg")" alt="">
+                    <h4>FUSCE SUSCIPIT</h4>
+                    <p>Fusce euismod consequat ante. Lorem ipsum dolor sit met consectetuer adipiscing elit ellesque sed dolor. Aliquam congue fermentum nisl. Maurcumsan nulla vel diam.</p>
+                    <div class="s-btn">
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+                <div class="col-md-4 service-left">
+                    <img src="@Url.Content(ThemePath + "/content/images/s-2.jpg")" alt="">
+                    <h4>MAURIS ACCUMSAN</h4>
+                    <p>Fusce euismod consequat ante. Lorem ipsum dolor sit met consectetuer adipiscing elit ellesque sed dolor. Aliquam congue fermentum nisl. Maurcumsan nulla vel diam.</p>
+                    <div class="s-btn">
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+                <div class="col-md-4 service-left">
+                    <img src="@Url.Content(ThemePath + "/content/images/s-3.jpg")" alt="">
+                    <h4>CONSECTE TUER</h4>
+                    <p>Fusce euismod consequat ante. Lorem ipsum dolor sit met consectetuer adipiscing elit ellesque sed dolor. Aliquam congue fermentum nisl. Maurcumsan nulla vel diam.</p>
+                    <div class="s-btn">
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end-services-->
+<!--start-other-->
+<div class="other">
+    <div class="container">
+        <div class="other-main">
+            <h3>DỊCH VỤ KHÁC</h3>
+            <div class="other-top">
+                <div class="col-md-6 other-left">
+                    <h4>MASTER PLANNING</h4>
+                    <p>Aliquam congue fermentum nisl. Mauris accumsan nulla vel dia Sed in lacus ut enim adipiscin g aliquet. Nulla ve nenatis. In pede mi, aliquet sit amet, euismod in, auctor ut, ligula.</p>
+                    <div class="o-btn">
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+                <div class="col-md-6 other-left">
+                    <h4>ENVIRONMENTAL DATABASES</h4>
+                    <p>Nulla ve nenatis. In pede mi, aliquet sit amet, eui smod in, auctor ut, ligula. Aliqua m dapibus tinci dunt metusFusce euismod consequat ante. Lore m ipsum dolor sit amet, consectet</p>
+                    <div class="o-btn">
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end-other-->
+<!--start-list-->
+<div class="list">
+    <div class="container">
+        <div class="list-main">
+            <h3>DỊCH VỤ</h3>
+        </div>
+        <div class="list-top">
+            <div class="col-md-3 list-left">
+                <img src="@Url.Content(ThemePath + "/content/images/l-1.jpg")" alt="">
+                <h4>DỊCH VỤ PHÒNG</h4>
+                <ul>
+                    <li><a href="#">Integer vitae metus</a></li>
+                    <li><a href="#">Ut enim ad minim </a></li>
+                    <li><a href="#">Etiam aliquam fermentum</a></li>
+                    <li><a href="#">Sed laoreet aliquam</a></li>
+                    <li><a href="#">Nulla accumsan erat</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 list-left">
+                <img src="@Url.Content(ThemePath + "/content/images/l-2.jpg")" alt="">
+                <h4>CƯỚI HỎI</h4>
+                <ul>
+                    <li><a href="#"> Aliquam erat volutpat</a></li>
+                    <li><a href="#">Donec accumsan malesuada </a></li>
+                    <li><a href="#">Etiam aliquam fermentum</a></li>
+                    <li><a href="#">Curabitur velit luctus</a></li>
+                    <li><a href="#">Morbi nunc odio</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 list-left">
+                <img src="@Url.Content(ThemePath + "/content/images/l-3.jpg")" alt="">
+                <h4>HỘI NGHỊ</h4>
+                <ul>
+                    <li><a href="#">Duis aute irure dolor</a></li>
+                    <li><a href="#">Ut enim ad minim</a></li>
+                    <li><a href="#">Vivamus euismod justo</a></li>
+                    <li><a href="#">Pellentesque vitae</a></li>
+                    <li><a href="#">Nulla accumsan erat</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 list-left">
+                <img src="@Url.Content(ThemePath + "/content/images/l-4.jpg")" alt="">
+                <h4>NHÀ HÀNG</h4>
+                <ul>
+                    <li><a href="#">Donec hendrerit ligula</a></li>
+                    <li><a href="#">Curabitur luctus felis</a></li>
+                    <li><a href="#">Etiam aliquam fermentum</a></li>
+                    <li><a href="#">Curabitur velit luctus</a></li>
+                    <li><a href="#">Vestibulum eget pellentesque</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!--end-list-->
