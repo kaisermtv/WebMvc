@@ -1,0 +1,178 @@
+﻿@using WebMvc.Domain.DomainModel.General
+@{
+    // Global Stuff
+    var themeName = Html.Settings("Theme");
+    var theme = new Theme
+    {
+        ThemeName = themeName,
+        ThemePath = string.Concat(SiteConstants.Instance.ThemeRootFolder, themeName)
+    };
+    //TempData[AppConstants.GlobalClass] = Convert.ToBoolean(PageData[AppConstants.IsMobileDevice]) ? "mobile" : "desktop";
+    //TempData[AppConstants.CurrentAction] = ViewContext.RouteData.GetRequiredString("action").ToLower();
+    //TempData[AppConstants.CurrentController] = ViewContext.RouteData.GetRequiredString("controller").ToLower();
+
+    //string uptitle = ViewBag.Title;
+    //uptitle = uptitle.ToUpper();
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta name="google-site-verification" content="LZn7F2haXKZoicMDor6b2sA4EfCGFrxN53G6fYOACX0" />
+
+    <meta charset="UTF-8" />
+
+    <title>@ViewBag.Title - @Html.Settings("WebsiteName")</title>
+    <link rel="shortcut icon" href="@(theme.ThemePath)/Content/images/favicon.png" />
+
+    @RenderSection("meta", required: false)
+
+    @Html.Partial("_StyleSheets", theme)
+
+    @Html.Partial("_JavaScript", theme)
+
+    @RenderSection("head", required: false)
+</head>
+<body>
+    @Html.Partial("_Header", theme)
+
+
+    <div id="wrap">
+        <style>
+            .hOnline {
+                width: 400px;
+                left: 0;
+            }
+
+            .sub_nav .box_cate .sub1 {
+                color: red;
+                font-size: 13px;
+            }
+        </style>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var urlSearch = "";
+                var htmlResult = "";
+                $("#text_search").keyup(function (b) {
+                    htmlResult = "";
+                    if (b.keyCode != 38 && b.keyCode != 40) {
+                        inputString = $(this).val();
+                        $("#keySearchResult").html(inputString);
+                        if (inputString.trim() != '') {
+                            $(".autocomplete-suggestions").show();
+                            urlSearch = '/ajax/get_json.php?action=search&content=product&q=' + encodeURIComponent(inputString);
+
+                            $.getJSON(urlSearch, function (result) {
+                                var data = result;
+                                Object.keys(data).forEach(function (key, keyIndex) {
+                                    var name = data[keyIndex].productName;
+                                    var url = data[keyIndex].productUrl;
+                                    var image = data[keyIndex].productImage.medium;
+                                    var price = formatCurrency(data[keyIndex].price);
+                                    if (price != 0) price = price + 'VND';
+                                    else price = "Liên hệ"
+
+                                    htmlResult += '<div class="item" title="' + name + '">';
+                                    htmlResult += '<a class="imggr" href="' + url + '"><img alt="' + name + '" class="img" src="' + image + '" /></a>';
+                                    htmlResult += '<div class="infoRight">';
+                                    htmlResult += '<a class="name" href="' + url + '">' + name + '</a>';
+                                    htmlResult += '<p class="price2">' + price + '</p>';
+                                    htmlResult += '</div><div class="cb"></div>';
+                                    htmlResult += '</div>';
+                                });
+                                $(".autocomplete-suggestions #resultsearch").html(htmlResult);
+                            });
+
+                        } else {
+                            $(".autocomplete-suggestions").hide();
+                        }
+                    }
+                });
+                $('body').click(function () {
+                    $(".autocomplete-suggestions").hide();
+                });
+            });
+        </script>
+        @Html.Partial("_TopMenu")
+        @Html.Partial("_Menu")
+
+        <div class="clear"></div>
+        @RenderBody()
+        
+
+        @Html.Partial("_Footer")
+
+        <script>
+            function subscribe_newsletter() {
+                var email = document.getElementById('email_newsletter').value;
+                if (email.length > 3) {
+                    $.post("/ajax/post.php", { action: 'customer', action_type: 'register-for-newsletter', full_name: 'Khách nhận bản tin', email: email }, function (data) {
+                        if (data == 'success') { alert("Quý khách đã đăng ký thành công "); $("#email_newsletter").val("Nhập Email nhận bản tin"); }
+                        else if (data == 'exist') { alert("Email này đã tồn tại"); }
+                        else { alert('Lỗi xảy ra, vui lòng thử lại '); }
+
+                    });
+                } else { alert('Vui lòng nhập địa chỉ email'); }
+            }
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".btn-highstreet").on('click tap', function () {
+                    $(".highsteet-gallery").toggle();
+                });
+            });
+
+            $(".remove_qc").on('click tap', function () {
+                $.session.set('remove_qc', 'true');
+                $("#highstreet").hide();
+            });
+
+            if ($.session.get('remove_qc') == 'true') $("#highstreet").hide();
+        </script>
+
+
+    </div>
+
+
+    <script type="text/javascript" src="@Html.ThemeUrl()/Content/js/common.js"></script>
+
+
+    <div id="cart-fixed" onclick="location.href='/cart'">
+        <img src="@Html.ThemeUrl()/Content/images/icon_cart_fixed.png" alt="" />
+        <p>Giỏ hàng của bạn <br /><b>Có <span id="count_shopping_cart_store_2">0</span> sản phẩm</b></p>
+    </div>
+    <script>
+
+    $(function () {
+        $("#count_shopping_cart_store_2").text(ShoppingCart.getCartSummary().item);
+    });
+    function reloadCart() {
+        $("#count_shopping_cart_store_2,#count_shopping_cart_stores").text(ShoppingCart.getCartSummary().item);
+        $("#cart-fixed").addClass("hover");
+        setTimeout(function () { $("#cart-fixed").removeClass("hover"); }, 2000);
+    }
+
+
+
+    </script>
+
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57be9d5446a54bcf"></script>
+    <div id="fb-root"></div>
+    <script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.12&appId=1102908163100553&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <script async>(function (s, u, m, o, j, v) { j = u.createElement(m); v = u.getElementsByTagName(m)[0]; j.async = 1; j.src = o; j.dataset.sumoSiteId = 'ff814ebf3786227727cb3e041ca96091ee0324e90b3250a52e8ad1d5da0e18e1'; v.parentNode.insertBefore(j, v) })(window, document, 'script', '//load.sumo.com/');</script>
+
+    
+</body>
+</html>
+
+<!-- Load time: 0.142 seconds  / 4 mb-->
+<!-- Powered by HuraStore 7.3, Released: 27-Mar-2018 / Website: www.hurasoft.vn -->

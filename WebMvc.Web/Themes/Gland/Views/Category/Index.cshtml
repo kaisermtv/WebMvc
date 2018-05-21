@@ -1,0 +1,215 @@
+﻿@{
+    ViewBag.Title = "Tin Tức";
+}
+<div class="container">
+    <div id="location">
+        <a href="/"><i class="bg icon_home"></i></a>
+        <span>»</span><a href="/tin-tuc">Tin tức</a>
+    </div>
+    <div id="content_left">
+        @Html.Partial("_CatNews")
+        @Html.Partial("_HostView")
+        <div class="banner_left">
+
+        </div>
+    </div><!--content_left-->
+    <div id="content_news_page">
+
+        <script type="text/javascript">
+            $(window).load(function () {
+                $('#banner_pro_list ul').carouFredSel({
+                    auto: {
+                        play: true,
+                        pauseOnHover: true
+                    },
+                    prev: '#banner_pro_list .prev',
+                    next: '#banner_pro_list .next',
+                    'direction': 'left',
+                    mousewheel: true,
+                    scroll: 2,
+                    items: 2,
+                    swipe: {
+                        onMouse: true,
+                        onTouch: true
+                    }
+                });
+
+            });
+        </script>
+
+
+
+
+
+
+
+        <a href="/o-cung-ssd-va-hdd-cai-nao-tot-hon-12-su-that-ban-phai-biet/" class="top_newspage" style="margin-left:0;">
+            <img src="/media/news/59_ssd_v___hdd_c__i_n__o_t___t_h__n.jpg" alt="Ổ cứng ssd và hdd cái nào tốt hơn? 12 sự thật game thủ cần phải biết">
+            <span>Ổ cứng ssd và hdd cái nào tốt hơn? 12 sự thật game thủ cần phải biết</span>
+        </a><!--top_newspage-->
+
+
+
+        <a href="/7-vo-case-may-tinh-trong-suot-dep-long-lanh-ai-cung-muon-so-huu/" class="top_newspage">
+            <img src="/media/news/56_top_7_vo_case_may_tinh_trong_suot_gland.jpg" alt="7 vỏ case máy tính trong suốt đẹp long lanh mà ai cũng muốn sở hữu">
+            <span>7 vỏ case máy tính trong suốt đẹp long lanh mà ai cũng muốn sở hữu</span>
+        </a><!--top_newspage-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div id="hot_news_home" class="float_r">
+            <div class="title_box_right"><h2 class="cufon h_title">Tin tức nổi bật</h2> </div>
+            <div class="content_box" style="height:255px;">
+                <div class="bg_gradient_bottom_title"></div>
+
+
+                <div class="top_news">
+                    <a href="/o-cung-ssd-va-hdd-cai-nao-tot-hon-12-su-that-ban-phai-biet/"><img src="/media/news/120_59_ssd_v___hdd_c__i_n__o_t___t_h__n.jpg" alt="Ổ cứng ssd và hdd cái nào tốt hơn? 12 sự thật game thủ cần phải biết"> </a>
+                    <a href="/o-cung-ssd-va-hdd-cai-nao-tot-hon-12-su-that-ban-phai-biet/"> » Ổ cứng ssd và hdd cái nào tốt hơn? 12 ... (2018-04-21 15:22:44)</a>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <ul>
+
+
+
+
+                    <li><a href="/7-vo-case-may-tinh-trong-suot-dep-long-lanh-ai-cung-muon-so-huu/"> » 7 vỏ case máy tính trong suốt đẹp long ... (2018-04-05 18:40:57)</a></li>
+
+
+
+                    <li><a href="/tong-hop-vo-case-may-tinh-dep-nhat-nam-2017-p2/"> » TỔNG HỢP VỎ CASE MÁY TÍNH ĐẸP NHẤT ... (2018-03-24 09:42:42)</a></li>
+
+
+
+                    <li><a href="/tong-hop-vo-case-may-tinh-dep-nhat-nam-2018-p1/"> » TỔNG HỢP VỎ CASE MÁY TÍNH ĐẸP NHẤT ... (2018-03-23 16:30:35)</a></li>
+
+
+
+                    <li><a href="/tan-nhiet-nuoc-la-gi-co-nen-lap-tan-nhiet-nuoc-khong/"> » TẢN NHIỆT NƯỚC LÀ GÌ? CÓ NÊN LẮP ... (2018-04-12 11:26:24)</a></li>
+
+
+
+
+
+
+
+
+                </ul>
+            </div>
+        </div><!--hot_news_home-->
+        
+        @foreach (var it in AppHelpers.Categories())
+        {
+            @Html.Partial("_CatNew",it)
+        }
+        
+        <div class="clear space2"></div>
+        <div class="title_box_center">
+            <h2 class="h_title cufon" style="font-size:22px !important;">Tin Gland</h2>
+            <a href="/tin-tuc/" class="view_cate_news">Xem tất cả <span>»</span></a>
+        </div>
+        <div class="space2"></div>
+        <div class="top_news_on_page">
+
+
+            <div class="first">
+                <a href="/o-cung-ssd-va-hdd-cai-nao-tot-hon-12-su-that-ban-phai-biet/">
+                    <img src="/media/news/59_ssd_v___hdd_c__i_n__o_t___t_h__n.jpg" alt="Ổ cứng ssd và hdd cái nào tốt hơn? 12 sự thật game thủ cần phải biết">
+                </a>
+                <span class="container">
+                    <a href="/o-cung-ssd-va-hdd-cai-nao-tot-hon-12-su-that-ban-phai-biet/" class="name">Ổ cứng ssd và hdd cái nào tốt hơn? 12 sự thật game thủ cần phải biết</a>
+                    <span class="view">21-04-2018, 3:22 pm - Lượt xem: 1038</span>
+                    <span class="summary"></span>
+                </span>
+            </div>
+
+
+
+
+            <ul class="ul">
+
+
+
+
+                <li>
+                    <a href="/7-vo-case-may-tinh-trong-suot-dep-long-lanh-ai-cung-muon-so-huu/"><img src="/media/news/120_56_top_7_vo_case_may_tinh_trong_suot_gland.jpg" alt="7 vỏ case máy tính trong suốt đẹp long lanh mà ai cũng muốn sở hữu" width="100"></a>
+                    <div style="width:270px; float:right;">
+                        <a href="/7-vo-case-may-tinh-trong-suot-dep-long-lanh-ai-cung-muon-so-huu/" class="name">7 vỏ case máy tính trong suốt đẹp long lanh mà ai cũng muốn sở hữu</a>
+                        <span class="view">05-04-2018, 6:40 pm - Lượt xem: 1488</span>
+                    </div>
+                </li>
+
+
+
+                <li>
+                    <a href="/tong-hop-vo-case-may-tinh-dep-nhat-nam-2017-p2/"><img src="/media/news/120_img_46.jpg" alt="TỔNG HỢP VỎ CASE MÁY TÍNH ĐẸP NHẤT NĂM 2017 (P2)" width="100"></a>
+                    <div style="width:270px; float:right;">
+                        <a href="/tong-hop-vo-case-may-tinh-dep-nhat-nam-2017-p2/" class="name">TỔNG HỢP VỎ CASE MÁY TÍNH ĐẸP NHẤT NĂM 2017 (P2)</a>
+                        <span class="view">24-03-2018, 9:42 am - Lượt xem: 850</span>
+                    </div>
+                </li>
+
+
+
+                <li>
+                    <a href="/tong-hop-vo-case-may-tinh-dep-nhat-nam-2018-p1/"><img src="/media/news/120_52_t___ng_h___p_v____case_m__y_t__nh______p_nh___t_2018_p1.jpg" alt="TỔNG HỢP VỎ CASE MÁY TÍNH ĐẸP NHẤT NĂM 2018 (P1)" width="100"></a>
+                    <div style="width:270px; float:right;">
+                        <a href="/tong-hop-vo-case-may-tinh-dep-nhat-nam-2018-p1/" class="name">TỔNG HỢP VỎ CASE MÁY TÍNH ĐẸP NHẤT NĂM 2018 (P1)</a>
+                        <span class="view">23-03-2018, 4:30 pm - Lượt xem: 622</span>
+                    </div>
+                </li>
+
+
+
+                <li>
+                    <a href="/tan-nhiet-nuoc-la-gi-co-nen-lap-tan-nhiet-nuoc-khong/"><img src="/media/news/120_img_24.jpg" alt="TẢN NHIỆT NƯỚC LÀ GÌ? CÓ NÊN LẮP TẢN NHIỆT NƯỚC CHO PC KHÔNG?" width="100"></a>
+                    <div style="width:270px; float:right;">
+                        <a href="/tan-nhiet-nuoc-la-gi-co-nen-lap-tan-nhiet-nuoc-khong/" class="name">TẢN NHIỆT NƯỚC LÀ GÌ? CÓ NÊN LẮP TẢN NHIỆT NƯỚC CHO PC KHÔNG?</a>
+                        <span class="view">12-04-2018, 11:26 am - Lượt xem: 2065</span>
+                    </div>
+                </li>
+
+
+
+
+
+
+
+
+
+
+
+
+            </ul>
+        </div><!--top-->
+
+
+    </div><!--content_news-->
+</div>

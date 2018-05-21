@@ -1,0 +1,117 @@
+﻿
+<div id="social-right-fixed">
+    <a href="javascript:void(0)" onclick="showPopup('popup-facebook');"><i class="icons icon-sright-fb"></i></a>
+    <a href="javascript:void(0)" onclick="showPopup('popup-youtube');"><i class="icons icon-sright-yo"></i></a>
+    <a href="javascript:void(0)" onclick="showPopup('popup-lien-he');"><i class="icons icon-sright-mail"></i></a>
+    <a href="javascript:void(0)" onclick="showPopup('popup-address');"><i class="icons icon-sright-tel"></i></a>
+    <a href="javascript:void(0)" id="gotoTop" title="Lên đầu trang" style="display:none;"><i class="icons icon-sright-up"></i></a>
+</div><!--social-right-fixed-->
+
+<div class="popup-common" id="popup-lien-he">
+    <div class="title-popup"><span>Liên hệ với chúng tôi</span><i class="close" onclick="closePopup()">x</i></div>
+    <div class="content-popup">
+        <form>
+            <table width="100%" class="tbl-common">
+                <tr>
+                    <td><b>Tên đầy đủ</b></td>
+                    <td><input type="text" size="50" name="contact_name" id="contact_namef" class="inputText" autocomplete="off" /></td>
+                </tr>
+                <tr>
+                    <td><b>Email</b></td>
+                    <td><input type="text" size="50" name="contact_email" id="contact_emailf" class="inputText" autocomplete="off" /></td>
+                </tr>
+                <tr>
+                    <td><b>Điện thoại</b></td>
+                    <td><input type="text" size="50" name="contact_tel" id="contact_telf" class="inputText" autocomplete="off" /></td>
+                </tr>
+                <tr>
+                    <td><b>Thông tin liên hệ</b></td>
+                    <td><textarea rows="8" name="contact_message" id="contact_messagef" style="width:329px;"></textarea></td>
+                </tr>
+                <!--
+                <tr>
+                  <td><b>Mã bảo vệ</b></td>
+                  <td>
+                    <span id="check_captcha_contact" style="color:#d00; font-size:12px; display:block;"></span>
+                    <input type="text" size="10" onkeyup="check_user_captcha_contact(this.value,'check_captcha_contact')" id='captcha' class="inputText" name="captcha" style="float:left; width:100px; padding:0 5px; text-align:center;font-size:18px;"/><img src="/includes/captcha/captcha.php?v=" id='captchar_holder' style="float:left; height:50px;" alt="captcha"/> <a href="javascript:change_captcha('captchar_holder')" style="float:left;">[Đổi mã khác]</a></td>
+                </tr>
+                -->
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="button" class="btn btn-default" value="Hủy" onclick="closePopup()" style="cursor:pointer;" />
+                        <input type="button" class="btn btn-blue" value="Gửi liên hệ" onclick="return check_form_contact();" style="cursor:pointer;" />
+                    </td>
+                </tr>
+            </table>
+            <input type="hidden" value="send" name="action" />
+            <input type="hidden" name="return_url" value="https://gland.vn:443/xay-dung-may-tinh" />
+        </form>
+    </div><!--content-popup-->
+</div><!--popup-->
+
+<script>
+    function check_form_contact() {
+        var error = "";
+        var check_name = document.getElementById('contact_namef').value;
+        var check_email = document.getElementById('contact_emailf').value;
+        var check_tel = document.getElementById('contact_telf').value;
+        var check_message = document.getElementById('contact_messagef').value;
+
+        if (check_name.length < 4) error += "- Bạn chưa nhập tên\n";
+        if (check_email.length < 4) error += "- Bạn chưa nhập email\n";
+        if (check_tel.length < 4) error += "- Bạn chưa nhập số điện thoại\n";
+        if (check_message.length < 4) error += "- Bạn chưa nhập nội dung\n";
+
+        if (error == "") {
+            $.post("/ajax/post.php", { action: 'customer', action_type: 'contact', from: 'ajax', type: 'contact', 'info[name]': check_name, 'info[email]': check_email, 'info[tel]': check_tel, 'info[title]': 'Khách hàng gửi liên hệ', 'info[message]': check_message }
+                , function (data) {
+                    console.log(data);
+                    alert("Bạn gửi liên hệ thành công");
+                    closePopup();
+                    return true;
+                });
+        }
+        else alert(error);
+        return false;
+
+    }
+</script>
+
+
+<div class="popup-common" id="popup-youtube">
+    <div class="title-popup"><span>Quan tâm đến chúng tôi</span><i class="close" onclick="closePopup()">x</i></div>
+    <input type="hidden" value="https://www.youtube.com/embed/3Htgi31GThI" id="url-video-popup" />
+    <div class="content-popup" style="padding:0; height:315px;" id="content-popup-youtube">
+
+    </div><!--content-popup-->
+</div><!--popup-->
+
+<div class="popup-common" id="popup-address">
+    <div class="title-popup"><span>Địa chỉ liên hệ mua hàng</span><i class="close" onclick="closePopup()">x</i></div>
+    <div class="content-popup" style="padding:0 20px; font-size:14px; line-height:1.6;">
+
+        <p><b>Địa Chỉ 1: Gland– Số Nhà 47 – Ngõ 187 Phố Hồng Mai – Hai Bà Trưng – Hà Nội</b></p>
+        <p><b>Địa Chỉ 2 : Số Nhà 17/224 Ngõ Quỳnh Phố Thanh Nhàn Hai Bà Trưng – HN</b><br />Điện thoại: <span class="red">0976.155.499</span></p>
+
+    </div><!--content-popup-->
+</div><!--popup-->
+
+<div class="popup-common" id="popup-facebook">
+    <div class="title-popup"><span>Quan tâm đến chúng tôi</span><i class="close" onclick="closePopup()">x</i></div>
+    <div class="content-popup" style="padding:10px 20px; font-size:14px; line-height:1.6;">
+        <div style="height:130px;">
+            <div class="fb-page" data-href="https://www.facebook.com/glandcomputer/" data-width="455" data-height="70" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/glandcomputer/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/glandcomputer/">Fanpage</a></blockquote>
+            </div>
+        </div>
+        <div class="line"></div>
+        <p><i>Hãy <b class="red">Like fanpage</b> để trở thành <b class="blue">Fan của Grand</b> ngay trong hôm nay!</i></p>
+        <p><b>Địa Chỉ 1: Gland– Số Nhà 47 – Ngõ 187 Phố Hồng Mai – Hai Bà Trưng – Hà Nội</b></p>
+        <p><b>Địa Chỉ 2 : Số Nhà 17/224 Ngõ Quỳnh Phố Thanh Nhàn Hai Bà Trưng – HN</b><br />Điện thoại: <span class="red">0976.155.499</span></p>
+        <div class="clear"></div>
+    </div><!--content-popup-->
+</div><!--popup-->
+
+
+<div id="bg-opacity" onclick="closePopup()"></div>

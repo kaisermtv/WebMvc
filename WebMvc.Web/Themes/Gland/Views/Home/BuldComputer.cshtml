@@ -1,0 +1,149 @@
+﻿@model WebMvc.Domain.DomainModel.Entities.MembershipUser
+
+@{
+    ViewBag.Title = "Trang chủ";
+}
+<div class="container">
+    <div class="buid-title"><span class="cssSymbol">&nbsp;</span><h1>Xây dựng máy tính</h1></div>
+    <h2 class="buid-title">Cấu hình tham khảo</h2>
+
+
+
+
+
+
+
+    <div class="product_list page_inside">
+        <a href="#" class="bg btn_carousel1 prev"></a>
+        <a href="#" class="bg btn_carousel1 next"></a>
+        <ul class="ul"></ul>
+    </div><!--prouduct_list-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.product_list ul').carouFredSel({
+                auto: {
+                    play: false,
+                    pauseOnHover: true
+                },
+                prev: '.product_list .prev',
+                next: '.product_list .next',
+                'direction': 'left',
+                mousewheel: true,
+                scroll: 2,
+                swipe: {
+                    onMouse: true,
+                    onTouch: true
+                }
+            });
+
+        });
+    </script>
+    <style>
+        .product_list.page_inside {
+            position: relative;
+        }
+
+            .product_list.page_inside .next {
+                right: 0;
+                top: -47px;
+            }
+
+            .product_list.page_inside .prev {
+                right: 50px;
+                left: auto;
+                top: -47px;
+            }
+
+        .product_list.page_inside {
+            border-top: solid 1px #ddd;
+            border-bottom: solid 1px #ddd;
+        }
+
+            .product_list.page_inside li {
+                width: 199px;
+                border: none;
+                border-left: solid 1px #ddd;
+                border-right: solid 1px #ddd;
+            }
+
+            .product_list.page_inside .caroufredsel_wrapper {
+                border-left: solid 1px #ddd;
+            }
+    </style>
+
+
+    <div class="clear"></div>
+    <h2 class="buid-title">Xây dựng cấu hình</h2>
+    <input type="hidden" id="pc_part_id" value="," />
+    <input type="hidden" id="pcbuilder_step" value="1" />
+    <input type="hidden" id="pcbuilder_step_back" value="0" />
+    <input type="hidden" id="pc_total_price" value="0" />
+    <script type="text/javascript">
+        $(window).scroll(function () {
+            $("#pcbuilder_box").css("top", Math.max(0, 230 - $(this).scrollTop()));
+        });
+    </script>
+    <style>
+        #pc_part_process ul {
+            list-style: none;
+            padding: 0;
+        }
+    </style>
+    <div id="anchor_top"></div>
+    <table cellpadding="0" cellspacing="0" class="buid-table">
+        <tr>
+            <td valign="top" class="buid-process">
+                <div id="pc_part_process"></div>
+            </td>
+            <td valign="top" class="buid-view">
+
+                <b>Danh sách bạn đã chọn</b>
+                <div id="pcbuilder_box" class="view-content">
+
+                    <div id="pc_part_select">
+
+                        <h2 onclick="pcbuilder_go_step(1)">1:BO MẠCH CHỦ:</h2><div id="part_selected_1"></div>
+
+                        <h2 onclick="pcbuilder_go_step(2)">2: VI XỬ LÝ</h2><div id="part_selected_2"></div>
+
+                        <h2 onclick="pcbuilder_go_step(3)">3: RAM:</h2><div id="part_selected_3"></div>
+                        <!--
+                        <h2 onclick="pcbuilder_go_step(4)">4: HDD:</h2><div id="part_selected_4"></div>-->
+
+                        <h2 onclick="pcbuilder_go_step(4)">4: Ổ CỨNG:</h2><div id="part_selected_4"></div>
+
+                        <h2 onclick="pcbuilder_go_step(5)">5: VGA:</h2><div id="part_selected_5"></div>
+
+                        <h2 onclick="pcbuilder_go_step(6)">6: NGUỒN</h2><div id="part_selected_6"></div>
+                        <!--
+                        <h2 onclick="pcbuilder_go_step(8)">8: Ổ QUANG</h2><div id="part_selected_8"></div>
+                        -->
+                        <h2 onclick="pcbuilder_go_step(7)">7: VỎ CASE</h2><div id="part_selected_7"></div>
+
+                        <h2 onclick="pcbuilder_go_step(8)">8: MÀN HÌNH</h2><div id="part_selected_8"></div>
+
+                        <h2 onclick="pcbuilder_go_step(9)">9: BÀN PHÍM</h2><div id="part_selected_9"></div>
+
+                        <h2 onclick="pcbuilder_go_step(10)">10: CHUỘT</h2><div id="part_selected_10"></div>
+
+                        <h2 onclick="pcbuilder_go_step(11)">11: LOA</h2><div id="part_selected_11"></div>
+                        <h2 onclick="pcbuilder_go_step(12)">12: TẢN NHIỆT NƯỚC </h2><div id="part_selected_12"></div>
+                        <h2 onclick="pcbuilder_go_step(13)">13: TẢN NHIỆT KHÍ </h2><div id="part_selected_13"></div>
+
+                    </div>
+                </div>
+                <div class="view-title">
+                    <p>Cấu hình - <a href="javascript:pcbuilder_viewpc()">Xem & In</a></p>
+                    <div id="pc_part_total_price"></div>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+    <div class="clear10px"></div>
+</div>
+<script type="text/javascript">
+    function pcbuilder_select_parts(a) { $("#" + a).html("<img src='/includes/images/loading_icon_small.gif'>..."); var c = parseInt($("#pcbuilder_step_back").val()); var b = parseInt($("#pcbuilder_step").val()); var d = (c > 0) ? c : b; $.get("ajax/pcbuilder_product_selection.php", { holder: a, pc_part_id: $("#pc_part_id").val(), step: d }, function (e) { $("#" + a).html(e) }) } function pcbuilder_go_step(a) { $("#pcbuilder_step").val(a); pcbuilder_select_parts("pc_part_process") } function pcbuilder_next_step() { var a = parseInt($("#pcbuilder_step_back").val()); if (a > 0) { $("#pcbuilder_step_back").val(0) } var c = $("#pcbuilder_step").val(); if ($("#part_selected_" + c).length == 0) { var b = $("#pc_part_name").val(); content = "<b>" + c + ": " + b + "</b>:<br>"; content += "<span id='part_selected_" + c + "'>"; content += '<a href="javascript:pcbuilder_back_step(' + c + ', 0, 0, 0)">Chọn lại</a>'; content += "</span><br>"; $("#pc_part_select").append(content) } pcbuilder_go_step(parseInt(c) + 1) } function pcbuilder_select_part(d, h, c, l) { var m = $("#price_" + d).val(); var i = $("#name_" + d).val(); var e = $("#url_" + d).val(); var j = ""; if ($("#part_selected_" + c).length == 0) { j += "<h2>" + c + ": " + l + ":</h2>"; j += "<div id='part_selected_" + c + "'>"; j += "<p class='cssName'><a href='" + e + "' target=_blank>" + i + "</a></p><p class='cssSelect'><b>" + writeStringToPrice(m) + " VND</b>"; j += '<a href="javascript:pcbuilder_back_step(' + c + ", " + d + ", " + h + ", " + m + ')">Chọn lại</a> - <a href="javascript:pcbuilder_remove_part(' + c + ", " + d + ", " + h + ", " + m + ')">Xóa bỏ</a></p>'; j += "</div>"; $("#pc_part_select").append(j) } else { j += "<p class='cssName'><a href='" + e + "' target=_blank>" + i + "</a></p><p class='cssSelect'><b>" + writeStringToPrice(m) + ")</b>"; j += '<a href="javascript:pcbuilder_back_step(' + c + ", " + d + ", " + h + ", " + m + ')">Chọn lại</a> - <a href="javascript:pcbuilder_remove_part(' + c + ", " + d + ", " + h + ", " + m + ')">Xóa bỏ</a></p>'; $("#part_selected_" + c).html(j) } var g = $("#pc_part_id").val(); var k = g + d + "-" + h + ","; $("#pc_part_id").val(k); var f = parseInt($("#pc_total_price").val()) + parseInt(m); $("#pc_total_price").val(f); $("#pc_part_total_price").html("Tổng giá: <span>" + writeStringToPrice(f + "") + " VND</span>"); var b = parseInt($("#pcbuilder_step_back").val()); var a = parseInt($("#pcbuilder_step").val()); if (b > 0) { if (b > 0) { $("#pcbuilder_step_back").val(0) } pcbuilder_go_step(a) } else { pcbuilder_next_step() } } function pcbuilder_remove_part(c, b, g, f) { var d = $("#pc_part_id").val(); var a = d.replace("," + b + "-" + g + ",", ","); $("#pc_part_id").val(a); $("#part_selected_" + c).html('<a href="javascript:pcbuilder_back_step(' + c + ", " + b + ", " + g + ", " + f + ')">Chọn lại</a>'); var e = parseInt($("#pc_total_price").val()) - parseInt(f); $("#pc_total_price").val(e); $("#pc_part_total_price").html("Tổng giá: " + writeStringToPrice(e + "")) } function pcbuilder_back_step(c, b, g, f) { var d = $("#pc_part_id").val(); if (d.search("," + b + "-" + g + ",") != -1) { var a = d.replace("," + b + "-" + g + ",", ","); $("#pc_part_id").val(a); $("#part_selected_" + c).html('<a href="javascript:pcbuilder_back_step(' + c + ", " + b + ", " + g + ", " + f + ')">Chọn lại</a>'); var e = parseInt($("#pc_total_price").val()) - parseInt(f); $("#pc_total_price").val(e); $("#pc_part_total_price").html("Tổng giá: " + writeStringToPrice(e + "")) } $("#pcbuilder_step_back").val(c); pcbuilder_select_parts("pc_part_process") } function pcbuilder_viewpc() { var a = $("#pc_part_id").val(); window.open("/xem-may-tinh-da-tao?parts=" + a, "_blank") };
+
+    pcbuilder_select_parts("pc_part_process");
+</script>

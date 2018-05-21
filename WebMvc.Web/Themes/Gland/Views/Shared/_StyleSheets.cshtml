@@ -1,0 +1,8 @@
+﻿@model WebMvc.Domain.DomainModel.General.Theme
+
+<link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+@(
+                     Bundle.Css()
+                        .Add(Model.ThemePath + "/Content/css/style222.css")
+                        .MvcRender("~/content/cache/combined_" + Model.ThemeName + "_#.css")
+)

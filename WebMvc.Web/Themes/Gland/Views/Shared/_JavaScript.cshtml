@@ -1,0 +1,41 @@
+﻿@model WebMvc.Domain.DomainModel.General.Theme
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82649005-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-82649005-1');
+</script>
+<script async src="//static.zotabox.com/1/4/149dfe9478a37fb5a0707e27010a8f93/widgets.js"></script>
+
+<script type="text/javascript" src="@Html.ThemeUrl()/Content/script/jquery.min.js"></script>
+<script type="text/javascript" src="@Html.ThemeUrl()/Content/script/common.js?v=2.2"></script>
+<script type="text/javascript" src="@Html.ThemeUrl()/Content/script/carousel.js"></script>
+<script type="text/javascript" src="@Html.ThemeUrl()/Content/script/lazyload.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        var lazyloader = new LazyLoad({
+            elements: ".lazy"
+        });
+
+
+        var ids = "";
+        $(".product_list li").each(function () {
+            var id = $(this).attr("data-id");
+            ids += id + ",";
+        });
+        $.getJSON("/ajax/get_json.php?action=marketing-product-offer&ids=" + ids, function (result) {
+            $.each(result, function (i, field) {
+                var code = field['promo_code'];
+                $(".p-item" + field['sku']).find(".container-icon").prepend("<span class='" + code + "'></span>");
+            });
+
+        });
+    });
+</script>
+<script src="@Html.ThemeUrl()/Content/js/ShoppingCart.min.js"></script>

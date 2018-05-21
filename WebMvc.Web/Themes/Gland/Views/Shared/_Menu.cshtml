@@ -1,0 +1,518 @@
+﻿
+<div id="wrap-head">
+    <div id="header">
+        <div class="container">
+            <a href="/" id="logo"><img src="/media/banner/logo_logo_logo_logoglandnho.png" alt="gland.vn" /> </a>
+            <div id="search">
+                <form method="get" action="/tim" enctype="multipart/form-data">
+                    <select name="scat_id" id="sel_cat" style="display: none;">
+                        <option value="0">Tất cả</option>
+
+                        <option value="1">PC GAMING</option>
+
+                        <option value="2">LINH KIỆN MÁY TÍNH</option>
+
+                        <option value="3">TẢN NHIỆT NƯỚC</option>
+
+                        <option value="4">TẢN NHIỆT KHÍ</option>
+
+                        <option value="5">GAMING GEAR</option>
+
+                        <option value="6">MODDING-DIY</option>
+
+                    </select>
+                    <div id="ul_cat" class="ul">
+                        <div class="selected"><span>Tất cả</span> <i class="bg icon_drop"></i> </div>
+                        <ul style="display: none;">
+                            <li title="0">Tất cả</li>
+
+                            <li title="1">PC GAMING</li>
+
+                            <li title="2">LINH KIỆN MÁY TÍNH</li>
+
+                            <li title="3">TẢN NHIỆT NƯỚC</li>
+
+                            <li title="4">TẢN NHIỆT KHÍ</li>
+
+                            <li title="5">GAMING GEAR</li>
+
+                            <li title="6">MODDING-DIY</li>
+
+                        </ul>
+                    </div>
+                    <input type="text" class="text" id="text_search" name="q" placeholder="Gõ từ khóa tìm kiếm..." autocomplete="off" />
+                    <input type="submit" id="submit_search" value="Tìm kiếm" />
+                </form>
+                <div class="autocomplete-suggestions">
+                    <p class="titleSearch">Kết quả phù hợp với từ khóa <span id="keySearchResult"></span></p>
+                    <div id="resultsearch"></div>
+                </div>
+            </div><!--search-->
+            <div id="hotline-header">
+                Mua hàng Online :<b>0976.155.499</b>
+            </div>
+            <div id="header_right">
+                <a href="/cart" id="cart">
+                    <span>Giỏ hàng</span> <b id="count_shopping_cart_stores">0</b>
+                </a>
+                <script>
+
+                        $(function () {
+                            $("#count_shopping_cart_stores").text(ShoppingCart.getCartSummary().item);
+                        });
+                </script>
+            </div><!--header_right-->
+        </div><!--container-->
+    </div><!--header-->
+    <div class="clear"></div>
+    <div id="nav-main">
+        <div class="container">
+            <style>
+                #nav_vertical:hover .ul.ul_menu {
+                    visibility: visible !important;
+                }
+            </style>
+            <div id="nav_vertical">
+                <div class="title_nav_verticle">Danh mục sản phẩm</div>
+                <ul class="ul ul_menu" style="visibility:hidden;">
+
+
+                    <li style="background-image:url('/media/category/cat_4d485476e07e02638e8e2133cdf8f56d.png')">
+                        <a href="/pc-gaming/" class="root">PC GAMING</a>
+
+                        <div class="sub_nav">
+                            <!--cac danh muc khac-->
+
+                            <div class="box_cate">
+                                <a href="/pc-gaming/zadak-pc-gaming/" class="sub1">ZADAK PC GAMING</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/gland-pc-custom/" class="sub1">GLAND PC CUSTOM</a>
+
+                                <a href="/pc-gaming/gland-pc-gaming/" class="sub2">GLAND PC GAMING</a>
+
+                                <a href="/gland-pc-office/" class="sub2">GLAND PC OFFICE</a>
+
+                                <a href="/gland-pc-stream/" class="sub2">GLAND PC STREAM</a>
+
+                            </div>
+
+
+
+                        </div><!--sub_nav-->
+                        <!--Kiem tra dm co con ko-->
+
+
+                    </li>
+
+
+
+                    <li style="background-image:url('/media/category/cat_b4005c2d3f956dbc5610478b056c8e3e.png')">
+                        <a href="/linh-kien-may-tinh/" class="root">LINH KIỆN MÁY TÍNH</a>
+
+                        <div class="sub_nav">
+                            <!--cac danh muc khac-->
+
+                            <div class="box_cate">
+                                <a href="/linh-kien-may-tinh/cpu-bo-vi-xu-ly/" class="sub1">CPU & BỘ VI XỬ LÝ</a>
+
+                                <a href="/linh-kien-may-tinh/cpu-bo-vi-xu-ly/cpu-intel/" class="sub2">CPU INTEL</a>
+
+                                <a href="/linh-kien-may-tinh/cpu-bo-vi-xu-ly/cpu-amd/" class="sub2">CPU AMD</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/linh-kien-may-tinh/mainboard-bo-mach-chu/" class="sub1">MAINBOARD & BO MẠCH CHỦ</a>
+
+                                <a href="/linh-kien-may-tinh/mainboard-bo-mach-chu/bo-mach-chu-intel/" class="sub2">BO MẠCH CHỦ INTEL</a>
+
+                                <a href="/linh-kien-may-tinh/mainboard-bo-mach-chu/bo-mach-chu-amd/" class="sub2">BO MẠCH CHỦ AMD</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/linh-kien-may-tinh/card-man-hinh/" class="sub1">CARD MÀN HÌNH</a>
+
+                                <a href="/linh-kien-may-tinh/card-man-hinh/vga-msi/" class="sub2">VGA MSI</a>
+
+                                <a href="/linh-kien-may-tinh/card-man-hinh/vga-asus/" class="sub2">VGA ASUS</a>
+
+                                <a href="/linh-kien-may-tinh/card-man-hinh/vga-gigabyte/" class="sub2">VGA GIGABYTE</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/linh-kien-may-tinh/o-cung-luu-tru/" class="sub1">Ổ CỨNG LƯU TRỮ</a>
+
+                                <a href="/linh-kien-may-tinh/o-cung-luu-tru/o-cung-ssd/" class="sub2">Ổ CỨNG SSD</a>
+
+                                <a href="/o-cung-hdd/" class="sub2">Ổ CỨNG HDD</a>
+
+                                <a href="/o-cung-m2-ssd/" class="sub2">Ổ CỨNG m2-SSD</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/linh-kien-may-tinh/nguon-may-tinh/" class="sub1">NGUỒN MÁY TÍNH</a>
+
+                                <a href="/nguon-may-tinh-corsair/" class="sub2">NGUỒN CORSAIR</a>
+
+                                <a href="/nguon-fsp/" class="sub2">NGUỒN FSP</a>
+
+                                <a href="/nguon-seasonic/" class="sub2">NGUỒN SEASONIC</a>
+
+                                <a href="/nguon-andyson/" class="sub2">NGUỒN ANDYSON</a>
+
+                                <a href="/nguon-in-win/" class="sub2">NGUỒN IN-WIN</a>
+
+                                <a href="/nguon-raidmax/" class="sub2">NGUỒN RAIDMAX</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/linh-kien-may-tinh/ram-bo-nho-trong/" class="sub1">RAM & BỘ NHỚ TRONG</a>
+
+                                <a href="/ram-adata/" class="sub2">RAM ADATA</a>
+
+                                <a href="/ram-corsair/" class="sub2">RAM CORSAIR</a>
+
+                                <a href="/ram-gskill/" class="sub2">RAM G.SKILL</a>
+
+                                <a href="/ram-kingston/" class="sub2">RAM KINGSTON</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/linh-kien-may-tinh/vo-case/" class="sub1">VỎ CASE MÁY TÍNH</a>
+
+                                <a href="/case-corsair/" class="sub2">CASE CORSAIR</a>
+
+                                <a href="/case-nzxt/" class="sub2">CASE NZXT</a>
+
+                                <a href="/case-inwin/" class="sub2">CASE INWIN</a>
+
+                                <a href="/case-cooler-master/" class="sub2">CASE COOLER MASTER</a>
+
+                                <a href="/case-thermaltek/" class="sub2">CASE THERMALTEK</a>
+
+                                <a href="/case-cougar/" class="sub2">CASE COUGAR</a>
+
+                                <a href="/case-phanteks/" class="sub2">CASE PHANTEKS</a>
+
+                                <a href="/case-segotep/" class="sub2">CASE SEGOTEP</a>
+
+                                <a href="/case-sama/" class="sub2">CASE SAMA</a>
+
+                                <a href="/case-aigo/" class="sub2">CASE AIGO</a>
+
+                                <a href="/case-bykski/" class="sub2">CASE BYKSKI</a>
+
+                                <a href="/case-xigmatek/" class="sub2">CASE XIGMATEK</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/linh-kien-may-tinh/man-hinh-may-tinh/" class="sub1">MÀN HÌNH MÁY TÍNH</a>
+
+                                <a href="/linh-kien-may-tinh/man-hinh-may-tinh/man-hinh-benq/" class="sub2">MÀN HÌNH BENQ</a>
+
+                                <a href="/linh-kien-may-tinh/man-hinh-may-tinh/man-hinh-lg/" class="sub2">MÀN HÌNH LG</a>
+
+                                <a href="/linh-kien-may-tinh/man-hinh-may-tinh/man-hinh-asus/" class="sub2">MÀN HÌNH ASUS</a>
+
+                                <a href="/linh-kien-may-tinh/man-hinh-may-tinh/man-hinh-samsung/" class="sub2">MÀN HÌNH SAMSUNG</a>
+
+                                <a href="/man-hinh-msi/" class="sub2">MÀN HÌNH MSI</a>
+
+                            </div>
+
+
+
+                        </div><!--sub_nav-->
+                        <!--Kiem tra dm co con ko-->
+
+
+                    </li>
+
+
+
+                    <li style="background-image:url('/media/category/cat_d3306ab36c10519e174cd70561740e69.png')">
+                        <a href="/tan-nhiet-nuoc/" class="root">TẢN NHIỆT NƯỚC</a>
+
+                        <div class="sub_nav">
+                            <!--cac danh muc khac-->
+
+                            <div class="box_cate">
+                                <a href="/linh-phu-kien-tan-nhiet-nuoc/" class="sub1">LINH PHỤ KIỆN TẢN NHIỆT NƯỚC</a>
+
+                                <a href="/block-cpu/" class="sub2">BLOCK CPU</a>
+
+                                <a href="/block-vga/" class="sub2">BLOCK VGA</a>
+
+                                <a href="/tan-nhiet-nuoc/linh-phu-kien-tan-nhiet-nuoc/block-ram-main-hdd/" class="sub2">BLOCK RAM / MAIN / HDD</a>
+
+                                <a href="/pump-may-bom-cho-tan-nhiet-nuoc/" class="sub2">PUMP - MÁY BƠM CHO TẢN NHIỆT NƯỚC</a>
+
+                                <a href="/tan-nhiet-nuoc/linh-phu-kien-tan-nhiet-nuoc/fitting/" class="sub2">FITTING - CÚT NƯỚC</a>
+
+                                <a href="/tan-nhiet-nuoc/linh-phu-kien-tan-nhiet-nuoc/radiator-ket-lam-mat/" class="sub2">RADIATOR - KÉT LÀM MÁT</a>
+
+                                <a href="/coolant-nuoc-lam-mat-pc/" class="sub2">COOLANT - NƯỚC LÀM MÁT PC</a>
+
+                                <a href="/reservoir-tank-tan-nhiet-nuoc/" class="sub2">RESERVOIR-TANK TẢN NHIỆT NƯỚC</a>
+
+                                <a href="/tan-nhiet-nuoc/linh-phu-kien-tan-nhiet-nuoc/tube-ong-dan-nuoc/" class="sub2">TUBE - ỐNG DẪN NƯỚC</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/tan-nhiet-nuoc-all-in-one/" class="sub1">TẢN NHIỆT NƯỚC ALL IN ONE</a>
+
+                                <a href="/tan-nhiet-cooler-master/" class="sub2">TẢN NHIỆT COOLER MASTER</a>
+
+                                <a href="/tan-nhiet-corsair/" class="sub2">TẢN NHIỆT CORSAIR</a>
+
+                                <a href="/tan-nhiet-deepcool/" class="sub2">TẢN NHIỆT DEEPCOOL</a>
+
+                                <a href="/tan-nhiet-id-cooling/" class="sub2">TẢN NHIỆT ID-COOLING</a>
+
+                                <a href="/tan-nhiet-nzxt/" class="sub2">TẢN NHIỆT NZXT</a>
+
+                                <a href="/tan-nhiet-raidmax/" class="sub2">TẢN NHIỆT RAIDMAX</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/tan-nhiet-nuoc-custom/" class="sub1">BỘ TẢN NHIỆT NƯỚC CUSTOM</a>
+
+                                <a href="/tan-nhiet-nuoc/gland-water-cooling-kit/" class="sub2">GLAND WATER COOLING KIT</a>
+
+                                <a href="/bykski-cooling-kit/" class="sub2">BYKSKI COOLING KIT</a>
+
+                                <a href="/barrow-cooling-kit/" class="sub2">BARROW COOLING KIT</a>
+
+                            </div>
+
+
+
+                        </div><!--sub_nav-->
+                        <!--Kiem tra dm co con ko-->
+
+
+                    </li>
+
+
+
+                    <li style="background-image:url('/media/category/cat_a22746738a475a75211f96a98549a811.png')">
+                        <a href="/quat-tan-nhiet-khi/" class="root">TẢN NHIỆT KHÍ</a>
+
+                        <div class="sub_nav">
+                            <!--cac danh muc khac-->
+
+                            <div class="box_cate">
+                                <a href="/quat-tan-nhiet-khi/fan-case/" class="sub1">FAN CASE</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/quat-tan-nhiet-khi/tan-khi-cpu/" class="sub1">TẢN KHÍ CPU</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/keo-tan-nhiet/" class="sub1">KEO TẢN NHIỆT</a>
+
+                                <a href="/thermal/" class="sub2">THERMAL</a>
+
+                                <a href="/liquid/" class="sub2">LIQUID</a>
+
+                            </div>
+
+
+
+                        </div><!--sub_nav-->
+                        <!--Kiem tra dm co con ko-->
+
+
+                    </li>
+
+
+
+                    <li style="background-image:url('/media/category/cat_34ead602847eccffd2bc5af611a422d2.png')">
+                        <a href="/gaming-gear/" class="root">GAMING GEAR</a>
+
+                        <div class="sub_nav">
+                            <!--cac danh muc khac-->
+
+                            <div class="box_cate">
+                                <a href="/gaming-gear/ban-phim-co-choi-game/" class="sub1">BÀN PHÍM CƠ CHƠI GAME</a>
+
+                                <a href="/gaming-gear/ban-phim-co-choi-game/ban-phim-co-choi-game-filco/" class="sub2">BÀN PHÍM CƠ CHƠI GAME FILCO</a>
+
+                                <a href="/gaming-gear/ban-phim-co-choi-game/ban-phim-co-choi-game-ducky/" class="sub2">BÀN PHÍM CƠ CHƠI GAME DUCKY</a>
+
+                                <a href="/gaming-gear/ban-phim-co-choi-game/ban-phim-co-choi-game-razer/" class="sub2">BÀN PHÍM CƠ CHƠI GAME RAZER</a>
+
+                                <a href="/gaming-gear/ban-phim-co-choi-game/ban-phim-co-choi-game-corsair/" class="sub2">BÀN PHÍM CORSAIR</a>
+
+                                <a href="/gaming-gear/ban-phim-co-choi-game/ban-phim-co-choi-game-steelseries/" class="sub2">BÀN PHÍM CƠ CHƠI GAME STEELSERIES</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/gaming-gear/chuot-choi-game/" class="sub1">CHUỘT CHƠI GAME</a>
+
+                                <a href="/gaming-gear/chuot-choi-game/chuot-choi-game-zowie/" class="sub2">CHUỘT CHƠI GAME ZOWIE</a>
+
+                                <a href="/gaming-gear/chuot-choi-game/chuot-choi-game-corsair/" class="sub2">CHUỘT CHƠI GAME CORSAIR</a>
+
+                                <a href="/gaming-gear/chuot-choi-game/chuot-choi-game-logitech/" class="sub2">CHUỘT CHƠI GAME LOGITECH</a>
+
+                                <a href="/gaming-gear/chuot-choi-game/chuot-choi-game-mionix/" class="sub2">CHUỘT CHƠI GAME MIONIX</a>
+
+                                <a href="/gaming-gear/chuot-choi-game/chuot-choi-game-ozone/" class="sub2">CHUỘT CHƠI GAME OZONE</a>
+
+                                <a href="/gaming-gear/chuot-choi-game/chuot-choi-game-razer/" class="sub2">CHUỘT CHƠI GAME RAZER</a>
+
+                                <a href="/gaming-gear/chuot-choi-game/chuot-choi-game-steelseries/" class="sub2">CHUỘT CHƠI GAME STEELSERIES</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/gaming-gear/bungee/" class="sub1">Bungee</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/gaming-gear/mouse-pad/" class="sub1">MOUSE PAD</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/gaming-gear/headphone-audio-accessories/" class="sub1">HEADPHONE &amp; AUDIO ACCESSORIES</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/tay-cam-choi-game/" class="sub1">TAY CẦM CHƠI GAME</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/gaming-gear/ghe-choi-game/" class="sub1">GAMING CHAIR</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/gaming-gear/ban-choi-game/" class="sub1">GAMING DESK</a>
+
+                            </div>
+
+
+
+                        </div><!--sub_nav-->
+                        <!--Kiem tra dm co con ko-->
+
+
+                    </li>
+
+
+
+                    <li style="background-image:url('/media/category/cat_f6c8dd5cf8f95e19e99ef874e3edc242.png')">
+                        <a href="/modding-diy/" class="root">MODDING-DIY</a>
+
+                        <div class="sub_nav">
+                            <!--cac danh muc khac-->
+
+                            <div class="box_cate">
+                                <a href="/day-nguon-boc-luoi-noi-dai-24-8-6-4-pin/" class="sub1">DÂY NGUỒN BỌC LƯỚI NỐI DÀI</a>
+
+                                <a href="/24-pin-mainboard/" class="sub2">24 PIN (MAINBOARD)</a>
+
+                                <a href="/combo-24-pin-8-pin/" class="sub2">COMBO (24 PIN + 8 PIN)</a>
+
+                                <a href="/8-pin-vga-hoac-cpu/" class="sub2">8 PIN (VGA/CPU)</a>
+
+                                <a href="/6-pin-vga/" class="sub2">6 PIN (VGA)</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/modding-diy/do-mod-pc/" class="sub1">ĐỒ MOD PC</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/modding-diy/day-led-rgb/" class="sub1">DÂY LED RGB</a>
+
+                                <a href="/led-rgb-digital/" class="sub2">LED RGB DIGITAL</a>
+
+                                <a href="/led-rgb-analog/" class="sub2">LED RGB ANALOG</a>
+
+                                <a href="/led-rgb-custom-gland/" class="sub2">LED RGB CUSTOM GLAND</a>
+
+                            </div>
+
+                            <div class="box_cate">
+                                <a href="/modding-diy/cable-riser-vga-modding/" class="sub1">CABLE RISER VGA MODDING</a>
+
+                                <a href="/cable-riser-vga/" class="sub2">CABLE RISER VGA</a>
+
+                                <a href="/gia-dung-vga/" class="sub2">GIÁ DỰNG VGA</a>
+
+                            </div>
+
+
+
+                        </div><!--sub_nav-->
+                        <!--Kiem tra dm co con ko-->
+
+
+                    </li>
+
+
+                </ul>
+                <div class="clear"></div>
+            </div><!--nav_vertical-->
+
+            <script type="text/javascript">
+                    $(document).ready(function () {
+                        $(".sub_nav").each(function () {
+                            //sort_sub_nav(0,16,$(this).find("li"),$(this));
+                        });
+
+                        $("#nav_vertical li").hover(function () {
+                            $(this).children(".sub_nav").show();
+                        }, function () {
+                            $(this).children(".sub_nav").hide();
+                        });
+                    });
+            </script>
+            <script type="text/javascript">
+                    $(document).ready(function () {
+                        $(window).scroll(function () {
+                            t = $(window).scrollTop();
+                            if (t > 490) {
+                                $("#wrap-head,#nav-main").addClass("fixed");
+                                $(".support-online-header").show();
+                            }
+                            else {
+                                $("#wrap-head,#nav-main").removeClass("fixed");
+                                $(".support-online-header").hide();
+                            }
+                        });
+                    });
+            </script>
+            <div id="nav_horizontal">
+                <a href="https://gland.vn/gioi-thieu"><img src="/template/default/images/new_icon_chinhhang.png" alt="" />Giới Thiệu Về Gland</a>
+                <a href="https://gland.vn/chinh-sach-giao-hang.html"><img src="/template/default/images/new_icon_vanchuyen.png" alt="" />Miễn phí vận chuyển</a>
+                <a href="https://gland.vn/chinh-sach-bao-hanh-doi-tra.html"><img src="/template/default/images/new_icon_baohanh.png" alt="" />Bảo hành tận nơi</a>
+                <a href="#"><img src="/template/default/images/icon-doi-tra.png" alt="" />Giá Cạnh Tranh Nhất</a>
+            </div><!--nav-->
+            <div class="clear"></div>
+        </div><!--container-->
+    </div><!--nav-main-->
+</div><!--wrap-head-->

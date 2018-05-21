@@ -1,0 +1,11 @@
+﻿<div class="box_left">
+    <div class="title_box_left">Danh mục tin tức</div>
+    <div class="content_box_left list_cat_news">
+        <ul class="ul">
+            @foreach(var it in AppHelpers.Categories())
+            {
+                <li><a href="/tin-khuyen-mai/">@it.Name</a></li>
+            }
+        </ul>
+    </div>
+</div><!--box_left-->
