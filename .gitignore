@@ -1,1 +1,11 @@
 /.vs/
+/WebMvc/WebMvc.Web/obj/
+/WebMvc/WebMvc.Web/bin/
+/WebMvc/WebMvc.Utilities/obj/
+/WebMvc/WebMvc.Utilities/bin/
+/WebMvc/WebMvc.Services/obj/
+/WebMvc/WebMvc.Services/bin/
+/WebMvc/WebMvc.IOC/obj/
+/WebMvc/WebMvc.IOC/bin/
+/WebMvc/WebMvc.Domain/obj/
+/WebMvc/WebMvc.Domain/bin/
