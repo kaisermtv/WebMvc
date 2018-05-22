@@ -45,8 +45,6 @@ namespace WebMvc.Services
             if (!data["Post_Id"].ToString().IsNullEmpty()) topic.Post_Id = new Guid(data["Post_Id"].ToString());
             if (!data["Poll_Id"].ToString().IsNullEmpty()) topic.Poll_Id = new Guid(data["Poll_Id"].ToString());
             topic.MembershipUser_Id = new Guid(data["MembershipUser_Id"].ToString());
-            //topic.iType = (int)data["iType"];
-
 
             return topic;
         }
@@ -60,8 +58,8 @@ namespace WebMvc.Services
             var Cmd = _context.CreateCommand();
 
             Cmd.CommandText = "IF NOT EXISTS (SELECT * FROM [Topic] WHERE [Id] = @Id)";
-            Cmd.CommandText += " BEGIN INSERT INTO [Topic]([Id],[Name],[ShotContent],[Image],[isAutoShotContent],[CreateDate],[Solved],[SolvedReminderSent],[Slug],[Views],[IsSticky],[IsLocked],[Category_Id],[Post_Id],[Poll_Id],[MembershipUser_Id],[iType])";
-            Cmd.CommandText += " VALUES(@Id,@Name,@ShotContent,@Image,@isAutoShotContent,@CreateDate,@Solved,@SolvedReminderSent,@Slug,@Views,@IsSticky,@IsLocked,@Category_Id,@Post_Id,@Poll_Id,@MembershipUser_Id,@iType) END ";
+            Cmd.CommandText += " BEGIN INSERT INTO [Topic]([Id],[Name],[ShotContent],[Image],[isAutoShotContent],[CreateDate],[Solved],[SolvedReminderSent],[Slug],[Views],[IsSticky],[IsLocked],[Category_Id],[Post_Id],[Poll_Id],[MembershipUser_Id])";
+            Cmd.CommandText += " VALUES(@Id,@Name,@ShotContent,@Image,@isAutoShotContent,@CreateDate,@Solved,@SolvedReminderSent,@Slug,@Views,@IsSticky,@IsLocked,@Category_Id,@Post_Id,@Poll_Id,@MembershipUser_Id) END ";
 
             Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = topic.Id;
             Cmd.Parameters.Add("Name", SqlDbType.NVarChar).Value = topic.Name;
@@ -82,7 +80,6 @@ namespace WebMvc.Services
             Cmd.AddParameters("Post_Id", topic.Post_Id);
             Cmd.AddParameters("Poll_Id", topic.Poll_Id);
             Cmd.Parameters.Add("MembershipUser_Id", SqlDbType.UniqueIdentifier).Value = topic.MembershipUser_Id;
-            Cmd.AddParameters("iType", 0);
 
             bool ret = Cmd.command.ExecuteNonQuery() > 0;
 
@@ -100,7 +97,7 @@ namespace WebMvc.Services
 
             //Cmd.CommandText = "IF NOT EXISTS (SELECT * FROM [Topic] WHERE [Id] = @Id)";
             Cmd.CommandText = "UPDATE [Topic] SET [Name] = @Name, [ShotContent] = @ShotContent,[Image] = @Image,[isAutoShotContent] = @isAutoShotContent, [CreateDate] = @CreateDate, [Solved] = @Solved, [SolvedReminderSent] = @SolvedReminderSent,"
-                            + " [Slug] = @Slug, [Views] = @Views, [IsSticky] = @IsSticky, [IsLocked] = @IsLocked, [Category_Id] = @Category_Id, [Post_Id] = @Post_Id, [Poll_Id] = @Poll_Id, [MembershipUser_Id] = @MembershipUser_Id, [iType] = @iType"
+                            + " [Slug] = @Slug, [Views] = @Views, [IsSticky] = @IsSticky, [IsLocked] = @IsLocked, [Category_Id] = @Category_Id, [Post_Id] = @Post_Id, [Poll_Id] = @Poll_Id, [MembershipUser_Id] = @MembershipUser_Id"
                             + " WHERE [Id] = @Id";
 
             Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = topic.Id;
@@ -122,7 +119,6 @@ namespace WebMvc.Services
             Cmd.AddParameters("Post_Id", topic.Post_Id);
             Cmd.AddParameters("Poll_Id", topic.Poll_Id);
             Cmd.Parameters.Add("MembershipUser_Id", SqlDbType.UniqueIdentifier).Value = topic.MembershipUser_Id;
-            Cmd.AddParameters("iType", 0);
 
             bool ret = Cmd.command.ExecuteNonQuery() > 0;
 

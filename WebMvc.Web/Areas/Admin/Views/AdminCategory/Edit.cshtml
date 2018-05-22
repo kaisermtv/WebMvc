@@ -11,7 +11,7 @@
         <h5>@ViewBag.Title</h5>
     </div>
     <div class="panel-content">
-        @using (Html.BeginForm("Edit", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("Edit", "AdminCategory", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 

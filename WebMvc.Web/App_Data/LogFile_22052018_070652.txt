@@ -1,0 +1,64 @@
+17/05/2018 13:58:33 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+17/05/2018 14:02:01 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+18/05/2018 05:09:24 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+18/05/2018 06:16:22 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Error executing child request for handler 'System.Web.Mvc.HttpHandlerUtil+ServerExecuteHttpHandlerAsyncWrapper'. INNER EXCEPTION: Execution of the child request failed. Please examine the InnerException for more information. INNER EXCEPTION: A public action method 'Slider' was not found on controller 'WebMvc.Web.Controllers.HomeController'.
+18/05/2018 06:16:47 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+18/05/2018 07:08:11 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\Gland\Views\Shared\_JavaScript.cshtml(15): error CS1061: 'HtmlHelper<Theme>' does not contain a definition for 'ThemeUrl' and no extension method 'ThemeUrl' accepting a first argument of type 'HtmlHelper<Theme>' could be found (are you missing a using directive or an assembly reference?)
+18/05/2018 07:08:31 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+19/05/2018 05:25:06 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+19/05/2018 15:17:40 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+19/05/2018 15:23:57 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+19/05/2018 15:26:25 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+20/05/2018 06:54:33 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+20/05/2018 13:07:43 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+20/05/2018 13:07:44 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'Edit' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.AdminProductController'.
+21/05/2018 05:05:26 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+21/05/2018 16:49:38 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+21/05/2018 17:06:20 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\Gland\Views\Category\_CatNew.cshtml(3): error CS0117: 'AppHelpers' does not contain a definition for 'TopTopics'
+21/05/2018 17:06:49 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+21/05/2018 17:06:51 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Incorrect syntax near '@limit'.
+Incorrect syntax near the keyword 'AS'.
+21/05/2018 17:08:07 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+21/05/2018 17:08:10 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | No column name was specified for column 19 of 'MyDerivedTable'.
+Invalid column name 'RowNum'.
+21/05/2018 17:09:11 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+21/05/2018 17:44:23 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+21/05/2018 17:44:24 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Path '/Themes/Gland/Views/Category/Index.cshtml' was not found.
+21/05/2018 17:45:39 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\Gland\Views\Category\Index.cshtml(45): error CS1003: Syntax error, ':' expected
+21/05/2018 17:54:05 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+21/05/2018 17:54:06 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Path '/Themes/Gland/Views/Category/Index.cshtml' was not found.
+21/05/2018 18:16:21 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\Gland\Views\Category\Index.cshtml(56): error CS0117: 'AppHelpers' does not contain a definition for 'HostTopics'
+21/05/2018 18:16:45 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+21/05/2018 18:16:45 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Path '/Themes/Gland/Views/Category/Index.cshtml' was not found.
+22/05/2018 04:34:10 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/05/2018 04:34:10 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Path '/Themes/Gland/Views/Category/Index.cshtml' was not found.
+22/05/2018 05:27:31 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/05/2018 05:27:36 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\Gland\Views\Shared\_HostView.cshtml(6): error CS0117: 'AppHelpers' does not contain a definition for 'HostViewTopics'
+22/05/2018 05:28:00 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/05/2018 06:24:32 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/05/2018 06:24:33 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Object reference not set to an instance of an object.
+22/05/2018 06:24:47 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Object reference not set to an instance of an object.
+22/05/2018 06:29:49 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/05/2018 06:29:54 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Object reference not set to an instance of an object.
+22/05/2018 06:33:08 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Object reference not set to an instance of an object.
+22/05/2018 06:33:45 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/05/2018 06:33:49 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Object reference not set to an instance of an object.
+22/05/2018 06:38:30 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/05/2018 06:38:31 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | An error occurred when trying to create a controller of type 'WebMvc.Web.Controllers.HomeController'. Make sure that the controller has a parameterless public constructor. INNER EXCEPTION: No parameterless constructor defined for this object.
+22/05/2018 06:39:36 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | An error occurred when trying to create a controller of type 'WebMvc.Web.Controllers.HomeController'. Make sure that the controller has a parameterless public constructor. INNER EXCEPTION: No parameterless constructor defined for this object.
+22/05/2018 06:40:14 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | An error occurred when trying to create a controller of type 'WebMvc.Web.Controllers.HomeController'. Make sure that the controller has a parameterless public constructor. INNER EXCEPTION: No parameterless constructor defined for this object.
+22/05/2018 06:40:28 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/05/2018 06:40:32 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Object reference not set to an instance of an object.
+22/05/2018 06:43:06 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Object reference not set to an instance of an object.
+22/05/2018 06:43:21 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/05/2018 06:43:21 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | An error occurred when trying to create a controller of type 'WebMvc.Web.Controllers.HomeController'. Make sure that the controller has a parameterless public constructor. INNER EXCEPTION: No parameterless constructor defined for this object.
+22/05/2018 06:50:06 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/05/2018 06:50:10 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Object reference not set to an instance of an object.
+22/05/2018 06:50:51 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/05/2018 06:53:01 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Object reference not set to an instance of an object.
+22/05/2018 06:58:08 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/05/2018 06:58:09 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | An error occurred when trying to create a controller of type 'WebMvc.Web.Controllers.HomeController'. Make sure that the controller has a parameterless public constructor. INNER EXCEPTION: No parameterless constructor defined for this object.
+22/05/2018 07:00:12 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/05/2018 07:00:17 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Object reference not set to an instance of an object.
+22/05/2018 07:01:12 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/05/2018 07:01:13 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | An error occurred when trying to create a controller of type 'WebMvc.Web.Controllers.HomeController'. Make sure that the controller has a parameterless public constructor. INNER EXCEPTION: No parameterless constructor defined for this object.

@@ -62,8 +62,7 @@
             if (!Username.IsNullEmpty() && LoggedOnReadOnlyUser == null)
             {
                 System.Web.Security.FormsAuthentication.SignOut();
-                filterContext.Result = RedirectToAction("index", "Home",);
-                //filterContext.
+                filterContext.Result = RedirectToAction("index", "Home");
             }
         }
         

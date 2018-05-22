@@ -18,7 +18,6 @@ namespace WebMvc.Web.ViewModels
         public string Name { get; set; }
 
         [UIHint(AppConstants.EditorType), AllowHtml]
-        [StringLength(6000)]
         public string Content { get; set; }
 
         [WebMvcResourceDisplayName("Post.Label.IsStickyTopic")]

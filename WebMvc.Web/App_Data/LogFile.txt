@@ -27,3 +27,9 @@
 22/05/2018 09:43:26 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
 22/05/2018 09:51:08 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
 22/05/2018 09:52:13 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/05/2018 10:10:30 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/05/2018 10:10:49 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Object reference not set to an instance of an object.
+22/05/2018 10:11:06 | WebMvc.Web.dll | Create | WebMvc.Web.Areas.Admin.Controllers.AdminTopicController | 152 | Invalid column name 'iType'.
+22/05/2018 10:11:17 | WebMvc.Web.dll | Create | WebMvc.Web.Areas.Admin.Controllers.AdminTopicController | 152 | Invalid column name 'iType'.
+22/05/2018 10:11:25 | WebMvc.Web.dll | Create | WebMvc.Web.Areas.Admin.Controllers.AdminTopicController | 152 | Invalid column name 'iType'.
+22/05/2018 10:14:28 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
