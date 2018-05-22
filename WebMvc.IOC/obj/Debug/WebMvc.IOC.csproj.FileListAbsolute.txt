@@ -1,4 +1,3 @@
-D:\IT\C#\Project\WebMvc\WebMvc.IOC\obj\Debug\WebMvc.IOC.csprojResolveAssemblyReference.cache
 D:\IT\C#\Project\WebMvc\WebMvc.IOC\obj\Debug\WebMvc.IOC.csproj.CoreCompileInputs.cache
 D:\IT\C#\Project\WebMvc\WebMvc.IOC\bin\Debug\WebMvc.IOC.dll.config
 D:\IT\C#\Project\WebMvc\WebMvc.IOC\bin\Debug\WebMvc.IOC.dll
@@ -50,3 +49,4 @@ D:\IT\C#\Project\WebMvc\WebMvc.IOC\bin\Debug\HtmlAgilityPack.pdb
 D:\IT\C#\Project\WebMvc\WebMvc.IOC\bin\Debug\HtmlAgilityPack.xml
 D:\IT\C#\Project\WebMvc\WebMvc.IOC\bin\Debug\HtmlSanitizationLibrary.xml
 D:\IT\C#\Project\WebMvc\WebMvc.IOC\bin\Debug\AntiXssLibrary.xml
+D:\IT\C#\Project\WebMvc\WebMvc.IOC\obj\Debug\WebMvc.IOC.csprojAssemblyReference.cache

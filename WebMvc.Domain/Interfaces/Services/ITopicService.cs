@@ -14,5 +14,6 @@ namespace WebMvc.Domain.Interfaces.Services
         void Update(Topic topic);
 
         List<Topic> GetList(int limit = 10, int page = 1);
+        List<Topic> GetList(Guid Id, int limit = 10, int page = 1);
     }
 }

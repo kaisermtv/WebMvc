@@ -7,7 +7,6 @@ D:\IT\C#\Project\WebMvc\WebMvc.Domain\bin\Debug\Newtonsoft.Json.dll
 D:\IT\C#\Project\WebMvc\WebMvc.Domain\bin\Debug\System.Net.Http.Formatting.dll
 D:\IT\C#\Project\WebMvc\WebMvc.Domain\bin\Debug\Newtonsoft.Json.xml
 D:\IT\C#\Project\WebMvc\WebMvc.Domain\bin\Debug\System.Net.Http.Formatting.xml
-D:\IT\C#\Project\WebMvc\WebMvc.Domain\obj\Debug\WebMvc.Domain.csprojResolveAssemblyReference.cache
 D:\IT\C#\Project\WebMvc\WebMvc.Domain\obj\Debug\WebMvc.Domain.csproj.CopyComplete
 D:\IT\C#\Project\WebMvc\WebMvc.Domain\bin\Debug\WebMvc.Utilities.dll
 D:\IT\C#\Project\WebMvc\WebMvc.Domain\bin\Debug\HtmlAgilityPack.dll
@@ -33,3 +32,4 @@ D:\IT\C#\Project\WebMvc\WebMvc.Domain\bin\Debug\System.Web.Razor.xml
 D:\IT\C#\Project\WebMvc\WebMvc.Domain\bin\Debug\System.Web.WebPages.xml
 D:\IT\C#\Project\WebMvc\WebMvc.Domain\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\IT\C#\Project\WebMvc\WebMvc.Domain\bin\Debug\System.Web.WebPages.Razor.xml
+D:\IT\C#\Project\WebMvc\WebMvc.Domain\obj\Debug\WebMvc.Domain.csprojAssemblyReference.cache

@@ -151,10 +151,9 @@ namespace WebMvc.Services
 
             if (page == 0) page = 1;
 
-            Cmd.CommandText = "SELECT TOP @limit * FROM ( SELECT *,(ROW_NUMBER() OVER(ORDER BY CreateDate DESC)) FROM  [Topic] WHERE Category_Id = @Category_Id) AS MyDerivedTable WHERE RowNum > @Offset";
+            Cmd.CommandText = "SELECT TOP " + limit + " * FROM ( SELECT *,(ROW_NUMBER() OVER(ORDER BY CreateDate DESC)) AS RowNum FROM  [Topic] WHERE Category_Id = @Category_Id) AS MyDerivedTable WHERE RowNum > @Offset";
 
             Cmd.Parameters.Add("Category_Id", SqlDbType.UniqueIdentifier).Value = Id;
-            Cmd.Parameters.Add("limit", SqlDbType.Int).Value = limit;
             Cmd.Parameters.Add("Offset", SqlDbType.Int).Value = (page-1)* limit;
 
             DataTable data = Cmd.findAll();

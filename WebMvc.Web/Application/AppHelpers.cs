@@ -228,6 +228,10 @@ namespace WebMvc.Web.Application
             return string.Concat("~/content/badges/", badgeFile);
         }
 
+        public static string ShotString(string text,int limit = 50)
+        {
+            return StringUtils.ReturnAmountWordsFromString(StringUtils.StripHtmlFromString(text), limit);
+        }
         #endregion
 
         #region Installer
@@ -497,6 +501,29 @@ namespace WebMvc.Web.Application
             var categoryService = ServiceFactory.Get<ICategoryService>();
 
             return categoryService.GetList();
+        }
+        #endregion
+
+        #region Topic
+        public static List<Topic> TopTopics(int limit,int page = 1)
+        {
+            var topicService = ServiceFactory.Get<ITopicService>();
+
+            return topicService.GetList(limit, page);
+        }
+
+        public static List<Topic> TopTopics(Category cat,int limit, int page = 1)
+        {
+            var topicService = ServiceFactory.Get<ITopicService>();
+
+            return topicService.GetList(cat.Id,limit, page);
+        }
+
+        public static List<Topic> HostTopics(int limit, int page = 1)
+        {
+            var topicService = ServiceFactory.Get<ITopicService>();
+
+            return topicService.GetList(limit, page);
         }
         #endregion
     }

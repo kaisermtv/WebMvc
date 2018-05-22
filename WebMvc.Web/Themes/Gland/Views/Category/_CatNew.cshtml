@@ -1,24 +1,40 @@
 ﻿@model WebMvc.Domain.DomainModel.Entities.Category
-<div class="clear space2"></div>
-<div class="title_box_center">
-    <h2 class="h_title cufon" style="font-size:22px !important;">@Model.Name</h2>
-    <a href="/tin-khuyen-mai/" class="view_cate_news">Xem tất cả <span>»</span></a>
-</div>
-<div class="space2"></div>
-<div class="top_news_on_page">
-
-
-    <div class="first">
-        <a href="/khuyen-mai-cuc-da-chao-he-ron-ra/">
-            <img src="/media/news/57_chuong_trinh___gigabyte___intel___to_roi____bai_viet_fb___chung_01.jpg" alt="KHUYẾN MẠI CỰC ĐÃ - CHÀO HÈ RỘN RÃ">
-        </a>
-        <span class="container">
-            <a href="/khuyen-mai-cuc-da-chao-he-ron-ra/" class="name">KHUYẾN MẠI CỰC ĐÃ - CHÀO HÈ RỘN RÃ</a>
-            <span class="view">12-04-2018, 11:28 am - Lượt xem: 103</span>
-            <span class="summary"></span>
-        </span>
+@{
+    var list = AppHelpers.TopTopics(Model, 5);
+}
+@if (list.Count > 0)
+{
+    var it = list[0];
+    <div class="clear space2"></div>
+    <div class="title_box_center">
+        <h2 class="h_title cufon" style="font-size:22px !important;">@Model.Name</h2>
+        <a href="/tin-khuyen-mai/" class="view_cate_news">Xem tất cả <span>»</span></a>
     </div>
+    <div class="space2"></div>
+    <div class="top_news_on_page">
+        <div class="first">
+            <a href="/khuyen-mai-cuc-da-chao-he-ron-ra/">
+                <img src="@AppHelpers.CategoryImage(it.Image, it.Id, 240)" alt="KHUYẾN MẠI CỰC ĐÃ - CHÀO HÈ RỘN RÃ">
+            </a>
+            <span class="container">
+                <a href="/khuyen-mai-cuc-da-chao-he-ron-ra/" class="name">@it.Name</a>
+                <span class="view">@it.CreateDate.ToString("dd-MM-yyyy, hh:mm tt") - Lượt xem: @it.Views</span>
+                <span class="summary"></span>
+            </span>
+        </div>
 
-
-    <ul class="ul"></ul>
-</div><!--top-->
+        <ul class="ul">
+            @for (int i = 1; i < list.Count; i++)
+            {
+                var item = list[i];
+                <li>
+                    <a href="/7-vo-case-may-tinh-trong-suot-dep-long-lanh-ai-cung-muon-so-huu/"><img src="@AppHelpers.CategoryImage(item.Image, item.Id, 100)" alt="@item.Name" width="100"></a>
+                    <div style="width:270px; float:right;">
+                        <a href="/7-vo-case-may-tinh-trong-suot-dep-long-lanh-ai-cung-muon-so-huu/" class="name">@item.Name</a>
+                        <span class="view">@item.CreateDate.ToString("dd-MM-yyyy hh:mm tt") - Lượt xem: @item.Views</span>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div><!--top-->
+}

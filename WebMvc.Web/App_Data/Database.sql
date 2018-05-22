@@ -1,4 +1,11 @@
-﻿CREATE TABLE [dbo].[MembershipUser](
+﻿CREATE TABLE [dbo].[tblSetting](
+	[STKEY] [nvarchar](30) NOT NULL PRIMARY KEY,
+	[VALUE] [ntext] NULL,
+) 
+INSERT INTO [dbo].[tblSetting]([STKEY],[VALUE]) VALUES(N'Theme',N'Gland')
+
+
+CREATE TABLE [dbo].[MembershipUser](
 	[Id] [uniqueidentifier] NOT NULL PRIMARY KEY,
 	[UserName] [nvarchar](150) NOT NULL UNIQUE,
 	[Password] [nvarchar](128) NOT NULL ,
