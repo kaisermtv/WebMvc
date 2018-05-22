@@ -105,33 +105,16 @@
                 <a href="/tin-tuc"><img class="icon-top" src="@Html.ThemeUrl()/Content/images/new_icon_tintuc.png" />Tin nổi bật</a>
                 <i class="bg icon_drop"></i>
                 <ul class="ul">
+                    @foreach (var it in AppHelpers.HostTopics(5))
+                    {
+                        <li>
+                            <a href="/o-cung-ssd-va-hdd-cai-nao-tot-hon-12-su-that-ban-phai-biet/">
+                                <img src="@AppHelpers.CategoryImage(it.Image, it.Id, 75)" alt="@it.Name" /> 
+                                <span>@it.Name</span>
+                            </a>
+                        </li>
 
-
-                    <li><a href="/o-cung-ssd-va-hdd-cai-nao-tot-hon-12-su-that-ban-phai-biet/"><img src="@Html.ThemeUrl()/Content/media/news/120_59_ssd_v___hdd_c__i_n__o_t___t_h__n.jpg" alt="Ổ cứng ssd và hdd cái nào tốt hơn? 12 sự thật game thủ cần phải biết" /> <span>Ổ cứng ssd và hdd cái nào tốt hơn? 12 sự thật game thủ cần phải biết</span> </a></li>
-
-
-
-                    <li><a href="/7-vo-case-may-tinh-trong-suot-dep-long-lanh-ai-cung-muon-so-huu/"><img src="@Html.ThemeUrl()/Content/media/news/120_56_top_7_vo_case_may_tinh_trong_suot_gland.jpg" alt="7 vỏ case máy tính trong suốt đẹp long lanh mà ai cũng muốn sở hữu" /> <span>7 vỏ case máy tính trong suốt đẹp long lanh mà ai cũng muốn sở hữu</span> </a></li>
-
-
-
-                    <li><a href="/tong-hop-vo-case-may-tinh-dep-nhat-nam-2017-p2/"><img src="@Html.ThemeUrl()/Content/media/news/120_img_46.jpg" alt="TỔNG HỢP VỎ CASE MÁY TÍNH ĐẸP NHẤT NĂM 2017 (P2)" /> <span>TỔNG HỢP VỎ CASE MÁY TÍNH ĐẸP NHẤT NĂM 2017 (P2)</span> </a></li>
-
-
-
-                    <li><a href="/tong-hop-vo-case-may-tinh-dep-nhat-nam-2018-p1/"><img src="@Html.ThemeUrl()/Content/media/news/120_52_t___ng_h___p_v____case_m__y_t__nh______p_nh___t_2018_p1.jpg" alt="TỔNG HỢP VỎ CASE MÁY TÍNH ĐẸP NHẤT NĂM 2018 (P1)" /> <span>TỔNG HỢP VỎ CASE MÁY TÍNH ĐẸP NHẤT NĂM 2018 (P1)</span> </a></li>
-
-
-
-                    <li><a href="/tan-nhiet-nuoc-la-gi-co-nen-lap-tan-nhiet-nuoc-khong/"><img src="@Html.ThemeUrl()/Content/media/news/120_img_24.jpg" alt="TẢN NHIỆT NƯỚC LÀ GÌ? CÓ NÊN LẮP TẢN NHIỆT NƯỚC CHO PC KHÔNG?" /> <span>TẢN NHIỆT NƯỚC LÀ GÌ? CÓ NÊN LẮP TẢN NHIỆT NƯỚC CHO PC KHÔNG?</span> </a></li>
-
-
-
-
-
-
-
-
+                    }
                 </ul>
             </li>
             <li><a href="https://www.facebook.com/glandcomputer/" rel="nofollow">Fanpage</a>  </li>
