@@ -7,6 +7,7 @@
 
     public class HomeController : BaseController
     {
+
         public HomeController(ILoggingService loggingService, IUnitOfWorkManager unitOfWorkManager, IMembershipService membershipService, ISettingsService settingsService, ICacheService cacheService, ILocalizationService localizationService)
             : base(loggingService, unitOfWorkManager, membershipService, settingsService, cacheService, localizationService)
         {

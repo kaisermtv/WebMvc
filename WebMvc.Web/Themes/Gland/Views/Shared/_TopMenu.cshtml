@@ -145,13 +145,13 @@
                     <a href="@Url.Action("Login", "Members")" rel="nofollow">@Html.LanguageString("Layout.Nav.Logon")</a>
                     if (Html.Settings("SuspendRegistration") != "true")
                     {
-                        <a href="@Url.Action("Register", "Members")" rel="nofollow">@Html.LanguageString("Layout.Nav.Register")</a> @("|")
+                        @("|") <a href="@Url.Action("Register", "Members")" rel="nofollow">@Html.LanguageString("Layout.Nav.Register")</a> 
                     }
                         <div class="list">
                             <a href="@Url.Action("Login", "Members")" rel="nofollow" class="btn">@Html.LanguageString("Layout.Nav.Logon")</a>
                             @if (Html.Settings("SuspendRegistration") != "true")
                             {
-                                <a href="@Url.Action("Register", "Members")" rel="nofollow" class="btn">@Html.LanguageString("Layout.Nav.Register")</a> @("|")
+                                <a href="@Url.Action("Register", "Members")" rel="nofollow" class="btn">@Html.LanguageString("Layout.Nav.Register")</a>
                             }
                         </div>
                 } else {

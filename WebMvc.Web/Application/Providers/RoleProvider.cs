@@ -1,4 +1,5 @@
-﻿using WebMvc.Domain.Interfaces.Services;
+﻿using System.Web.Security;
+using WebMvc.Domain.Interfaces.Services;
 using WebMvc.Web.Application;
 
 namespace WebMvc.Web.Membership
@@ -15,7 +16,8 @@ namespace WebMvc.Web.Membership
 
         public override string[] GetRolesForUser(string username)
         {
-
+            var member = MembershipService.GetUser(username);
+            if (member == null) return null;
             return MembershipService.GetRolesForUser(username);
         }
 

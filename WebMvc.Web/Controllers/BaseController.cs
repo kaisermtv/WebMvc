@@ -8,6 +8,8 @@
     using WebMvc.Domain.Interfaces.UnitOfWork;
     using WebMvc.Web.Application;
     using WebMvc.Web.Areas.Admin.ViewModels;
+    using WebMvc.Utilities;
+    using System.Web.Mvc.Filters;
 
     public class BaseController : Controller
     {
@@ -39,13 +41,10 @@
             SettingsService = settingsService;
             CacheService = cacheService;
             LoggingService = loggingService;
-
-            using (UnitOfWorkManager.NewUnitOfWork())
-            {
-                LoggedOnReadOnlyUser = UserIsAuthenticated ? MembershipService.GetUser(Username) : null;
+            
                 //UsersRole = LoggedOnReadOnlyUser.ro
                 //UsersRole = LoggedOnReadOnlyUser == null ? RoleService.GetRole(AppConstants.GuestRoleName, true) : LoggedOnReadOnlyUser.Roles.FirstOrDefault();
-            }
+
         }
 
 
@@ -54,6 +53,20 @@
         protected string Username => UserIsAuthenticated ? System.Web.HttpContext.Current.User.Identity.Name : null;
 
 
+        protected override void OnAuthentication(AuthenticationContext filterContext)
+        {
+            base.OnAuthentication(filterContext);
+
+            LoggedOnReadOnlyUser = UserIsAuthenticated ? MembershipService.GetUser(Username) : null;
+
+            if (!Username.IsNullEmpty() && LoggedOnReadOnlyUser == null)
+            {
+                System.Web.Security.FormsAuthentication.SignOut();
+                filterContext.Result = RedirectToAction("index", "Home",);
+                //filterContext.
+            }
+        }
+        
 
         internal ActionResult ErrorToHomePage(string errorMessage)
         {
