@@ -17,4 +17,4 @@ D:\IT\C#\Project\WebMvc\WebMvc.Utilities\obj\Debug\WebMvc.Utilities.csproj.CoreC
 D:\IT\C#\Project\WebMvc\WebMvc.Utilities\obj\Debug\WebMvc.Utilities.csproj.CopyComplete
 D:\IT\C#\Project\WebMvc\WebMvc.Utilities\obj\Debug\WebMvc.Utilities.dll
 D:\IT\C#\Project\WebMvc\WebMvc.Utilities\obj\Debug\WebMvc.Utilities.pdb
-D:\IT\C#\Project\WebMvc\WebMvc.Utilities\obj\Debug\WebMvc.Utilities.csprojResolveAssemblyReference.cache
+D:\IT\C#\Project\WebMvc\WebMvc.Utilities\obj\Debug\WebMvc.Utilities.csprojAssemblyReference.cache

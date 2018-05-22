@@ -1,4 +1,3 @@
-D:\IT\C#\Project\WebMvc\WebMvc.Web\obj\Debug\WebMvc.Web.csprojResolveAssemblyReference.cache
 D:\IT\C#\Project\WebMvc\WebMvc.Web\obj\Debug\WebMvc.Web.csproj.CoreCompileInputs.cache
 D:\IT\C#\Project\WebMvc\WebMvc.Web\bin\WebMvc.Web.dll.config
 D:\IT\C#\Project\WebMvc\WebMvc.Web\bin\WebMvc.Web.dll
@@ -120,3 +119,4 @@ D:\IT\C#\Project\WebMvc\WebMvc.Web\bin\SquishIt.Framework.xml
 D:\IT\C#\Project\WebMvc\WebMvc.Web\bin\SquishIt.Mvc.pdb
 D:\IT\C#\Project\WebMvc\WebMvc.Web\bin\ImageProcessor.dll
 D:\IT\C#\Project\WebMvc\WebMvc.Web\bin\ImageProcessor.Web.dll
+D:\IT\C#\Project\WebMvc\WebMvc.Web\obj\Debug\WebMvc.Web.csprojAssemblyReference.cache
