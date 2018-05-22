@@ -8,16 +8,16 @@
     <div class="clear space2"></div>
     <div class="title_box_center">
         <h2 class="h_title cufon" style="font-size:22px !important;">@Model.Name</h2>
-        <a href="/tin-khuyen-mai/" class="view_cate_news">Xem tất cả <span>»</span></a>
+        <a href="@Url.Action("ShowBySlug","Category",new { slug = Model.Slug })" class="view_cate_news">Xem tất cả <span>»</span></a>
     </div>
     <div class="space2"></div>
     <div class="top_news_on_page">
         <div class="first">
-            <a href="/khuyen-mai-cuc-da-chao-he-ron-ra/">
-                <img src="@AppHelpers.CategoryImage(it.Image, it.Id, 240)" alt="KHUYẾN MẠI CỰC ĐÃ - CHÀO HÈ RỘN RÃ">
+            <a href="@AppHelpers.TopicUrls(Model.Slug,it.Slug)">
+                <img src="@AppHelpers.CategoryImage(it.Image, it.Id, 240)" alt="@it.Name">
             </a>
             <span class="container">
-                <a href="/khuyen-mai-cuc-da-chao-he-ron-ra/" class="name">@it.Name</a>
+                <a href="@AppHelpers.TopicUrls(Model.Slug,it.Slug)" class="name">@it.Name</a>
                 <span class="view">@it.CreateDate.ToString("dd-MM-yyyy, hh:mm tt") - Lượt xem: @it.Views</span>
                 <span class="summary"></span>
             </span>
@@ -28,9 +28,9 @@
             {
                 var item = list[i];
                 <li>
-                    <a href="/7-vo-case-may-tinh-trong-suot-dep-long-lanh-ai-cung-muon-so-huu/"><img src="@AppHelpers.CategoryImage(item.Image, item.Id, 100)" alt="@item.Name" width="100"></a>
+                    <a href="@AppHelpers.TopicUrls(Model.Slug,item.Slug)"><img src="@AppHelpers.CategoryImage(item.Image, item.Id, 100)" alt="@item.Name" width="100"></a>
                     <div style="width:270px; float:right;">
-                        <a href="/7-vo-case-may-tinh-trong-suot-dep-long-lanh-ai-cung-muon-so-huu/" class="name">@item.Name</a>
+                        <a href="@AppHelpers.TopicUrls(Model.Slug,item.Slug)" class="name">@item.Name</a>
                         <span class="view">@item.CreateDate.ToString("dd-MM-yyyy hh:mm tt") - Lượt xem: @item.Views</span>
                     </div>
                 </li>

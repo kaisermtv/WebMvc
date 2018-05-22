@@ -42,7 +42,7 @@
         @for (int i = 0; i < lst.Count; i++)
         {
             var it = lst[i];
-            <a href="/o-cung-ssd-va-hdd-cai-nao-tot-hon-12-su-that-ban-phai-biet/" class="top_newspage"@Html.Raw(i==0? " style=\"margin-left:0px\"" : "")>
+            <a href="@AppHelpers.TopicUrls(it.Category_Id,it.Slug)" class="top_newspage"@Html.Raw(i==0? " style=\"margin-left:0px\"" : "")>
                 <img src="@AppHelpers.CategoryImage(it.Image, it.Id, 352)" alt="@it.Name">
                 <span>@it.Name</span>
             </a><!--top_newspage-->
@@ -59,8 +59,8 @@
                 {
                     var tnews = hostnews[0];
                     <div class="top_news">
-                        <a href="/o-cung-ssd-va-hdd-cai-nao-tot-hon-12-su-that-ban-phai-biet/"><img src="@AppHelpers.CategoryImage(tnews.Image, tnews.Id, 90)" alt="@tnews.Name"> </a>
-                        <a href="/o-cung-ssd-va-hdd-cai-nao-tot-hon-12-su-that-ban-phai-biet/"> » @AppHelpers.ShotString(tnews.Name,40) ... (@tnews.CreateDate.ToString("yyyy-MM-dd HH:mm:ss"))</a>
+                        <a href="@AppHelpers.TopicUrls(tnews.Category_Id,tnews.Slug)"><img src="@AppHelpers.CategoryImage(tnews.Image, tnews.Id, 90)" alt="@tnews.Name"> </a>
+                        <a href="@AppHelpers.TopicUrls(tnews.Category_Id,tnews.Slug)"> » @AppHelpers.ShotString(tnews.Name,10) ... (@tnews.CreateDate.ToString("yyyy-MM-dd HH:mm:ss"))</a>
                     </div>
 
                     <ul>
@@ -68,7 +68,7 @@
                         {
                             var it = hostnews[i];
                             <li>
-                                <a href="/7-vo-case-may-tinh-trong-suot-dep-long-lanh-ai-cung-muon-so-huu/"> » @AppHelpers.ShotString(it.Name, 40) ... (@it.CreateDate.ToString("yyyy-MM-dd HH:mm:ss"))</a>
+                                <a href="@AppHelpers.TopicUrls(it.Category_Id,it.Slug)"> » @AppHelpers.ShotString(it.Name, 10) ... (@it.CreateDate.ToString("yyyy-MM-dd HH:mm:ss"))</a>
                             </li>
                         }
                     </ul>
@@ -78,7 +78,7 @@
 
         @foreach (var it in AppHelpers.Categories())
         {
-            @Html.Partial("_CatNew", it)
+            @Html.Partial("_CatTopNews", it)
         }
     </div><!--content_news-->
 </div>

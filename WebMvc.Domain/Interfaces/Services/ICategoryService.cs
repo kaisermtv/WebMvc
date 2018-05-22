@@ -14,6 +14,7 @@ namespace WebMvc.Domain.Interfaces.Services
         void Update(Category cat);
         Category Get(string id);
         Category Get(Guid id);
+        Category GetBySlug(string slug);
         List<Category> GetAll();
         List<Category> GetList(Guid? paren = null);
         List<SelectListItem> GetBaseSelectListCategories(List<Category> allowedCategories);

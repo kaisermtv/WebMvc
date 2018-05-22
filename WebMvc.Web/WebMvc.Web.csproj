@@ -257,6 +257,7 @@
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
+    <Compile Include="ViewModels\PageingViewModel.cs" />
     <Compile Include="ViewModels\TopicViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -9552,7 +9553,9 @@
     <Content Include="Themes\Gland\Content\media\product\589_c813882f8ce60366d443e256f20191d3.1a5.delayed" />
     <Content Include="Themes\Gland\Views\Shared\_HostView.cshtml" />
     <Content Include="Themes\Gland\Views\Shared\_CatNews.cshtml" />
-    <Content Include="Themes\Gland\Views\Category\_CatNew.cshtml" />
+    <Content Include="Themes\Gland\Views\Category\_CatTopNews.cshtml" />
+    <Content Include="Views\Category\ShowBySlug.cshtml" />
+    <Content Include="Themes\Gland\Views\Category\ShowBySlug.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Carousel\" />
@@ -9562,7 +9565,6 @@
     <Folder Include="Content\uploads\af6845bf-be26-48d7-b54c-a82a00414172\" />
     <Folder Include="Views\About\" />
     <Folder Include="Views\Booking\" />
-    <Folder Include="Views\Category\" />
     <Folder Include="Views\Contact\" />
     <Folder Include="Views\Post\" />
     <Folder Include="Views\Product\" />

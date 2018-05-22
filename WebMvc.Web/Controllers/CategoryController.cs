@@ -39,12 +39,32 @@
             return View();
         }
 
+        public ActionResult ShowBySlug(string Slug,int? p)
+        {
+            var cat = _categoryService.GetBySlug(Slug);
+            if(cat == null)
+            {
+                return Redirect("/tin-tuc");
+            }
+
+            int limit = 12;
+            var count = _topicServic.GetCount(cat.Id);
+
+            var Paging = CalcPaging(limit,p, count);
+            
+            var model = new CategoryTopicListViewModel
+            {
+                Cat = cat,
+                Paging = Paging,
+                ListTopic = _topicServic.GetList(cat.Id,limit, Paging.Page)
+            };
+            
+            return View(model);
+        }
+
         public ActionResult Show(Guid Id)
         {
-
-
-
-
+            
 
             return View();
         }

@@ -198,6 +198,26 @@ namespace WebMvc.Web.Application
             return $"/{SiteConstants.Instance.CategoryUrlIdentifier}/rss/{slug}";
         }
 
+        public static string TopicUrls(string catSlug,string slug)
+        {
+            return $"/{SiteConstants.Instance.CategoryUrlIdentifier}/{catSlug}/{slug}";
+        }
+
+        public static string TopicUrls(Guid? cat, string slug)
+        {
+            string catSlug = "";
+
+            if(cat != null)
+            {
+                var categoryService = ServiceFactory.Get<ICategoryService>();
+                var cater = categoryService.Get((Guid)cat);
+
+                if (cater != null) catSlug = cater.Slug;
+            }
+
+            return $"/{SiteConstants.Instance.CategoryUrlIdentifier}/{catSlug}/{slug}";
+        }
+
         #endregion
 
         #region String
@@ -537,5 +557,6 @@ namespace WebMvc.Web.Application
         #region Product
 
         #endregion
+        
     }
 }

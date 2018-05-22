@@ -10,6 +10,7 @@
     using WebMvc.Web.Areas.Admin.ViewModels;
     using WebMvc.Utilities;
     using System.Web.Mvc.Filters;
+    using WebMvc.Web.ViewModels;
 
     public class BaseController : Controller
     {
@@ -67,7 +68,7 @@
         }
         
 
-        internal ActionResult ErrorToHomePage(string errorMessage)
+        protected internal ActionResult ErrorToHomePage(string errorMessage)
         {
             // Use temp data as its a redirect
             TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
@@ -77,6 +78,20 @@
             };
             // Not allowed in here so
             return RedirectToAction("Index", "Home");
+        }
+
+        protected internal PageingViewModel CalcPaging(int limit,int? page,int count)
+        {
+            var paging = new PageingViewModel
+            {
+                Count = count,
+                Page = page ?? 1,
+                MaxPage = (count / limit) + ((count % limit > 0) ? 1 : 0),
+            };
+
+            if (paging.Page > paging.MaxPage) paging.Page = paging.MaxPage;
+
+            return paging;
         }
     }
 }

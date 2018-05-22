@@ -4,7 +4,7 @@
         <ul class="ul">
             @foreach(var it in AppHelpers.Categories())
             {
-                <li><a href="/tin-khuyen-mai/">@it.Name</a></li>
+                <li><a href="@Url.Action("ShowBySlug","Category",new { slug = it.Slug })">@it.Name</a></li>
             }
         </ul>
     </div>

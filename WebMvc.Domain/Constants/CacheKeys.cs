@@ -39,6 +39,12 @@ namespace WebMvc.Domain.Constants
         {
             public const string StartsWith = "Category.";
         }
+
+        public static class Topic
+        {
+            public const string StartsWith = "Topic.";
+        }
+
         public static class Contact
         {
             public const string StartsWith = "Contact.";

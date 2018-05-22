@@ -1,0 +1,95 @@
+﻿@model WebMvc.Web.ViewModels.CategoryTopicListViewModel
+@{
+    ViewBag.Title = string.Concat(Model.Cat.Name, " - Tic tức");
+}
+<div class="clear"></div>
+<div class="container">
+    <div id="location">
+        <a href="/"><i class="bg icon_home"></i></a>
+        <span>»</span><a href="/tin-tuc">Tin tức</a>
+        <span>»</span><a href="@Url.Action("ShowBySlug","Category",new { slug = Model.Cat.Slug })">@Model.Cat.Name</a>
+    </div>
+
+    <div id="content_left">
+        @Html.Partial("_CatNews")
+        @Html.Partial("_HostView")
+        <div class="banner_left">
+
+        </div>
+    </div><!--content_left-->
+    <div id="content_news_page">
+        <div class="title_box_center">
+            <h1 class="h_title cufon" style="font-size:22px !important;">Tin Gland</h1>
+
+            <div class="paging">
+
+                <a href="#" class="current">1</a>
+
+                <a href="/tin-tuc/?page=2">2</a>
+
+                <a href="/tin-tuc/?page=2">Next</a>
+
+            </div><!--paging-->
+
+        </div>
+        <div class="space2"></div>
+        <div id="top_news_on_page">
+            @if (Model.ListTopic.Count > 0)
+            {
+                var item = Model.ListTopic[0];
+                <a href="@AppHelpers.TopicUrls(Model.Cat.Slug,item.Slug)" class="first">
+                    <img src="@AppHelpers.CategoryImage(item.Image, item.Id, 450)" alt="@item.Name">
+                    <span class="container">
+                        <span class="name">@item.Name</span>
+                        <span class="view">@item.CreateDate.ToString("dd-MM-yyyy, hh:mm tt") - Lượt xem: @item.Views</span>
+                    </span>
+                </a>
+                <ul class="ul">
+                    @for (var i = 1; i < Model.ListTopic.Count && i < 4; i++)
+                    {
+                        var it = Model.ListTopic[i];
+                        <li>
+                            <a href="@AppHelpers.TopicUrls(Model.Cat.Slug,it.Slug)"><img src="@AppHelpers.CategoryImage(it.Image, it.Id, 100)" alt="@it.Name" width="100"></a>
+                            <div style="width:385px; float:right;">
+                                <a href="@AppHelpers.TopicUrls(Model.Cat.Slug,it.Slug)" class="name">@it.Name</a>
+                                <span class="view">@it.CreateDate.ToString("dd-MM-yyyy, hh:mm tt") - Lượt xem: @it.Views</span>
+                                <span class="summary"></span>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            }
+
+        </div><!--top-->
+        <div class="clear space2"></div>
+        <div id="list_news">
+            <ul class="ul">
+                @for (var i = 4; i < Model.ListTopic.Count; i++)
+                {
+                    var it = Model.ListTopic[i];
+                    <li>
+                        <a href="@AppHelpers.TopicUrls(Model.Cat.Slug,it.Slug)"><img src="@AppHelpers.CategoryImage(it.Image, it.Id, 130)" alt="@it.Name" width="130"></a>
+                        <a href="@AppHelpers.TopicUrls(Model.Cat.Slug,it.Slug)" class="name">@it.Name</a>
+                        <span class="view">@it.CreateDate.ToString("dd-MM-yyyy, hh:mm tt") - Lượt xem: @it.Views</span>
+                        <div class="summary">
+                            @it.ShotContent
+                            <a href="@AppHelpers.TopicUrls(Model.Cat.Slug,it.Slug)">Xem chi tiết »</a>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div><!--list_news-->
+
+        <div class="paging">
+
+            <a href="#" class="current">1</a>
+
+            <a href="/tin-tuc/?page=2">2</a>
+
+            <a href="/tin-tuc/?page=2">Next</a>
+
+        </div><!--paging-->
+
+    </div><!--content_news-->
+
+</div>

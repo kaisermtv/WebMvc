@@ -80,6 +80,7 @@
     <Compile Include="ProductSevice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleSevice.cs" />
+    <Compile Include="ServiceHelpers.cs" />
     <Compile Include="SettingsService.cs" />
     <Compile Include="SiteConfig\SiteConfig.cs" />
     <Compile Include="TopicService.cs" />

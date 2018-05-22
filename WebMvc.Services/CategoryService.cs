@@ -55,7 +55,39 @@ namespace WebMvc.Services
             return cat;
         }
         #endregion
+
+        #region Slug
+        private bool CheckSlug(string slug)
+        {
+            var lst = GetAll();
+            foreach (var it in lst)
+            {
+                if (slug == it.Slug) return false;
+            }
+
+            return true;
+        }
         
+
+        private void CreateSlug(Category cat)
+        {
+            var slug = ServiceHelpers.CreateUrl(cat.Name);
+            if(cat.Slug != slug)
+            {
+                var tmpSlug = slug;
+
+                int i = 0;
+                while (!CheckSlug(tmpSlug))
+                {
+                    i++;
+                    tmpSlug = string.Concat(slug,"-",i);
+                }
+
+                cat.Slug = tmpSlug;
+            }
+        }
+        #endregion
+
         public void Add(Category cat)
         {
             //string cachekey = string.Concat(CacheKeys.Category.StartsWith, "getSetting-", key);
@@ -63,7 +95,7 @@ namespace WebMvc.Services
             var Cmd = _context.CreateCommand();
 
             cat.DateCreated = DateTime.UtcNow;
-            if (cat.Slug == null) cat.Slug = "";
+            CreateSlug(cat);
             
 
             Cmd.CommandText = "INSERT INTO [Category]([Id],[Name],[Description],[IsLocked],[ModerateTopics],[ModeratePosts],[SortOrder]"
@@ -97,7 +129,7 @@ namespace WebMvc.Services
         public void Update(Category cat)
         {
             var Cmd = _context.CreateCommand();
-            if (cat.Slug == null) cat.Slug = "";
+            CreateSlug(cat);
 
             Cmd.CommandText = "UPDATE [dbo].[Category] SET [Name] = @Name, [Description] = @Description, [IsLocked] = @IsLocked,"
                 + "[ModerateTopics] = @ModerateTopics, [ModeratePosts] = @ModeratePosts,[SortOrder] = @SortOrder,"
@@ -146,6 +178,30 @@ namespace WebMvc.Services
                 foreach (Category it in allcat)
                 {
                     if(it.Id == id)
+                    {
+                        cat = it;
+                        break;
+                    }
+                }
+
+                _cacheService.Set(cachekey, cat, CacheTimes.OneDay);
+            }
+            return cat;
+        }
+
+        public Category GetBySlug (string slug)
+        {
+            string cachekey = string.Concat(CacheKeys.Category.StartsWith, "GetBySlug-", slug);
+
+            var cat = _cacheService.Get<Category>(cachekey);
+            if (cat == null)
+            {
+                var allcat = GetAll();
+                if (allcat == null) return null;
+
+                foreach (Category it in allcat)
+                {
+                    if (it.Slug == slug)
                     {
                         cat = it;
                         break;

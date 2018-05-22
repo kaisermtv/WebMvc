@@ -13,6 +13,8 @@ namespace WebMvc.Domain.Interfaces.Services
         Topic Get(Guid Id);
         void Update(Topic topic);
 
+        int GetCount();
+        int GetCount(Guid Id);
         List<Topic> GetList(int limit = 10, int page = 1);
         List<Topic> GetList(Guid Id, int limit = 10, int page = 1);
     }

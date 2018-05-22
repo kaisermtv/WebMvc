@@ -82,7 +82,7 @@ namespace WebMvc.Services
             Cmd.Parameters.Add("MembershipUser_Id", SqlDbType.UniqueIdentifier).Value = topic.MembershipUser_Id;
 
             bool ret = Cmd.command.ExecuteNonQuery() > 0;
-
+            Cmd.cacheStartsWithToClear(CacheKeys.Topic.StartsWith);
             Cmd.Close();
 
             if (!ret) throw new Exception("Add Topic false");
@@ -121,7 +121,7 @@ namespace WebMvc.Services
             Cmd.Parameters.Add("MembershipUser_Id", SqlDbType.UniqueIdentifier).Value = topic.MembershipUser_Id;
 
             bool ret = Cmd.command.ExecuteNonQuery() > 0;
-
+            Cmd.cacheStartsWithToClear(CacheKeys.Topic.StartsWith);
             Cmd.Close();
 
             if (!ret) throw new Exception("Add Topic false");
@@ -129,66 +129,127 @@ namespace WebMvc.Services
 
         public Topic Get(Guid Id)
         {
-            var Cmd = _context.CreateCommand();
+            string cachekey = string.Concat(CacheKeys.Topic.StartsWith, "Get-", Id);
+            var topic = _cacheService.Get<Topic>(cachekey);
+            if (topic == null)
+            {
+                var Cmd = _context.CreateCommand();
 
-            Cmd.CommandText = "SELECT * FROM [Topic] WHERE Id = @Id";
+                Cmd.CommandText = "SELECT * FROM [Topic] WHERE Id = @Id";
 
-            Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = Id;
+                Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = Id;
 
-            DataRow data = Cmd.findFirst();
-            if (data == null) return null;
+                DataRow data = Cmd.findFirst();
+                if (data == null) return null;
 
-            return DataRowToTopic(data);
+                topic = DataRowToTopic(data);
+                
+                _cacheService.Set(cachekey, topic, CacheTimes.OneDay);
+            }
+            return topic;
         }
+        
+        public int GetCount(Guid Id)
+        {
+            string cachekey = string.Concat(CacheKeys.Topic.StartsWith, "GetCount-", Id);
+            var count = _cacheService.Get<int?>(cachekey);
+            if (count == null)
+            {
+                var Cmd = _context.CreateCommand();
 
+                Cmd.CommandText = "SELECT COUNT(*) FROM  [Topic] WHERE Category_Id = @Category_Id";
+
+                Cmd.Parameters.Add("Category_Id", SqlDbType.UniqueIdentifier).Value = Id;
+
+                count = (int)Cmd.command.ExecuteScalar();
+                Cmd.Close();
+
+
+                _cacheService.Set(cachekey, count, CacheTimes.OneDay);
+            }
+            return (int)count;
+        }
+        
         public List<Topic> GetList(Guid Id,int limit = 10,int page = 1)
         {
-            var Cmd = _context.CreateCommand();
-
-            if (page == 0) page = 1;
-
-            Cmd.CommandText = "SELECT TOP " + limit + " * FROM ( SELECT *,(ROW_NUMBER() OVER(ORDER BY CreateDate DESC)) AS RowNum FROM  [Topic] WHERE Category_Id = @Category_Id) AS MyDerivedTable WHERE RowNum > @Offset";
-
-            Cmd.Parameters.Add("Category_Id", SqlDbType.UniqueIdentifier).Value = Id;
-            Cmd.Parameters.Add("Offset", SqlDbType.Int).Value = (page-1)* limit;
-
-            DataTable data = Cmd.findAll();
-            Cmd.Close();
-
-            if (data == null) return null;
-
-            List<Topic> rt = new List<Topic>();
-            foreach(DataRow it in data.Rows)
+            string cachekey = string.Concat(CacheKeys.Topic.StartsWith, "GetList-", Id,"-", limit,"-", page);
+            var list = _cacheService.Get<List<Topic>>(cachekey);
+            if (list == null)
             {
-                rt.Add(DataRowToTopic(it));
-            }
+                if (page == 0) page = 1;
 
-            return rt;
+                var Cmd = _context.CreateCommand();
+
+                if (page == 0) page = 1;
+
+                Cmd.CommandText = "SELECT TOP " + limit + " * FROM ( SELECT *,(ROW_NUMBER() OVER(ORDER BY CreateDate DESC)) AS RowNum FROM  [Topic] WHERE Category_Id = @Category_Id) AS MyDerivedTable WHERE RowNum > @Offset";
+
+                Cmd.Parameters.Add("Category_Id", SqlDbType.UniqueIdentifier).Value = Id;
+                Cmd.Parameters.Add("Offset", SqlDbType.Int).Value = (page - 1) * limit;
+
+                DataTable data = Cmd.findAll();
+                Cmd.Close();
+
+                if (data == null) return null;
+
+                list = new List<Topic>();
+                foreach (DataRow it in data.Rows)
+                {
+                    list.Add(DataRowToTopic(it));
+                }
+                
+                _cacheService.Set(cachekey, list, CacheTimes.OneDay);
+            }
+            return list;
+        }
+
+        public int GetCount()
+        {
+            string cachekey = string.Concat(CacheKeys.Topic.StartsWith, "GetCount");
+            var count = _cacheService.Get<int?>(cachekey);
+            if (count == null)
+            {
+                var Cmd = _context.CreateCommand();
+
+                Cmd.CommandText = "SELECT COUNT(*) FROM  [Topic]";
+
+                count = (int)Cmd.command.ExecuteScalar();
+                Cmd.Close();
+
+                _cacheService.Set(cachekey, count, CacheTimes.OneDay);
+            }
+            return (int)count;
         }
 
         public List<Topic> GetList(int limit = 10, int page = 1)
         {
-            var Cmd = _context.CreateCommand();
-
-            if (page == 0) page = 1;
-
-            Cmd.CommandText = "SELECT TOP "+ limit + " * FROM ( SELECT *,(ROW_NUMBER() OVER(ORDER BY CreateDate DESC)) AS RowNum FROM  [Topic]) AS MyDerivedTable WHERE RowNum > @Offset";
-            
-            //Cmd.Parameters.Add("limit", SqlDbType.Int).Value = limit;
-            Cmd.Parameters.Add("Offset", SqlDbType.Int).Value = (page - 1) * limit;
-
-            DataTable data = Cmd.findAll();
-            Cmd.Close();
-
-            if (data == null) return null;
-
-            List<Topic> rt = new List<Topic>();
-            foreach (DataRow it in data.Rows)
+            string cachekey = string.Concat(CacheKeys.Topic.StartsWith, "GetList-", limit, "-", page);
+            var list = _cacheService.Get<List<Topic>>(cachekey);
+            if (list == null)
             {
-                rt.Add(DataRowToTopic(it));
-            }
+                var Cmd = _context.CreateCommand();
 
-            return rt;
+                if (page == 0) page = 1;
+
+                Cmd.CommandText = "SELECT TOP " + limit + " * FROM ( SELECT *,(ROW_NUMBER() OVER(ORDER BY CreateDate DESC)) AS RowNum FROM  [Topic]) AS MyDerivedTable WHERE RowNum > @Offset";
+
+                //Cmd.Parameters.Add("limit", SqlDbType.Int).Value = limit;
+                Cmd.Parameters.Add("Offset", SqlDbType.Int).Value = (page - 1) * limit;
+
+                DataTable data = Cmd.findAll();
+                Cmd.Close();
+
+                if (data == null) return null;
+
+                list = new List<Topic>();
+                foreach (DataRow it in data.Rows)
+                {
+                    list.Add(DataRowToTopic(it));
+                }
+
+                _cacheService.Set(cachekey, list, CacheTimes.OneDay);
+            }
+            return list;
         }
     }
 }

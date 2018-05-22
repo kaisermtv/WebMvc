@@ -6,7 +6,7 @@
             @foreach (var it in AppHelpers.HostViewTopics(5))
             {
                 <li>
-                    <a href="/o-cung-ssd-va-hdd-cai-nao-tot-hon-12-su-that-ban-phai-biet/">
+                    <a href="@AppHelpers.TopicUrls(it.Category_Id,it.Slug)">
                         <img src="@AppHelpers.CategoryImage(it.Image, it.Id, 75)" alt="@it.Name" width="75">
                         <span>@it.Name</span>
                     </a>

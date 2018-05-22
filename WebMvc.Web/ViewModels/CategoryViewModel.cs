@@ -14,4 +14,11 @@ namespace WebMvc.Web.ViewModels
     {
         public List<Category> AllCategory;
     }
+
+    public class CategoryTopicListViewModel
+    {
+        public Category Cat;
+        public List<Topic> ListTopic;
+        public PageingViewModel Paging;
+    }
 }

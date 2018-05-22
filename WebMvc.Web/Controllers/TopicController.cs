@@ -51,6 +51,12 @@
         #endregion
 
         #region Show
+        public ActionResult ShowBySlug(string catSlug, string Slug)
+        {
+            //_topicServic.get
+
+            return View();
+        }
         public ActionResult Show(Guid Id)
         {
             //_topicServic.get
