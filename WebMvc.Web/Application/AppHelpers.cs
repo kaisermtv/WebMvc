@@ -525,6 +525,17 @@ namespace WebMvc.Web.Application
 
             return topicService.GetList(limit, page);
         }
+
+        public static List<Topic> HostViewTopics(int limit, int page = 1)
+        {
+            var topicService = ServiceFactory.Get<ITopicService>();
+
+            return topicService.GetList(limit, page);
+        }
+        #endregion
+
+        #region Product
+
         #endregion
     }
 }

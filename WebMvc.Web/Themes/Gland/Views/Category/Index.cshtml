@@ -60,14 +60,15 @@
                     var tnews = hostnews[0];
                     <div class="top_news">
                         <a href="/o-cung-ssd-va-hdd-cai-nao-tot-hon-12-su-that-ban-phai-biet/"><img src="@AppHelpers.CategoryImage(tnews.Image, tnews.Id, 90)" alt="@tnews.Name"> </a>
-                        <a href="/o-cung-ssd-va-hdd-cai-nao-tot-hon-12-su-that-ban-phai-biet/"> » @AppHelpers.ShotString(tnews.Name,100) ... (@tnews.CreateDate.ToString("yyyy-MM-dd HH:mm:ss"))</a>
+                        <a href="/o-cung-ssd-va-hdd-cai-nao-tot-hon-12-su-that-ban-phai-biet/"> » @AppHelpers.ShotString(tnews.Name,40) ... (@tnews.CreateDate.ToString("yyyy-MM-dd HH:mm:ss"))</a>
                     </div>
 
                     <ul>
                         @for (int i = 1; i < hostnews.Count; i++)
                         {
+                            var it = hostnews[i];
                             <li>
-                                <a href="/7-vo-case-may-tinh-trong-suot-dep-long-lanh-ai-cung-muon-so-huu/"> » @AppHelpers.ShotString(tnews.Name, 100) ... (@tnews.CreateDate.ToString("yyyy-MM-dd HH:mm:ss"))</a>
+                                <a href="/7-vo-case-may-tinh-trong-suot-dep-long-lanh-ai-cung-muon-so-huu/"> » @AppHelpers.ShotString(it.Name, 40) ... (@it.CreateDate.ToString("yyyy-MM-dd HH:mm:ss"))</a>
                             </li>
                         }
                     </ul>

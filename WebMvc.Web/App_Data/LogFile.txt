@@ -32,3 +32,6 @@ Invalid column name 'RowNum'.
 21/05/2018 18:16:45 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Path '/Themes/Gland/Views/Category/Index.cshtml' was not found.
 22/05/2018 04:34:10 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
 22/05/2018 04:34:10 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Path '/Themes/Gland/Views/Category/Index.cshtml' was not found.
+22/05/2018 05:27:31 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/05/2018 05:27:36 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\Gland\Views\Shared\_HostView.cshtml(6): error CS0117: 'AppHelpers' does not contain a definition for 'HostViewTopics'
+22/05/2018 05:28:00 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP

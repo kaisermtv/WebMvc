@@ -1,0 +1,408 @@
+﻿Admin.Topic.Title,Tiêu đề
+Tags.PopularTags,Popular Tags
+Topic.IsSticky,Topic Is Sticky
+Members.Label.ConfirmPassword,Confirm Password
+Date.OneMinuteAgo,1 minute ago
+PM.To,To
+Stats.LatestMembers,Thành viên mới nhất:
+Activity.Badge,huy hiệu
+Tasks.MarkAsSolutionReminderJob.EmailBody,Your topic {0} on {1} has {2} replies but has still not been marked as solved. Please check again to see if any answers are appropriate and mark them as the solution if they are.
+Topic.Label.SubscribeToTopic,Get notified of replies?
+Errors.NothingToDisplay,Nothing To Display
+Members.ResetPassword.Text,An email has been sent with details on how to reset your password.
+Post.MemberIsOnline,Online
+Topic.IsSolved,Topic Is Solved
+Topic.Subscribe,Follow
+Home.Rss,Rss
+PostFilter.Votes,Bình chọn
+Post.VotedUp,Đã thích
+Badge.OneThousandPoints.Desc,Huy hiệu này được trao cho những người dùng đã nhận được 1000 điểm
+TinyMCE.InsertImage.SelectFile,Vui lòng chọn một tập tin
+PM.AboutToExceedInboxSizeSubject,Private Message Inbox Allowance
+Error.WrongAnswerRegistration,There was an error with your answer. Please try again
+Post.UploadFileTooBig,File upload is too big
+Post.Label.LockTopic,Khóa chủ đề
+StopWord.Error,You have tried to enter a word or url that is not allowed on this site
+Badge.PosterVoteUp.Desc,Huy hiệu này được trao cho người dùng sau khi họ nhận được phiếu bầu đầu tiên của họ từ người dùng khác
+Post.PostedThis,posted this
+Badge.YourPostFavouritedTenTimes.Name,Recognised Post
+Moderate.AwaitingModeration,Your post is currently awaiting moderation. Once approved it will appear on the site
+Badge.MemberForAYear.Desc,Huy hiệu này được trao cho người dùng sau năm kỷ niệm đầu tiên
+Post.label.TopicCategory,Topic Category
+Members.Label.Facebook,Facebook Page
+Members.CantUnlock,Người dùng không tồn tại - không thể mở khóa.
+TinyMCE.InsertImage.LabelUploadImage,Upload hình ảnh
+Topic.TitleFallBack,Chủ đề thảo luận
+Report.Reporter,Reporter
+Report.ReportSent,Report Sent
+Members.SearchMembers,Tìm kiếm thành viên
+Members.Errors.PasswordAttemptsExceeded,The maximum number of password attempts has been exceeded.
+Topic.ShowMorePostsLoading,Đang tải bài đăng ...
+TinyMCE.InsertImage.ButtonTitle,Chèn hình ảnh
+Members.NowRegistered,You are now registered
+PM.Delete,Delete
+Badge.PosterMarkAsSolution.Desc,Huy hiệu này được trao cho người dùng khi bài đăng của họ được đánh dấu là giải pháp cho một chủ đề
+Layout.PoweredBy,Powered by
+Members.Label.EmailAddressBlank,Enter your email address
+Side.Search.Go,Go
+Topic.Comment,Câu trả lời
+TermsAndConditions.PageTitle,Đồng ý với các Điều khoản và Điều kiện
+Badge.UserVoteUp.Name,You've Given Your First Vote Up
+Date.Yesterday,hôm qua
+Members.UnBanUser,Unban User
+PostEdit.EditedVersion,Đã chỉnh sửa
+Members.Errors.DuplicateUserName,Tên này đã có người dùng. Vui lòng nhập một tên người dùng khác nhau.
+Members.Errors.InvalidEmail,Địa chỉ e-mail được cung cấp không hợp lệ. Vui lòng kiểm tra giá trị và thử lại.
+PM.NewPrivateMessageBody,{0} has just sent you a private message.
+Confirmation.DeleteMembersPosts,Bạn có chắc không? Thao tác này sẽ xóa tất cả bài đăng và chủ đề của thành viên!
+PM.ReceivedPrivateMessages,Received Private Messages
+Badge.UserVoteUp.Desc,Huy hiệu này được trao cho người dùng sau khi họ bỏ phiếu lần đầu tiên
+Stats.FooterMainStatText,{0} thành viên đã đăng {1} bài trong {2} cuộc thảo luận
+Members.Profile.Twitter,Twitter
+Members.Errors.UserRejected,The user creation request has been canceled. Please verify your entry and try again. If the problem persists please contact your system administrator.
+Members.Errors.InvalidPassword,Mật khẩu được cung cấp không hợp lệ. Vui lòng nhập một giá trị mật khẩu hợp lệ.
+Badges.PageTitle,Danh hiệu
+Members.Profile.Location,Location:
+Members.ResetPassword.Error,There was an error resetting your password. Please try again.
+Members.Label.Users,Users
+PostFilter.Standard,Standard
+Members.Errors.InvalidAnswer,Câu trả lời truy xuất mật khẩu được cung cấp không hợp lệ. Vui lòng kiểm tra giá trị và thử lại.
+Topic.Comments,Các câu trả lời
+Category.AllCategories,Tất cả danh mục
+Members.ForgotPassword.Subject,Password Reset
+Badge.Padawan.Name,Padawan
+Post.PleaseWait,Please Wait...
+Moderate.Posts,Posts
+Topic.OptionsHeading,Tùy chọn chủ đề
+Following.PageTitle,Chủ đề &amp; Danh mục
+Post.Posts,Posts
+Post.Options,View Post Options
+Post.FilesUploaded,Files uploaded successfully
+Members.Errors.InvalidUserName,Tên người dùng được cung cấp không hợp lệ. Vui lòng kiểm tra giá trị và thử lại.
+PM.ShowMore,Show More Messages
+Language.Changed,Ngôn ngữ đã thay đổi
+File.SuccessfullyDeleted,Đã xóa tệp
+Twitter.Error.EnabledButNotAddedKeys,You have enabled social logins but not added the Twitter id and secret key in the forum.config
+Members.NowLoggedOut,You are now logged out
+PM.MessageSent,Message Sent
+Date.OneHourAgo,1 hour ago
+Members.NewMemberSubject,New Member Registered
+Errors.GenericMessage,Rất tiếc, đã xảy ra lỗi
+Post.Upload,Upload Files
+PM.BlockedMessage,Unable to send message
+Badge.PostMentionsUmbraco.Desc,This badge is awarded to a user who mentions Umbraco in their latest post
+Topic.HotTopics,Chủ đề nóng
+Post.VoteDown,Không thích
+Badge.UnknownBadge,Unknown badge type {0}
+Members.Profile.Joined,Joined:
+PM.AboutToExceedInboxSizeBody,You are about to exceed your private message inbox allowance
+Layout.Nav.Home,Trang chủ
+Ajax.PleaseWait,Vui lòng đợi ...
+Members.Profile.Facebook,Facebook:
+Post.Move.Description,Move post to an existing topic, or create a new one.
+Members.ProfileTitle,Profile
+Members.Label.Signature,Signature
+Layout.Nav.Logon,Đăng nhập
+Buttons.ChangePassword,Đổi mật khẩu
+Date.HoursAgo,{0} hours ago
+PM.BackToInbox,Back To Inbox
+Members.EditMember,Chỉnh sửa Thành viên
+PM.PrivateMessages,Tin nhắn riêng
+PM.LastActivity,Last Activity
+Post.Edit,Sửa
+Members.ForgotPassword.Link,Forgot your password?
+SubscribedTopics.NothingToShow,Bạn không theo dõi bất kỳ chủ đề nào
+Members.Label.RememberMe,Remember Me?
+Post.Move,Move
+Notification.Subscribe,Follow
+Leaderboard.ThisWeeksStars,Ngôi sao trong tuần
+Facebook.Error.EnabledButNotAddedKeys,You have enabled Facebook login but not added your AppId or Secret key to the forum.config
+Members.Label.NewPassword,New Password
+Badge.JediMaster.Name,Jedi Master
+Post.Report,Report
+SubNav.Latest,Latest
+Activity.ActivityTitle,Hoạt động
+Members.Admin,Quản trị viên
+Members.Profile.Website,Website
+Badges.AwardsPoints,Giải thưởng {0} điểm
+PM.NoMessages,You currently don't have any private messages
+Members.Label.Username,Username
+Category.NoDiscussions,Hiện tại không có cuộc thảo luận trong mục này
+Post.IsSolution,Is Solution
+Badge.Photogenic.Desc,Những điều nhỏ nhặt như tải lên một ảnh tiểu sử làm cho cộng đồng trở thành một nơi tốt hơn. Cảm ơn!
+Report.ReportPostBy,Report Post By:
+Members.NowBanned,Member is now banned
+Post.OthersLiked,and {0} others
+Post.Favourited,Favourited
+Moderate.Title,Moderate
+PostEdit.EditedBy,Sửa bởi
+Post.Move.Label.NewTopicTitle,Tạo chủ đề mới
+Activity.UserJoined,là thành viên mới trong diễn đàn
+Layout.Nav.Admin,Quản trị viên
+Search.Results,Results Found
+Post.Notification.NewPosts,A new post has been created in the {0} topic
+Date.DaysAgo,{0} ngày trước
+Topic.Notification.NewTopics,A new topic or tag has been created in the {0} category
+PM.Title,Message:
+Members.ForgotPassword.SuccessMessage,A new password has been emailed to you
+Search.NoResults,Sorry no results found
+Search.Searching,Searching
+Members.ResetPassword.InvalidToken,This request is either invalid or has expired. Please make a password reset request again.
+Members.LogonMicrosoftButton,Login with Microsoft
+TermsAndConditions.Label.Agree,Tôi đã đọc và đồng ý với Điều khoản và Điều kiện của trang web
+Members.LoginOrText,Or
+Layout.Nav.Register,Đăng ký
+PM.From,From:
+Members.Label.Password,Password
+Members.Label.DisableEmailNotifications,Disable Email Notifications
+Members.DeleteAllPosts,Xóa tất cả bài đăng
+Member.HasNewPrivateMessages,Bạn có tin nhắn mới chưa đọc
+Badge.YourPostFavourited.Desc,Bạn có một hoặc nhiều bài đăng đã được Ưu tiên bởi một thành viên khác
+PM.Subject,Subject
+Topic.IsLocked,Topic Is Locked
+PM.Sent,Sent:
+Members.Errors.PasswordIncorrect,Người dùng hoặc mật khẩu được cung cấp không chính xác.
+PM.Block,Block
+TinyMCE.InsertImage.EnterValidUrl,Vui lòng nhập một url hợp lệ
+PM.ShowMoreLoading,Loading...
+PostFilter.Newest,Mới nhất
+Badge.AuthorMarkAsSolution.Name,Câu hỏi của bạn đã được giải quyết
+Poll.Button.Vote,Submit Vote
+Badge.YourPostFavouritedTenTimes.Desc,Một hoặc nhiều bài đăng của bạn đã được Ưu tiên bởi 10 người trở lên
+Topic.Label.Tags,Add Tag
+Members.ForgotPassword.Email,You have requested that your password is reset on {0}. Your new password is below
+PM.Blocked,Blocked
+Topic.LatestBy,Latest By
+Members.LogonGoogleButton,Login with Google
+Google.Error.EnabledButNotAddedKeys,You have enabled social logins but not added the Google id and secret key in the forum.config
+PM.SendingToQuickly,You are trying to send messages to quickly
+Topic.Label.TopicTitle,Tiêu đề
+Members.Label.Website,Website
+Buttons.Continue,Tiếp tục
+Topic.Deleted,Chủ đề đã bị xoá
+Members.MemberEmailAuthorisationResend,Resend Confirmation Email
+Members.MessageMe,Message Me
+Post.Browse,Browse...
+Members.Points,Points
+Members.EditProfile,Chỉnh sửa Hồ sơ
+Poll.Placeholder.TypeAnswerHere,Type A Poll Answer Here
+Favourites.NoMemberFavourites,Bạn chưa gắn đấu sao cho bài viết nào
+Badge.BadegEnumNoClass,The badge enum type {0} has no corresponding class specified.
+Members.Label.Location,Location
+Points.ThisWeeksHighEarners,This Weeks High Earners
+PM.Reply,Reply
+Members.Errors.UserLockedOut,User is locked out.
+Layout.Nav.Leaderboard,Bảng xếp hạng
+Leaderboard.LeaderboardTitle,Global Leaderboard
+Members.ChangePassword.Success,Mật khẩu đã được thay đổi
+Members.ForgotPassword.Title,Forgot Password
+Members.SuccessfulSrub,All done
+Members.NowLoggedIn,You are now logged in
+LogOn.LogOff,Đăng xuất
+Badge.AuthorMarkAsSolution.Desc,Huy hiệu này được trao cho người dùng khi họ đánh dấu một bài đăng của người dùng là giải pháp cho chủ đề của họ
+Topic.Views,Lượt xem
+Errors.NoPermission,Bạn không có quyền thực hiện hành động này
+Members.Label.UserIsApproved,User is Approved
+Badge.PosterMarkAsSolution.Name,Post Selected As Answer
+Post.Points,Points
+Moderate.Topics,Topics
+Buttons.Save,Lưu lại
+Members.Profile.LastOnline,Last Online
+PM.ReceivedItemsOverCapcity,{0} has exceeded their inbox size - unable to send message
+Post.VotedDown,Disliked
+Post.Updated,Post Updated
+Error.EmailIsBanned,The email address or domain you are trying to use is banned
+Badge.PosterVoteUp.Name,First Vote Up Received
+Badge.OneThousandPoints.Name,Thousand Pointer
+Post.VoteUp,Like
+Activity.UserAwardedBadge,has been awarded the
+Topic.Category,Thể loại
+Post.Delete,Xóa
+Members.DateJoined,Ngày tham gia
+Topic.TagThisTopic,Gắn thẻ chủ đề này
+Layout.Nav.Badges,Danh hiệu
+TinyMCE.InsertImage.ExternalImage,External Image
+SubscribedCats.NothingToShow,Bạn không theo dõi bất kỳ danh mục nào
+Badges.UnableToAward,Unable to award badges as badge collection is null for user {0}
+Members.Label.Age,Age
+PM.Read,Read
+PM.SentItemsOverCapcity,Your sent items is over capacity - delete messages to be able to send
+Post.DeleteConfirmation,Bạn có chắc chắn muốn xóa?
+Post.Move.Label.Topic,Topic
+Topic.Choose,Chọn chủ đề hiện tại
+TinyMCE.InsertImage.ButtonClose,Close
+Members.Profile.Posts,Posts:
+Post.Favourite,Favourite
+Post.UploadBannedFileExtension,File extension not allowed
+PM.MessageSubject,Subject
+SideBox.MyTools,Công cụ của tôi
+Post.Label.IsStickyTopic,Is Sticky Topic
+Post.Move.Label.ReplyToPosts,Move Replies and Quotes Too
+Members.ChangePassword.Error,Mật khẩu hiện tại không chính xác hoặc mật khẩu mới không hợp lệ.
+Topic.Votes,Bình chọn
+Badge.Padawan.Desc,Đã có 10 bài viết trở lên được đánh dấu thành câu trả lời thành công
+Rss.LatestActivity.Description,Recent discussions
+PM.Create,Create
+Report.MemberReport,Member Report
+Members.NewMemberRegistered,New member registered on {0} ({1})
+PM.Date,Date
+Rss.LatestActivity.Title,Latest Forum Discussions
+Post.Reply,Reply
+Badge.FavouriteFirstPost.Name,Yêu thích đầu tiên
+Buttons.LogOn,Đăng nhập
+Rss.Category.Description,Latest discussions happening in the {0} category
+Topic.PollClosed,Đóng
+Members.Label.ConfirmNewPassword,Confirm New Password
+Topic.AlreadyAnswered,Questions that may already have your answer
+Category.CategoriesSideHeading,Thể loại
+Report.PostReported,Post Reported In
+Topic.UnSubscribe,Không theo dõi
+Post.Deleted,Đã xóa bài đăng
+Report.PostReport,Post Report
+Members.Users,Users
+Side.Search.SearchFor,Tìm kiếm...
+Topic.CommentsDetails,Bình luận
+TinyMCE.InsertImage.ImageDescription,Mô tả hình ảnh
+Badge.JediMaster.Desc,Đã có hơn 50 bài đăng được đánh dấu thành câu trả lời thành công
+Report.Reason,Reason
+Language.Change,Thay đổi ngôn ngữ
+Members.Label.UploadNewAvatar,Upload a new profile image
+Search.InTopic,In Topic
+Members.ChangePassword.Title,Đổi mật khẩu
+Members.MemberEmailAuthorisation.EmailBody,You have registered on {0} - In order to continue you must confirm your email address by clicking the link below. {1}
+Category.MostRecent,Gần đây nhất:
+Members.Errors.LogonGeneric,Không thể đăng nhập.
+Errors.NoPermissionPolls,Chủ đề đã tạo. Nhưng bạn không có quyền tạo phiếu bầu
+Rss.Category.Title,{0} Discussions
+Notification.UnSubscribe,UnFollow
+PM.UnableFindMember,Unable to find that member
+TinyMCE.InsertImage.OnlyImages,Chỉ có thể tải lên các ảnh JPEG, PNG và GIF
+Members.ChangePassword.Link,Click here if you want to {0}
+Members.ForgotPassword.ErrorMessage,Error resetting password
+Post.LikedBy,Liked by
+Activity.ProfileUpdated,has an updated profile
+PM.RecipientUsername,Recipient Username
+SubNav.Favourites,Sở thích của tôi
+Editor.NeedHelp,Need formatting help?
+Post.AttachedFiles,Attached Files
+SlidePanel.CloseConfirmation,Are you sure you want to close?
+Following.Categories,Danh mục bạn đang theo dõi
+PM.TalkToSelf,Talking to yourself is a bit weird. isn't it?
+Post.Label.TopicName,Tên chủ đề
+Site.MvcForum,MvcForum
+PM.CreatePrivateMessage,Create Private Message
+SubNav.Following,Theo dõi
+Members.ResetPassword.Title,Password reset request sent
+Members.Profile.IsSocialAccount,Social Account
+PostEdit.None,This post has not post edit history at the moment
+Badge.TheGrouch.Desc,Huy hiệu này được trao cho những người dùng đã bỏ phiếu cho các bài đăng người dùng khác từ 10 lần trở lên
+Members.Profile.Points,Points:
+Badge.Photogenic.Name,Photogenic
+Tasks.MarkAsSolutionReminderJob.Subject,Your post on {0}
+Members.Label.Roles,Roles
+LogOn.LogOn,Đăng nhập
+Notifications.NoActiveMembers,No one online at the moment
+PM.NewPrivateMessage,New Private Message
+Moderate.NothingHere,Nothing here at the moment
+Poll.Button.Create,Thêm một cuộc thăm dò
+Topic.ShowMorePosts,Xem thêm bài
+Members.SrubAndBan,Scrub Member
+Buttons.ResetPassword,Đặt lại mật khẩu
+Layout.Nav.Utilities,Tiện ích
+Members.BanUser,Cấm người dùng
+Post.ReplyingTo,Replying To:
+Members.Errors.UserNotApproved,User has not been approved.
+Post.Notification.Subject,Đăng bài mới
+Members.Register,Register
+Buttons.Report,Bài báo cáo
+Microsoft.Error.EnabledButNotAddedKeys,You have enabled Microsoft login but not added your AppId or Secret key to the forum.config
+Report.MemberReported,Member Reported
+Post.LastEdited,Chỉnh sửa lần cuối
+Confirmation.SrubAndBan,Bạn có chắc chắn muốn làm điều này? Nó sẽ xóa tất cả các bài viết của họ và sau đó cấm họ
+Member.ProfileUpdated,Profile Updated
+Date.WeeksAgo,{0} weeks ago
+Topic.InCategory,in
+Post.Move.PostTitle,Move Post
+Topic.Label.PollCloseAfterDays,Close Poll After Specified Amount Of Days? Leave as 0 to disable
+Badge.FavouriteFirstPost.Desc,Bạn đã yêu thích bài đăng đầu tiên của bạn
+TinyMCE.InsertImage.ButtonOk,Ok
+Members.MemberEmailAuthorisationNeeded,We have sent you a confirmation email - please click the confirmation link in your email to approve your account.
+Members.NowRegisteredNeedApproval,You are now registered. But the forum admin must authorise your account
+Buttons.Edit,Chỉnh sửa
+Members.Errors.DuplicateEmail,Email này đã có người sử dụng. Vui lòng nhập địa chỉ e-mail khác.
+Post.Permalink,Permalink
+Members.Errors.Unknown,An unknown error occurred. Please verify your entry and try again. If the problem persists please contact your system administrator.
+Members.Label.Comment,Comment
+Members.NowApproved,Your account has now been approved - Thank you
+Post.Quote,Quote
+Topic.IsPoll,Poll
+Members.Label.DateJoined,Date Joined
+PM.OriginalMessage,Original Message
+Members.MemberEmailAuthorisationNeededMessage,Click the link in your confirmation email to approve your account.
+Members.Profile.Age,Age:
+Home.LatestDiscussions,Thảo luận mới nhất
+Topic.Label.UploadFiles,Tải tệp lên
+PostEdit.Panel.Name,Post Edit History
+Category.SubCategoriesHeading,Sub Categories In
+Date.JustNow,Just now
+Layout.Nav.Activity,Hoạt động
+Members.Label.EmailAddress,Email address (Used by Gravatar to show your Avatar image)
+Members.AlreadyRegistered,Bạn đã đăng kí? Tại sao bạn lại muốn làm lại?
+Topic.Label.Category,Choose Category
+Favourites.PageTitle,Sở thích của tôi
+Members.LogOnMessage,Please enter your user name and password. Or {0} if you don't have an account
+Members.MemberEmailAuthorisation.Subject,Email Confirmation
+Poll.Button.Remove,Remove Poll From Topic
+Members.ResetPassword.EmailText,A request has been made to reset your password on {0}. To reset your password follow the link below. If you did not make this request then please ignore this email. No further action is required and your password will not be changed.
+Side.Search,Tìm kiếm
+Admin,Quản trị
+PM.Send,Send
+Leaderboard.ThisYearsStars,Ngôi sao trong năm
+TermsAndConditions.Label.AgreeError,You must Agree to the Terms and Conditions
+Members.LogonFacebookButton,Login with Facebook
+Buttons.Send,Gửi
+Topic.LastPost,Bài cuối
+Buttons.CreatePost,Thêm bài đăng
+TinyMCE.InsertImage.MaxFileSize,Kích thước tệp hình ảnh tối đa là 2MB
+Topic.CreateDiscussion,Create Discussion
+Badge.TheGrouch.Name,The Grouch
+Moderate.NavText,Pending Posts/Topics
+SubNav.PostedIn,Đã đăng
+Topic.Notification.Subject,Thảo luận mới
+Report.Report,Report
+Members.NowUnBanned,Member is now NOT banned
+Badge.PostMentionsUmbraco.Name,Umbraco Fan
+Topic.DiscussionTaggedWith,Discussions Tagged With:
+PostFilter.OrderBy,Order By:
+Topic.StartedBy,Started {0} by {1}
+Members.ResetPassword.SuccessText,Your password has been changed.
+Report.Admin,Quản trị viên
+Members.Errors.InvalidQuestion,Câu hỏi truy xuất mật khẩu được cung cấp không hợp lệ. Vui lòng kiểm tra giá trị và thử lại.
+Members.ChangePassword.Text,New passwords are required to be a minimum of {0} characters in length.
+Stats.FooterActiveUsersText,Thành viên hiện đang trực tuyến:
+PM.NewPrivateMessageSubject,New Private Message
+Layout.CreateButton,Đăng tin
+Members.Profile.Badges,Badges
+Members.Errors.ProviderError,Nhà cung cấp xác thực đã trả lại lỗi. Vui lòng xác nhận nhập cảnh của bạn và thử lại. Nếu sự cố vẫn tiếp diễn, vui lòng liên hệ với quản trị viên hệ thống của bạn.
+Date.MinutesAgo,{0} minutes ago
+Members.Label.CurrentPassword,Current Password
+PostedIn.PageTitle,Chủ đề và bài viết mà bạn đã đăng
+PM.MemberIsOnline,Online
+Badge.YourPostFavourited.Name,Favourited Post
+TinyMCE.InsertImage.Browse,Browse
+Badge.MemberForAYear.Name,First Anniversary
+Following.Topics,Chủ đề bạn đang theo dõi
+Post.Attach,Attach
+PostEdit.OriginalVersion,Original
+Errors.NoAccess,No Access
+Members.Label.Twitter,Twitter Url
+Buttons.Search,Tìm kiếm
+Members.UnableToGetEmailAddress,Unable to gain access to your email address - please check your permissions
+Members.Profile.DiscussionActivity,Discussion Activity
+PM.SentPrivateMessages,Sent Private Messages
+Html.Lang,vi
+Topic.PostBy,Đăng bởi
+Menu.Home,Trang chủ
+Topic.PostDate,Ngày đăng
+Topic.UserPosted,Người đăng
+Topic.Label.ProductType,Loại sản phẩm
