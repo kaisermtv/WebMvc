@@ -9556,6 +9556,9 @@
     <Content Include="Themes\Gland\Views\Category\_CatTopNews.cshtml" />
     <Content Include="Views\Category\ShowBySlug.cshtml" />
     <Content Include="Themes\Gland\Views\Category\ShowBySlug.cshtml" />
+    <Content Include="Themes\Gland\Views\Shared\_Paging.cshtml" />
+    <Content Include="Views\Topic\ShowBySlug.cshtml" />
+    <Content Include="Themes\Gland\Views\Topic\ShowBySlug.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Carousel\" />

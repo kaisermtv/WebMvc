@@ -251,6 +251,9 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                                 return RedirectToAction("Index");
                             }
 
+
+                            viewModel.Image = topic.Image;
+
                             bool pn = false;
                             Post post;
                             if (topic.Post_Id != null)
@@ -294,8 +297,7 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                                 }
 
                             }
-
-
+                            
                             topic.Name = viewModel.Name;
                             topic.Category_Id = viewModel.Category;
                             topic.Image = viewModel.Image;

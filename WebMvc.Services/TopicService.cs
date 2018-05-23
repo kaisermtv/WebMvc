@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Text.RegularExpressions;
 using WebMvc.Domain.Constants;
 using WebMvc.Domain.DomainModel.Entities;
 using WebMvc.Domain.DomainModel.Enums;
@@ -50,10 +51,54 @@ namespace WebMvc.Services
         }
         #endregion
 
+        #region Slug
+        private bool CheckSlug(string slug, DataTable data)
+        {
+            foreach (DataRow it in data.Rows)
+            {
+                if (slug == it["Slug"].ToString()) return false;
+            }
+
+            return true;
+        }
+
+        private bool TestSlug(string slug,string newslug)
+        {
+            return Regex.IsMatch(slug, string.Concat("^", newslug,"(-[\\d]+)?$" ));
+        }
+
+        private void CreateSlug(Topic topic)
+        {
+            var slug = ServiceHelpers.CreateUrl(topic.Name);
+            if (!TestSlug(topic.Slug, slug))
+            {
+                var tmpSlug = slug;
+
+                var Cmd = _context.CreateCommand();
+                Cmd.CommandText = "SELECT Slug FROM [Topic] WHERE [Slug] LIKE @Slug AND [Id] != @Id ";
+
+                Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = topic.Id;
+                Cmd.Parameters.Add("Slug", SqlDbType.NVarChar).Value = string.Concat(slug,"%");
+
+                DataTable data = Cmd.findAll();
+                Cmd.Close();
+
+                int i = 0;
+                while (!CheckSlug(tmpSlug, data))
+                {
+                    i++;
+                    tmpSlug = string.Concat(slug, "-", i);
+                }
+
+                topic.Slug = tmpSlug;
+            }
+        }
+        #endregion
+
         public void Add(Topic topic)
         {
             topic.CreateDate = DateTime.UtcNow;
-            topic.Slug = "";
+            CreateSlug(topic);
 
             var Cmd = _context.CreateCommand();
 
@@ -91,8 +136,8 @@ namespace WebMvc.Services
         public void Update(Topic topic)
         {
             topic.CreateDate = DateTime.UtcNow;
-            topic.Slug = "";
-            
+            CreateSlug(topic);
+
             var Cmd = _context.CreateCommand();
 
             //Cmd.CommandText = "IF NOT EXISTS (SELECT * FROM [Topic] WHERE [Id] = @Id)";
@@ -148,7 +193,30 @@ namespace WebMvc.Services
             }
             return topic;
         }
-        
+
+        public Topic GetBySlug(string Slug)
+        {
+            string cachekey = string.Concat(CacheKeys.Topic.StartsWith, "GetBySlug-", Slug);
+            var topic = _cacheService.Get<Topic>(cachekey);
+            if (topic == null)
+            {
+                var Cmd = _context.CreateCommand();
+
+                Cmd.CommandText = "SELECT * FROM [Topic] WHERE [Slug] = @Slug";
+
+                Cmd.Parameters.Add("Slug", SqlDbType.NVarChar).Value = Slug;
+
+                DataRow data = Cmd.findFirst();
+                if (data == null) return null;
+
+                topic = DataRowToTopic(data);
+
+                _cacheService.Set(cachekey, topic, CacheTimes.OneDay);
+            }
+            return topic;
+        }
+
+
         public int GetCount(Guid Id)
         {
             string cachekey = string.Concat(CacheKeys.Topic.StartsWith, "GetCount-", Id);

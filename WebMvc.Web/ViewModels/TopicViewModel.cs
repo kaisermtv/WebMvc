@@ -70,4 +70,12 @@ namespace WebMvc.Web.ViewModels
         public int Page;
         public int MaxPage;
     }
+    public class TopicViewModel
+    {
+        public Topic topic;
+        public Category Cat;
+        public Post post;
+    }
+
+
 }

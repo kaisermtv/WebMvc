@@ -21,15 +21,7 @@
         <div class="title_box_center">
             <h1 class="h_title cufon" style="font-size:22px !important;">Tin Gland</h1>
 
-            <div class="paging">
-
-                <a href="#" class="current">1</a>
-
-                <a href="/tin-tuc/?page=2">2</a>
-
-                <a href="/tin-tuc/?page=2">Next</a>
-
-            </div><!--paging-->
+            @Html.Partial("_Paging", Model.Paging)
 
         </div>
         <div class="space2"></div>
@@ -80,15 +72,7 @@
             </ul>
         </div><!--list_news-->
 
-        <div class="paging">
-
-            <a href="#" class="current">1</a>
-
-            <a href="/tin-tuc/?page=2">2</a>
-
-            <a href="/tin-tuc/?page=2">Next</a>
-
-        </div><!--paging-->
+        @Html.Partial("_Paging", Model.Paging)
 
     </div><!--content_news-->
 

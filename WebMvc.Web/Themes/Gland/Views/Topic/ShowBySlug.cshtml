@@ -1,0 +1,112 @@
+﻿@model WebMvc.Web.ViewModels.TopicViewModel
+@{
+    ViewBag.Title = string.Concat(Model.topic.Name, " - ",Model.Cat.Name);
+}
+<div class="container">
+    <div id="location">
+        <a href="/"><i class="bg icon_home"></i></a>
+        <span>»</span><a href="/tin-tuc">Tin tức</a>
+        <span>»</span><a href="@Url.Action("ShowBySlug","Category",new { slug = Model.Cat.Slug })">@Model.Cat.Name</a>
+        <span>»</span><a href="">@Model.topic.Name</a>
+    </div>
+    <div id="content_left">
+        @Html.Partial("_CatNews")
+        @Html.Partial("_HostView")
+        <div class="banner_left">
+
+        </div>
+    </div><!--content_left-->
+    <div id="content_news_page">
+        <div id="detail_news">
+            <h1>@Model.topic.Name</h1>
+            <div class="time">@Model.topic.CreateDate.ToString("yyyy-MM-dd HH:mm:ss")</div>
+            <div class="content_detail">
+                <h2 style="text-align: left;"><img style="display: block; margin-left: auto; margin-right: auto;" src="@AppHelpers.CategoryImage(Model.topic.Image, Model.topic.Id, 600)" alt="@Model.topic.Name" width="600" height="450"></h2>
+                @Html.Raw(Model.post.PostContent??"")
+            </div>
+            <div>
+
+
+                ---------------------------------------------------------- <br>
+                <b>CỬA HÀNG MÁY TÍNH GLAND</b><br>
+                Địa Chỉ 1: Gland– Số Nhà 47 – Ngõ 187 Phố Hồng Mai – Hai Bà Trưng – Hà Nội<br>
+                Địa Chỉ 2 Số Nhà 17/224 Ngõ Quỳnh Phố Thanh Nhàn Hai Bà Trưng – HN
+                Điện Thoại : 0976.155.499
+            </div>
+            <div class="clear"></div>
+            <div class="space"></div>
+            <!-- AddThis Button BEGIN -->
+            ---------------------------------------------------------- <br>
+            <b>Hãy chia sẻ bài viết này: </b><br>
+            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+            <div class="addthis_inline_share_toolbox" style="text-align: left; clear: both;" data-url="https://gland.vn/o-cung-ssd-va-hdd-cai-nao-tot-hon-12-su-that-ban-phai-biet/" data-title="Ổ cứng ssd và hdd cái nào tốt hơn? 12 sự thật bạn phải biết" data-description="Bạn đã biết 12 sự thật về sự khác biệt giữa ổ cứng SSD và ổ cứng HDD để từ đó có sự lựa chọn giữa Ổ cứng SSD và HDD cái nào tốt hơn cho bản thân??
+                 Hãy tìm câu trả lời ngay trong bài viết này-->"><div id="atstbx" class="at-share-tbx-element addthis-smartlayers addthis-animated at4-show" aria-labelledby="at-0a1e5b7e-fd67-4cff-82c8-d20ed20d3add" role="region"><span id="at-0a1e5b7e-fd67-4cff-82c8-d20ed20d3add" class="at4-visually-hidden">AddThis Sharing Buttons</span><div class="at-share-btn-elements"><a role="button" tabindex="1" class="at-icon-wrapper at-share-btn at-svc-facebook" style="background-color: rgb(59, 89, 152); border-radius: 10px;"><span class="at4-visually-hidden">Share to Facebook</span><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" role="img" aria-labelledby="at-svg-facebook-1" class="at-icon at-icon-facebook" style="fill: rgb(255, 255, 255); width: 32px; height: 32px;"><title id="at-svg-facebook-1">Facebook</title><g><path d="M22 5.16c-.406-.054-1.806-.16-3.43-.16-3.4 0-5.733 1.825-5.733 5.17v2.882H9v3.913h3.837V27h4.604V16.965h3.823l.587-3.913h-4.41v-2.5c0-1.123.347-1.903 2.198-1.903H22V5.16z" fill-rule="evenodd"></path></g></svg></span><span class="at-label" style="font-size: 11.4px; line-height: 32px; height: 32px; color: rgb(255, 255, 255);">Facebook</span></a><a role="button" tabindex="1" class="at-icon-wrapper at-share-btn at-svc-google_plusone_share" style="background-color: rgb(220, 78, 65); border-radius: 10px;"><span class="at4-visually-hidden">Share to Google+</span><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" role="img" aria-labelledby="at-svg-google_plusone_share-2" class="at-icon at-icon-google_plusone_share" style="fill: rgb(255, 255, 255); width: 32px; height: 32px;"><title id="at-svg-google_plusone_share-2">Google+</title><g><path d="M12 15v2.4h3.97c-.16 1.03-1.2 3.02-3.97 3.02-2.39 0-4.34-1.98-4.34-4.42s1.95-4.42 4.34-4.42c1.36 0 2.27.58 2.79 1.08l1.9-1.83C15.47 9.69 13.89 9 12 9c-3.87 0-7 3.13-7 7s3.13 7 7 7c4.04 0 6.72-2.84 6.72-6.84 0-.46-.05-.81-.11-1.16H12zm15 0h-2v-2h-2v2h-2v2h2v2h2v-2h2v-2z" fill-rule="evenodd"></path></g></svg></span><span class="at-label" style="font-size: 11.4px; line-height: 32px; height: 32px; color: rgb(255, 255, 255);">Google+</span></a><a role="button" tabindex="1" class="at-icon-wrapper at-share-btn at-svc-twitter" style="background-color: rgb(29, 161, 242); border-radius: 10px;"><span class="at4-visually-hidden">Share to Twitter</span><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" role="img" aria-labelledby="at-svg-twitter-3" class="at-icon at-icon-twitter" style="fill: rgb(255, 255, 255); width: 32px; height: 32px;"><title id="at-svg-twitter-3">Twitter</title><g><path d="M27.996 10.116c-.81.36-1.68.602-2.592.71a4.526 4.526 0 0 0 1.984-2.496 9.037 9.037 0 0 1-2.866 1.095 4.513 4.513 0 0 0-7.69 4.116 12.81 12.81 0 0 1-9.3-4.715 4.49 4.49 0 0 0-.612 2.27 4.51 4.51 0 0 0 2.008 3.755 4.495 4.495 0 0 1-2.044-.564v.057a4.515 4.515 0 0 0 3.62 4.425 4.52 4.52 0 0 1-2.04.077 4.517 4.517 0 0 0 4.217 3.134 9.055 9.055 0 0 1-5.604 1.93A9.18 9.18 0 0 1 6 23.85a12.773 12.773 0 0 0 6.918 2.027c8.3 0 12.84-6.876 12.84-12.84 0-.195-.005-.39-.014-.583a9.172 9.172 0 0 0 2.252-2.336" fill-rule="evenodd"></path></g></svg></span><span class="at-label" style="font-size: 11.4px; line-height: 32px; height: 32px; color: rgb(255, 255, 255);">Twitter</span></a><a role="button" tabindex="1" class="at-icon-wrapper at-share-btn at-svc-pinterest_share" style="background-color: rgb(203, 32, 39); border-radius: 10px;"><span class="at4-visually-hidden">Share to Pinterest</span><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" role="img" aria-labelledby="at-svg-pinterest_share-4" class="at-icon at-icon-pinterest_share" style="fill: rgb(255, 255, 255); width: 32px; height: 32px;"><title id="at-svg-pinterest_share-4">Pinterest</title><g><path d="M7 13.252c0 1.81.772 4.45 2.895 5.045.074.014.178.04.252.04.49 0 .772-1.27.772-1.63 0-.428-1.174-1.34-1.174-3.123 0-3.705 3.028-6.33 6.947-6.33 3.37 0 5.863 1.782 5.863 5.058 0 2.446-1.054 7.035-4.468 7.035-1.232 0-2.286-.83-2.286-2.018 0-1.742 1.307-3.43 1.307-5.225 0-1.092-.67-1.977-1.916-1.977-1.692 0-2.732 1.77-2.732 3.165 0 .774.104 1.63.476 2.336-.683 2.736-2.08 6.814-2.08 9.633 0 .87.135 1.728.224 2.6l.134.137.207-.07c2.494-3.178 2.405-3.8 3.533-7.96.61 1.077 2.182 1.658 3.43 1.658 5.254 0 7.614-4.77 7.614-9.067C26 7.987 21.755 5 17.094 5 12.017 5 7 8.15 7 13.252z" fill-rule="evenodd"></path></g></svg></span><span class="at-label" style="font-size: 11.4px; line-height: 32px; height: 32px; color: rgb(255, 255, 255);">Pinterest</span></a><a role="button" tabindex="1" class="at-icon-wrapper at-share-btn at-svc-reddit" style="background-color: rgb(255, 87, 0); border-radius: 10px;"><span class="at4-visually-hidden">Share to Reddit</span><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" role="img" aria-labelledby="at-svg-reddit-5" class="at-icon at-icon-reddit" style="fill: rgb(255, 255, 255); width: 32px; height: 32px;"><title id="at-svg-reddit-5">Reddit</title><g><path d="M27 15.5a2.452 2.452 0 0 1-1.338 2.21c.098.38.147.777.147 1.19 0 1.283-.437 2.47-1.308 3.563-.872 1.092-2.06 1.955-3.567 2.588-1.506.634-3.143.95-4.91.95-1.768 0-3.403-.316-4.905-.95-1.502-.632-2.69-1.495-3.56-2.587-.872-1.092-1.308-2.28-1.308-3.562 0-.388.045-.777.135-1.166a2.47 2.47 0 0 1-1.006-.912c-.253-.4-.38-.842-.38-1.322 0-.678.237-1.26.712-1.744a2.334 2.334 0 0 1 1.73-.726c.697 0 1.29.26 1.78.782 1.785-1.258 3.893-1.928 6.324-2.01l1.424-6.467a.42.42 0 0 1 .184-.26.4.4 0 0 1 .32-.063l4.53 1.006c.147-.306.368-.553.662-.74a1.78 1.78 0 0 1 .97-.278c.508 0 .94.18 1.302.54.36.36.54.796.54 1.31 0 .512-.18.95-.54 1.315-.36.364-.794.546-1.302.546-.507 0-.94-.18-1.295-.54a1.793 1.793 0 0 1-.533-1.308l-4.1-.92-1.277 5.86c2.455.074 4.58.736 6.37 1.985a2.315 2.315 0 0 1 1.757-.757c.68 0 1.256.242 1.73.726.476.484.713 1.066.713 1.744zm-16.868 2.47c0 .513.178.95.534 1.315.356.365.787.547 1.295.547.508 0 .942-.182 1.302-.547.36-.364.54-.802.54-1.315 0-.513-.18-.95-.54-1.31-.36-.36-.794-.54-1.3-.54-.5 0-.93.183-1.29.547a1.79 1.79 0 0 0-.54 1.303zm9.944 4.406c.09-.09.135-.2.135-.323a.444.444 0 0 0-.44-.447c-.124 0-.23.042-.32.124-.336.348-.83.605-1.486.77a7.99 7.99 0 0 1-1.964.248 7.99 7.99 0 0 1-1.964-.248c-.655-.165-1.15-.422-1.486-.77a.456.456 0 0 0-.32-.124.414.414 0 0 0-.306.124.41.41 0 0 0-.135.317.45.45 0 0 0 .134.33c.352.355.837.636 1.455.843.617.207 1.118.33 1.503.366a11.6 11.6 0 0 0 1.117.056c.36 0 .733-.02 1.117-.056.385-.037.886-.16 1.504-.366.62-.207 1.104-.488 1.456-.844zm-.037-2.544c.507 0 .938-.182 1.294-.547.356-.364.534-.802.534-1.315 0-.505-.18-.94-.54-1.303a1.75 1.75 0 0 0-1.29-.546c-.506 0-.94.18-1.3.54-.36.36-.54.797-.54 1.31s.18.95.54 1.315c.36.365.794.547 1.3.547z" fill-rule="evenodd"></path></g></svg></span><span class="at-label" style="font-size: 11.4px; line-height: 32px; height: 32px; color: rgb(255, 255, 255);">Reddit</span></a><a role="button" tabindex="1" class="at-icon-wrapper at-share-btn at-svc-compact" style="background-color: rgb(255, 101, 80); border-radius: 10px;"><span class="at4-visually-hidden">Share to Thêm...</span><span class="at-icon-wrapper" style="line-height: 32px; height: 32px; width: 32px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" role="img" aria-labelledby="at-svg-addthis-6" class="at-icon at-icon-addthis" style="fill: rgb(255, 255, 255); width: 32px; height: 32px;"><title id="at-svg-addthis-6">Addthis</title><g><path d="M18 14V8h-4v6H8v4h6v6h4v-6h6v-4h-6z" fill-rule="evenodd"></path></g></svg></span><span class="at-label" style="font-size: 11.4px; line-height: 32px; height: 32px; color: rgb(255, 255, 255);">Thêm...</span></a><span class="at_flat_counter" style="line-height: 32px; font-size: 11.4px;">32</span></div></div></div>
+            <div class="clear"></div>
+            <!--
+                    <div id="share">
+                        <div class="float_l"><b class="float_l">Chia sẻ bài viết này: </b>
+                          <div  class="float_l">
+                            <div class="addthis_toolbox addthis_default_style" style="margin-top:10px;">
+                            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                            <a class="addthis_button_tweet"></a>
+                            <a class="addthis_counter addthis_pill_style"></a>
+                            </div>
+                            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5148003b01a03b86"></script>
+                          </div>
+                        </div>
+            -->
+            <!--  <a href="http://www.freetellafriend.com/tell/?heading=Share+This+Article&bg=1&option=email&url=https://gland.vn:443/o-cung-ssd-va-hdd-cai-nao-tot-hon-12-su-that-ban-phai-biet/" class="bg icon_send_mail float_r" target="_blank"></a>
+                <a href="javascript:window.print();" target="_blank" class="bg icon_print float_r"></a>
+                <div class="clear"></div>
+            </div><!--share-->
+            <!-- <div id="tag_news">
+                        <b>Hot tags:</b>
+
+                    </div>
+            -->
+            <div id="comment_news">
+
+                <!--	<div class="fb-comments" data-href="https://gland.vn:443/o-cung-ssd-va-hdd-cai-nao-tot-hon-12-su-that-ban-phai-biet/" data-width="975" data-numposts="5" data-colorscheme="light"></div>
+                </div><!--comment_news-->
+                <div id="other_news">
+                    <div class="box_other_news">
+                        <h2 class="cufon">Tin liên quan</h2>
+                        <ul class="ul">
+                            @{
+                                var i = 0;
+                            }
+                            @foreach (var it in AppHelpers.TopTopics(Model.Cat, 6))
+                            {
+                                i++;
+                                if (i > 5) { break; }
+                                if (it.Id != Model.topic.Id)
+                                {
+                                    <li>» <a href="@AppHelpers.TopicUrls(Model.Cat.Slug,it.Slug)">@it.Name</a> </li>
+                                }
+                            }
+                        </ul>
+                    </div><!--float_l-->
+                    <div class="box_other_news">
+                        <h2 class="cufon">Tin mới cập nhật</h2>
+                        <ul class="ul">
+                            @{
+                                i = 0;
+                            }
+                            @foreach (var it in AppHelpers.TopTopics(6))
+                            {
+                                i++;
+                                if (i > 5) { break; }
+                                if (it.Id != Model.topic.Id)
+                                {
+                                    <li>» <a href="@AppHelpers.TopicUrls(Model.Cat.Slug,it.Slug)">@it.Name</a> </li>
+                                }
+                            }
+                        </ul>
+                    </div><!--float_r-->
+                </div><!--other_news-->
+            </div><!--detail_news-->
+        </div><!--content_news-->
+    </div>
+
+</div>

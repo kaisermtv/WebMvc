@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using WebMvc.Domain.Constants;
 using WebMvc.Domain.DomainModel.Entities;
@@ -67,12 +68,16 @@ namespace WebMvc.Services
 
             return true;
         }
-        
+
+        private bool TestSlug(string slug, string newslug)
+        {
+            return Regex.IsMatch(slug, string.Concat("^", newslug, "(-[\\d]+)?$"));
+        }
 
         private void CreateSlug(Category cat)
         {
             var slug = ServiceHelpers.CreateUrl(cat.Name);
-            if(cat.Slug != slug)
+            if(!TestSlug(cat.Slug, slug))
             {
                 var tmpSlug = slug;
 

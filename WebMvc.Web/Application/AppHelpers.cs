@@ -217,6 +217,7 @@ namespace WebMvc.Web.Application
 
             return $"/{SiteConstants.Instance.CategoryUrlIdentifier}/{catSlug}/{slug}";
         }
+        
 
         #endregion
 

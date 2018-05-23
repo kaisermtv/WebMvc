@@ -53,9 +53,33 @@
         #region Show
         public ActionResult ShowBySlug(string catSlug, string Slug)
         {
-            //_topicServic.get
+            var cat = _categoryService.GetBySlug(catSlug);
+            if (cat == null)
+            {
+                return RedirectToAction("index","Catergory");
+            }
 
-            return View();
+            var topic = _topicServic.GetBySlug(Slug);
+            if (topic == null || cat.Id != topic.Category_Id)
+            {
+                return RedirectToAction("ShowBySlug", "Category", new { slug = cat.Slug });
+            }
+
+            Post post = new Post();
+
+            if (topic.Post_Id != null)
+            {
+                post = _postSevice.Get((Guid)topic.Post_Id);
+            }
+
+            var model = new TopicViewModel
+            {
+                Cat = cat,
+                topic = topic,
+                post = post
+            };
+
+            return View(model);
         }
         public ActionResult Show(Guid Id)
         {

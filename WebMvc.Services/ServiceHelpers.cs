@@ -33,7 +33,8 @@ namespace WebMvc.Services
         /// <returns></returns>
         public static string CreateUrl(string name)
         {
-            return StringUtils.CreateUrl(name, "-");
+            name = name.ToLower();
+            return StringUtils.CreateUrl(name, "-").Replace("đ","d");
         }
 
         public static string GenerateSlug(string stringToSlug, IEnumerable<Entity> similarList, string previousSlug)
