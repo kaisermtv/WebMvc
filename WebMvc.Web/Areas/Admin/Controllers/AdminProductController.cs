@@ -40,11 +40,18 @@ namespace WebMvc.Web.Areas.Admin.Controllers
             return View(model);
         }
 
-        private List<AdminEditProductClassAttributeViewModel> GetProductClassAttribute()
+        private List<AdminEditProductClassAttributeViewModel> GetProductClassAttribute(ProductClass productClass = null)
         {
             var lst = new List<AdminEditProductClassAttributeViewModel>();
 
             var attr = _productSevice.GetAllAttribute();
+
+            List<ProductClassAttribute> listcheck = null;
+            if (productClass != null)
+            {
+                listcheck = _productSevice.GetListProductClassAttributeForProductClassId(productClass.Id);
+            }
+
 
             foreach (var it in attr)
             {
@@ -54,10 +61,23 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                     Name = it.LangName,
                 };
 
+                if(productClass != null)
+                {
+                    foreach (var item in listcheck)
+                    {
+                        if (it.Id == item.ProductAttributeId)
+                        {
+                            a.IsCheck = true;
+                            a.IsShow = item.IsShow;
+                            break;
+                        }
+                    }
+                }
+                
+
                 lst.Add(a);
             }
-
-
+            
             return lst;
         }
 
@@ -138,7 +158,95 @@ namespace WebMvc.Web.Areas.Admin.Controllers
             return View(model);
         }
 
+        public ActionResult Edit(Guid Id)
+        {
+            var productclass = _productSevice.GetProductClass(Id);
+            if (productclass == null) return RedirectToAction("index");
 
+            var model = new AdminEditProductClassViewModel
+            {
+                Id = productclass.Id,
+                Colour = productclass.Colour,
+                Description = productclass.Description,
+                Image = productclass.Image,
+                IsLocked = productclass.IsLocked,
+                Name = productclass.Name,
+                AllAttribute = GetProductClassAttribute(productclass)
+            };
+
+            
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(AdminEditProductClassViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var unitOfWork = UnitOfWorkManager.NewUnitOfWork())
+                {
+                    try
+                    {
+                        var productClass = _productSevice.GetProductClass(model.Id);
+                        if (productClass == null) return RedirectToAction("index");
+
+                        model.Image = productClass.Image;
+
+                        productClass.Name = model.Name;
+                        productClass.Image = model.Image;
+                        productClass.Description = model.Description;
+                        productClass.Colour = model.Colour;
+                        productClass.IsLocked = model.IsLocked;
+
+                        _productSevice.Update(productClass);
+
+                        _productSevice.DelAllAttributeForProductClass(productClass.Id);
+                        if (model.AllAttribute != null)
+                        {
+                            foreach (var it in model.AllAttribute)
+                            {
+                                if (it.IsCheck)
+                                {
+                                    var a = new ProductClassAttribute
+                                    {
+                                        ProductAttributeId = it.Id,
+                                        ProductClassId = productClass.Id,
+                                        IsShow = it.IsShow,
+                                    };
+
+                                    _productSevice.Add(a);
+                                }
+                            }
+                        }
+
+
+                        unitOfWork.Commit();
+
+                        TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                        {
+                            Message = "Thành công cập nhật nhóm sản phẩm",
+                            MessageType = GenericMessages.success
+                        };
+                        
+                    }
+                    catch(Exception ex)
+                    {
+                        unitOfWork.Rollback();
+                        LoggingService.Error(ex.Message);
+
+                        ModelState.AddModelError("", "Lỗi khi thêm nhóm sản phẩm");
+                    }
+
+                }
+            }
+
+            foreach (var it in model.AllAttribute)
+            {
+                it.Name = _productSevice.GetAttribute(it.Id).LangName;
+            }
+            return View(model);
+        }
 
         #endregion
 
@@ -395,7 +503,8 @@ namespace WebMvc.Web.Areas.Admin.Controllers
         {
             var model = new AdminCreateProductAttributeViewModel
             {
-                AllValueType = GetListValueType()
+                AllValueType = GetListValueType(),
+                IsNull = true
             };
 
             return View(model);
@@ -489,7 +598,7 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                         // We use temp data because we are doing a redirect
                         TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
                         {
-                            Message = "Product Attribute Created",
+                            Message = "Thuộc tính sản phẩm được cập nhật thành công!",
                             MessageType = GenericMessages.success
                         };
                         unitOfWork.Commit();
@@ -499,7 +608,7 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                     {
                         unitOfWork.Rollback();
 
-                        ModelState.AddModelError("", "There was an error creating the ProductAttribute");
+                        ModelState.AddModelError("", "Có lỗi xảy ra khi cập nhật thông tin!");
                     }
 
                 }

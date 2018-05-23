@@ -15,6 +15,12 @@ namespace WebMvc.Domain.Interfaces.Services
         void Add(Product topic);
         void Add(ProductAttributeValue cat);
 
+        void Update(ProductClass cat);
+
+        void DelAllAttributeForProductClass(Guid guid);
+
+        ProductClass GetProductClass(Guid Id);
+
         Product Get(Guid Id);
         ProductAttributeValue GetAttributeValue(Guid productid, Guid attributeid);
         List<Product> GetList(Guid Id, int limit = 10, int page = 1);

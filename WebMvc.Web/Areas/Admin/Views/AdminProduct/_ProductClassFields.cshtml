@@ -47,10 +47,10 @@
         <tr>
             <td>
                 <input type="hidden" name="AllAttribute[@i].Id" value="@Model.AllAttribute[i].Id" id="AllAttribute_@(i)_id" />
-                <input type="checkbox" value="true" name="AllAttribute[@i].IsCheck" id="AllAttribute_@(i)_IsCheck" />
+                <input type="checkbox" value="true" name="AllAttribute[@i].IsCheck" id="AllAttribute_@(i)_IsCheck" @Html.Raw(Model.AllAttribute[i].IsCheck?"checked=\"checked\"":"") />
             </td>
             <td>@Model.AllAttribute[i].Name</td>
-            <td><input type="checkbox" value="true" name="AllAttribute[@i].IsShow" id="AllAttribute_@(i)_IsShow"  /></td>
+            <td><input type="checkbox" value="true" name="AllAttribute[@i].IsShow" id="AllAttribute_@(i)_IsShow" @Html.Raw(Model.AllAttribute[i].IsShow?"checked=\"checked\"":"")  /></td>
         </tr>
         }
     </table>

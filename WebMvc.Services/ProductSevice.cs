@@ -146,7 +146,6 @@ namespace WebMvc.Services
 
         public void Update(Product topic)
         {
-            topic.CreateDate = DateTime.UtcNow;
             topic.Slug = "";
 
             var Cmd = _context.CreateCommand();
@@ -177,7 +176,7 @@ namespace WebMvc.Services
 
             Cmd.Close();
 
-            if (!ret) throw new Exception("Add Product false");
+            if (!ret) throw new Exception("Update Product false");
         }
 
         public Product Get(Guid Id)
@@ -417,6 +416,19 @@ namespace WebMvc.Services
             }
             return cat;
         }
+
+        public void DelAllAttributeForProductClass(Guid guid)
+        {
+            var Cmd = _context.CreateCommand();
+            
+            Cmd.CommandText = "DELETE FROM [dbo].[ProductClassAttribute] WHERE [ProductClassId] = @ProductClassId";
+
+            Cmd.Parameters.Add("ProductClassId", SqlDbType.UniqueIdentifier).Value = guid;
+
+            Cmd.command.ExecuteNonQuery();
+            Cmd.cacheStartsWithToClear(string.Concat(CacheKeys.Product.ProductClassAttribute, "ProductClassId-", guid));
+            Cmd.Close();
+        }
         #endregion
 
         #region ProductClass
@@ -444,6 +456,55 @@ namespace WebMvc.Services
             Cmd.Close();
 
             if (!rt) throw new Exception("Add ProductAttribute false");
+        }
+
+        public void Update(ProductClass cat)
+        {
+            cat.Slug = "";
+
+            var Cmd = _context.CreateCommand();
+
+            //Cmd.CommandText = "IF NOT EXISTS (SELECT * FROM [Topic] WHERE [Id] = @Id)";
+            Cmd.CommandText = "UPDATE [dbo].[ProductClass] SET [Name] = @Name,[Description] = @Description,[IsLocked] = @IsLocked,[Slug] = @Slug,[Colour] = @Colour,[Image] = @Image,[DateCreated] = @DateCreated WHERE [Id] = @Id";
+
+            Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = cat.Id;
+            Cmd.AddParameters("Name", cat.Name);
+            Cmd.AddParameters("Description", cat.Description);
+            Cmd.AddParameters("IsLocked", cat.IsLocked);
+            Cmd.AddParameters("Slug", cat.Slug);
+            Cmd.AddParameters("Colour", cat.Colour);
+            Cmd.AddParameters("Image", cat.Image);
+            Cmd.AddParameters("DateCreated", cat.DateCreated);
+
+            bool ret = Cmd.command.ExecuteNonQuery() > 0;
+
+            Cmd.Close();
+
+            if (!ret) throw new Exception("Update ProductClass false");
+        }
+
+        
+
+        public ProductClass GetProductClass(Guid Id)
+        {
+            string cachekey = string.Concat(CacheKeys.Product.ProductClass, "GetProductClass-", Id);
+            var topic = _cacheService.Get<ProductClass>(cachekey);
+            if (topic == null)
+            {
+                var Cmd = _context.CreateCommand();
+
+                Cmd.CommandText = "SELECT * FROM [dbo].[ProductClass] WHERE [Id] = @Id";
+
+                Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = Id;
+
+                DataRow data = Cmd.findFirst();
+                if (data == null) return null;
+
+                topic = DataRowToProductClass(data);
+
+                _cacheService.Set(cachekey, topic, CacheTimes.OneDay);
+            }
+            return topic;
         }
 
         public List<ProductClass> GetAllProductClass()
@@ -480,7 +541,7 @@ namespace WebMvc.Services
         {
             var Cmd = _context.CreateCommand();
             
-            Cmd.CommandText = "INSERT INTO [ProductAttribute]([Id],[LangName],[ValueType],[IsNull],[IsLock])"
+            Cmd.CommandText = "INSERT INTO [dbo].[ProductAttribute]([Id],[LangName],[ValueType],[IsNull],[IsLock])"
                 + " VALUES(@Id,@LangName,@ValueType,@IsNull,@IsLock)";
 
             Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = cat.Id;
@@ -500,7 +561,7 @@ namespace WebMvc.Services
         {
             var Cmd = _context.CreateCommand();
 
-            Cmd.CommandText = "UPDATE [LangName] = @LangName,[ValueType] = @ValueType,[IsNull] = @IsNull,[IsLock] = @IsLock WHERE Id = @Id";
+            Cmd.CommandText = "UPDATE [dbo].[ProductAttribute] SET [LangName] = @LangName,[ValueType] = @ValueType,[IsNull] = @IsNull,[IsLock] = @IsLock WHERE Id = @Id";
 
 
             Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = cat.Id;
