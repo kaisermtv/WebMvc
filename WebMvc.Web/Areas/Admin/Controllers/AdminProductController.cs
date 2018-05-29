@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Web.Hosting;
 using System.Web.Mvc;
 using WebMvc.Domain.Constants;
 using WebMvc.Domain.DomainModel.Entities;
 using WebMvc.Domain.Interfaces.Services;
 using WebMvc.Domain.Interfaces.UnitOfWork;
+using WebMvc.Utilities;
 using WebMvc.Web.Application;
 using WebMvc.Web.Areas.Admin.ViewModels;
 
@@ -15,18 +18,21 @@ namespace WebMvc.Web.Areas.Admin.Controllers
     {
         private readonly IProductSevice _productSevice;
         private readonly ICategoryService _categoryService;
+        private readonly IProductPostSevice _productPostSevice;
 
         public AdminProductController() : base()
         {
             _categoryService = ServiceFactory.Get<ICategoryService>();
             _productSevice = ServiceFactory.Get<IProductSevice>();
+            _productPostSevice = ServiceFactory.Get<IProductPostSevice>();
         }
 
-        public AdminProductController(ICategoryService categoryService, IProductSevice productSevice,ILoggingService loggingService, IUnitOfWorkManager unitOfWorkManager, IMembershipService membershipService, ISettingsService settingsService, ILocalizationService localizationService)
+        public AdminProductController(IProductPostSevice productPostSevice,ICategoryService categoryService, IProductSevice productSevice,ILoggingService loggingService, IUnitOfWorkManager unitOfWorkManager, IMembershipService membershipService, ISettingsService settingsService, ILocalizationService localizationService)
             : base(loggingService, unitOfWorkManager, membershipService, settingsService, localizationService)
         {
             _categoryService = categoryService;
             _productSevice = productSevice;
+            _productPostSevice = productPostSevice;
         }
 
         #region ProductClass
@@ -264,7 +270,7 @@ namespace WebMvc.Web.Areas.Admin.Controllers
 
         public ActionResult CreateProduct(Guid g)
         {
-            var cats = _categoryService.GetAllowedEditCategories(UsersRole);
+            var cats = _categoryService.GetAllowedEditCategories(UsersRole,true);
             
             var model = new AdminEditProductViewModel
             {
@@ -295,7 +301,7 @@ namespace WebMvc.Web.Areas.Admin.Controllers
         public ActionResult CreateProduct(AdminEditProductViewModel model)
         {
             
-            var cats = _categoryService.GetAllowedEditCategories(UsersRole);
+            var cats = _categoryService.GetAllowedEditCategories(UsersRole,true);
             model.Categories = _categoryService.GetBaseSelectListCategories(cats);
 
             if (ModelState.IsValid)
@@ -312,18 +318,92 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                             it.IsNull = a.IsNull;
                         }
 
-                        var product = new Product
-                        {
-                            Name = model.Name,
-                            Category_Id = model.Category,
-                            Image = model.Image,
-                            IsLocked = model.IsLocked,
-                            ProductClassId = model.ProductClass,
-                            MembershipUser_Id = LoggedOnReadOnlyUser.Id
-                        };
-                        
-                        _productSevice.Add(product);
+                        var post = new ProductPost();
+                        var product = new Product();
 
+                        if (model.Files != null)
+                        {
+                            // Before we save anything, check the user already has an upload folder and if not create one
+                            var uploadFolderPath = HostingEnvironment.MapPath(string.Concat(SiteConstants.Instance.UploadFolderPath, product.Id));
+                            if (!Directory.Exists(uploadFolderPath))
+                            {
+                                Directory.CreateDirectory(uploadFolderPath);
+                            }
+
+                            // Loop through each file and get the file info and save to the users folder and Db
+                            var file = model.Files[0];
+                            if (file != null)
+                            {
+                                // If successful then upload the file
+                                var uploadResult = AppHelpers.UploadFile(file, uploadFolderPath, LocalizationService, true);
+
+                                if (!uploadResult.UploadSuccessful)
+                                {
+                                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                                    {
+                                        Message = uploadResult.ErrorMessage,
+                                        MessageType = GenericMessages.danger
+                                    };
+                                    return View(model);
+                                }
+
+                                // Save avatar to user
+                                model.Image = uploadResult.UploadedFileName;
+                            }
+
+                        }
+
+                        post.PostContent = model.Content;
+                        post.MembershipUser_Id = LoggedOnReadOnlyUser.Id;
+                        post.Product_Id = product.Id;
+                        post.IsTopicStarter = true;
+
+                        product.Name = model.Name;
+                        product.Category_Id = model.Category;
+                        product.Image = model.Image;
+                        product.IsLocked = model.IsLocked;
+                        product.ProductClassId = model.ProductClass;
+                        product.MembershipUser_Id = LoggedOnReadOnlyUser.Id;
+                        product.ProductPost_Id = post.Id;
+
+                        product.ShotContent = string.Concat(StringUtils.ReturnAmountWordsFromString(StringUtils.StripHtmlFromString(post.PostContent), 50), "....");
+                        product.isAutoShotContent = true;
+
+                        if (model.Files != null)
+                        {
+                            // Before we save anything, check the user already has an upload folder and if not create one
+                            var uploadFolderPath = HostingEnvironment.MapPath(string.Concat(SiteConstants.Instance.UploadFolderPath, product.Id));
+                            if (!Directory.Exists(uploadFolderPath))
+                            {
+                                Directory.CreateDirectory(uploadFolderPath);
+                            }
+
+                            // Loop through each file and get the file info and save to the users folder and Db
+                            var file = model.Files[0];
+                            if (file != null)
+                            {
+                                // If successful then upload the file
+                                var uploadResult = AppHelpers.UploadFile(file, uploadFolderPath, LocalizationService, true);
+
+                                if (!uploadResult.UploadSuccessful)
+                                {
+                                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                                    {
+                                        Message = uploadResult.ErrorMessage,
+                                        MessageType = GenericMessages.danger
+                                    };
+                                    return View(model);
+                                }
+
+                                // Save avatar to user
+                                product.Image = uploadResult.UploadedFileName;
+                            }
+
+                        }
+
+                        _productSevice.Add(product);
+                        _productPostSevice.Add(post);
+                        
                         foreach (var it in model.AllAttribute)
                         {
                             var val = new ProductAttributeValue
@@ -364,7 +444,7 @@ namespace WebMvc.Web.Areas.Admin.Controllers
             var product = _productSevice.Get(id);
             if(product == null) return RedirectToAction("index");
             
-            var cats = _categoryService.GetAllowedEditCategories(UsersRole);
+            var cats = _categoryService.GetAllowedEditCategories(UsersRole,true);
 
             var model = new AdminEditProductViewModel
             {
@@ -377,6 +457,14 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                 Categories = _categoryService.GetBaseSelectListCategories(cats),
                 AllAttribute = new List<AdminAttributeViewModel>()
             };
+
+
+            ProductPost post;
+            if (product.ProductPost_Id != null)
+            {
+                post = _productPostSevice.Get((Guid)product.ProductPost_Id);
+                model.Content = post.PostContent;
+            }
 
             var attr = _productSevice.GetListProductClassAttributeForProductClassId(product.ProductClassId);
 
@@ -410,8 +498,9 @@ namespace WebMvc.Web.Areas.Admin.Controllers
         public ActionResult EditProduct(AdminEditProductViewModel model)
         {
 
-            var cats = _categoryService.GetAllowedEditCategories(UsersRole);
+            var cats = _categoryService.GetAllowedEditCategories(UsersRole, true);
             model.Categories = _categoryService.GetBaseSelectListCategories(cats);
+            bool getval = false;
 
             if (ModelState.IsValid)
             {
@@ -419,54 +508,108 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                 {
                     try
                     {
+                        var product = _productSevice.Get(model.Id);
+                        if (product == null) return RedirectToAction("index");
+
+                        ProductPost post;
+                        if (product.ProductPost_Id != null)
+                        {
+                            post = _productPostSevice.Get((Guid)product.ProductPost_Id);
+                            //model.Content = post.PostContent;
+                        }
+                        else
+                        {
+                            post = new ProductPost();
+                            post.Product_Id = product.Id;
+                            product.ProductPost_Id = post.Id;
+                        }
+
+                        model.Image = product.Image;
+
+                        if (model.Files != null)
+                        {
+                            // Before we save anything, check the user already has an upload folder and if not create one
+                            var uploadFolderPath = HostingEnvironment.MapPath(string.Concat(SiteConstants.Instance.UploadFolderPath, product.Id));
+                            if (!Directory.Exists(uploadFolderPath))
+                            {
+                                Directory.CreateDirectory(uploadFolderPath);
+                            }
+
+                            // Loop through each file and get the file info and save to the users folder and Db
+                            var file = model.Files[0];
+                            if (file != null)
+                            {
+                                // If successful then upload the file
+                                var uploadResult = AppHelpers.UploadFile(file, uploadFolderPath, LocalizationService, true);
+
+                                if (!uploadResult.UploadSuccessful)
+                                {
+                                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                                    {
+                                        Message = uploadResult.ErrorMessage,
+                                        MessageType = GenericMessages.danger
+                                    };
+                                    return View(model);
+                                }
+
+                                // Save avatar to user
+                                model.Image = uploadResult.UploadedFileName;
+                            }
+
+                        }
+
+                        product.Name = model.Name;
+                        product.Category_Id = model.Category;
+                        product.Image = model.Image;
+                        product.IsLocked = model.IsLocked;
+                        product.ProductClassId = model.ProductClass;
+                        product.MembershipUser_Id = LoggedOnReadOnlyUser.Id;
+                        post.PostContent = model.Content;
+
+                        product.ShotContent = string.Concat(StringUtils.ReturnAmountWordsFromString(StringUtils.StripHtmlFromString(post.PostContent), 50), "....");
+                        product.isAutoShotContent = true;
+
                         foreach (var it in model.AllAttribute)
                         {
                             var a = _productSevice.GetAttribute(it.AttriId);
                             it.Name = a.LangName;
                             it.ValueType = a.ValueType;
                             it.IsNull = a.IsNull;
+
+                            _productSevice.Set(product, a, it.Value);
                         }
+                        getval = true;
 
-                        var product = new Product
-                        {
-                            Name = model.Name,
-                            Category_Id = model.Category,
-                            Image = model.Image,
-                            IsLocked = model.IsLocked,
-                            ProductClassId = model.ProductClass,
-                            MembershipUser_Id = LoggedOnReadOnlyUser.Id
-                        };
 
-                        //_productSevice.Update(product);
-
-                        foreach (var it in model.AllAttribute)
-                        {
-                            var val = new ProductAttributeValue
-                            {
-                                Id = it.Id,
-                                ProductAttributeId = it.AttriId,
-                                ProductId = product.Id,
-                                Value = it.Value
-                            };
-
-                            //_productSevice.Set(val);
-                        }
+                        _productPostSevice.Update(post);
+                        _productSevice.Update(product);
 
                         unitOfWork.Commit();
                         // We use temp data because we are doing a redirect
                         TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
                         {
-                            Message = "Thêm sản phẩm thành công!",
+                            Message = "Cập nhật sản phẩm thành công!",
                             MessageType = GenericMessages.success
                         };
 
-                        return RedirectToAction("Product", new { id = model.ProductClass });
+                        //return RedirectToAction("Product", new { id = model.ProductClass });
                     }
                     catch (Exception ex)
                     {
                         unitOfWork.Rollback();
                         LoggingService.Error(ex);
-                        ModelState.AddModelError("", "Xảy ra lỗi khi thêm sản phẩm");
+                        ModelState.AddModelError("", "Xảy ra lỗi khi cập nhật sản phẩm");
+
+                        if (!getval)
+                        {
+                            foreach (var it in model.AllAttribute)
+                            {
+                                var a = _productSevice.GetAttribute(it.AttriId);
+                                it.Name = a.LangName;
+                                it.ValueType = a.ValueType;
+                                it.IsNull = a.IsNull;
+                            }
+                        }
                     }
                 }
             }

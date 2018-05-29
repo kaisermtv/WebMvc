@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Text.RegularExpressions;
 using WebMvc.Domain.Constants;
 using WebMvc.Domain.DomainModel.Entities;
 using WebMvc.Domain.DomainModel.Enums;
@@ -108,12 +109,58 @@ namespace WebMvc.Services
         }
         #endregion
 
-        #region Product
+
+        #region Slug
+        private bool CheckSlug(string slug, DataTable data)
+        {
+            foreach (DataRow it in data.Rows)
+            {
+                if (slug == it["Slug"].ToString()) return false;
+            }
+
+            return true;
+        }
+
+        private bool TestSlug(string slug, string newslug)
+        {
+            if (slug == null) slug = "";
+            return Regex.IsMatch(slug, string.Concat("^", newslug, "(-[\\d]+)?$"));
+        }
+
+        private void CreateSlug(Product product)
+        {
+            var slug = ServiceHelpers.CreateUrl(product.Name);
+            if (!TestSlug(product.Slug, slug))
+            {
+                var tmpSlug = slug;
+
+                var Cmd = _context.CreateCommand();
+                Cmd.CommandText = "SELECT Slug FROM [dbo].[Product] WHERE [Slug] LIKE @Slug AND [Id] != @Id ";
+
+                Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = product.Id;
+                Cmd.Parameters.Add("Slug", SqlDbType.NVarChar).Value = string.Concat(slug, "%");
+
+                DataTable data = Cmd.findAll();
+                Cmd.Close();
+
+                int i = 0;
+                while (!CheckSlug(tmpSlug, data))
+                {
+                    i++;
+                    tmpSlug = string.Concat(slug, "-", i);
+                }
+
+                product.Slug = tmpSlug;
+            }
+        }
+        #endregion
         
+        #region Product
+
         public void Add(Product topic)
         {
             topic.CreateDate = DateTime.UtcNow;
-            topic.Slug = "";
+            CreateSlug(topic);
 
             var Cmd = _context.CreateCommand();
             Cmd.CommandText = "IF NOT EXISTS (SELECT * FROM [Product] WHERE [Id] = @Id)";
@@ -146,13 +193,13 @@ namespace WebMvc.Services
 
         public void Update(Product topic)
         {
-            topic.Slug = "";
+            CreateSlug(topic);
 
             var Cmd = _context.CreateCommand();
 
             //Cmd.CommandText = "IF NOT EXISTS (SELECT * FROM [Topic] WHERE [Id] = @Id)";
-            Cmd.CommandText = "UPDATE [Product] SET [ProductClassId] = @ProductClassId, [Name] = @Name, [ShotContent] = @ShotContent,[Image] = @Image,[isAutoShotContent] = @isAutoShotContent, [CreateDate] = @CreateDate,"
-                            + " [Slug] = @Slug, [Views] = @Views, [IsLocked] = @IsLocked, [Category_Id] = @Category_Id, [Post_Id] = @Post_Id, [MembershipUser_Id] = @MembershipUser_Id"
+            Cmd.CommandText = "UPDATE [dbo].[Product] SET [ProductClassId] = @ProductClassId, [Name] = @Name, [ShotContent] = @ShotContent,[Image] = @Image,[isAutoShotContent] = @isAutoShotContent, [CreateDate] = @CreateDate,"
+                            + " [Slug] = @Slug, [Views] = @Views, [IsLocked] = @IsLocked, [Category_Id] = @Category_Id, [ProductPost_Id] = @ProductPost_Id, [MembershipUser_Id] = @MembershipUser_Id"
                             + " WHERE [Id] = @Id";
 
             Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = topic.Id;
@@ -193,6 +240,29 @@ namespace WebMvc.Services
             return DataRowToProduct(data);
         }
 
+        public Product GetBySlug(string Slug)
+        {
+            string cachekey = string.Concat(CacheKeys.Product.StartsWith, "GetBySlug-", Slug);
+            var topic = _cacheService.Get<Product>(cachekey);
+            if (topic == null)
+            {
+                var Cmd = _context.CreateCommand();
+
+                Cmd.CommandText = "SELECT * FROM [dbo].[Product] WHERE [Slug] = @Slug";
+
+                Cmd.Parameters.Add("Slug", SqlDbType.NVarChar).Value = Slug;
+
+                DataRow data = Cmd.findFirst();
+                if (data == null) return null;
+
+                topic = DataRowToProduct(data);
+
+                _cacheService.Set(cachekey, topic, CacheTimes.OneDay);
+            }
+            return topic;
+        }
+
+        
         public List<Product> GetList(Guid Id, int limit = 10, int page = 1)
         {
             var Cmd = _context.CreateCommand();
@@ -218,6 +288,51 @@ namespace WebMvc.Services
 
             return rt;
         }
+        public int GetCount(Category cat)
+        {
+            string cachekey = string.Concat(CacheKeys.Product.StartsWith, "GetCountForCatergory-", cat.Id);
+            var count = _cacheService.Get<int?>(cachekey);
+            if (count == null)
+            {
+                var Cmd = _context.CreateCommand();
+
+                Cmd.CommandText = "SELECT COUNT(*) FROM  [dbo].[Product] WHERE Category_Id = @Category_Id";
+
+                Cmd.Parameters.Add("Category_Id", SqlDbType.UniqueIdentifier).Value = cat.Id;
+
+                count = (int)Cmd.command.ExecuteScalar();
+                Cmd.Close();
+
+
+                _cacheService.Set(cachekey, count, CacheTimes.OneDay);
+            }
+            return (int)count;
+        }
+        public List<Product> GetList(Category cat, int limit = 10, int page = 1)
+        {
+            var Cmd = _context.CreateCommand();
+
+            if (page == 0) page = 1;
+
+            Cmd.CommandText = "SELECT TOP " + limit + " * FROM ( SELECT *,(ROW_NUMBER() OVER(ORDER BY CreateDate DESC)) AS RowNum FROM  [Product] WHERE [Category_Id] = @Category_Id) AS MyDerivedTable WHERE RowNum > @Offset";
+
+            Cmd.Parameters.Add("Category_Id", SqlDbType.UniqueIdentifier).Value = cat.Id;
+            //Cmd.Parameters.Add("limit", SqlDbType.Int).Value = limit;
+            Cmd.Parameters.Add("Offset", SqlDbType.Int).Value = (page - 1) * limit;
+
+            DataTable data = Cmd.findAll();
+            Cmd.Close();
+
+            if (data == null) return null;
+
+            var rt = new List<Product>();
+            foreach (DataRow it in data.Rows)
+            {
+                rt.Add(DataRowToProduct(it));
+            }
+
+            return rt;
+        }
 
         public List<Product> GetListForCategory(Guid Id, int limit = 10, int page = 1)
         {
@@ -225,10 +340,10 @@ namespace WebMvc.Services
 
             if (page == 0) page = 1;
 
-            Cmd.CommandText = "SELECT TOP @limit * FROM ( SELECT *,(ROW_NUMBER() OVER(ORDER BY CreateDate DESC)) FROM  [Product] WHERE Category_Id = @Category_Id) AS MyDerivedTable WHERE RowNum > @Offset";
+            Cmd.CommandText = "SELECT TOP " + limit + " * FROM ( SELECT *,(ROW_NUMBER() OVER(ORDER BY CreateDate DESC)) FROM  [Product] WHERE Category_Id = @Category_Id) AS MyDerivedTable WHERE RowNum > @Offset";
 
             Cmd.Parameters.Add("Category_Id", SqlDbType.UniqueIdentifier).Value = Id;
-            Cmd.Parameters.Add("limit", SqlDbType.Int).Value = limit;
+            //Cmd.Parameters.Add("limit", SqlDbType.Int).Value = limit;
             Cmd.Parameters.Add("Offset", SqlDbType.Int).Value = (page - 1) * limit;
 
             DataTable data = Cmd.findAll();
@@ -290,6 +405,27 @@ namespace WebMvc.Services
 
             if (!rt) throw new Exception("Add ProductAttributeValue false");
         }
+
+        public void Set(Product product,ProductAttribute attribute,string value)
+        {
+            var Cmd = _context.CreateCommand();
+
+            Cmd.CommandText = "IF NOT EXISTS (SELECT * FROM [dbo].[ProductAttributeValue] WHERE [ProductId] = @ProductId AND [ProductAttributeId] = @ProductAttributeId)";
+            Cmd.CommandText += " BEGIN INSERT INTO [dbo].[ProductAttributeValue]([Id],[ProductId],[ProductAttributeId],[Value]) VALUES(@Id,@ProductId,@ProductAttributeId,@Value) END ";
+            Cmd.CommandText += " ELSE BEGIN UPDATE [dbo].[ProductAttributeValue] SET [Value] = @Value WHERE [ProductId] = @ProductId AND [ProductAttributeId] = @ProductAttributeId END";
+
+            Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = GuidComb.GenerateComb();
+            Cmd.AddParameters("ProductId", product.Id);
+            Cmd.AddParameters("ProductAttributeId", attribute.Id);
+            Cmd.AddParameters("Value", value);
+
+            bool rt = Cmd.command.ExecuteNonQuery() > 0;
+            Cmd.cacheStartsWithToClear(string.Concat(CacheKeys.Product.ProductAttributeValue, "ProductId-", product.Id));
+            Cmd.Close();
+
+            if (!rt) throw new Exception("Set ProductAttributeValue false");
+        }
+
         public List<ProductAttributeValue> GetAllAttributeValue(Guid productid)
         {
             string cachekey = string.Concat(CacheKeys.Product.ProductAttributeValue, "ProductId-", productid, "-GetAllAttributeValue");

@@ -1,0 +1,64 @@
+24/05/2018 08:25:45 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+24/05/2018 08:28:53 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+24/05/2018 08:29:30 | WebMvc.Web.dll | CreateProduct | WebMvc.Web.Areas.Admin.Controllers.AdminProductController | 400 | Object reference not set to an instance of an object.
+24/05/2018 08:29:39 | WebMvc.Web.dll | CreateProduct | WebMvc.Web.Areas.Admin.Controllers.AdminProductController | 400 | Object reference not set to an instance of an object.
+24/05/2018 08:30:39 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+24/05/2018 08:32:09 | WebMvc.Web.dll | CreateProduct | WebMvc.Web.Areas.Admin.Controllers.AdminProductController | 400 | Object reference not set to an instance of an object.
+24/05/2018 08:35:42 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+24/05/2018 08:36:54 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Connection Timeout Expired.  The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement.  This could be because the pre-login handshake failed or the server was unable to respond back in time.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=834; handshake=160;  INNER EXCEPTION: The wait operation timed out
+24/05/2018 08:37:52 | WebMvc.Web.dll | CreateProduct | WebMvc.Web.Areas.Admin.Controllers.AdminProductController | 400 | Object reference not set to an instance of an object.
+24/05/2018 08:39:50 | WebMvc.Web.dll | CreateProduct | WebMvc.Web.Areas.Admin.Controllers.AdminProductController | 400 | Object reference not set to an instance of an object.
+24/05/2018 08:40:46 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+24/05/2018 08:42:17 | WebMvc.Web.dll | EditProduct | WebMvc.Web.Areas.Admin.Controllers.AdminProductController | 532 | Must declare the scalar variable "@Post_Id".
+24/05/2018 08:42:24 | WebMvc.Web.dll | EditProduct | WebMvc.Web.Areas.Admin.Controllers.AdminProductController | 532 | Must declare the scalar variable "@Post_Id".
+24/05/2018 08:55:20 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+24/05/2018 08:55:46 | WebMvc.Web.dll | EditProduct | WebMvc.Web.Areas.Admin.Controllers.AdminProductController | 600 | Must declare the scalar variable "@Post_Id".
+24/05/2018 09:07:08 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+24/05/2018 09:20:21 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The parameters dictionary contains a null entry for parameter 'id' of non-nullable type 'System.Guid' for method 'System.Web.Mvc.ActionResult Product(System.Guid)' in 'WebMvc.Web.Areas.Admin.Controllers.AdminProductController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+24/05/2018 10:22:45 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+24/05/2018 10:28:17 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Views\Shared\customeditors\ckeditor.cshtml(4): error CS1503: Argument 1: cannot convert from 'method group' to 'HelperResult'
+25/05/2018 03:53:42 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+25/05/2018 04:24:21 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+25/05/2018 04:24:26 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Specified cast is not valid.
+25/05/2018 04:26:34 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+25/05/2018 04:26:37 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Specified cast is not valid.
+25/05/2018 04:30:26 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+25/05/2018 04:30:59 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+25/05/2018 04:32:00 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+25/05/2018 04:56:06 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+25/05/2018 05:06:20 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+25/05/2018 05:07:28 | WebMvc.Web.dll | Create | WebMvc.Web.Areas.Admin.Controllers.AdminCategoryController | 145 | Value cannot be null.
+Parameter name: input
+25/05/2018 05:08:05 | WebMvc.Web.dll | Create | WebMvc.Web.Areas.Admin.Controllers.AdminCategoryController | 145 | Value cannot be null.
+Parameter name: input
+25/05/2018 05:08:25 | WebMvc.Web.dll | Create | WebMvc.Web.Areas.Admin.Controllers.AdminCategoryController | 145 | Value cannot be null.
+Parameter name: input
+25/05/2018 05:09:04 | WebMvc.Web.dll | Create | WebMvc.Web.Areas.Admin.Controllers.AdminCategoryController | 145 | Value cannot be null.
+Parameter name: input
+25/05/2018 05:09:46 | WebMvc.Web.dll | Create | WebMvc.Web.Areas.Admin.Controllers.AdminCategoryController | 145 | Value cannot be null.
+Parameter name: input
+25/05/2018 05:11:41 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+25/05/2018 05:48:51 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+25/05/2018 05:48:52 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Path '/Themes/Gland/Views/Home/Index.cshtml' was not found.
+25/05/2018 06:50:11 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+25/05/2018 06:52:08 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+25/05/2018 06:53:59 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+25/05/2018 07:05:52 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+25/05/2018 08:01:02 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+25/05/2018 09:35:35 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+25/05/2018 09:48:39 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A route named 'categoryUrls' is already in the route collection. Route names must be unique.
+Parameter name: name
+25/05/2018 09:49:05 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+25/05/2018 13:07:03 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\Gland\Views\Home\Index.cshtml(1404): error CS0117: 'AppHelpers' does not contain a definition for 'ProductUrls'
+25/05/2018 13:07:26 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+25/05/2018 13:07:26 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Path '/Themes/Gland/Views/Home/Index.cshtml' was not found.
+28/05/2018 09:53:42 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+28/05/2018 10:01:37 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+28/05/2018 10:06:14 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+28/05/2018 10:09:07 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+29/05/2018 05:53:53 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+29/05/2018 05:53:53 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Path '/Themes/Gland/Views/Home/Index.cshtml' was not found.
+29/05/2018 06:13:29 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A route named 'topicShowUrls' is already in the route collection. Route names must be unique.
+Parameter name: name
+29/05/2018 06:14:49 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP

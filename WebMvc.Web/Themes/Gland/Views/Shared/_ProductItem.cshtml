@@ -1,0 +1,72 @@
+﻿@model WebMvc.Domain.DomainModel.Entities.Product
+@using WebMvc.Web.ViewModels
+@{
+    string link = AppHelpers.ProductUrls(Model.Category_Id, Model.Slug);
+    var val = AppHelpers.ProductValues(Model);
+    string price = "Liên hệ";
+    string Price = "0";
+    string guarantee = "";
+    if (val.ContainsKey("Guarantee")) { guarantee = ((ProductValueViewModel)val["Guarantee"]).Value; }
+
+    if (val.ContainsKey("Price"))
+    {
+        Price = ((ProductValueViewModel)val["Price"]).Value;
+        try
+        {
+            price = int.Parse(Price).ToString("N0");
+        }
+        catch { }
+    }
+    //Dictionary
+}
+<li class="p-item" data-id="@Model.Id">
+
+    <div class="bg iconHot"></div>
+
+    <!---->
+    <div class="p_container container-icon">
+        @*<div class="p_sku">Mã SP: </div>*@
+        <a href="@link" class="p_img">
+            <img class="lazy" src="@Html.ThemeUrl()/Content/images/blank.gif" data-src="@AppHelpers.CategoryImage(Model.Image, Model.Id, 160)" alt="@Model.Name" style="visibility: visible; zoom: 1; opacity: 1;">
+        </a>
+        <div class="p_price img_price">@price</div>
+        <div class="container_old_price">
+
+        </div>
+        <div class="clear"></div>
+        <a href="@link" class="p_name">@Model.Name</a>
+        <div class="p_quantity">
+
+            <i class="bg icon_in_stock"></i>
+
+        </div>
+        <a href="javascript:ShoppingCart.addVariant('product','@Model.Id','@Model.Id', 0,'@Model.Name', 1,@Price,'');reloadCart();" class="btn-cart-stop">Giỏ hàng</a>
+    </div><!--wrap_pro-->
+    <div class="hover_content_pro tooltip" style="display: none;">
+        <a href="@link" class="hover_name">@Model.Name</a>
+
+        <div class="hori_line"></div>
+        <table>
+            <tbody>
+                <tr>
+                    <td><b>Giá bán:</b></td>
+                    <td>
+                        <span class="img_price_full">@price</span>
+                    </td>
+                </tr>
+                <tr><td><b>Bảo hành:</b></td><td>@guarantee</td></tr>
+            </tbody>
+        </table>
+
+        <div class="hori_line"></div>
+        <div class="hover_offer">
+            @if (Model.ShotContent.Length > 0)
+            {
+                <b>Mô tả tóm tắt:</b><br>
+                @Html.Raw(Model.ShotContent)
+            }
+        </div>
+
+
+    </div><!--hover_content_pro-->
+</li>

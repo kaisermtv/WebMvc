@@ -108,7 +108,7 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                             if (viewModel.Files != null)
                             {
                                 // Before we save anything, check the user already has an upload folder and if not create one
-                                var uploadFolderPath = HostingEnvironment.MapPath(string.Concat(SiteConstants.Instance.UploadFolderPath, viewModel.Id));
+                                var uploadFolderPath = HostingEnvironment.MapPath(string.Concat(SiteConstants.Instance.UploadFolderPath, topic.Id));
                                 if (!Directory.Exists(uploadFolderPath))
                                 {
                                     Directory.CreateDirectory(uploadFolderPath);
@@ -133,6 +133,7 @@ namespace WebMvc.Web.Areas.Admin.Controllers
 
                                     // Save avatar to user
                                     topic.Image = uploadResult.UploadedFileName;
+                                    //viewModel.Image = topic.Image;
                                 }
 
                             }

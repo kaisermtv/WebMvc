@@ -2,7 +2,7 @@
     <div class="title_box_left">Danh mục tin tức</div>
     <div class="content_box_left list_cat_news">
         <ul class="ul">
-            @foreach(var it in AppHelpers.Categories())
+            @foreach(var it in AppHelpers.Categories(false))
             {
                 <li><a href="@Url.Action("ShowBySlug","Category",new { slug = it.Slug })">@it.Name</a></li>
             }

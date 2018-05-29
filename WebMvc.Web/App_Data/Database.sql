@@ -118,6 +118,7 @@ CREATE TABLE [dbo].[Category](
 	[Colour] [nvarchar](50) NULL,
 	[Image] [nvarchar](200) NULL,
 	[Category_Id] [uniqueidentifier] NULL,
+	[IsProduct] [bit] NULL
 )
 
 

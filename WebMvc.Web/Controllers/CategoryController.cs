@@ -15,21 +15,21 @@
     {
         private readonly ICategoryService _categoryService;
         private readonly ITopicService _topicServic;
-        private readonly IPostSevice _postSevice;
+        private readonly IProductSevice _productSevice;
 
         public CategoryController() : base()
         {
             _categoryService = ServiceFactory.Get<ICategoryService>();
             _topicServic = ServiceFactory.Get<ITopicService>();
-            _postSevice = ServiceFactory.Get<IPostSevice>();
+            _productSevice = ServiceFactory.Get<IProductSevice>();
         }
 
-        public CategoryController(IPostSevice postSevice, ITopicService topicService, ILoggingService loggingService, IUnitOfWorkManager unitOfWorkManager, IMembershipService membershipService, ISettingsService settingsService, ICacheService cacheService, ILocalizationService localizationService, ICategoryService categoryService)
+        public CategoryController(IProductSevice productSevice, ITopicService topicService, ILoggingService loggingService, IUnitOfWorkManager unitOfWorkManager, IMembershipService membershipService, ISettingsService settingsService, ICacheService cacheService, ILocalizationService localizationService, ICategoryService categoryService)
             : base(loggingService, unitOfWorkManager, membershipService, settingsService, cacheService, localizationService)
         {
             _categoryService = categoryService;
             _topicServic = topicService;
-            _postSevice = postSevice;
+            _productSevice = productSevice;
         }
         
         // GET: Category
@@ -44,7 +44,7 @@
             var cat = _categoryService.GetBySlug(Slug);
             if(cat == null)
             {
-                return Redirect("/tin-tuc");
+                return Redirect("/"+ SiteConstants.Instance.CategoryUrlIdentifier);
             }
 
             int limit = 12;
@@ -59,6 +59,29 @@
                 ListTopic = _topicServic.GetList(cat.Id,limit, Paging.Page)
             };
             
+            return View(model);
+        }
+
+        public ActionResult ShowBySlugProduct(string Slug, int? p)
+        {
+            var cat = _categoryService.GetBySlug(Slug);
+            if (cat == null)
+            {
+                return Redirect("/" + SiteConstants.Instance.ProductUrlIdentifier);
+            }
+
+            int limit = 12;
+            var count = _productSevice.GetCount(cat);
+
+            var Paging = CalcPaging(limit, p, count);
+
+            var model = new CategoryProductListViewModel
+            {
+                Cat = cat,
+                Paging = Paging,
+                ListProduct = _productSevice.GetList(cat, limit, Paging.Page)
+            };
+
             return View(model);
         }
 

@@ -126,6 +126,7 @@ namespace WebMvc.Domain.Constants
 
         // Url names
         public string CategoryUrlIdentifier => GetConfig("CategoryUrlIdentifier");
+        public string ProductUrlIdentifier => GetConfig("ProductUrlIdentifier");
         public string TopicUrlIdentifier => GetConfig("TopicUrlIdentifier");
         public string TagsUrlIdentifier => GetConfig("TagsUrlIdentifier");
         public string MemberUrlIdentifier => GetConfig("MemberUrlIdentifier");

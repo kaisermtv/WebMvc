@@ -83,7 +83,8 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                             PageTitle = categoryViewModel.PageTitle,
                             MetaDescription = categoryViewModel.MetaDesc,
                             Colour = categoryViewModel.CategoryColour,
-                            Category_Id = categoryViewModel.ParentCategory
+                            Category_Id = categoryViewModel.ParentCategory,
+                            IsProduct = categoryViewModel.IsProduct
                         };
 
                         // Sort image out first
@@ -138,10 +139,10 @@ namespace WebMvc.Web.Areas.Admin.Controllers
 
                         return RedirectToAction("Index");
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         unitOfWork.Rollback();
-
+                        LoggingService.Error(ex.Message);
                         ModelState.AddModelError("", "There was an error creating the category");
                     }
                 }
@@ -174,6 +175,7 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                 Image = category.Image,
                 CategoryColour = category.Colour,
                 ParentCategory = category.Category_Id,
+                IsProduct = category.IsProduct,
                 AllCategories = _categoryService.GetBaseSelectListCategories(_categoryService.GetCategoriesParenCatregori(category))
             };
             
@@ -253,7 +255,7 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                         category.MetaDescription = categoryViewModel.MetaDesc;
                         category.Colour = categoryViewModel.CategoryColour;
                         category.Category_Id = categoryViewModel.ParentCategory;
-                        
+                        category.IsProduct = categoryViewModel.IsProduct;
 
                         _categoryService.Update(category);
 

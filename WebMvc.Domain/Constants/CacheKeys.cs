@@ -45,6 +45,11 @@ namespace WebMvc.Domain.Constants
             public const string StartsWith = "Topic.";
         }
 
+        public static class Post
+        {
+            public const string StartsWith = "Post.";
+        }
+
         public static class Contact
         {
             public const string StartsWith = "Contact.";
@@ -67,6 +72,11 @@ namespace WebMvc.Domain.Constants
             public const string ProductClassAttribute = "Product.ProductClassAttribute.";
             public const string ProductAttributeValue = "Product.ProductAttributeValue.";
 
+        }
+
+        public static class ProductPost
+        {
+            public const string StartsWith = "Post.";
         }
     }
 }

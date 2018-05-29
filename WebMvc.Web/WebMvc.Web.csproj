@@ -258,6 +258,7 @@
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
     <Compile Include="ViewModels\PageingViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\TopicViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -9560,6 +9561,16 @@
     <Content Include="Themes\Gland\Views\Shared\_Paging.cshtml" />
     <Content Include="Views\Topic\ShowBySlug.cshtml" />
     <Content Include="Themes\Gland\Views\Topic\ShowBySlug.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\colourpicker.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\forumeditor.cshtml" />
+    <Content Include="Views\Shared\customeditors\bbeditor.cshtml" />
+    <Content Include="Views\Shared\customeditors\markdowneditor.cshtml" />
+    <Content Include="Views\Shared\customeditors\tinymceeditor.cshtml" />
+    <Content Include="Views\Shared\customeditors\ckeditor.cshtml" />
+    <Content Include="Views\Category\ShowBySlugProduct.cshtml" />
+    <Content Include="Themes\Gland\Views\Category\ShowBySlugProduct.cshtml" />
+    <Content Include="Themes\Gland\Views\Shared\_ProductItem.cshtml" />
+    <Content Include="Themes\Gland\Views\Product\ShowBySlug.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Carousel\" />

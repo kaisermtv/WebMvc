@@ -28,6 +28,8 @@ namespace WebMvc.Domain.DomainModel.Entities
         public string Colour { get; set; }
         public string Image { get; set; }
 
+        public bool IsProduct { get; set; }
+
         public Guid? Category_Id { get; set; }
 
         public int Level { get; set; }

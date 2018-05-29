@@ -5,6 +5,7 @@ using System.Web;
 using WebMvc.Domain.DomainModel.Entities;
 using System.ComponentModel.DataAnnotations;
 using WebMvc.Web.Application;
+using System.Web.Mvc;
 
 namespace WebMvc.Web.Areas.Admin.ViewModels
 {
@@ -16,6 +17,7 @@ namespace WebMvc.Web.Areas.Admin.ViewModels
     public class AdminContactEditViewModel
     {
         [Required]
+        [HiddenInput]
         public Guid Id { get; set; }
 
         [Required]

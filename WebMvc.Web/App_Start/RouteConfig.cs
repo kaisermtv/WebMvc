@@ -27,9 +27,21 @@ namespace WebMvc.Web
             );
 
             routes.MapRoute(
+                "productUrls", // Route name
+                string.Concat(SiteConstants.Instance.ProductUrlIdentifier, "/{slug}"), // URL with parameters
+                new { controller = "Category", action = "ShowBySlugProduct", slug = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "topicShowUrls", // Route name
                 string.Concat(SiteConstants.Instance.CategoryUrlIdentifier, "/{catslug}/{slug}"), // URL with parameters
                 new { controller = "Topic", action = "ShowBySlug", catslug = UrlParameter.Optional, slug = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
+                "productShowUrls", // Route name
+                string.Concat(SiteConstants.Instance.ProductUrlIdentifier, "/{catslug}/{slug}"), // URL with parameters
+                new { controller = "Product", action = "ShowBySlug", catslug = UrlParameter.Optional, slug = UrlParameter.Optional } // Parameter defaults
             );
 
 

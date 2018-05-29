@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Mvc.Filters;
 using WebMvc.Domain.Constants;
 using WebMvc.Domain.DomainModel.Entities;
 using WebMvc.Domain.Interfaces.Services;
 using WebMvc.Domain.Interfaces.UnitOfWork;
+using WebMvc.Utilities;
 using WebMvc.Web.Application;
 using WebMvc.Web.Areas.Admin.ViewModels;
 
@@ -40,8 +42,25 @@ namespace WebMvc.Web.Areas.Admin.Controllers
             LocalizationService = localizationService;
             SettingsService = settingsService;
             LoggingService = loggingService;
+            
+        }
 
-            LoggedOnReadOnlyUser = MembershipService.GetUser(System.Web.HttpContext.Current.User.Identity.Name);
+       
+        protected bool UserIsAuthenticated => System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+        protected string Username => UserIsAuthenticated ? System.Web.HttpContext.Current.User.Identity.Name : null;
+
+
+        protected override void OnAuthentication(AuthenticationContext filterContext)
+        {
+            base.OnAuthentication(filterContext);
+
+            LoggedOnReadOnlyUser = UserIsAuthenticated ? MembershipService.GetUser(Username) : null;
+
+            if (!Username.IsNullEmpty() && LoggedOnReadOnlyUser == null)
+            {
+                System.Web.Security.FormsAuthentication.SignOut();
+                filterContext.Result = RedirectToAction("index", "Home");
+            }
         }
 
         internal ActionResult ErrorToHomePage(string errorMessage)

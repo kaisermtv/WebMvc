@@ -64,6 +64,7 @@ namespace WebMvc.Services
 
         private bool TestSlug(string slug,string newslug)
         {
+            if (slug == null) slug = "";
             return Regex.IsMatch(slug, string.Concat("^", newslug,"(-[\\d]+)?$" ));
         }
 

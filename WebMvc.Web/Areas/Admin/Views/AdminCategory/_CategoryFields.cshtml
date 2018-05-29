@@ -14,9 +14,9 @@
     @Html.LabelFor(model => model.Description)
     @Html.EditorFor(model => model.Description)
     @Html.ValidationMessageFor(model => model.Description)
-    <script>
+    @*<script>
         CKEDITOR.replace("Description");
-    </script>
+    </script>*@
 </div>
 <div class="row categoryimage">
     @if (!string.IsNullOrEmpty(Model.Image))
@@ -37,6 +37,13 @@
         </div>
         @Html.ValidationMessageFor(x => x.Files)
     </div>
+</div>
+<div class="checkbox">
+    @using (Html.BeginLabelFor(m => m.IsProduct, new { @class = "checkbox" }))
+    {
+        @Html.CheckBoxFor(m => m.IsProduct)
+    }
+    @Html.ValidationMessageFor(m => m.IsProduct)
 </div>
 <div class="checkbox">
     @using (Html.BeginLabelFor(m => m.IsLocked, new { @class = "checkbox" }))

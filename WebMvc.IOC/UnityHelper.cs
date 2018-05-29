@@ -61,6 +61,7 @@ namespace WebMvc.IOC
             container.BindInRequestScope<ICategoryService, CategoryService>(); 
             container.BindInRequestScope<ITopicService, TopicService>();
             container.BindInRequestScope<IPostSevice, PostSevice>(); 
+            container.BindInRequestScope<IProductPostSevice, ProductPostSevice>();
             container.BindInRequestScope<IRoleSevice, RoleSevice>(); 
             container.BindInRequestScope<IPermissionService, PermissionService>(); 
             container.BindInRequestScope<IContactService, ContactService>(); 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -15,6 +16,7 @@ using WebMvc.Domain.DomainModel.General;
 using WebMvc.Domain.Interfaces.Services;
 using WebMvc.Utilities;
 using WebMvc.Web.Application.StorageProviders;
+using WebMvc.Web.ViewModels;
 
 namespace WebMvc.Web.Application
 {
@@ -217,7 +219,27 @@ namespace WebMvc.Web.Application
 
             return $"/{SiteConstants.Instance.CategoryUrlIdentifier}/{catSlug}/{slug}";
         }
-        
+
+        public static string ProductUrls(string catSlug, string slug)
+        {
+            return $"/{SiteConstants.Instance.ProductUrlIdentifier}/{catSlug}/{slug}";
+        }
+
+        public static string ProductUrls(Guid? cat, string slug)
+        {
+            string catSlug = "";
+
+            if (cat != null)
+            {
+                var categoryService = ServiceFactory.Get<ICategoryService>();
+                var cater = categoryService.Get((Guid)cat);
+
+                if (cater != null) catSlug = cater.Slug;
+            }
+
+            return $"/{SiteConstants.Instance.ProductUrlIdentifier}/{catSlug}/{slug}";
+        }
+
 
         #endregion
 
@@ -523,6 +545,13 @@ namespace WebMvc.Web.Application
 
             return categoryService.GetList();
         }
+
+        public static List<Category> Categories(bool isProduct)
+        {
+            var categoryService = ServiceFactory.Get<ICategoryService>();
+
+            return categoryService.GetList(isProduct);
+        }
         #endregion
 
         #region Topic
@@ -556,8 +585,80 @@ namespace WebMvc.Web.Application
         #endregion
 
         #region Product
+        public static List<Product> Products(int limit)
+        {
+            var productService = ServiceFactory.Get<IProductSevice>();
 
+            return productService.GetList(limit);
+        }
+
+        public static List<Product> Products(Category cat,int limit)
+        {
+            var productService = ServiceFactory.Get<IProductSevice>();
+
+            return productService.GetList(cat, limit);
+        }
+
+        public static List<Product> HostProducts(Category cat, int limit)
+        {
+            var productService = ServiceFactory.Get<IProductSevice>();
+
+            return productService.GetList(cat, limit);
+        }
+
+        public static List<Product> SellingProducts(Category cat, int limit)
+        {
+            var productService = ServiceFactory.Get<IProductSevice>();
+
+            return productService.GetList(cat, limit);
+        }
+
+        //public static List<Product> Products(List<Category> cats, int limit)
+        //{
+        //    var productService = ServiceFactory.Get<IProductSevice>();
+
+        //    return productService.GetList(cats, limit);
+        //}
+
+        public static Hashtable ProductValues(Product product)
+        {
+            var productService = ServiceFactory.Get<IProductSevice>();
+            //var value = new List<ProductValueViewModel>();
+
+            var value = new Hashtable();
+
+            var property = productService.GetListProductClassAttributeForProductClassId((Guid)product.ProductClassId);
+            foreach(var it in property)
+            {
+                var a = new ProductValueViewModel
+                {
+                    IsShow = it.IsShow
+                };
+
+                var att = productService.GetAttribute(it.ProductAttributeId);
+                var v = productService.GetAttributeValue(product.Id, it.ProductAttributeId);
+
+                if(v != null)
+                    a.Value = v.Value;
+
+                if(att != null)
+                    a.Name = att.LangName;
+
+                value.Add(a.Name,a);
+            }
+
+            return value;
+        }
+
+        public static List<ProductClassAttribute> ProductAttributes(Product product)
+        {
+            var productService = ServiceFactory.Get<IProductSevice>();
+
+            
+
+            return productService.GetListProductClassAttributeForProductClassId((Guid)product.Category_Id);
+        }
         #endregion
-        
+
     }
 }

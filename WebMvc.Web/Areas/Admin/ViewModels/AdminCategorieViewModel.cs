@@ -20,21 +20,21 @@ namespace WebMvc.Web.Areas.Admin.ViewModels
         [HiddenInput]
         public Guid Id { get; set; }
 
-        [DisplayName("Category Name")]
+        [DisplayName("Tên danh mục")]
         [Required]
         [StringLength(600)]
         public string Name { get; set; }
 
-        [DisplayName("Category Description")]
+        [DisplayName("Mô tả")]
         [DataType(DataType.MultilineText)]
         [UIHint(AppConstants.EditorType), AllowHtml]
         public string Description { get; set; }
 
-        [DisplayName("Category Colour")]
+        [DisplayName("Màu hiển thị")]
         [UIHint(AppConstants.EditorTemplateColourPicker), AllowHtml]
         public string CategoryColour { get; set; }
 
-        [DisplayName("Lock The Category")]
+        [DisplayName("Khóa danh mục")]
         public bool IsLocked { get; set; }
 
         [DisplayName("Moderate all topics in this Category")]
@@ -43,11 +43,11 @@ namespace WebMvc.Web.Areas.Admin.ViewModels
         [DisplayName("Moderate all posts in this Category")]
         public bool ModeratePosts { get; set; }
 
-        [DisplayName("Sort Order")]
+        [DisplayName("Số thứ tự")]
         [Range(0, int.MaxValue)]
         public int SortOrder { get; set; }
 
-        [DisplayName("Parent Category")]
+        [DisplayName("Danh mục cha")]
         public Guid? ParentCategory { get; set; }
 
         public List<SelectListItem> AllCategories { get; set; }
@@ -60,8 +60,11 @@ namespace WebMvc.Web.Areas.Admin.ViewModels
         [MaxLength(200)]
         public string MetaDesc { get; set; }
 
-        [DisplayName("Category Image")]
+        [DisplayName("Ảnh đại diện")]
         public HttpPostedFileBase[] Files { get; set; }
         public string Image { get; set; }
+
+        [DisplayName("Danh mục sản phẩm")]
+        public bool IsProduct { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace WebMvc.Web.Areas.Admin.ViewModels
 {
     public class AdminAttributeViewModel
     {
+        [HiddenInput]
         public Guid Id { get; set; }
         public Guid AttriId { get; set; }
         public string Name { get; set; }
@@ -32,7 +33,6 @@ namespace WebMvc.Web.Areas.Admin.ViewModels
 
         [DisplayName("Nội dung")]
         [UIHint(AppConstants.EditorType), AllowHtml]
-        [StringLength(6000)]
         public string Content { get; set; }
         
         [DisplayName("Khóa comment")]
@@ -80,6 +80,7 @@ namespace WebMvc.Web.Areas.Admin.ViewModels
 
     public class AdminEditProductClassAttributeViewModel
     {
+        [HiddenInput]
         public Guid Id { get; set; }
         
         public string Name { get; set; }
@@ -89,6 +90,7 @@ namespace WebMvc.Web.Areas.Admin.ViewModels
 
     public class AdminEditProductClassViewModel
     {
+        [HiddenInput]
         public Guid Id { get; set; }
 
         [DisplayName("Tên nhóm sản phẩm")]
@@ -118,6 +120,7 @@ namespace WebMvc.Web.Areas.Admin.ViewModels
 
     public class AdminCreateProductAttributeViewModel
     {
+        [HiddenInput]
         public Guid Id { get; set; }
 
         [DisplayName("Lang Name")]

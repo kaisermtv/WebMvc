@@ -76,6 +76,7 @@
     <Compile Include="MembershipService.cs" />
     <Compile Include="LoggingService.cs" />
     <Compile Include="PermissionService.cs" />
+    <Compile Include="ProductPostSevice.cs" />
     <Compile Include="PostSevice.cs" />
     <Compile Include="ProductSevice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

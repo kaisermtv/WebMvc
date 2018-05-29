@@ -1,0 +1,222 @@
+﻿@model WebMvc.Web.ViewModels.CategoryProductListViewModel
+@{
+    ViewBag.Title = string.Concat(Model.Cat.Name, " - Sản phẩm");
+}
+<div class="container">
+    <div id="location">
+        <a href="/"><i class="bg icon_home"></i></a>
+
+        <span>»</span><a href="/pc-gaming/">PC GAMING</a>
+
+    </div>
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#banner_pro_list ul').carouFredSel({
+                auto: {
+                    play: true,
+                    pauseOnHover: true
+                },
+                prev: '#banner_pro_list .prev',
+                next: '#banner_pro_list .next',
+                'direction': 'left',
+                mousewheel: true,
+                scroll: 2,
+                items: 2,
+                swipe: {
+                    onMouse: true,
+                    onTouch: true
+                }
+            });
+
+        });
+    </script>
+
+    <div id="banner_pro_list">
+        <div class="btn_slider prev hidden" style="display: none;"></div>
+        <div class="btn_slider next hidden" style="display: none;"></div>
+        <div class="caroufredsel_wrapper" style="display: block; text-align: start; float: none; position: relative; top: auto; right: auto; bottom: auto; left: auto; z-index: auto; width: 1210px; height: 223px; margin: 0px 0px 0px -10px; overflow: hidden;">
+            <ul class="ul" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: 0px; margin: 0px; width: 3630px; height: 223px;">
+
+                <li><img border="0" src="https://gland.vn/media/banner/banner_c20ad4d7.png" width="595" height="220" alt=""></li>
+
+                <li><img border="0" src="https://gland.vn/media/banner/banner_6512bd43.jpg" width="595" height="220" alt=""></li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="clear space"></div>
+
+    <div id="content_center">
+
+        <input type="hidden" id="product_compare_list" value="">
+        <div class="top_area_list_page">
+            <h1>PC GAMING</h1>
+            <div class="compare_area">
+                <button type="button" class="btn_compare bg" onclick="compare_product('https://gland.vn:443/pc-gaming/')" style="display:none;"></button>
+            </div>
+            <div class="sort_style">
+                <span>Lựa chọn</span>
+                <a href="?display=list" class="bg list_style "></a>
+                <a href="?display=grid" class="bg grid_style active"></a>
+            </div>
+            <!--script>
+            $(document).ready(function(){
+                  current_url = $(location).attr('href');
+                  $(".sort_pro li a").each(function(){
+                    href = $(this).attr("href");
+                    if(current_url.indexOf("?") > 0){
+                        $(this).attr("href","&"+href);
+                    }else $(this).attr("href","?"+href);
+                  });
+              });
+            </script-->
+            <div class="sort_pro">
+                <span>Sắp xếp sản phẩm <span class="bg icon_drop"></span> </span>
+                <ul>
+
+                    <li><a href="https://gland.vn/pc-gaming/?sort=new" rel="nofollow">Mới nhất</a> </li>
+
+                    <li><a href="https://gland.vn/pc-gaming/?sort=price-asc" rel="nofollow">Giá: thấp -&gt; cao</a> </li>
+
+                    <li><a href="https://gland.vn/pc-gaming/?sort=price-desc" rel="nofollow">Giá: cao -&gt; thấp</a> </li>
+
+                    <li><a href="https://gland.vn/pc-gaming/?sort=view" rel="nofollow">Xem nhiều nhất</a> </li>
+
+                    <li><a href="https://gland.vn/pc-gaming/?sort=comment" rel="nofollow">Nhiều nhận xét</a> </li>
+
+                    <li><a href="https://gland.vn/pc-gaming/?sort=rating" rel="nofollow">Đánh giá cao nhất</a> </li>
+
+                    <li><a href="https://gland.vn/pc-gaming/?sort=name" rel="nofollow">Tên A-&gt;Z</a> </li>
+
+                </ul>
+            </div>
+
+            <div class="paging">
+
+            </div><!--paging-->
+
+        </div><!--top_area_list_page-->
+        Tổng 11sp
+
+        <div class="clear"></div>
+
+        <div class="product_list page_inside">
+            <ul class="ul">
+                @foreach (var it in Model.ListProduct)
+                {
+                    <li class="p-item" data-id="@it.Id">
+                        <div class="bg iconSaleOff"></div>
+                        <div class="bg iconHot"></div>
+                        <div class="bg iconNew"></div>
+                        <!---->
+                        <div class="p_container container-icon">
+                            @*<div class="p_sku">Mã SP: </div>*@
+                            <a href="/san-pham/zadak-pc-gaming-moab-red/" class="p_img"><img class="lazy" src="@Html.ThemeUrl()/Content/images/blank.gif" data-src="@AppHelpers.CategoryImage(it.Image, it.Id, 160)" alt="@it.Name" style="visibility: visible; zoom: 1; opacity: 1;"></a>
+                            <div class="p_price img_price">
+                                <span class="price-number-small-9"></span>
+                                <span class="price-number-small-9"></span>
+                                <span class="price-number-small-dot"></span>
+                                <span class="price-number-small-9"></span>
+                                <span class="price-number-small-9"></span>
+                                <span class="price-number-small-0"></span>
+                                <span class="price-number-small-dot"></span>
+                            </div>
+                            <div class="container_old_price">
+
+                            </div>
+                            <div class="clear"></div>
+                            <a href="/san-pham/zadak-pc-gaming-moab-red/" class="p_name">@it.Name</a>
+                            <div class="p_quantity">
+
+                                <i class="bg icon_in_stock"></i>
+
+                            </div>
+                            <a href="javascript:ShoppingCart.addVariant('product',8,8, 0,'ZADAK Pc gaming MOAB Red (Limited)', 1,99990000,'');reloadCart();" class="btn-cart-stop">Giỏ hàng</a>
+                        </div><!--wrap_pro-->
+                        <div class="hover_content_pro tooltip" style="left: 143.5px; top: -93px; display: none;">
+                            <a href="/san-pham/zadak-pc-gaming-moab-red/" class="hover_name">ZADAK Pc gaming MOAB Red (Limited)</a>
+
+                            <div class="hori_line"></div>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><b>Giá bán:</b></td>
+                                        <td>
+                                            <span class="img_price_full"><span class="price-number-small-9"></span><span class="price-number-small-9"></span><span class="price-number-small-dot"></span><span class="price-number-small-9"></span><span class="price-number-small-9"></span><span class="price-number-small-0"></span><span class="price-number-small-dot"></span><span class="price-number-small-0"></span><span class="price-number-small-0"></span><span class="price-number-small-0"></span></span>
+                                        </td>
+                                    </tr>
+                                    <tr><td><b>Bảo hành:</b></td><td>0</td></tr>
+                                </tbody>
+                            </table>
+
+
+                        </div><!--hover_content_pro-->
+                    </li>
+                }
+
+
+            </ul>
+        </div><!--prouduct_list-->
+
+        <div class="clear"></div>
+        <div class="top_area_list_page">
+            <div class="compare_area">
+                <button type="button" class="btn_compare bg" onclick="compare_product('https://gland.vn:443/pc-gaming/')" style="display:none;"></button>
+            </div>
+            <div class="sort_style">
+                <span>Lựa chọn</span>
+                <a href="?display=list" class="bg list_style "></a>
+                <a href="?display=grid" class="bg grid_style active"></a>
+            </div>
+            <div class="sort_pro">
+                <span>Sắp xếp sản phẩm <span class="bg icon_drop"></span> </span>
+                <ul>
+
+                    <li><a href="https://gland.vn/pc-gaming/?sort=new" rel="nofollow">Mới nhất</a> </li>
+
+                    <li><a href="https://gland.vn/pc-gaming/?sort=price-asc" rel="nofollow">Giá: thấp -&gt; cao</a> </li>
+
+                    <li><a href="https://gland.vn/pc-gaming/?sort=price-desc" rel="nofollow">Giá: cao -&gt; thấp</a> </li>
+
+                    <li><a href="https://gland.vn/pc-gaming/?sort=view" rel="nofollow">Xem nhiều nhất</a> </li>
+
+                    <li><a href="https://gland.vn/pc-gaming/?sort=comment" rel="nofollow">Nhiều nhận xét</a> </li>
+
+                    <li><a href="https://gland.vn/pc-gaming/?sort=rating" rel="nofollow">Đánh giá cao nhất</a> </li>
+
+                    <li><a href="https://gland.vn/pc-gaming/?sort=name" rel="nofollow">Tên A-&gt;Z</a> </li>
+
+                </ul>
+            </div>
+
+            <div class="paging">
+
+            </div><!--paging-->
+
+        </div><!--top_area_list_page-->
+
+        <div class="nd"></div>
+    </div><!--content_center-->
+    <div id="content_right">
+        <div class="box_right">
+            <div class="title_box_right">
+                <h2>PC GAMING</h2>
+            </div>
+            <div class="content_box">
+                <div class="bg_gradient_bottom_title"></div>
+                <ul class="ul">
+
+
+                    <li>» <a href="/pc-gaming/zadak-pc-gaming/">ZADAK PC GAMING</a> </li>
+
+                    <li>» <a href="/gland-pc-custom/">GLAND PC CUSTOM</a> </li>
+
+
+                </ul>
+            </div>
+        </div><!--box_right-->
+
+
+
+    </div><!--content_right-->
+</div>

@@ -47,6 +47,15 @@ namespace WebMvc.Services
             cat.MetaDescription = data["MetaDescription"].ToString();
             cat.Colour = data["Colour"].ToString();
             cat.Image = data["Image"].ToString();
+            
+            if (data["IsProduct"] != DBNull.Value)
+            {
+                cat.IsProduct = (bool)data["IsProduct"];
+            }
+            else
+            {
+                cat.IsProduct = false;
+            }
 
             string catid = data["Category_Id"].ToString();
             if (!catid.IsNullEmpty())
@@ -71,6 +80,7 @@ namespace WebMvc.Services
 
         private bool TestSlug(string slug, string newslug)
         {
+            if (slug == null) slug = "";
             return Regex.IsMatch(slug, string.Concat("^", newslug, "(-[\\d]+)?$"));
         }
 
@@ -104,9 +114,9 @@ namespace WebMvc.Services
             
 
             Cmd.CommandText = "INSERT INTO [Category]([Id],[Name],[Description],[IsLocked],[ModerateTopics],[ModeratePosts],[SortOrder]"
-                + ",[DateCreated],[Slug],[PageTitle],[Path],[MetaDescription],[Colour],[Image],[Category_Id])"
+                + ",[DateCreated],[Slug],[PageTitle],[Path],[MetaDescription],[Colour],[Image],[Category_Id],[IsProduct])"
                 + " VALUES(@Id,@Name,@Description,@IsLocked,@ModerateTopics,@ModeratePosts,@SortOrder"
-                + ",@DateCreated,@Slug,@PageTitle,@Path,@MetaDescription,@Colour,@Image,@Category_Id)";
+                + ",@DateCreated,@Slug,@PageTitle,@Path,@MetaDescription,@Colour,@Image,@Category_Id,@IsProduct)";
 
             Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = cat.Id;
             Cmd.AddParameters("Name", cat.Name);
@@ -123,6 +133,7 @@ namespace WebMvc.Services
             Cmd.AddParameters("Colour", cat.Colour);
             Cmd.AddParameters("Image", cat.Image);
             Cmd.AddParameters("Category_Id", cat.Category_Id);
+            Cmd.AddParameters("IsProduct", cat.IsProduct);
 
             bool rt = Cmd.command.ExecuteNonQuery() > 0;
             Cmd.cacheStartsWithToClear(CacheKeys.Category.StartsWith);
@@ -139,7 +150,7 @@ namespace WebMvc.Services
             Cmd.CommandText = "UPDATE [dbo].[Category] SET [Name] = @Name, [Description] = @Description, [IsLocked] = @IsLocked,"
                 + "[ModerateTopics] = @ModerateTopics, [ModeratePosts] = @ModeratePosts,[SortOrder] = @SortOrder,"
                 + "[DateCreated] = @DateCreated,[Slug] = @Slug,[PageTitle] = @PageTitle,[Path] = @Path,"
-                + "[MetaDescription] = @MetaDescription,[Colour] = @Colour,[Image] = @Image,[Category_Id] = @Category_Id"
+                + "[MetaDescription] = @MetaDescription,[Colour] = @Colour,[Image] = @Image,[Category_Id] = @Category_Id, [IsProduct] = @IsProduct"
                 + " WHERE Id = @Id";
 
 
@@ -158,6 +169,7 @@ namespace WebMvc.Services
             Cmd.AddParameters("Colour", cat.Colour);
             Cmd.AddParameters("Image", cat.Image);
             Cmd.AddParameters("Category_Id", cat.Category_Id);
+            Cmd.AddParameters("IsProduct", cat.IsProduct);
 
             bool rt = Cmd.command.ExecuteNonQuery() > 0;
             Cmd.cacheStartsWithToClear(CacheKeys.Category.StartsWith);
@@ -294,6 +306,56 @@ namespace WebMvc.Services
             return list;
         }
 
+        public List<Category> GetList( bool isProduct, Guid? paren)
+        {
+            string cachekey = string.Concat(CacheKeys.Category.StartsWith, "GetList-", paren,"-", isProduct);
+
+            var list = _cacheService.Get<List<Category>>(cachekey);
+            if (list == null)
+            {
+                var allcat = GetAll();
+                if (allcat == null) return null;
+
+                list = new List<Category>();
+
+                foreach (Category it in allcat)
+                {
+                    if (it.Category_Id == paren && it.IsProduct == isProduct)
+                    {
+                        list.Add(it);
+                    }
+                }
+
+                _cacheService.Set(cachekey, list, CacheTimes.OneDay);
+            }
+            return list;
+        }
+
+        public List<Category> GetList(bool isProduct)
+        {
+            string cachekey = string.Concat(CacheKeys.Category.StartsWith, "GetList-", isProduct);
+
+            var list = _cacheService.Get<List<Category>>(cachekey);
+            if (list == null)
+            {
+                var allcat = GetAll();
+                if (allcat == null) return null;
+
+                list = new List<Category>();
+
+                foreach (Category it in allcat)
+                {
+                    if (it.IsProduct == isProduct)
+                    {
+                        list.Add(it);
+                    }
+                }
+
+                _cacheService.Set(cachekey, list, CacheTimes.OneDay);
+            }
+            return list;
+        }
+
         public List<SelectListItem> GetBaseSelectListCategories(List<Category> allowedCategories)
         {
             var cacheKey = string.Concat(CacheKeys.Category.StartsWith, "GetBaseSelectListCategories", "-", allowedCategories.GetHashCode());
@@ -372,6 +434,36 @@ namespace WebMvc.Services
         public List<Category> GetAllowedEditCategories(Guid Role)
         {
             return GetAll();
+        }
+
+        public List<Category> GetAllowedCategories(Guid Role, bool IsProduct)
+        {
+            List<Category> lst = new List<Category>();
+
+            foreach (var it in GetAll())
+            {
+                if(it.IsProduct == IsProduct)
+                {
+                    lst.Add(it);
+                }
+            }
+
+            return lst;
+        }
+
+        public List<Category> GetAllowedEditCategories(Guid Role, bool IsProduct)
+        {
+            List<Category> lst = new List<Category>();
+
+            foreach (var it in GetAll())
+            {
+                if (it.IsProduct == IsProduct)
+                {
+                    lst.Add(it);
+                }
+            }
+
+            return lst;
         }
 
         private static string LevelDashes(int level)

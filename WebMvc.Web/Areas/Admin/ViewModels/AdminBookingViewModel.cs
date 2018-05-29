@@ -21,6 +21,7 @@ namespace WebMvc.Web.Areas.Admin.ViewModels
 
     public class AdminTypeRoomEditViewModel
     {
+        [HiddenInput]
         public Guid Id { get; set; }
         public string Name { get; set; }
         public bool IsShow { get; set; }
