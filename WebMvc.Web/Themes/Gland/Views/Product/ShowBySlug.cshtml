@@ -5,14 +5,22 @@
 <div class="container">
     <div id="location">
         <a href="/"><i class="bg icon_home"></i></a>
-        <span>»</span><a href="/pc-gaming/">PC GAMING</a>
+        <span>»</span><a href="/san-pham">Sản phẩm</a>
+        <span>»</span><a href="@Url.Action("ShowBySlugProduct","Category",new { slug = Model.Cat.Slug })">@Model.Cat.Name</a>
+        <span>»</span><a href="">@Model.product.Name</a>
     </div>
     <div id="pro_detail_page">
         <div id="product_detail">
             <div id="wrap_scroll" style="width:350px; float:left;">
                 <div id="img_detail" class="p-item" data-id="2139">
                     <div id="img_large" class="container-icon" style="position:relative;">
-                        <a class="MagicZoom" id="Zoomer" rel="selectors-effect-speed: 600" href="/media/product/2139_ryzen_5_2600x_stream_pubg_dota_2.jpg" title="" style="position: relative; display: inline-block; text-decoration: none; outline: 0px; overflow: hidden; margin: auto; width: auto; height: auto;"><img src="https://gland.vn/media/product/2139_ryzen_5_2600x_stream_pubg_dota_2.jpg" title="Click để xem ảnh lớn" alt="GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2" style="opacity: 1;"><div class="MagicZoomPup" style="z-index: 10; position: absolute; overflow: hidden; display: none; visibility: hidden; width: 175px; height: 166px; opacity: 0.5; left: 98px; top: 5px;"><img src="https://gland.vn/media/product/2139_ryzen_5_2600x_stream_pubg_dota_2.jpg" title="Click để xem ảnh lớn" alt="GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2" style="opacity: 0.009; position: absolute; z-index: 5;"></div><div class="MagicZoomHint" style="display: block; overflow: hidden; position: absolute; visibility: visible; z-index: 1; left: 2px; right: auto; top: 2px; bottom: auto; opacity: 0.75; max-width: 271px;">Zoom</div></a>
+                        <a class="MagicZoom" id="Zoomer" rel="selectors-effect-speed: 600" href="/media/product/2139_ryzen_5_2600x_stream_pubg_dota_2.jpg" title="" style="position: relative; display: inline-block; text-decoration: none; outline: 0px; overflow: hidden; margin: auto; width: auto; height: auto;">
+                            <img src="https://gland.vn/media/product/2139_ryzen_5_2600x_stream_pubg_dota_2.jpg" title="Click để xem ảnh lớn" alt="GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2" style="opacity: 1;">
+                            <div class="MagicZoomPup" style="z-index: 10; position: absolute; overflow: hidden; display: none; visibility: hidden; width: 175px; height: 166px; opacity: 0.5; left: 98px; top: 5px;">
+                                <img src="https://gland.vn/media/product/2139_ryzen_5_2600x_stream_pubg_dota_2.jpg" title="Click để xem ảnh lớn" alt="GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2" style="opacity: 0.009; position: absolute; z-index: 5;">
+                            </div>
+                            <div class="MagicZoomHint" style="display: block; overflow: hidden; position: absolute; visibility: visible; z-index: 1; left: 2px; right: auto; top: 2px; bottom: auto; opacity: 0.75; max-width: 271px;">Zoom</div>
+                        </a>
                     </div>
                     <ul id="img_thumb" class="ul">
 
@@ -57,7 +65,7 @@
 
 
                     </ul>
-                    <div class="name_show">GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2</div>
+                    <div class="name_show">@Model.product.Name</div>
 
                     <div class="clear"></div>
                     <div id="support_online_detail">
@@ -77,20 +85,20 @@
                                     </td>
                                 </tr>
                                 <!--
-                                <tr>
-                                  <td>
-                                    <a href="#" title="Kinh doanh 3" rel="nofollow">
-                                      <img style="width: 10px;" src="/template/default/images/icon-skype.jpg" />Mr Hiếu: 096.214.2200
-                                    </a>
-                                  </td>
-                                  <td>
-                                    <a href="#" title="Kinh doanh 4" rel="nofollow">
-                                      <img style="width: 10px;" src="/template/default/images/icon-skype.jpg" />Mr Tuyến: 096.266.0317
-                                    </a>
-                                  </td>
+                <tr>
+                  <td>
+                    <a href="#" title="Kinh doanh 3" rel="nofollow">
+                      <img style="width: 10px;" src="/template/default/images/icon-skype.jpg" />Mr Hiếu: 096.214.2200
+                    </a>
+                  </td>
+                  <td>
+                    <a href="#" title="Kinh doanh 4" rel="nofollow">
+                      <img style="width: 10px;" src="/template/default/images/icon-skype.jpg" />Mr Tuyến: 096.266.0317
+                    </a>
+                  </td>
 
-                                </tr>
-                                -->
+                </tr>
+                -->
                             </tbody>
                         </table>
                     </div>
@@ -98,7 +106,7 @@
 
             </div><!--wrap_scroll-->
             <div id="overview">
-                <h1>GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2</h1>
+                <h1>@Model.product.Name</h1>
                 <p class="float_l red">Mã SP: </p>
                 <p class="float_r"><i class="bg icon_fav"></i><a href="javascript:user_like_content(2139, 'pro');">Lưu sản phẩm yêu thích</a> </p>
                 <div class="hori_line"></div>
@@ -255,41 +263,7 @@
         <div class="clear"></div>
         <div id="tab2" class="content_scroll_tab">
             <h2 class="cufon title_box_scroll">Đặc điểm nổi bật</h2>
-            <p style="text-align: center;"><span style="font-size: 24pt; color: #008000;"><strong><span style="font-family: 'times new roman', times;">Bạn đã&nbsp;trang bị&nbsp;2 item quan trọng này&nbsp;chưa hỡi Streamer tương lai?!</span></strong></span></p>
-            <p><span style="font-size: 14pt; font-family: 'times new roman', times;">-Stream Game ngày càng khẳng định vị thế là một&nbsp;trong những nghề HOT&nbsp;NHẤT&nbsp;của giới trẻ hiện giờ và cả trong tương lai nữa&nbsp;khi mà Việt Nam đang&nbsp;là thị trường game lớn nhất khu vực Đông Nam Á. Nhưng....</span></p>
-            <p><span style="font-size: 14pt; font-family: 'times new roman', times;"><img style="display: block; margin-left: auto; margin-right: auto;" src="/media/lib/2139_pewdiepie-streamer.jpg" alt="" width="600"></span></p>
-            <p><span style="font-size: 14pt; font-family: 'times new roman', times;">...Bạn&nbsp;có biết việc để trở thành một Streamer&nbsp;Pro: vừa theo đuổi được đam mê vừa kiếm được&nbsp;hàng nghìn $ từ nghề này thì có 2&nbsp;item&nbsp;bạn bắt buộc phải có này không?&nbsp;</span></p>
-            <p><span style="font-size: 14pt; font-family: 'times new roman', times;"><span style="color: #008000;">-</span><strong><span style="color: #008000;">Item&nbsp;1:</span></strong>&nbsp;Một bộ máy PC "khỏe"💪 để bạn&nbsp;có&nbsp;thể Live Stream Youtube những tựa game HOT nhất như:&nbsp;Battleground-PUBG, Dota2, GTA V,&nbsp;CS:GO, Liên Minh Huyền Thoại-LOL,...</span></p>
-            <p><span style="font-size: 14pt; font-family: 'times new roman', times;">❌❌Các bạn đặc biệt chú ý&nbsp;nhé: Việc dàn máy tính của bạn chơi game mượt nhưng không có nghĩa là khi Stream Youtube thì người xem&nbsp;cũng sẽ thấy&nbsp;mượt mà như vậy đâu. Bởi vì nó còn phụ thuộc vào đường truyền mạng bạn sử dụng (cái này nâng lên gói cao hơn là xong &nbsp;👌 ) và cái quan trọng hơn ở đây là chiếc CPU của bạn (hẳn bạn cũng biết mua CPU rồi muốn thay thì rất là....😭). CPU sẽ là nhân tố&nbsp;quan trọng trong&nbsp;việc người xem Video của bạn khi Live Stream có giật lag, mất hình hay không.</span></p>
-            <p><span style="font-family: 'times new roman', times;"><img style="display: block; margin-left: auto; margin-right: auto;" src="/media/lib/2139_Channel-Lag-Ryzen-5-2600x-Live-Stream-Youtube-PUBG-Dota2.jpg" alt=""></span></p>
-            <p style="text-align: center;"><span style="font-family: 'times new roman', times;"><span style="font-size: 18.6667px;">Tin tôi đi! Đây chính là&nbsp;khuôn mặt của những người xem Channel của bạn khi Video của bạn không mượt mà 😨</span></span></p>
-            <p style="text-align: center;">&nbsp;</p>
-            <p style="text-align: left;"><span style="font-size: 14pt; font-family: 'times new roman', times;"><span style="color: #008000;">-<strong>Item&nbsp;2:</strong></span>&nbsp;<span style="color: #000000;"><strong>Xiền!!</strong></span> Tất nhiên rồi, bạn phải đủ tiền để sắm&nbsp;<strong><span style="color: #008000;">Item 1</span></strong>&nbsp;đúng không? 🤑</span></p>
-            <p style="text-align: left;">&nbsp;</p>
-            <p style="text-align: center;">&nbsp;---------------------------------------------------------------------------------------------------------------</p>
-            <p style="text-align: center;"><span style="font-family: 'times new roman', times;"><strong><span style="font-size: 24pt;"><span style="color: #008000;">Vậy bộ case này có xứng đáng để bạn bỏ tiền đầu tư cho tương lai</span>❓❓</span></strong></span></p>
-            <p style="text-align: left;"><span style="font-size: 14pt;"><span style="font-family: 'times new roman', times;">Hãy cùng đi tìm câu trả lời ở ngay dưới đây nhé&nbsp;👇</span></span></p>
-            <p style="text-align: left;"><span style="font-size: 18pt;"><strong><span style="font-family: 'times new roman', times;">1. Cấu hình mạnh mẽ:</span></strong></span></p>
-            <p style="text-align: left;"><span style="font-size: 14pt; font-family: 'times new roman', times;">-Muốn Live Stream những game đỏi hỏi cấu hình cao như PUBG, Dota 2 thì việc đầu tiên là bộ case của bạn phải chiến tốt đã. Và bộ case&nbsp;GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2<strong>&nbsp;</strong>với&nbsp;trang bị&nbsp;cấu hình Ryzen 5 2600x, GTX 1060 6Gb, Ram 16Gb (xem chi tiết hơn tại mục "thông số kỹ thuật" hoặc click:&nbsp;<strong><span style="color: #0000ff;"><a href="https://gland.vn/gland-pc-live-stream-youtube-on-pc-battlegrounds-pubg/dota-2/#tab1">https://gland.vn/gland-pc-live-stream-youtube-on-pc-battlegrounds-pubg/dota-2/#tab1</a>) </span></strong><span style="color: #000000;">sẽ dễ dàng đáp ứng điều kiện này.</span></span></p>
-            <p style="text-align: left;">&nbsp;<span style="font-size: 14pt; font-family: 'times new roman', times;">-Với cấu hình này, bạn có thể chơi PUBG ở thiết lập Ultra (full HD) với mức FPS: 80-90&nbsp;😉. Quá tuyệt vời phải không nào!</span></p>
-            <p style="text-align: left;"><span style="font-size: 14pt; font-family: 'times new roman', times;">😅Nhưng đó chỉ là điều kiện cần thôi! Ngay sau đây chính là điều kiện "đủ" để Live Stream PUBG, Dota 2,...</span></p>
-            <p style="text-align: left;"><span style="font-size: 18pt; font-family: 'times new roman', times;">&nbsp;<strong>2. Khả năng Live Stream mượt mà với sức mạnh của AMD Ryzen 5 2600X:</strong></span></p>
-            <p style="text-align: left;"><span style="font-size: 14pt; font-family: 'times new roman', times;">-Nhiều bạn khi build cấu hình PC Live Stream Game trên Youtube thường mặc định lựa chọn CPU Intel bởi đơn giản khi chơi game Intel vẫn nhỉnh hơn so với AMD Ryzen. Nhưng đó lại là điểm nhầm lẫn đáng tiếc 😨 bởi vì...</span></p>
-            <p style="text-align: left;"><span style="font-size: 14pt; font-family: 'times new roman', times;">-Trong việc Live Stream thì CPU Ryzen của AMD&nbsp;hoàn toàn áp đảo so với Intel. Các bạn có thể tham khảo Video dưới đây được thực hiện bởi GamersNexus.</span></p>
-            <p style="text-align: left;">&nbsp;</p>
-            <p style="text-align: center;"><span style="font-family: 'times new roman', times;"><span style="font-size: 18.6667px;">Ở góc độ người xem Stream(viewer), AMD Ryzen 5 2600X&nbsp;xuất&nbsp;ra&nbsp;video mượt mà hơn Intel nhiều</span></span></p>
-            <p style="text-align: left;"><span style="font-size: 14pt; font-family: 'times new roman', times;"><iframe style="display: block; margin-left: auto; margin-right: auto;" src="//player.vimeo.com/video/267731114?title=0&amp;amp;byline=0" width="425" height="350"></iframe></span></p>
-            <p style="text-align: left;">&nbsp;</p>
-            <p style="text-align: left;">&nbsp;</p>
-            <p style="text-align: left;"><span style="font-family: 'times new roman', times; font-size: 18pt;"><strong>3.&nbsp;Cấu hình / giá thành / phục vụ công việc tối ưu nhất:</strong></span></p>
-            <p style="text-align: left;"><span style="font-size: 14pt; font-family: 'times new roman', times;">-Với công việc chính là Live Stream Game trên Youtube thì AMD Ryzen 5 2600X&nbsp;chính là sự lựa chọn hợp lý nhất xét về mặt giá thành/hiệu năng.</span></p>
-            <p style="text-align: left;"><span style="font-size: 14pt; font-family: 'times new roman', times;">-VGA 1060 6Gb là tối thiểu để giúp bạn có trải nghiệm game PUBG (cũng như nhiều tựa game khác: GTA V, Dota 2,...) ở thiết lập đồ họa đẹp nhất mà mức&nbsp;FPS vẫn cao.</span></p>
-            <p style="text-align: left;"><span style="font-size: 14pt; font-family: 'times new roman', times;">-Bộ case sử dụng SSD m.2 NVMe mới nhất với&nbsp;tốc độ đọc/ghi lên đến 1000/800 MB/s.</span></p>
-            <p style="text-align: left;"><span style="font-size: 14pt; font-family: 'times new roman', times;">-Thoải mái quẩy Game cũng như làm việc với 16Gb Ram.</span></p>
-            <p style="text-align: left;"><span style="font-size: 14pt; font-family: 'times new roman', times;">-Việc lựa chọn main X470 sẽ là tối ưu hơn nhưng không quá nhiều, do vậy&nbsp;khi xét đến&nbsp;số tiền chênh lệch giữa B350 và X470 thì lựa chọn B350 hợp lý nhất. Tất nhiên nếu bạn muốn lên luôn X470 thì Gland sẽ đáp ứng yêu cầu&nbsp;😘</span></p>
-            <p style="text-align: left;"><span style="font-size: 14pt; font-family: 'times new roman', times;">-Chúng tôi lựa chọn chiếc vỏ case Vitra Nefertiti G8 bởi chỉ với mức giá 1 triệu đồng bạn được sở hữu chiếc vỏ case với 3 mặt kính cường lực vô cùng chắc chắn.&nbsp;Và&nbsp;hơn thế nữa&nbsp;bạn sẽ&nbsp;chẳng&nbsp;phải bận tâm đến việc thay vỏ case trong tương lai đâu, bởi chiếc vỏ case này&nbsp;quá&nbsp;tuyệt vời trong tầm giá rồi&nbsp;😍</span></p>
-            <p style="text-align: left;">&nbsp;</p>
-            <p style="text-align: left;">&nbsp;</p>
+            @Html.Raw(Model.post.PostContent)
             <div class="clear"></div>
             <div id="tab1" class="content_scroll_tab" style="display:block;">
                 <h2 class="cufon title_box_scroll">Thông số kỹ thuật</h2>

@@ -62,3 +62,4 @@ Parameter name: name
 29/05/2018 06:13:29 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A route named 'topicShowUrls' is already in the route collection. Route names must be unique.
 Parameter name: name
 29/05/2018 06:14:49 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+29/05/2018 15:38:20 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'Delete' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.AdminProductController'.

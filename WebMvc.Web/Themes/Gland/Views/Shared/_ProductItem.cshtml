@@ -1,4 +1,5 @@
 ﻿@model WebMvc.Domain.DomainModel.Entities.Product
+@using System.Collections
 @using WebMvc.Web.ViewModels
 @{
     string link = AppHelpers.ProductUrls(Model.Category_Id, Model.Slug);
@@ -6,18 +7,32 @@
     string price = "Liên hệ";
     string Price = "0";
     string guarantee = "";
-    if (val.ContainsKey("Guarantee")) { guarantee = ((ProductValueViewModel)val["Guarantee"]).Value; }
+    string showProperti = "";
 
-    if (val.ContainsKey("Price"))
+    foreach (DictionaryEntry it in val)
     {
-        Price = ((ProductValueViewModel)val["Price"]).Value;
-        try
+        var item = (ProductValueViewModel)it.Value;
+        switch (it.Key.ToString())
         {
-            price = int.Parse(Price).ToString("N0");
+            case "Price":
+                Price = item.Value;
+                try
+                {
+                    price = int.Parse(Price).ToString("N0").Replace(",", ".");
+                }
+                catch { }
+                break;
+            case "Guarantee":
+                guarantee = item.Value;
+                break;
+            default:
+                if (item.IsShow)
+                {
+                    showProperti = string.Concat(showProperti, "<b>", it.Key, ":</b> ", item.Value,"<br/>");
+                }
+                break;
         }
-        catch { }
     }
-    //Dictionary
 }
 <li class="p-item" data-id="@Model.Id">
 
@@ -60,6 +75,7 @@
 
         <div class="hori_line"></div>
         <div class="hover_offer">
+            @Html.Raw(showProperti)
             @if (Model.ShotContent.Length > 0)
             {
                 <b>Mô tả tóm tắt:</b><br>
