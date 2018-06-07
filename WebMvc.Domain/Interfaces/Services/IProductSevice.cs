@@ -33,8 +33,12 @@ namespace WebMvc.Domain.Interfaces.Services
         List<Product> GetList(int limit = 10, int page = 1);
         List<ProductClassAttribute> GetListProductClassAttributeForProductClassId(Guid id);
 
+        int GetCount(ProductClass productClass);
+        List<Product> GetList(ProductClass productClass, int limit = 10, int page = 1);
+
         List<ProductAttribute> GetAllAttribute();
         ProductAttribute GetAttribute(Guid id);
+        ProductAttribute GetAttribute(string name);
         void Update(ProductAttribute cat);
         List<ProductClass> GetAllProductClass();
     }

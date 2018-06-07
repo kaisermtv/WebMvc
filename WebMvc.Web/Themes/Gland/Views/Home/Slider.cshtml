@@ -1,4 +1,5 @@
 ﻿<div id="content_top_right">
+    <script type="text/javascript" src="@Html.ThemeUrl()/Content/script/owl.carousel.js"></script>
     <!--<div class="video"><iframe width="320" height="240" src="3Htgi31GThI" frameborder="0" allowfullscreen></iframe></div>-->
     <div class="video"><iframe width="250" height="190" src="//www.youtube.com/embed/3Htgi31GThI?autoplay=0" frameborder="0" allowfullscreen=""></iframe></div>
     <div class="banner-right-slider">
@@ -11,155 +12,114 @@
 
 <div id="container_slider">
     <div id="slider">
-        <div id="sync1" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+        <div id="sync1" class="owl-carousel owl-theme">
 
-            <div class="owl-wrapper-outer">
-                <div class="owl-wrapper" style="width: 5760px; left: 0px; display: block; transition: all 800ms ease; transform: translate3d(-1440px, 0px, 0px);">
-                    <div class="owl-item" style="width: 720px;">
-                        <div class="item">
-                            <img border="0" src="https://gland.vn/media/banner/banner_34173cb3.jpg" width="716" height="252" alt="BÁO ĐÊM">
-                        </div>
-                    </div>
-                    <div class="owl-item" style="width: 720px;">
-                        <div class="item">
-                            <a href="/ad.php?id=24" target="_blank" rel="nofollow">
-                                <img border="0" src="https://gland.vn/media/banner/banner_1ff1de77.jpg" width="716" height="252" alt="THE JOKER">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="owl-item" style="width: 720px;">
-                        <div class="item">
-                            <a href="/ad.php?id=25" target="_blank" rel="nofollow">
-                                <img border="0" src="https://gland.vn/media/banner/banner_8e296a06.jpg" width="716" height="252" alt="DEADPOOL">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="owl-item" style="width: 720px;">
-                        <div class="item">
-                            <a href="/ad.php?id=29" target="_blank" rel="nofollow">
-                                <img border="0" src="https://gland.vn/media/banner/banner_6ea9ab1b.jpg" width="716" height="252" alt="BỘ SƯU TẬP">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="item"><img border=0 src="https://gland.vn/media/banner/banner_34173cb3.jpg" width='716' height='252' alt="BÁO ĐÊM" /></div>
 
+            <div class="item"><a href="/ad.php?id=24" target='_blank' rel='nofollow'><img border=0 src="https://gland.vn/media/banner/banner_1ff1de77.jpg" width='716' height='252' alt="THE JOKER" /></a></div>
 
+            <div class="item"><a href="/ad.php?id=25" target='_blank' rel='nofollow'><img border=0 src="https://gland.vn/media/banner/banner_8e296a06.jpg" width='716' height='252' alt="DEADPOOL" /></a></div>
 
-
-
-
+            <div class="item"><a href="/ad.php?id=29" target='_blank' rel='nofollow'><img border=0 src="https://gland.vn/media/banner/banner_6ea9ab1b.jpg" width='716' height='252' alt="BỘ SƯU TẬP" /></a></div>
 
         </div>
-        <div id="sync2" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+        <div id="sync2" class="owl-carousel">
 
-            <div class="owl-wrapper-outer">
-                <div class="owl-wrapper" style="width: 1440px; left: 0px; display: block; transition: all 200ms ease; transform: translate3d(0px, 0px, 0px);">
-                    <div class="owl-item" style="width: 180px;">
-                        <div class="item">
-                            <span>BÁO ĐÊM</span>
-                        </div>
-                    </div><div class="owl-item" style="width: 180px;">
-                        <div class="item">
-                            <span>THE JOKER</span>
-                        </div>
-                    </div><div class="owl-item synced" style="width: 180px;">
-                        <div class="item">
-                            <span>DEADPOOL</span>
-                        </div>
-                    </div><div class="owl-item" style="width: 180px;">
-                        <div class="item">
-                            <span>BỘ SƯU TẬP</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="item">
+                <span>BÁO ĐÊM</span>
             </div>
 
+            <div class="item">
+                <span>THE JOKER</span>
+            </div>
 
+            <div class="item">
+                <span>DEADPOOL</span>
+            </div>
 
-
-
-
+            <div class="item">
+                <span>BỘ SƯU TẬP</span>
+            </div>
 
         </div>
     </div>
     <div class="clear space"></div>
 </div><!--container_slider-->
 <script>
-        //slider home
-        $(document).ready(function () {
-            if ($("#sync2").length > 0) {
-                var sync1 = $("#sync1");
-                var sync2 = $("#sync2");
+    //slider home
+    $(document).ready(function () {
+        if ($("#sync2").length > 0) {
+            var sync1 = $("#sync1");
+            var sync2 = $("#sync2");
 
-                sync1.owlCarousel({
-                    singleItem: true,
-                    autoPlay: 4000,
-                    slideSpeed: 1000,
-                    stopOnHover: true,
-                    lazyLoad: true,
-                    navigation: false,
-                    pagination: false,
-                    afterAction: syncPosition,
-                    responsiveRefreshRate: 200,
-                });
+            sync1.owlCarousel({
+                singleItem: true,
+                autoPlay: 4000,
+                slideSpeed: 1000,
+                stopOnHover: true,
+                lazyLoad: true,
+                navigation: false,
+                pagination: false,
+                afterAction: syncPosition,
+                responsiveRefreshRate: 200,
+            });
 
-                sync2.owlCarousel({
-                    items: 4,
-                    pagination: false,
-                    responsiveRefreshRate: 100,
-                    afterInit: function (el) {
-                        el.find(".owl-item").eq(0).addClass("synced");
-                    }
-                });
-
-                function syncPosition(el) {
-                    var current = this.currentItem;
-                    $("#sync2")
-                        .find(".owl-item")
-                        .removeClass("synced")
-                        .eq(current)
-                        .addClass("synced")
-                    if ($("#sync2").data("owlCarousel") !== undefined) {
-                        center(current)
-                    }
+            sync2.owlCarousel({
+                items: 4,
+                pagination: false,
+                responsiveRefreshRate: 100,
+                afterInit: function (el) {
+                    el.find(".owl-item").eq(0).addClass("synced");
                 }
+            });
 
-                $("#sync2").on("click", ".owl-item", function (e) {
-                    e.preventDefault();
-                    var number = $(this).data("owlItem");
-                    sync1.trigger("owl.goTo", number);
-                });
-
-                function center(number) {
-                    var sync2visible = sync2.data("owlCarousel").owl.visibleItems;
-                    var num = number;
-                    var found = false;
-                    for (var i in sync2visible) {
-                        if (num === sync2visible[i]) {
-                            var found = true;
-                        }
-                    }
-
-                    if (found === false) {
-                        if (num > sync2visible[sync2visible.length - 1]) {
-                            sync2.trigger("owl.goTo", num - sync2visible.length + 2)
-                        } else {
-                            if (num - 1 === -1) {
-                                num = 0;
-                            }
-                            sync2.trigger("owl.goTo", num);
-                        }
-                    } else if (num === sync2visible[sync2visible.length - 1]) {
-                        sync2.trigger("owl.goTo", sync2visible[1])
-                    } else if (num === sync2visible[0]) {
-                        sync2.trigger("owl.goTo", num - 1)
-                    }
-
+            function syncPosition(el) {
+                var current = this.currentItem;
+                $("#sync2")
+                    .find(".owl-item")
+                    .removeClass("synced")
+                    .eq(current)
+                    .addClass("synced")
+                if ($("#sync2").data("owlCarousel") !== undefined) {
+                    center(current)
                 }
             }
 
-        });
+            $("#sync2").on("click", ".owl-item", function (e) {
+                e.preventDefault();
+                var number = $(this).data("owlItem");
+                sync1.trigger("owl.goTo", number);
+            });
+
+            function center(number) {
+                var sync2visible = sync2.data("owlCarousel").owl.visibleItems;
+                var num = number;
+                var found = false;
+                for (var i in sync2visible) {
+                    if (num === sync2visible[i]) {
+                        var found = true;
+                    }
+                }
+
+                if (found === false) {
+                    if (num > sync2visible[sync2visible.length - 1]) {
+                        sync2.trigger("owl.goTo", num - sync2visible.length + 2)
+                    } else {
+                        if (num - 1 === -1) {
+                            num = 0;
+                        }
+                        sync2.trigger("owl.goTo", num);
+                    }
+                } else if (num === sync2visible[sync2visible.length - 1]) {
+                    sync2.trigger("owl.goTo", sync2visible[1])
+                } else if (num === sync2visible[0]) {
+                    sync2.trigger("owl.goTo", num - 1)
+                }
+
+            }
+        }
+
+    });
 
 </script>
 

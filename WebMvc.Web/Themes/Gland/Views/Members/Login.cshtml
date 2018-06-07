@@ -1,0 +1,81 @@
+﻿@model WebMvc.Web.ViewModels.LogOnViewModel
+
+@{
+    ViewBag.Title = "Đăng nhập";
+}
+
+<div class="container">
+    <div id="location">
+        <a href="/"><i class="bg icon_home"></i></a>
+        <span>»</span><a href="">Đăng nhập</a>
+    </div>
+    <div class="box_common">
+        <div class="title_box_center">
+            <h1 class="h_title cufon" style="font-size:22px !important;">Đăng nhập</h1>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.ReturnUrl)
+
+            <table class="shadow cor" cellspacing="0" cellpadding="6" style="width:100%;">
+                <tbody>
+                    <tr>
+                        <td style="width: 50%;" id="login_col">
+
+
+                            <div id="login_title" style="padding: 5px 0px 10px; font-size: 13px; color: rgb(88, 88, 88);"><b>Thông tin khách hàng đăng nhập hệ thống</b></div>
+
+
+                            <input type="hidden" name="login" id="login" value="yes">
+                            <table cellpadding="5" cellspacing="0" width="80%">
+                                <tbody>
+                                    <tr>
+                                        <td>Tài khoản</td>
+                                        <td>
+                                            @Html.EditorFor(model => model.UserName)
+                                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mật khẩu</td>
+                                        <td>
+                                            @Html.EditorFor(model => model.Password)
+                                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>@Html.EditorFor(model => model.RememberMe) Nhớ đăng nhập</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <div style="position: relative;">
+                                                <input type="submit" value="Đăng nhập" class="btn_red">
+                                                <span style="position: absolute;right:128px;top:7px;"><a href="/quen-mat-khau">Quên mật khẩu</a></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </td>
+                        <td width="10px">&nbsp;</td>
+                        <td valign="top" style="line-height: 18px;">
+                            <div style="padding: 5px 0px 10px; font-size: 13px; color: rgb(88, 88, 88);"><b>Bạn chưa là thành viên</b></div>
+                            Đăng ký là thành viên để hưởng nhiều lợi ích và đặt mua hàng dễ dàng hơn.
+                            <p><a title="Click đăng ký tài khoản miễn phí" href="/dang-ky" style="color:#b00; font-weight: bold; text-decoration: none;">Đăng ký tài khoản</a></p>
+
+
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        }
+    </div>
+
+</div>

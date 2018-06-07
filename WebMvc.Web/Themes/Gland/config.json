@@ -1,1 +1,20 @@
-{"MainMenu":{"LabelName":"Select main menu","Type":"MenuID","Value":""},"FooterMenu":{"LabelName":"Select footer menu","Type":"MenuID","Value":""}}
+{
+  "MainMenu": {
+    "LabelName": "Select main menu",
+    "Type": "MenuID",
+    "Value": ""
+  },
+  "FooterMenu": {
+    "LabelName": "Select footer menu",
+    "Type": "MenuID",
+    "Value": ""
+  },
+  "ComputerBuilding": {
+    "LabelName": "List element computer",
+    "Type": "ListProductClass",
+    "Value": {
+      "0": "c2f85d01-6e37-418f-b728-a8e800f184c1"
+
+    }
+  }
+}

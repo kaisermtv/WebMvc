@@ -23,7 +23,7 @@ namespace WebMvc.Web.Application
         }
         #endregion
 
-        public static string getValue(string value)
+        public static object getValue(string value)
         {
             var theme = DependencyResolver.Current.GetService<ISettingsService>().GetSetting("Theme").ToLower();
             Hashtable buff = null;
@@ -47,7 +47,7 @@ namespace WebMvc.Web.Application
 
                 foreach (var item in (dynamic)JsonConvert.DeserializeObject(str))
                 {
-                    buff.Add((string)item.Name, (string)item.Value.Value);
+                    buff.Add((string)item.Name, item.Value.Value);
                 }
 
                 cache[theme] = buff;
@@ -55,7 +55,7 @@ namespace WebMvc.Web.Application
 
 
 
-            return (string)buff[value];
+            return buff[value];
         }
 
         public static bool setSettingTheme(string themeName, dynamic buf)

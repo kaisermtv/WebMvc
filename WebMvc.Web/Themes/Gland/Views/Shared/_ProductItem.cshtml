@@ -55,7 +55,7 @@
             <i class="bg icon_in_stock"></i>
 
         </div>
-        <a href="javascript:ShoppingCart.addVariant('product','@Model.Id','@Model.Id', 0,'@Model.Name', 1,@Price,'');reloadCart();" class="btn-cart-stop">Giỏ hàng</a>
+        <a href="javascript:ShoppingCart.AddProduct('@Model.Id')" class="btn-cart-stop">Giỏ hàng</a>
     </div><!--wrap_pro-->
     <div class="hover_content_pro tooltip" style="display: none;">
         <a href="@link" class="hover_name">@Model.Name</a>

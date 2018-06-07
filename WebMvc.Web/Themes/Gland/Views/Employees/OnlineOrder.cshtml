@@ -1,0 +1,36 @@
+﻿@model WebMvc.Web.ViewModels.EmployeesViewModel
+<div class="hOnline-order">
+    <div style="padding:5px 10px;">
+        <table width="100%">
+            <tr>
+                <td align="center"><div class="online-title"> HỖ TRỢ TẠI HÀ NỘI/TOÀN QUỐC</div></td>
+            </tr>
+
+            @foreach (var item in Model.employeesRoles)
+            {
+                <tr>
+                    <td valign="top" width="380">
+                        <div class="online-content">
+                            <b>@item.Name</b>
+                            @foreach (var it in Model.employees)
+                            {
+                                if (it.RoleId != item.Id) { continue; }
+
+                                <div class="cssLeft">
+                                    <a href="#">
+                                        <img style="width: 15px;" src="@Html.ThemeUrl()/Content/images/icon-skype.jpg"> @it.Name
+                                    </a>
+
+                                    <br>
+                                </div>
+                                <div class="cssRight"> <span class="bg icon_tel_support">&nbsp;</span>@it.Phone<br></div>
+                                <div class="clear"></div>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="clear"></div>
+</div><!--hOnline-order-->

@@ -219,6 +219,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminBookingController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminContactController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminEmployeesController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminLanguageController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminTopicController.cs" />
@@ -228,36 +229,46 @@
     <Compile Include="Areas\Admin\Controllers\ImportExportController.cs" />
     <Compile Include="Areas\Admin\Controllers\LogController.cs" />
     <Compile Include="Areas\Admin\Controllers\SettingController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ShoppingCartController.cs" />
     <Compile Include="Areas\Admin\ViewModels\AdminBookingViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\AdminCategorieViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\AdminContactViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\AdminEmployeesViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\AdminLanguageViewModels.cs" />
     <Compile Include="Areas\Admin\ViewModels\AdminProductViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\AdminSettingViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\DashboardViewModels.cs" />
     <Compile Include="Areas\Admin\ViewModels\GenericMessageViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\LogViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\PageingViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\ShoppingCartViewModel.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ApiControllers\ValuesController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
+    <Compile Include="Controllers\PluginController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ServicesController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\TopicController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BookingViewModel.cs" />
+    <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
+    <Compile Include="ViewModels\EmployeesViewModel.cs" />
     <Compile Include="ViewModels\MemberViewModel.cs" />
     <Compile Include="ViewModels\PageingViewModel.cs" />
+    <Compile Include="ViewModels\PluginViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
     <Compile Include="ViewModels\TopicViewModel.cs" />
   </ItemGroup>
@@ -1100,6 +1111,18 @@
     <Content Include="Areas\Admin\Views\AdminProduct\EditProduct.cshtml" />
     <Content Include="App_Data\vi-VN.csv" />
     <Content Include="Areas\Admin\Views\AdminProduct\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminEmployees\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminEmployees\_EmployeesNavButtons.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminEmployees\ListRole.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminEmployees\CreateRole.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminEmployees\_EmployeesRoleFields.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminEmployees\EditRole.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminEmployees\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminEmployees\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminEmployees\_EmployeesFields.cshtml" />
+    <Content Include="Areas\Admin\Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ShoppingCart\_ShoppingCartNavButtons.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Paging.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1774,6 +1797,7 @@
     <Content Include="Themes\Gland\Content\images\icon_slider.png" />
     <Content Include="Themes\Gland\Content\images\icon_tel_contact.html" />
     <Content Include="Themes\Gland\Content\images\i_promo.html" />
+    <Content Include="Themes\Gland\Content\images\i_trans.png" />
     <Content Include="Themes\Gland\Content\images\left_001.png" />
     <Content Include="Themes\Gland\Content\images\loader.html" />
     <Content Include="Themes\Gland\Content\images\loading_icon_small.html" />
@@ -1804,6 +1828,9 @@
     <Content Include="Themes\Gland\Content\images\viet.png" />
     <Content Include="Themes\Gland\Content\images\x42.png" />
     <Content Include="Themes\Gland\Content\js\common.js" />
+    <Content Include="Themes\Gland\Content\js\CoputerBuilding.js" />
+    <Content Include="Themes\Gland\Content\js\Gand.js" />
+    <Content Include="Themes\Gland\Content\js\ShoppingCart.js" />
     <Content Include="Themes\Gland\Content\js\ShoppingCart.min.js" />
     <Content Include="Themes\Gland\Content\media\about\2003_cuahangGland1.jpg" />
     <Content Include="Themes\Gland\Content\media\about\2003_CuahangGland2.jpg" />
@@ -9571,6 +9598,17 @@
     <Content Include="Themes\Gland\Views\Category\ShowBySlugProduct.cshtml" />
     <Content Include="Themes\Gland\Views\Shared\_ProductItem.cshtml" />
     <Content Include="Themes\Gland\Views\Product\ShowBySlug.cshtml" />
+    <Content Include="Themes\Gland\Views\Members\Index.cshtml" />
+    <Content Include="Themes\Gland\Views\Members\Login.cshtml" />
+    <Content Include="Themes\Gland\Views\Members\Register.cshtml" />
+    <Content Include="Themes\Gland\Views\Cart\Index.cshtml" />
+    <Content Include="Themes\Gland\Views\Cart\Commit.cshtml" />
+    <Content Include="Themes\Gland\Views\Plugin\ComputerBuilding.cshtml" />
+    <Content Include="Themes\Gland\Views\Product\AjaxProductForClass.cshtml" />
+    <Content Include="Themes\Gland\Views\Product\_Paging1.cshtml" />
+    <Content Include="Views\Employees\OnlineOrder.cshtml" />
+    <Content Include="Themes\Gland\Views\Employees\OnlineOrder.cshtml" />
+    <Content Include="Views\Cart\Commit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Carousel\" />
@@ -9581,6 +9619,7 @@
     <Folder Include="Views\About\" />
     <Folder Include="Views\Booking\" />
     <Folder Include="Views\Contact\" />
+    <Folder Include="Views\Plugin\" />
     <Folder Include="Views\Post\" />
     <Folder Include="Views\Product\" />
     <Folder Include="Views\Services\" />

@@ -1,0 +1,31 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.CreateEditEmployeesRoleViewModel
+
+@{
+    ViewBag.Title = "Thêm chức vụ";
+}
+
+@Html.Partial("_EmployeesNavButtons")
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        <div id="container">
+            @using (Html.BeginForm("CreateRole", "AdminEmployees", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @Html.Partial("_EmployeesRoleFields", Model)
+
+                <div class="submit-holder">
+                    <input type="submit" class="btn-mvc-green btn-mvc-large" value="Thêm" />
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

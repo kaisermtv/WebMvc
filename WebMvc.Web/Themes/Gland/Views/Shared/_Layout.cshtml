@@ -140,21 +140,10 @@
 
     <div id="cart-fixed" onclick="location.href='/cart'">
         <img src="@Html.ThemeUrl()/Content/images/icon_cart_fixed.png" alt="" />
-        <p>Giỏ hàng của bạn <br /><b>Có <span id="count_shopping_cart_store_2">0</span> sản phẩm</b></p>
+        <p>Giỏ hàng của bạn <br /><b>Có <span id="count_shopping_cart_store_2">@AppHelpers.GetCountShoppingCart()</span> sản phẩm</b></p>
     </div>
     <script>
-
-    $(function () {
-        $("#count_shopping_cart_store_2").text(ShoppingCart.getCartSummary().item);
-    });
-    function reloadCart() {
-        $("#count_shopping_cart_store_2,#count_shopping_cart_stores").text(ShoppingCart.getCartSummary().item);
-        $("#cart-fixed").addClass("hover");
-        setTimeout(function () { $("#cart-fixed").removeClass("hover"); }, 2000);
-    }
-
-
-
+        ShoppingCart.SetData(@Html.Raw(AppHelpers.GetJsonShoppingCart()));
     </script>
 
     <!-- Go to www.addthis.com/dashboard to customize your tools -->

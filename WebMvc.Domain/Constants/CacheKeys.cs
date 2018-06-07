@@ -40,6 +40,11 @@ namespace WebMvc.Domain.Constants
             public const string StartsWith = "Category.";
         }
 
+        public static class Menu
+        {
+            public const string StartsWith = "Menu.";
+        }
+
         public static class Topic
         {
             public const string StartsWith = "Topic.";
@@ -77,6 +82,21 @@ namespace WebMvc.Domain.Constants
         public static class ProductPost
         {
             public const string StartsWith = "Post.";
+        }
+
+        public static class EmployeesRole
+        {
+            public const string StartsWith = "EmployeesRole.";
+        }
+
+        public static class Employees
+        {
+            public const string StartsWith = "Employees.";
+        }
+
+        public static class ShoppingCart
+        {
+            public const string StartsWith = "ShoppingCart.";
         }
     }
 }

@@ -128,14 +128,14 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                         //}
 
                         _categoryService.Add(category);
-
+                        
+                        unitOfWork.Commit();
                         // We use temp data because we are doing a redirect
                         TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
                         {
                             Message = "Category Created",
                             MessageType = GenericMessages.success
                         };
-                        unitOfWork.Commit();
 
                         return RedirectToAction("Index");
                     }

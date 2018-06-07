@@ -1,0 +1,32 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.CreateEditEmployeesViewModel
+@{
+    ViewBag.Title = "Sửa thông tin nhân viên";
+}
+
+@Html.Partial("_EmployeesNavButtons")
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        <div id="container">
+            @using (Html.BeginForm("Edit", "AdminEmployees", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.HiddenFor(x => x.Id)
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    @Html.Partial("_EmployeesFields", Model)
+
+                    <div class="submit-holder">
+                        <input type="submit" class="btn-mvc-green btn-mvc-large" value="Cập nhật" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

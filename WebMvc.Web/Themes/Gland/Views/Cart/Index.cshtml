@@ -1,0 +1,90 @@
+﻿@model WebMvc.Web.ViewModels.CartListViewModel
+@{
+    ViewBag.Title = "Giỏ hàng";
+}
+<div class="container">
+    <div id="content">
+        <div id="location">
+            <a href="/"><i class="bg icon_home"></i></a>
+            <span>»</span><a href="/gio-hang">Giỏ hàng của bạn</a>
+        </div>
+
+            <div id="menu_in_cart">
+                <ul class="ul">
+                    <li><a href="/chinh-sach-van-chuyen">Chính sách vận chuyển</a></li>
+                    <li><a href="/chinh-sach-bao-hanh">Chính sách bảo hành</a></li>
+                    <li><a href="/chinh-sach-doi-tra-hang">Chính sách đổi, trả hàng</a></li>
+                    <li><a href="/chinh-sach-cho-doanh-nghiep">Chính sách cho doanh nghiệp</a></li>
+                    <li><a href="/chinh-sach-gamenet">Chính sách GameNet</a></li>
+                    <li><a href="/bao-mat-thong-tin-khach-hang">Bảo mật thông tin khách hàng</a></li>
+                </ul>
+            </div>
+
+            <div id="guide_cart">
+                <i class="bg icon_large_cart"></i>
+                <h1>Chi tiết giỏ hàng</h1>
+                <p>
+                    Để xóa sản phẩm khỏi giỏ hàng, bấm <img src="@Html.ThemeUrl()/Content/images/icon_del.png" alt="">, để mua thêm bấm <b>"Chọn thêm sản phẩm"</b>.
+                    Để sang bước đặt hàng tiếp theo, bấm <b>"Tiếp tục"</b>.
+                </p>
+            </div><!--guide_cart-->
+            <!--Buoc 1 : gio hang-->
+            <table cellpadding="5" border="1" bordercolor="#CCCCCC" style="border-collapse:collapse; width:100%; " id="tbl_list_cart">
+                <tbody>
+                    <tr style="background-color:#f5f5f5; font-weight:bold; text-transform:uppercase;">
+                        <td>STT</td>
+                        <td>Tên sản phẩm</td>
+                        <td>Số lượng</td>
+                        <td>Đơn giá</td>
+
+                        <td>Thành tiền</td>
+                        <td>Xóa</td>
+                    </tr>
+                    @{ int i = 1;}
+                    @foreach (var it in Model.Products)
+                    {
+                        <tr>
+                            <td>@(i++)</td>
+                            <td class="product_cart">
+                                <img src="@AppHelpers.CategoryImage(it.Image, it.Id, 100)" style="vertical-align: middle; margin-right: 10px; float:left; width:100px;">
+                                <div style="margin-left:120px;">
+
+                                    <a href="@it.link" style="text-decoration:none; padding-top:10px; display:block;"><b>@it.name</b></a>
+                                    @*<p class="red">Mã sản phẩm: </p>*@
+                                    <p>Bảo hành: @it.Guarantee</p>
+
+                                </div>
+                            </td>
+                            <td>
+                                <input name="quantity_product_0" id="quantity_product_0" value="@it.Count" onchange="ShoppingCart.addVariant ('@it.Id',this.value);location.reload();" size="5">
+                            </td>
+                            <td class="product_cart"><span id="sell_price_product_@(i-1)">@it.Price</span> VND </td>
+
+                            <td class="product_cart"><b><span id="price_product_@(i-1)">@((it.Priceint*it.Count).ToString("N0").Replace(",",".") ) </span> VND</b></td>
+                            <td><a href="javascript:if(confirm('Bạn muốn xóa sản phẩm này?')==true){ShoppingCart.removeItem('@it.Id'); location.reload();}"><img src="@Html.ThemeUrl()/Content/images/icon_del.png"></a></td>
+                        </tr>
+                    }
+
+
+                    <tr>
+                        <td colspan="2"></td>
+                        <td colspan="4" style="text-align:center; line-height:22px; color:#555">
+                            <b>Tổng tiền:</b>
+                            <b style="color:red; font-size:18px;"><span class="sub1" id="total_value" style="color: red; font-weight: bold;">@Model.TotalMoney.ToString("N0").Replace(",",".")</span> VND</b><br>
+                            <b>Chưa bao gồm phí vận chuyển</b>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="clear space2"></div>
+            <div align="right">
+                <a id="thanhtoan" class="btn_red float_r btn_cart" href="/cart/commit">Tiếp tục</a>
+                <a class="btn_cyan float_r btn_cart" href="/">Chọn thêm sản phẩm</a>
+                @*<a href="/ajax/export_download.php?file_type=xls&amp;content_type=shopping-cart-new" rel="nofollow" class="bg icon_taiexcel"></a>*@
+                @*<a href="/print/user.php?view=cart-new" rel="nofollow" class="bg icon_inbaogia"></a>*@
+            </div>
+            <div class="clear space2"></div>
+
+    </div><!--content-->
+    <div class="clear"></div>
+</div>

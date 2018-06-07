@@ -1,0 +1,51 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.AdminEmployeesRoleViewModel
+
+@{
+    ViewBag.Title = "Danh sách chức vụ nhân vên";
+}
+
+
+@Html.Partial("_EmployeesNavButtons")
+
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        <div id="container">
+             <div class="tablescroll">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width:50px">Sửa</th>
+                            <th>Chức vụ</th>
+                            <th style="width:50px">Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var it in Model.ListEmployees)
+                        {
+                            <tr>
+                                <td>
+                                    <span>
+                                        <a href="@Url.Action("EditRole", new { id = it.Id })" class="btn-mvc">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+                                    </span>
+                                </td>
+                                <td>@it.Name</td>
+                                <td>
+                                    <a href="@Url.Action("DeleteRole", new { id = it.Id })" class="btn-mvc">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -2,7 +2,7 @@
 <div id="wrap-head">
     <div id="header">
         <div class="container">
-            <a href="/" id="logo"><img src="/media/banner/logo_logo_logo_logoglandnho.png" alt="gland.vn" /> </a>
+            <a href="/" id="logo"><img src="@Html.ThemeUrl()/Content/media/banner/logo_logoglandnho.png" alt="gland.vn" /> </a>
             <div id="search">
                 <form method="get" action="/tim" enctype="multipart/form-data">
                     <select name="scat_id" id="sel_cat" style="display: none;">
@@ -53,14 +53,8 @@
             </div>
             <div id="header_right">
                 <a href="/cart" id="cart">
-                    <span>Giỏ hàng</span> <b id="count_shopping_cart_stores">0</b>
+                    <span>Giỏ hàng</span> <b id="count_shopping_cart_stores">@AppHelpers.GetCountShoppingCart()</b>
                 </a>
-                <script>
-
-                        $(function () {
-                            $("#count_shopping_cart_stores").text(ShoppingCart.getCartSummary().item);
-                        });
-                </script>
             </div><!--header_right-->
         </div><!--container-->
     </div><!--header-->
@@ -77,7 +71,7 @@
                 <ul class="ul ul_menu" style="visibility:hidden;">
 
 
-                    <li style="background-image:url('/media/category/cat_4d485476e07e02638e8e2133cdf8f56d.png')">
+                    <li style="background-image:url('@Html.ThemeUrl()/Content/media/category/cat_4d485476e07e02638e8e2133cdf8f56d.png')">
                         <a href="/pc-gaming/" class="root">PC GAMING</a>
 
                         <div class="sub_nav">
@@ -109,7 +103,7 @@
 
 
 
-                    <li style="background-image:url('/media/category/cat_b4005c2d3f956dbc5610478b056c8e3e.png')">
+                    <li style="background-image:url('@Html.ThemeUrl()/Content/media/category/cat_b4005c2d3f956dbc5610478b056c8e3e.png')">
                         <a href="/linh-kien-may-tinh/" class="root">LINH KIỆN MÁY TÍNH</a>
 
                         <div class="sub_nav">
@@ -239,7 +233,7 @@
 
 
 
-                    <li style="background-image:url('/media/category/cat_d3306ab36c10519e174cd70561740e69.png')">
+                    <li style="background-image:url('@Html.ThemeUrl()/Content/media/category/cat_d3306ab36c10519e174cd70561740e69.png')">
                         <a href="/tan-nhiet-nuoc/" class="root">TẢN NHIỆT NƯỚC</a>
 
                         <div class="sub_nav">
@@ -306,7 +300,7 @@
 
 
 
-                    <li style="background-image:url('/media/category/cat_a22746738a475a75211f96a98549a811.png')">
+                    <li style="background-image:url('@Html.ThemeUrl()/Content/media/category/cat_a22746738a475a75211f96a98549a811.png')">
                         <a href="/quat-tan-nhiet-khi/" class="root">TẢN NHIỆT KHÍ</a>
 
                         <div class="sub_nav">
@@ -341,7 +335,7 @@
 
 
 
-                    <li style="background-image:url('/media/category/cat_34ead602847eccffd2bc5af611a422d2.png')">
+                    <li style="background-image:url('@Html.ThemeUrl()/Content/media/category/cat_34ead602847eccffd2bc5af611a422d2.png')">
                         <a href="/gaming-gear/" class="root">GAMING GEAR</a>
 
                         <div class="sub_nav">
@@ -421,7 +415,7 @@
 
 
 
-                    <li style="background-image:url('/media/category/cat_f6c8dd5cf8f95e19e99ef874e3edc242.png')">
+                    <li style="background-image:url('@Html.ThemeUrl()/Content/media/category/cat_f6c8dd5cf8f95e19e99ef874e3edc242.png')">
                         <a href="/modding-diy/" class="root">MODDING-DIY</a>
 
                         <div class="sub_nav">
@@ -507,10 +501,10 @@
                     });
             </script>
             <div id="nav_horizontal">
-                <a href="https://gland.vn/gioi-thieu"><img src="/template/default/images/new_icon_chinhhang.png" alt="" />Giới Thiệu Về Gland</a>
-                <a href="https://gland.vn/chinh-sach-giao-hang.html"><img src="/template/default/images/new_icon_vanchuyen.png" alt="" />Miễn phí vận chuyển</a>
-                <a href="https://gland.vn/chinh-sach-bao-hanh-doi-tra.html"><img src="/template/default/images/new_icon_baohanh.png" alt="" />Bảo hành tận nơi</a>
-                <a href="#"><img src="/template/default/images/icon-doi-tra.png" alt="" />Giá Cạnh Tranh Nhất</a>
+                <a href="https://gland.vn/gioi-thieu"><img src="@Html.ThemeUrl()/Content/images/new_icon_chinhhang.png" alt="" />Giới Thiệu Về Gland</a>
+                <a href="https://gland.vn/chinh-sach-giao-hang.html"><img src="@Html.ThemeUrl()/Content/images/new_icon_vanchuyen.png" alt="" />Miễn phí vận chuyển</a>
+                <a href="https://gland.vn/chinh-sach-bao-hanh-doi-tra.html"><img src="@Html.ThemeUrl()/Content/images/new_icon_baohanh.png" alt="" />Bảo hành tận nơi</a>
+                <a href="#"><img src="@Html.ThemeUrl()/Content/images/icon-doi-tra.png" alt="" />Giá Cạnh Tranh Nhất</a>
             </div><!--nav-->
             <div class="clear"></div>
         </div><!--container-->

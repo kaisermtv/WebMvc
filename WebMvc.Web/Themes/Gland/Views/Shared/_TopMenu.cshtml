@@ -23,80 +23,12 @@
             <li id="support_top">
                 <span><img class="icon-top" src="@Html.ThemeUrl()/Content/images/new_icon_banhang.png" />Bán hàng trực tuyến</span>
                 <div id="h_menu_sub_on1" class="h_menu_sub hOnline">
-                    <div class="hOnline-order">
-                        <div style="padding:5px 10px;">
-                            <table width="100%">
-                                <tr>
-                                    <td align="center"><div class="online-title"> HỖ TRỢ TẠI HÀ NỘI/TOÀN QUỐC</div></td>
-                                </tr>
-                                <tr>
-                                    <td valign="top" width="380">
-                                        <div class="online-content">
-                                            <b>Bán hàng online</b>
-                                            <div class="cssLeft">
-                                                <a href="#">
-                                                    <img style="width: 15px;" src="@Html.ThemeUrl()/Content/images/icon-skype.jpg"> Mr Trung
-                                                </a>
-
-                                                <br>
-                                            </div>
-                                            <div class="cssRight"> <span class="bg icon_tel_support">&nbsp;</span>0976.155.499 <br></div>
-                                            <div class="clear"></div>
-                                            <div class="cssLeft">
-                                                <a href="#">
-                                                    <img style="width: 15px;" src="@Html.ThemeUrl()/Content/images/icon-skype.jpg"> Mr Nguyên
-                                                </a>
-
-                                                <br>
-                                            </div>
-                                            <div class="cssRight"> <span class="bg icon_tel_support">&nbsp;</span>0903.428.534<br></div>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td valign="top" width="380">
-                                        <div class="online-content">
-                                            <b>Tư vấn kỹ thuật</b>
-                                            <div class="cssLeft">
-                                                <a href="#">
-                                                    <img style="width: 15px;" src="@Html.ThemeUrl()/Content/images/icon-skype.jpg"> Mr Thắng
-                                                </a>
-
-                                                <br>
-                                            </div>
-                                            <div class="cssRight"> <span class="bg icon_tel_support">&nbsp;</span>01688.666.665<br></div>
-                                            <div class="clear"></div>
-
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td valign="top" width="380">
-                                        <div class="online-content">
-                                            <b>Tư vấn tản nhiệt nước - Modding</b>
-                                            <div class="cssLeft">
-                                                <a href="#">
-                                                    <img style="width: 15px;" src="@Html.ThemeUrl()/Content/images/icon-skype.jpg"> Mr Tiến
-                                                </a>
-
-                                                <br>
-                                            </div>
-                                            <div class="cssRight"> <span class="bg icon_tel_support">&nbsp;</span>0962.536.535<br></div>
-                                            <div class="clear"></div>
-
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="clear"></div>
-                    </div><!--hOnline-order-->
+                    @Html.Action("OnlineOrder", "Employees")
                 </div><!--h_menu_sub-->
             </li>
             <li>
                 <span>
-                    <a href="/tin-khuyen-mai/">
+                    <a href="/tin-tuc/tin-khuyen-mai">
                         <img class="icon-top" src="@Html.ThemeUrl()/Content/images/new_icon_km.png" />Khuyến mại
                     </a>
                 </span>
@@ -145,7 +77,7 @@
                         {
                             <a href="@Url.Action("Index", "Admin", new {area = "Admin"}, null)" rel="nofollow" class="btn">@Html.LanguageString("Layout.Nav.Admin")</a>
                         }
-                            <a href="@Url.Action("Login", "Members")" rel="nofollow" class="btn">@Html.LanguageString("LogOn.LogOff")</a>
+                            <a href="@Url.Action("LogOut", "Members")" rel="nofollow" class="btn">@Html.LanguageString("LogOn.LogOff")</a>
                     </div>
                 }
                 

@@ -1,6 +1,39 @@
 ﻿@model WebMvc.Web.ViewModels.ProductViewModel
+@using System.Collections
+@using WebMvc.Web.ViewModels
 @{
-    ViewBag.Title = string.Concat(Model.product.Name, " - ",Model.Cat.Name);
+    ViewBag.Title = string.Concat(Model.product.Name, " - ", Model.Cat.Name);
+
+    var val = AppHelpers.ProductValues(Model.product);
+    string price = "Liên hệ";
+    string Price = "0";
+    string guarantee = "";
+    string showProperti = "";
+
+    foreach (DictionaryEntry it in val)
+    {
+        var item = (ProductValueViewModel)it.Value;
+        switch (it.Key.ToString())
+        {
+            case "Price":
+                Price = item.Value;
+                try
+                {
+                    price = int.Parse(Price).ToString("N0").Replace(",", ".");
+                }
+                catch { }
+                break;
+            case "Guarantee":
+                guarantee = item.Value;
+                break;
+            default:
+                if (item.IsShow)
+                {
+                    showProperti = string.Concat(showProperti, "<b>", it.Key, ":</b> ", item.Value, "<br/>");
+                }
+                break;
+        }
+    }
 }
 <div class="container">
     <div id="location">
@@ -15,56 +48,47 @@
                 <div id="img_detail" class="p-item" data-id="2139">
                     <div id="img_large" class="container-icon" style="position:relative;">
                         <a class="MagicZoom" id="Zoomer" rel="selectors-effect-speed: 600" href="/media/product/2139_ryzen_5_2600x_stream_pubg_dota_2.jpg" title="" style="position: relative; display: inline-block; text-decoration: none; outline: 0px; overflow: hidden; margin: auto; width: auto; height: auto;">
-                            <img src="https://gland.vn/media/product/2139_ryzen_5_2600x_stream_pubg_dota_2.jpg" title="Click để xem ảnh lớn" alt="GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2" style="opacity: 1;">
+                            <img src="@AppHelpers.CategoryImage(Model.product.Image, Model.product.Id,275)" title="Click để xem ảnh lớn" alt="@Model.product.Name" style="opacity: 1;">
                             <div class="MagicZoomPup" style="z-index: 10; position: absolute; overflow: hidden; display: none; visibility: hidden; width: 175px; height: 166px; opacity: 0.5; left: 98px; top: 5px;">
-                                <img src="https://gland.vn/media/product/2139_ryzen_5_2600x_stream_pubg_dota_2.jpg" title="Click để xem ảnh lớn" alt="GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2" style="opacity: 0.009; position: absolute; z-index: 5;">
+                                <img src="@AppHelpers.CategoryImage(Model.product.Image, Model.product.Id)" title="Click để xem ảnh lớn" alt="@Model.product.Name" style="opacity: 0.009; position: absolute; z-index: 5;">
                             </div>
                             <div class="MagicZoomHint" style="display: block; overflow: hidden; position: absolute; visibility: visible; z-index: 1; left: 2px; right: auto; top: 2px; bottom: auto; opacity: 0.75; max-width: 271px;">Zoom</div>
                         </a>
                     </div>
-                    <ul id="img_thumb" class="ul">
+                    @*<ul id="img_thumb" class="ul">
 
 
-                        <li>
-                            <a class="img_thumb" href="/media/product/2139_ssd_adata_128g_nvme.jpg" rel="zoom-id:Zoomer;" rev="/media/product/2139_ssd_adata_128g_nvme.jpg" style="outline: 0px; display: inline-block;">
-                                <img src="/media/product/120_2139_ssd_adata_128g_nvme.jpg">
-                            </a>
-                        </li>
-
-
-
-                        <li>
-                            <a class="img_thumb" href="/media/product/2139_corsair_vs_500.jpg" rel="zoom-id:Zoomer;" rev="/media/product/2139_corsair_vs_500.jpg" style="outline: 0px; display: inline-block;">
-                                <img src="/media/product/120_2139_corsair_vs_500.jpg">
-                            </a>
-                        </li>
+                            <li>
+                                <a class="img_thumb" href="/media/product/2139_ssd_adata_128g_nvme.jpg" rel="zoom-id:Zoomer;" rev="/media/product/2139_ssd_adata_128g_nvme.jpg" style="outline: 0px; display: inline-block;">
+                                    <img src="/media/product/120_2139_ssd_adata_128g_nvme.jpg">
+                                </a>
+                            </li>
 
 
 
-                        <li>
-                            <a class="img_thumb" href="/media/product/2139_ram_adata_8g_2400.jpg" rel="zoom-id:Zoomer;" rev="/media/product/2139_ram_adata_8g_2400.jpg" style="outline: 0px; display: inline-block;">
-                                <img src="/media/product/120_2139_ram_adata_8g_2400.jpg">
-                            </a>
-                        </li>
+                            <li>
+                                <a class="img_thumb" href="/media/product/2139_corsair_vs_500.jpg" rel="zoom-id:Zoomer;" rev="/media/product/2139_corsair_vs_500.jpg" style="outline: 0px; display: inline-block;">
+                                    <img src="/media/product/120_2139_corsair_vs_500.jpg">
+                                </a>
+                            </li>
 
 
 
-                        <li>
-                            <a class="img_thumb" href="/media/product/2139_main_b350.jpg" rel="zoom-id:Zoomer;" rev="/media/product/2139_main_b350.jpg" style="outline: 0px; display: inline-block;">
-                                <img src="/media/product/120_2139_main_b350.jpg">
-                            </a>
-                        </li>
+                            <li>
+                                <a class="img_thumb" href="/media/product/2139_ram_adata_8g_2400.jpg" rel="zoom-id:Zoomer;" rev="/media/product/2139_ram_adata_8g_2400.jpg" style="outline: 0px; display: inline-block;">
+                                    <img src="/media/product/120_2139_ram_adata_8g_2400.jpg">
+                                </a>
+                            </li>
 
 
 
+                            <li>
+                                <a class="img_thumb" href="/media/product/2139_main_b350.jpg" rel="zoom-id:Zoomer;" rev="/media/product/2139_main_b350.jpg" style="outline: 0px; display: inline-block;">
+                                    <img src="/media/product/120_2139_main_b350.jpg">
+                                </a>
+                            </li>
 
-
-
-
-
-
-
-                    </ul>
+                        </ul>*@
                     <div class="name_show">@Model.product.Name</div>
 
                     <div class="clear"></div>
@@ -75,30 +99,30 @@
                                 <tr>
                                     <td>
                                         <a href="#" title="Kinh doanh 9" rel="nofollow">
-                                            <img style="width: 10px;" src="/template/default/images/icon-skype.jpg">Mr Trung:0976.155.499
+                                            <img style="width: 10px;" src="@Html.ThemeUrl()/Content/images/icon-skype.jpg">Mr Trung:0976.155.499
                                         </a>
                                     </td>
                                     <td>
                                         <a href="#" title="Kinh doanh 2" rel="nofollow">
-                                            <img style="width: 10px;" src="/template/default/images/icon-skype.jpg">Mr Nguyên: 0903.428.534
+                                            <img style="width: 10px;" src="@Html.ThemeUrl()/Content/images/icon-skype.jpg">Mr Nguyên: 0903.428.534
                                         </a>
                                     </td>
                                 </tr>
                                 <!--
-                <tr>
-                  <td>
-                    <a href="#" title="Kinh doanh 3" rel="nofollow">
-                      <img style="width: 10px;" src="/template/default/images/icon-skype.jpg" />Mr Hiếu: 096.214.2200
-                    </a>
-                  </td>
-                  <td>
-                    <a href="#" title="Kinh doanh 4" rel="nofollow">
-                      <img style="width: 10px;" src="/template/default/images/icon-skype.jpg" />Mr Tuyến: 096.266.0317
-                    </a>
-                  </td>
+                                <tr>
+                                  <td>
+                                    <a href="#" title="Kinh doanh 3" rel="nofollow">
+                                      <img style="width: 10px;" src="/template/default/images/icon-skype.jpg" />Mr Hiếu: 096.214.2200
+                                    </a>
+                                  </td>
+                                  <td>
+                                    <a href="#" title="Kinh doanh 4" rel="nofollow">
+                                      <img style="width: 10px;" src="/template/default/images/icon-skype.jpg" />Mr Tuyến: 096.266.0317
+                                    </a>
+                                  </td>
 
-                </tr>
-                -->
+                                </tr>
+                                -->
                             </tbody>
                         </table>
                     </div>
@@ -116,14 +140,14 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <b>Đánh giá:</b> <img src="/template/default/images/star_0.png" alt="rate">
+                                        <b>Đánh giá:</b> <img src="@Html.ThemeUrl()/Content/images/star_0.png" alt="rate">
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <b>Lượt xem: </b>212 lượt
+                                        <b>Lượt xem: </b>@Model.product.Views lượt
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <td><b>Bảo hành:</b> Theo linh kiện <br> </td>
+                                    <td><b>Bảo hành:</b> @guarantee <br> </td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -178,10 +202,10 @@
 
 
                 <div id="button_buy">
-                    <a style="margin-left:0" href="javascript:ShoppingCart.addVariant('product',2139,2139, 0,'GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2', 1,25616000,'');ShoppingCart.goToCartPage();" class="btn_large_red">
+                    <a style="margin-left:0" href="javascript:ShoppingCart.AddProduct('@Model.product.Id');ShoppingCart.goToCartPage();" class="btn_large_red">
                         <span>Đặt mua ngay</span> Giao hàng tận nơi nhanh chóng
                     </a>
-                    <a href="javascript:void(0);" onclick="ShoppingCart.addVariant('product',2139,2139, 0,'GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2', 1,25616000,'');reloadCart();" class="btn_large_orange">
+                    <a href="javascript:void(0);" onclick="javascript:ShoppingCart.AddProduct('@Model.product.Id');" class="btn_large_orange">
                         <span>Cho vào giỏ</span> Cho vào giỏ để chọn tiếp
                     </a>
 
@@ -214,38 +238,38 @@
                   </table>
                    -->
                 <script>
-          $(document).ready(function(){
-          $("#title_tab_scroll_pro a").click(function(){
-          $("#title_tab_scroll_pro a").removeClass("current");
-          $(this).addClass("current");
+                    $(document).ready(function () {
+                        $("#title_tab_scroll_pro a").click(function () {
+                            $("#title_tab_scroll_pro a").removeClass("current");
+                            $(this).addClass("current");
 
-          //$(".content_scroll_tab").hide();
-          //$($(this).attr("href")).show();
+                            //$(".content_scroll_tab").hide();
+                            //$($(this).attr("href")).show();
 
-          $('body,html').animate({scrollTop:$($(this).attr("href")).offset().top - 90},800);
-          return false;
-          });
-          var get_top = 0;
-          if(get_top == 0) get_top = $("#title_tab_scroll_pro").offset().top;
+                            $('body,html').animate({ scrollTop: $($(this).attr("href")).offset().top - 90 }, 800);
+                            return false;
+                        });
+                        var get_top = 0;
+                        if (get_top == 0) get_top = $("#title_tab_scroll_pro").offset().top;
 
-          $(window).scroll(function(){
-          if($(window).scrollTop() > get_top - 80) $("#title_tab_scroll_pro").addClass("fixed");
-          else $("#title_tab_scroll_pro").removeClass("fixed");
-          });
+                        $(window).scroll(function () {
+                            if ($(window).scrollTop() > get_top - 80) $("#title_tab_scroll_pro").addClass("fixed");
+                            else $("#title_tab_scroll_pro").removeClass("fixed");
+                        });
 
-          $(".btn_image_link").click(function(){
-          $('body,html').animate({scrollTop:$("#tab2").offset().top - 40},800);
-          return false;
-          });
-          $(".btn_video_link").click(function(){
-          $('body,html').animate({scrollTop:$("#tab6").offset().top - 40},800);
-          return false;
-          });
-          $("#go_comment").click(function(){
-          $('body,html').animate({scrollTop:$("#tab5").offset().top - 40},800);
-          return false;
-          });
-          });
+                        $(".btn_image_link").click(function () {
+                            $('body,html').animate({ scrollTop: $("#tab2").offset().top - 40 }, 800);
+                            return false;
+                        });
+                        $(".btn_video_link").click(function () {
+                            $('body,html').animate({ scrollTop: $("#tab6").offset().top - 40 }, 800);
+                            return false;
+                        });
+                        $("#go_comment").click(function () {
+                            $('body,html').animate({ scrollTop: $("#tab5").offset().top - 40 }, 800);
+                            return false;
+                        });
+                    });
                 </script>
 
             </div><!--overview-->
@@ -267,52 +291,52 @@
             <div class="clear"></div>
             <div id="tab1" class="content_scroll_tab" style="display:block;">
                 <h2 class="cufon title_box_scroll">Thông số kỹ thuật</h2>
-                <table style="height: 463px;" width="620">
-                    <tbody>
-                        <tr>
-                            <td><strong><span style="font-size: 14pt;">CPU</span></strong></td>
-                            <td>
-                                <h1 class="txt_b"><a href="https://gland.vn/cpu-amd-ryzen-5-2600x-3.6-ghz-4.2-ghz-with-boost-/-19mb-/-6-cores-12-threads-/-socket-am4/" target="_blank">AMD Ryzen 5 2600X</a></h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong><span style="font-size: 14pt;">Main</span></strong></td>
-                            <td>
-                                <h1 class="txt_b"><a href="https://gland.vn/san-pham/bo-mach-chu-msi-b350m-gaming-pro/" target="_blank">MSI B350M GAMING PRO</a></h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong><span style="font-size: 14pt;">VGA</span></strong></td>
-                            <td>
-                                <h1><a title="MSI GTX 1060 6Gb" href="https://gland.vn/san-pham/vga-msi-gtx-1060-6gt-ocv2-tiger/" target="_blank">VGA MSI GTX 1060 6GT OCV2 (Tiger)</a></h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong><span style="font-size: 14pt;">RAM</span></strong></td>
-                            <td>
-                                <h1 class="txt_b"><a title="Ram Adata 8G DDR4 2400" href="https://gland.vn/ram-adata-8gb-1x8gb-ddr4-2400mhz-xpg-gammix-d10-black/" target="_blank"><strong><span style="font-size: 14pt;">&nbsp;ADATA 8GB (2x8GB) DDR4 2400MHz&nbsp;</span></strong></a></h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong><span style="font-size: 14pt;">SSD</span></strong></td>
-                            <td>
-                                <h1><a title="SSD Adata M.2 PCIe 128G" href="https://gland.vn/ssd-m2-pcie-2280-adata-sx6000-nvme---128gb/" target="_blank">SSD M2 PCIe 2280 Adata SX6000 NVMe</a></h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong><span style="font-size: 14pt;">Nguồn</span></strong></td>
-                            <td>
-                                <h1 class="txt_b"><a title="PSU Corsair vs500" href="https://gland.vn/san-pham/psu-corsair-vs500-80-plus-white-certified/" target="_blank"><span style="font-size: 18.6667px;">PSU CORSAIR VS500 80 PLUS White Certified</span></a></h1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong><span style="font-size: 14pt;">Vỏ case</span></strong></td>
-                            <td>
-                                <h1 class="txt_b"><a title="Nefertiti G8" href="https://gland.vn/san-pham/vo-case-vitra-nefertiti-g8-temper-glass/" target="_blank"><strong><span style="font-size: 14pt;">Vitra Nefertiti G8&nbsp;</span></strong></a></h1>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                @*<table style="height: 463px;" width="620">
+                        <tbody>
+                            <tr>
+                                <td><strong><span style="font-size: 14pt;">CPU</span></strong></td>
+                                <td>
+                                    <h1 class="txt_b"><a href="https://gland.vn/cpu-amd-ryzen-5-2600x-3.6-ghz-4.2-ghz-with-boost-/-19mb-/-6-cores-12-threads-/-socket-am4/" target="_blank">AMD Ryzen 5 2600X</a></h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><span style="font-size: 14pt;">Main</span></strong></td>
+                                <td>
+                                    <h1 class="txt_b"><a href="https://gland.vn/san-pham/bo-mach-chu-msi-b350m-gaming-pro/" target="_blank">MSI B350M GAMING PRO</a></h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><span style="font-size: 14pt;">VGA</span></strong></td>
+                                <td>
+                                    <h1><a title="MSI GTX 1060 6Gb" href="https://gland.vn/san-pham/vga-msi-gtx-1060-6gt-ocv2-tiger/" target="_blank">VGA MSI GTX 1060 6GT OCV2 (Tiger)</a></h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><span style="font-size: 14pt;">RAM</span></strong></td>
+                                <td>
+                                    <h1 class="txt_b"><a title="Ram Adata 8G DDR4 2400" href="https://gland.vn/ram-adata-8gb-1x8gb-ddr4-2400mhz-xpg-gammix-d10-black/" target="_blank"><strong><span style="font-size: 14pt;">&nbsp;ADATA 8GB (2x8GB) DDR4 2400MHz&nbsp;</span></strong></a></h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><span style="font-size: 14pt;">SSD</span></strong></td>
+                                <td>
+                                    <h1><a title="SSD Adata M.2 PCIe 128G" href="https://gland.vn/ssd-m2-pcie-2280-adata-sx6000-nvme---128gb/" target="_blank">SSD M2 PCIe 2280 Adata SX6000 NVMe</a></h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><span style="font-size: 14pt;">Nguồn</span></strong></td>
+                                <td>
+                                    <h1 class="txt_b"><a title="PSU Corsair vs500" href="https://gland.vn/san-pham/psu-corsair-vs500-80-plus-white-certified/" target="_blank"><span style="font-size: 18.6667px;">PSU CORSAIR VS500 80 PLUS White Certified</span></a></h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong><span style="font-size: 14pt;">Vỏ case</span></strong></td>
+                                <td>
+                                    <h1 class="txt_b"><a title="Nefertiti G8" href="https://gland.vn/san-pham/vo-case-vitra-nefertiti-g8-temper-glass/" target="_blank"><strong><span style="font-size: 14pt;">Vitra Nefertiti G8&nbsp;</span></strong></a></h1>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>*@
 
                 <div class="clear"></div>
             </div><!--content_scroll_tab-->
@@ -321,66 +345,44 @@
         <div id="tab3" class="content_scroll_tab">
             <h2 class="cufon title_box_scroll">Hình ảnh</h2>
 
-            <script type="text/javascript" language="javascript" src="/template/default/script/mobiSlider.js"></script>
+            <script type="text/javascript" language="javascript" src="@Html.ThemeUrl()/Content/script/mobiSlider.js"></script>
             <script>
-          $(function(){
+                $(function () {
 
-          $('.slider').mobilyslider({
-          content: '.sliderContent',
-          children: 'div',
-          transition: 'horizontal',
-          animationSpeed: 200,
-          autoplay: false,
-          autoplaySpeed: 5000,
-          pauseOnHover: false,
-          bullets: true,
-          arrows: true,
-          arrowsHide: true,
-          prev: 'prev',
-          next: 'next',
-          animationStart: function(){},
-          animationComplete: function(){}
-          });
+                    $('.slider').mobilyslider({
+                        content: '.sliderContent',
+                        children: 'div',
+                        transition: 'horizontal',
+                        animationSpeed: 200,
+                        autoplay: false,
+                        autoplaySpeed: 5000,
+                        pauseOnHover: false,
+                        bullets: true,
+                        arrows: true,
+                        arrowsHide: true,
+                        prev: 'prev',
+                        next: 'next',
+                        animationStart: function () { },
+                        animationComplete: function () { }
+                    });
 
-          });
+                });
             </script>
             <div class="slider" align="center">
                 <div class="sliderContent">
 
                     <div class="item" style="z-index: 7;">
-                        <img src="/media/product/2139_ssd_adata_128g_nvme.jpg" alt="GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2" title="Click để xem ảnh lớn">
-                    </div>
-
-                    <div class="item" style="z-index: 6;">
-                        <img src="/media/product/2139_corsair_vs_500.jpg" alt="GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2" title="Click để xem ảnh lớn">
-                    </div>
-
-                    <div class="item" style="z-index: 5;">
-                        <img src="/media/product/2139_ram_adata_8g_2400.jpg" alt="GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2" title="Click để xem ảnh lớn">
-                    </div>
-
-                    <div class="item" style="z-index: 4;">
-                        <img src="/media/product/2139_main_b350.jpg" alt="GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2" title="Click để xem ảnh lớn">
-                    </div>
-
-                    <div class="item" style="z-index: 3;">
-                        <img src="/media/product/1463_vitra_nefertiti_g8_temper_glass.jpg" alt="GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2" title="Click để xem ảnh lớn">
-                    </div>
-
-                    <div class="item" style="z-index: 2;">
-                        <img src="/media/product/1463_vga_msi_gtx_1050_ti_4gt_ocv1__tiger_.jpg" alt="GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2" title="Click để xem ảnh lớn">
-                    </div>
-
-                    <div class="item" style="z-index: 1;">
-                        <img src="/media/product/2139_ryzen_5_2600x.jpg" alt="GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2" title="Click để xem ảnh lớn">
-                    </div>
-
-                    <div class="item" style="z-index: 0;">
-                        <img src="/media/product/2139_ryzen_5_2600x_stream_pubg_dota_2.jpg" alt="GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2" title="Click để xem ảnh lớn">
+                        <img src="@AppHelpers.CategoryImage(Model.product.Image, Model.product.Id)" alt="@Model.product.Name" title="Click để xem ảnh lớn">
                     </div>
 
                 </div>
-                <div class="sliderBullets"><a href="#" rel="0" class="active">0</a><a href="#" rel="1">1</a><a href="#" rel="2">2</a><a href="#" rel="3">3</a><a href="#" rel="4">4</a><a href="#" rel="5">5</a><a href="#" rel="6">6</a><a href="#" rel="7">7</a></div><div class="sliderArrows" style="display: none;"><a href="#" class="prev hidden" style="display: none;">Previous</a><a href="#" class="next hidden" style="display: none;">Next</a></div>
+                <div class="sliderBullets">
+                    <a href="#" rel="0" class="active">0</a>
+                </div>
+                <div class="sliderArrows" style="display: none;">
+                    <a href="#" class="prev hidden" style="display: none;">Previous</a>
+                    <a href="#" class="next hidden" style="display: none;">Next</a>
+                </div>
             </div>
 
             <div class="clear"></div>
@@ -388,7 +390,7 @@
 
         <div id="tab5" class="content_scroll_tab">
             <h2 class="cufon title_box_scroll">Video</h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/RWDWxiGuTXE?rel=0&amp;autoplay=0" frameborder="0" allowfullscreen=""></iframe>
+            @*<iframe width="560" height="315" src="https://www.youtube.com/embed/RWDWxiGuTXE?rel=0&amp;autoplay=0" frameborder="0" allowfullscreen=""></iframe>*@
 
             <div class="clear"></div>
         </div>
@@ -399,123 +401,124 @@
           <div class="clear"></div>
         </div><!--content_scroll_tab-->
         <div id="tab7" class="content_scroll_tab">
-            <h2 class="cufon title_box_scroll">Tư vấn bán hàng qua Facebook</h2>
-            <div class="fb-comments fb_iframe_widget fb_iframe_widget_fluid" data-href="https://gland.vn:443/gland-pc-live-stream-youtube-on-pc-battlegrounds-pubg/dota-2/" data-width="100%" data-numposts="5" data-colorscheme="light" fb-xfbml-state="rendered"><span style="height: 178px;"><iframe id="f2a2d538e7c3898" name="f38d54687245ca4" scrolling="no" title="Facebook Social Plugin" class="fb_ltr" src="https://www.facebook.com/plugins/comments.php?api_key=1102908163100553&amp;channel_url=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FoVjM2wVZ10b.js%3Fversion%3D42%23cb%3Dfb29a0a8597e28%26domain%3Dgland.vn%26origin%3Dhttps%253A%252F%252Fgland.vn%252Ffa130a93ab5984%26relation%3Dparent.parent&amp;colorscheme=light&amp;href=https%3A%2F%2Fgland.vn%3A443%2Fgland-pc-live-stream-youtube-on-pc-battlegrounds-pubg%2Fdota-2%2F&amp;locale=vi_VN&amp;numposts=5&amp;sdk=joey&amp;skin=light&amp;version=v2.12&amp;width=100%25" style="border: none; overflow: hidden; height: 178px; width: 100%;"></iframe></span></div>
+            @*<h2 class="cufon title_box_scroll">Tư vấn bán hàng qua Facebook</h2>
+                <div class="fb-comments fb_iframe_widget fb_iframe_widget_fluid" data-href="https://gland.vn:443/gland-pc-live-stream-youtube-on-pc-battlegrounds-pubg/dota-2/" data-width="100%" data-numposts="5" data-colorscheme="light" fb-xfbml-state="rendered"><span style="height: 178px;"><iframe id="f2a2d538e7c3898" name="f38d54687245ca4" scrolling="no" title="Facebook Social Plugin" class="fb_ltr" src="https://www.facebook.com/plugins/comments.php?api_key=1102908163100553&amp;channel_url=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FoVjM2wVZ10b.js%3Fversion%3D42%23cb%3Dfb29a0a8597e28%26domain%3Dgland.vn%26origin%3Dhttps%253A%252F%252Fgland.vn%252Ffa130a93ab5984%26relation%3Dparent.parent&amp;colorscheme=light&amp;href=https%3A%2F%2Fgland.vn%3A443%2Fgland-pc-live-stream-youtube-on-pc-battlegrounds-pubg%2Fdota-2%2F&amp;locale=vi_VN&amp;numposts=5&amp;sdk=joey&amp;skin=light&amp;version=v2.12&amp;width=100%25" style="border: none; overflow: hidden; height: 178px; width: 100%;"></iframe></span></div>*@
         </div><!--tab7--><!--content_scroll_tab-->
         <div id="tab6" class="content_scroll_tab">
-            <h2 class="cufon title_box_scroll">Đánh giá</h2>
+            @*<h2 class="cufon title_box_scroll">Đánh giá</h2>
 
-            <form action="/ajax/post_comment.php" method="post" enctype="multipart/form-data" onsubmit="return check_field(0)" class="form-post">
-                <!--<p>(Vui lòng điền đầy đủ thông tin hoặc đăng nhập bằng tài khoản <a href="javascript:open_oauth('Facebook')" style="color:blue;">Facebook</a> hoặc <a href="javascript:open_oauth('Google')" style="color:blue;">Gmail</a>)</p>-->
-                <input type="hidden" name="user_post[item_type]" value="product">
-                <input type="hidden" name="user_post[item_id]" value="2139">
-                <input type="hidden" name="user_post[item_title]" value="GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2">
-                <input type="hidden" name="user_post[rate]" value="0">
-                <input type="hidden" name="user_post[title]" value="GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2">
-                <input type="hidden" name="user_post[user_email]" value="">
-                <input type="hidden" name="user_post[user_name]" value="">
-                <input type="hidden" name="user_post[user_avatar]" value="">
+                        <form action="/ajax/post_comment.php" method="post" enctype="multipart/form-data" onsubmit="return check_field(0)" class="form-post">
+                            <!--<p>(Vui lòng điền đầy đủ thông tin hoặc đăng nhập bằng tài khoản <a href="javascript:open_oauth('Facebook')" style="color:blue;">Facebook</a> hoặc <a href="javascript:open_oauth('Google')" style="color:blue;">Gmail</a>)</p>-->
+                            <input type="hidden" name="user_post[item_type]" value="product">
+                            <input type="hidden" name="user_post[item_id]" value="2139">
+                            <input type="hidden" name="user_post[item_title]" value="GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2">
+                            <input type="hidden" name="user_post[rate]" value="0">
+                            <input type="hidden" name="user_post[title]" value="GLAND PC Live Stream Youtube on PC: Battlegrounds-PUBG/DOTA 2">
+                            <input type="hidden" name="user_post[user_email]" value="">
+                            <input type="hidden" name="user_post[user_name]" value="">
+                            <input type="hidden" name="user_post[user_avatar]" value="">
 
-                <div>
-                    <div class="info_comment">
-                        <input type="hidden" id="name1" name="user_post[user_name]" placeholder="Nhập tên bạn" value="">
-                        <input type="hidden" id="email1" name="user_post[user_email]" placeholder="Nhập email của bạn" value="">
-                        <input type="hidden" name="user_post[user_avatar]" value="0">
-                    </div>
-                    <textarea name="user_post[content]" style="width: 99%;" cols="60" rows="6" value="Nội dung chi tiết" onfocus="if(this.value=='Nội dung chi tiết')this.value='';" onblur="if(this.value=='')this.value='Nội dung chi tiết';" id="content0"></textarea>
-                    <ul id="review_rating">
-                        <li class="first">Đánh giá sản phẩm: </li>
-                        <li><input type="radio" id="rating-input-review-0-5" name="user_post[rate]" value="5" checked="checked"> <img src="/template/default/images/star_5.png" alt=""></li>
-                        <li><input type="radio" id="rating-input-review-0-4" name="user_post[rate]" value="4"> <img src="/template/default/images/star_4.png" alt=""></li>
-                        <li><input type="radio" id="rating-input-review-0-3" name="user_post[rate]" value="3"> <img src="/template/default/images/star_3.png" alt=""></li>
-                        <li><input type="radio" id="rating-input-review-0-2" name="user_post[rate]" value="2"> <img src="/template/default/images/star_2.png" alt=""></li>
-                        <li><input type="radio" id="rating-input-review-0-1" name="user_post[rate]" value="1"> <img src="/template/default/images/star_1.png" alt=""></li>
-                    </ul>
-                    <!--
-                    <img id="captchaimg" src="/includes/captcha/captcha.php?v=" /><br />
-                    <input type="text" style="width:150px" name="captcha"  placeholder="Nhập mã xác nhận"/> (<a id="change-image" onclick="document.getElementById('captchaimg').src='/includes/captcha/captcha.php?'+Math.random();" href="javascript:;">Xem mã khác</a>)-->
-                </div><!--div-->
-                <div class="c5"></div>
+                            <div>
+                                <div class="info_comment">
+                                    <input type="hidden" id="name1" name="user_post[user_name]" placeholder="Nhập tên bạn" value="">
+                                    <input type="hidden" id="email1" name="user_post[user_email]" placeholder="Nhập email của bạn" value="">
+                                    <input type="hidden" name="user_post[user_avatar]" value="0">
+                                </div>
+                                <textarea name="user_post[content]" style="width: 99%;" cols="60" rows="6" value="Nội dung chi tiết" onfocus="if(this.value=='Nội dung chi tiết')this.value='';" onblur="if(this.value=='')this.value='Nội dung chi tiết';" id="content0"></textarea>
+                                <ul id="review_rating">
+                                    <li class="first">Đánh giá sản phẩm: </li>
+                                    <li><input type="radio" id="rating-input-review-0-5" name="user_post[rate]" value="5" checked="checked"> <img src="/template/default/images/star_5.png" alt=""></li>
+                                    <li><input type="radio" id="rating-input-review-0-4" name="user_post[rate]" value="4"> <img src="/template/default/images/star_4.png" alt=""></li>
+                                    <li><input type="radio" id="rating-input-review-0-3" name="user_post[rate]" value="3"> <img src="/template/default/images/star_3.png" alt=""></li>
+                                    <li><input type="radio" id="rating-input-review-0-2" name="user_post[rate]" value="2"> <img src="/template/default/images/star_2.png" alt=""></li>
+                                    <li><input type="radio" id="rating-input-review-0-1" name="user_post[rate]" value="1"> <img src="/template/default/images/star_1.png" alt=""></li>
+                                </ul>
+                                <!--
+                                <img id="captchaimg" src="/includes/captcha/captcha.php?v=" /><br />
+                                <input type="text" style="width:150px" name="captcha"  placeholder="Nhập mã xác nhận"/> (<a id="change-image" onclick="document.getElementById('captchaimg').src='/includes/captcha/captcha.php?'+Math.random();" href="javascript:;">Xem mã khác</a>)-->
+                            </div><!--div-->
+                            <div class="c5"></div>
 
-                <input type="button" value="Đăng nhập để gửi bình luận" class="btn_orange" onclick="location.href='/dang-nhap?return_url=https://gland.vn:443/gland-pc-live-stream-youtube-on-pc-battlegrounds-pubg/dota-2/'">
-
-
-                <div class="c5"></div>
-            </form>
-            <br>
-
-            <p>Hiện tại chưa có ý kiến đánh giá nào về sản phẩm. Hãy là người đầu tiên chia sẻ cảm nhận của bạn.</p>
+                            <input type="button" value="Đăng nhập để gửi bình luận" class="btn_orange" onclick="location.href='/dang-nhap?return_url=https://gland.vn:443/gland-pc-live-stream-youtube-on-pc-battlegrounds-pubg/dota-2/'">
 
 
-            <script>
-    function check_field(id){
-        var error = "";
-        var content = document.getElementById("content"+id).value;
-        //var captcha = document.getElementById('comment-capcha'+id).value;
+                            <div class="c5"></div>
+                        </form>
+                        <br>
+
+                        <p>Hiện tại chưa có ý kiến đánh giá nào về sản phẩm. Hãy là người đầu tiên chia sẻ cảm nhận của bạn.</p>
 
 
-        if(content=='') error+= "Bạn chưa nhập nội dung\n";
-        /*
-         if(captcha=='') error+="Bạn chưa nhập mã kiểm tra"
-         else {
-         var check_captcha = $("#check_captcha"+id).val();
-         if(check_captcha!='') error+=check_captcha;
-         }
-         */
-        if(error=='') return true;
-        else {
-            alert(error);
-            return false;
-        }
-    };
-            </script>
-            <div class="clear"></div>
-        </div>
-        <div id="tab8" class="content_scroll_tab">
-            <h2 class="cufon title_box_scroll">Sản phẩm liên quan</h2>
-            <div class="product_list page_inside">
-                <ul class="ul"></ul>
-            </div><!--prouduct_list-->
-            <div class="clear"></div>
-        </div><!--content_scroll_tab-->
-    </div><!--pro_detail_page-->
-    <div id="right_pro_page">
+                        <script>
+                function check_field(id){
+                    var error = "";
+                    var content = document.getElementById("content"+id).value;
+                    //var captcha = document.getElementById('comment-capcha'+id).value;
+
+
+                    if(content=='') error+= "Bạn chưa nhập nội dung\n";
+                    /*
+                     if(captcha=='') error+="Bạn chưa nhập mã kiểm tra"
+                     else {
+                     var check_captcha = $("#check_captcha"+id).val();
+                     if(check_captcha!='') error+=check_captcha;
+                     }
+                     */
+                    if(error=='') return true;
+                    else {
+                        alert(error);
+                        return false;
+                    }
+                };
+                        </script>
+                        <div class="clear"></div>
+                    </div>*@
+            <div id="tab8" class="content_scroll_tab">
+                <h2 class="cufon title_box_scroll">Sản phẩm liên quan</h2>
+                <div class="product_list page_inside">
+                    <ul class="ul"></ul>
+                </div><!--prouduct_list-->
+                <div class="clear"></div>
+            </div><!--content_scroll_tab-->
+        </div><!--pro_detail_page-->
+        <div id="right_pro_page">
 
 
 
 
-        <!--div class="space2"></div>
-        <div class="box_right_detail">
-            <div class="title_box_right_detail cufon"><span>Đánh giá</span></div>
-            <div class="content_box_right_detail" id="rating_statistic">
-                <table cellspacing="3">
-                    <tr><td>5 star</td><td class="bg_rating"><span class="bg_top_rating"></span></td></tr>
-                    <tr><td>4 star</td><td class="bg_rating"><span class="bg_top_rating" style="width:30px;"></span></td></tr>
-                    <tr><td>3 star</td><td class="bg_rating"><span class="bg_top_rating"></span></td></tr>
-                    <tr><td>2 star</td><td class="bg_rating"><span class="bg_top_rating"></span></td></tr>
-                    <tr><td>1 star</td><td class="bg_rating"><span class="bg_top_rating"></span></td></tr>
-                </table>
-                <h4 style="cursor:pointer;" id="go_comment">Mời bạn tham gia đánh giá</h4>
-            </div>
-        </div><!--box_right_detail-->
-        <div class="clear space2"></div>
-        <div class="box_right_detail">
-            <a href="" id="prev1" class="btn_carousel2 bg prev2"></a>
-            <a href="" id="next1" class="btn_carousel2 bg next2"></a>
-            <div class="title_box_right_detail cufon"><span>CÙNG THƯƠNG HIỆU</span></div>
-            <div class="content_box_right_detail product_list">
-                <ul class="ul"></ul>
-            </div><!--content_box_right_detail-->
-        </div><!--box_right_detail-->
+            <!--div class="space2"></div>
+            <div class="box_right_detail">
+                <div class="title_box_right_detail cufon"><span>Đánh giá</span></div>
+                <div class="content_box_right_detail" id="rating_statistic">
+                    <table cellspacing="3">
+                        <tr><td>5 star</td><td class="bg_rating"><span class="bg_top_rating"></span></td></tr>
+                        <tr><td>4 star</td><td class="bg_rating"><span class="bg_top_rating" style="width:30px;"></span></td></tr>
+                        <tr><td>3 star</td><td class="bg_rating"><span class="bg_top_rating"></span></td></tr>
+                        <tr><td>2 star</td><td class="bg_rating"><span class="bg_top_rating"></span></td></tr>
+                        <tr><td>1 star</td><td class="bg_rating"><span class="bg_top_rating"></span></td></tr>
+                    </table>
+                    <h4 style="cursor:pointer;" id="go_comment">Mời bạn tham gia đánh giá</h4>
+                </div>
+            </div><!--box_right_detail-->
+            <div class="clear space2"></div>
+            <div class="box_right_detail">
+                <a href="" id="prev1" class="btn_carousel2 bg prev2"></a>
+                <a href="" id="next1" class="btn_carousel2 bg next2"></a>
+                <div class="title_box_right_detail cufon"><span>CÙNG THƯƠNG HIỆU</span></div>
+                <div class="content_box_right_detail product_list">
+                    <ul class="ul"></ul>
+                </div><!--content_box_right_detail-->
+            </div><!--box_right_detail-->
 
-        <div class="clear space2"></div>
-        <div class="box_right_detail">
-            <a href="" id="prev2" class="btn_carousel2 bg prev2"></a>
-            <a href="" id="next2" class="btn_carousel2 bg next2"></a>
-            <div class="title_box_right_detail cufon"><span>GIÁ TƯƠNG ĐƯƠNG</span></div>
-            <div class="content_box_right_detail product_list">
-                <ul class="ul"></ul>
-            </div><!--content_box_right_detail-->
-        </div><!--box_right_detail-->
-    </div><!--right_pro_page-->
+            <div class="clear space2"></div>
+            <div class="box_right_detail">
+                <a href="" id="prev2" class="btn_carousel2 bg prev2"></a>
+                <a href="" id="next2" class="btn_carousel2 bg next2"></a>
+                <div class="title_box_right_detail cufon"><span>GIÁ TƯƠNG ĐƯƠNG</span></div>
+                <div class="content_box_right_detail product_list">
+                    <ul class="ul"></ul>
+                </div><!--content_box_right_detail-->
+            </div><!--box_right_detail-->
+        </div><!--right_pro_page-->
+    </div>
 </div>

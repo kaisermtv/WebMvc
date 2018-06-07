@@ -1,0 +1,109 @@
+﻿@model WebMvc.Web.ViewModels.ClassProductViewModel
+@using WebMvc.Web.ViewModels
+
+<div class="process-title"><p>Bước 1 - chọn Bo mạch chủ - <a href="javascript:pcbuilder_next_step()">Bỏ qua</a></p></div>
+<input type="hidden" id="pc_part_name" value="Bo mạch chủ">
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+    <tbody>
+        <tr>
+            <td style="vertical-align:top" class="process-filter clearUl"></td>
+            <td style="vertical-align:top" class="process-right">
+                <div align="right">
+                    @*<b>Sắp xếp</b>
+            <select onchange="loadAjaxContent('pc_part_process', this.value)">
+
+
+                <option value="https://gland.vn/ajax/pcbuilder_product_selection.php?holder=pc_part_process&amp;pc_part_id=%2C&amp;step=1&amp;sort=new"></option>
+
+
+
+                <option value="https://gland.vn/ajax/pcbuilder_product_selection.php?holder=pc_part_process&amp;pc_part_id=%2C&amp;step=1&amp;sort=price-asc"></option>
+
+
+
+                <option value="https://gland.vn/ajax/pcbuilder_product_selection.php?holder=pc_part_process&amp;pc_part_id=%2C&amp;step=1&amp;sort=price-desc"></option>
+
+
+
+                <option value="https://gland.vn/ajax/pcbuilder_product_selection.php?holder=pc_part_process&amp;pc_part_id=%2C&amp;step=1&amp;sort=view"></option>
+
+
+
+                <option value="https://gland.vn/ajax/pcbuilder_product_selection.php?holder=pc_part_process&amp;pc_part_id=%2C&amp;step=1&amp;sort=comment"></option>
+
+
+
+                <option value="https://gland.vn/ajax/pcbuilder_product_selection.php?holder=pc_part_process&amp;pc_part_id=%2C&amp;step=1&amp;sort=rating"></option>
+
+
+
+                <option value="https://gland.vn/ajax/pcbuilder_product_selection.php?holder=pc_part_process&amp;pc_part_id=%2C&amp;step=1&amp;sort=name">Tên A-&gt;Z</option>
+
+
+            </select>*@
+                </div>
+                <table border="0" cellpadding="5" cellspacing="0" style="width:100%;">
+                    <tbody>
+                        <tr class="bTitle">
+                            <td class="bTitle-cols1">STT</td>
+                            <td class="bTitle-cols2">Ảnh</td>
+                            <td class="bTitle-cols3">Sản phẩm</td>
+                            <td class="bTitle-cols4">Lựa chọn</td>
+                        </tr>
+                        @foreach (var it in Model.ListProduct)
+                        {
+                            var val = AppHelpers.ProductValues(it);
+                            string price = "Liên hệ";
+                            int intprice = 0;
+                            string guarantee = "";
+                            var link = AppHelpers.ProductUrls(it.Category_Id, it.Slug);
+                            if (val.ContainsKey("Price"))
+                            {
+                                var item = (ProductValueViewModel)val["Price"];
+                                try
+                                {
+                                    intprice = int.Parse(item.Value);
+                                    price = intprice.ToString("N0").Replace(",", ".");
+                                }
+                                catch { }
+                            }
+                            if (val.ContainsKey("Guarantee"))
+                            {
+                                var item = (ProductValueViewModel)val["Guarantee"];
+                                guarantee = item.Value;
+                            }
+
+                            <tr class="bList">
+                                <td class="bList-cols1">1</td>
+                                <td class="bList-cols2 cssImg">
+
+                                    <img src="@AppHelpers.CategoryImage(it.Image, it.Id, 85)" alt="@it.Name">
+
+                                </td>
+                                <td class="bList-cols3">
+                                    <p class="cssName">
+                                        <a href="@link">@it.Name</a>
+                                    </p>
+                                    <p class="cssSummary">@Html.Raw(it.ShotContent)</p>
+
+                                    @*<p>Mã sản phẩm: </p>*@
+                                    <p>Bảo hành: @guarantee</p>
+
+
+                                </td>
+                                <td class="bList-cols4">
+                                    <p class="cssPrice">@price</p>
+                                    <p class="cssSelect">
+                                        <a href="javascript:COMPUTERBUILDING.SelectProduct('@it.Id', '@it.Name','@price','@link',@intprice)">Chọn sản phẩm</a>
+                                    </p>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @Html.Partial("_Paging1", Model.Paging)
+                <div class="clear10px"></div>
+            </td>
+        </tr>
+    </tbody>
+</table>

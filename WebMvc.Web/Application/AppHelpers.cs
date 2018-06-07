@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -385,6 +386,17 @@ namespace WebMvc.Web.Application
             return null;
         }
 
+        public static string CategoryImage(string image, Guid categoryId)
+        {
+            if (!string.IsNullOrEmpty(image))
+            {
+                var storageProvider = StorageProvider.Current;
+                return storageProvider.BuildFileUrl(categoryId, "/", image);
+            }
+            //TODO - Return default image for category
+            return null;
+        }
+
         public static string CarouselImage(string image, Guid carouselId, int size)
         {
             var sizeFormat = string.Format("?width={0}&crop=0,0,{0},{0}", size);
@@ -660,5 +672,54 @@ namespace WebMvc.Web.Application
         }
         #endregion
 
+        #region ShoppingCart
+        public static string GetJsonShoppingCart()
+        {
+            Hashtable list = null;
+            try
+            {
+                list = (Hashtable)HttpContext.Current.Session["SopiingCart"];
+            }
+            catch { }
+
+            if (list == null)
+            {
+                list = new Hashtable();
+                HttpContext.Current.Session["SopiingCart"] = list;
+            }
+
+            var viewModel = new CartListViewModel();
+            viewModel.Count = list.Count;
+
+            viewModel.Products = new List<CartItemViewModel>();
+            foreach (DictionaryEntry it in list)
+            {
+                viewModel.Products.Add((CartItemViewModel)it.Value);
+            }
+
+            return JsonConvert.SerializeObject(viewModel);
+        }
+
+        public static int GetCountShoppingCart()
+        {
+            int i = 0;
+            try
+            {
+                i = ((Hashtable)HttpContext.Current.Session["SopiingCart"]).Count;
+            }
+            catch {}
+
+            return i;
+        }
+        #endregion
+
+        #region Employees
+        public static string GetNameEmployeesRole(Guid Id)
+        {
+            var emp = ServiceFactory.Get<IEmployeesRoleService>();
+
+            return emp.Get(Id).Name;
+        }
+        #endregion
     }
 }

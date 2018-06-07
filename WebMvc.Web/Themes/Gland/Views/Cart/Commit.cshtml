@@ -1,0 +1,218 @@
+﻿@model WebMvc.Web.ViewModels.CartViewModel
+@{
+    ViewBag.Title = "Đặt hàng";
+}
+<div class="container">
+    <div id="content">
+        <div id="location">
+            <a href="/"><i class="bg icon_home"></i></a>
+            <span>»</span><a href="/gio-hang">Giỏ hàng của bạn</a>
+        </div>
+        @using (Html.BeginForm("Commit", "Cart", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="hori_line"></div>
+            <!--Buoc 2 gio hang-->
+            <script>
+                function show(id) {
+                    var current_open = document.getElementById('current_open_info').value;
+
+                    if (current_open != '') {
+                        document.getElementById(current_open).style.display = "none";
+                    }
+
+                    var current = document.getElementById(id).style.display;
+                    if (current == "none") {
+                        document.getElementById(id).style.display = "block";
+                        document.getElementById('current_open_info').value = id;
+                    } else {
+                        document.getElementById(id).style.display = "none";
+                    }
+                }
+
+                function open_tax_form(check_box_id, tax_form_id) {
+                    var chk = document.getElementById(check_box_id).checked;
+                    if (chk) {
+                        document.getElementById(tax_form_id).style.display = "block";
+                    } else {
+                        document.getElementById(tax_form_id).style.display = "none";
+                    }
+                }
+
+                function fill_ship_info() {
+                    document.getElementById('ship_to_name').value = document.getElementById('buyer_name').value;
+                    document.getElementById('ship_to_tel').value = document.getElementById('buyer_tel').value;
+                    document.getElementById('ship_to_address').value = document.getElementById('buyer_address').value;
+                }
+
+            </script>
+            <input type="hidden" id="current_open_info" value="">
+
+            <!--Buoc 2 gio hang-->
+            <div class="c3_col_1">
+                <div class="c3_box">
+                    <div class="title_box_cart"> Thông tin khách hàng</div>
+                    <div>
+                        Họ tên Quý khách <span class="txt2">*</span>
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @*<input type="text" name="Name" id="buyer_name" value="@Model.Name">*@
+                    </div>
+                    <div>
+                        Địa chỉ Email <span class="txt2">*</span>
+                        <input type="text" name="Email" id="buyer_email" value="@Model.Email">
+                    </div>
+                    <div>
+                        Số điện thoại <span class="txt2">*</span>
+                        <input type="text" name="Phone" id="buyer_tel" value="@Model.Phone">
+                    </div>
+                    <div>
+                        Địa chỉ <span class="txt2">(số nhà, đường, tỉnh) *</span>
+                                <textarea name="Addren" id="buyer_address">@Model.Addren</textarea>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="c3_box">
+                    <div class="c3_box">
+                        <div class="title_box_cart">Thông tin giao hàng</div>
+                        <div class="txt0">
+                            <img src="@Html.ThemeUrl()/Content/images/i_trans.png" style="vertical-align: middle;">
+                            <input type="checkbox" onchange="fill_ship_info()">
+                            Giao hàng tới cùng địa chỉ như thông tin ở trên
+                        </div>
+                        <div>
+                            Họ tên <span class="txt2">*</span> <br>
+                            <input type="text" size="40" name="Ship_Name" id="ship_to_name" value="@Model.Ship_Name">
+                        </div>
+                        <div class="clear"></div>
+                        <div>
+                            Số điện thoại <span class="txt2">*</span> <br>
+                            <input type="text" value="@Model.Ship_Phone" id="ship_to_tel" name="Ship_Phone" size="40">
+                        </div>
+                        <div>
+                            Địa chỉ <span class="txt2">(số nhà, đường, tỉnh) *</span> <br>
+                                                                                      <textarea style="width: 293px; height: 50px;" id="ship_to_address" name="Ship_Addren">@Model.Ship_Addren</textarea>
+                        </div>
+                        <div>
+                            Ghi chú
+                            <textarea name="Ship_Note" id="buyer_note">@Model.Ship_Note</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="c3_col_1" style="margin: 0;width:36%">
+                <div class="c3_box">
+                    <div class="title_box_cart">Hình thức thanh toán</div>
+                    <table class="tbl_pay">
+
+                        <tbody>
+                            <tr>
+                                <td valign="top"><input type="radio" name="Payments" value="1" class="pay_option" @(Model.Payments == 1?"checked":"")></td>
+                                <td valign="top">
+                                    <div class="txt0">Thanh toán khi nhận hàng</div>
+                                    <div class="pay_content" style="display:none;">
+
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div><!--c3_box-->
+                <div class="c3_box">
+                    <div class="title_box_cart">Hình thức vận chuyển</div>
+                    <div>
+                        <table class="tbl_ship">
+
+                            <tbody>
+                                <tr>
+                                    <td valign="top"><input type="radio" name="Transport" value="1" class="ship_option" @(Model.Transport == 1?"checked":"")></td>
+                                    <td valign="top">
+                                        <div class="txt0">Vận chuyển giao nhận hàng hóa</div>
+                                        <div class="ship_content" style="display:none;"></div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="clear"></div>
+                </div><!--c3_box-->
+            </div>
+            <div class="c3_col_1 c3_col_2">
+                <div class="title_box_cart"> Xác nhận đơn hàng</div>
+                <div class="c3_box">
+                    <div class="tbl_cart3">
+                        <table style="border-collapse: collapse;border: 1px solid #ccc;width: 100%;">
+                            <tbody>
+                                @{ int i = 0;}
+                                @foreach (var it in Model.Products)
+                                {
+                                    <tr>
+                                        <td>@(++i)</td>
+                                        <td>  <a href="@it.link"><b>@it.name</b></a>  </td>
+                                        <td><strong class="red">@it.Price<u>đ</u> </strong></td>
+                                        <td>
+                                            <input type="hidden" name="Products[@(i-1)].Count" value="@it.Count">
+                                            <input type="hidden" name="Products[@(i-1)].Id" value="@it.Id">
+                                            @it.Count
+                                        </td>
+                                    </tr>
+                                }
+                                <tr class="txt_16">
+                                    <td class="txt2 txt_right" colspan="4">
+                                        Tổng tiền
+                                        <strong class="red">@Model.TotalMoney.ToString("N0").Replace(",", ".") đ</strong><br>
+                                        (Chưa bao gồm phí vận chuyển)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="clear space2"></div>
+                        <div style="">
+                            <input type="submit" class="btn_red" value="Đặt hàng" style="width:100%;">
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        }
+
+        <script type="text/javascript">
+            function check_field() {
+                var error = "";
+                var check_name = document.getElementById('buyer_name').value;
+                if (check_name.length < 4) error += "- Bạn chưa nhập tên\n";
+
+                var check_add = document.getElementById('buyer_address').value;
+                if (check_add.length < 10) error += "- Bạn chưa nhập địa chỉ\n";
+                var check_tel = document.getElementById('buyer_tel').value;
+                if (check_tel.length < 4) error += "- Bạn chưa nhập SĐT\n";
+                if (error != "") {
+                    alert(error); return false;
+                }
+                return true;
+            }
+
+            $('.img-bank').click(function () {
+                $('.img-bank').removeClass('img-active');
+                $(this).addClass('img-active');
+                var id = $(this).attr('id');
+                $('#bank_payment_method_id').val(id);
+
+                $.session.set('pay', id);
+            });
+
+            $(".pay_option").change(function () {
+                $(".pay_content").hide();
+                $(this).parents("tr").find(".pay_content").show();
+                $(this).parents("tr").find(".pay_content").find("li:eq(0) img").click();
+            });
+
+            $(".ship_option").change(function () {
+                $(".ship_content").hide();
+                $(this).parents("tr").find(".ship_content").show();
+            });
+        </script>
+    </div><!--content-->
+    <div class="clear"></div>
+</div>

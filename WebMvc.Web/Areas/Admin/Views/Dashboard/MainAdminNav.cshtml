@@ -40,7 +40,7 @@
             </a>*@
 
             <a href="#" data-toggle="collapse" data-target="#settings" class="@(currentController == "setting" ? "active" : "")">
-                <i class="fa fa-fw fa-cogs"></i> Settings <i class="fa fa-fw fa-caret-down"></i>
+                <i class="fa fa-fw fa-cogs"></i> Cài đặt <i class="fa fa-fw fa-caret-down"></i>
             </a>
             <ul id="settings" class="collapse @(currentController == "setting" ? "in" : "")">
                 <li>
@@ -87,27 +87,32 @@
         </li>
         <li>
             <a href="@Url.Action("Index", "AdminCategory", new { area = "Admin" }, null)" class="@(currentController == "admincategory" ? "active" : "")">
-                <i class="fa fa-fw fa-folder-open-o"></i> Categories
+                <i class="fa fa-fw fa-folder-open-o"></i> Danh mục
             </a>
         </li>
         <li>
             <a href="@Url.Action("Index", "AdminTopic", new { area = "Admin" }, null)" class="@(currentController == "admintopic" ? "active" : "")">
-                <i class="fa fa-fw fa-file-text-o"></i> Topic
+                <i class="fa fa-fw fa-file-text-o"></i> Bài viết
             </a>
         </li>
         <li>
             <a href="@Url.Action("Index", "AdminProduct", new { area = "Admin" }, null)" class="@(currentController == "adminproduct" ? "active" : "")">
-                <i class="fa fa-fw fa-file-text-o"></i> Product
+                <i class="fa fa-fw fa-file-text-o"></i> Sản phẩm
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Index", "ShoppingCart", new { area = "Admin" }, null)" class="@(currentController == "shoppingcart" ? "active" : "")">
+                <i class="fa fa-fw fa-file-text-o"></i> Đặt hàng
             </a>
         </li>
         <li>
             <a href="@Url.Action("Index", "AdminBooking", new { area = "Admin" }, null)" class="@(currentController == "adminbooking" ? "active" : "")">
-                <i class="fa fa-fw fa-user-plus"></i> Booking
+                <i class="fa fa-fw fa-user-plus"></i> Đặt phòng
             </a>
         </li>
         <li>
             <a href="@Url.Action("Index", "AdminContact", new { area = "Admin" }, null)" class="@(currentController == "admincontact" ? "active" : "")">
-                <i class="fa fa-fw fa-envelope"></i> Contact
+                <i class="fa fa-fw fa-envelope"></i> Liên hệ
             </a>
         </li>
         <li>
@@ -139,6 +144,11 @@
             </a>
         </li>*@
         <li>
+            <a href="@Url.Action("Index", "AdminEmployees", new { area = "Admin" }, null)" class="@(currentController == "adminemployees" ? "active" : "")">
+                <i class="fa fa-fw fa-user-plus"></i> Nhân viên
+            </a>
+        </li>
+        <li>
             <a href="#" data-toggle="collapse" data-target="#permissions">
                 <i class="fa fa-fw fa-check-square-o"></i> Permissions <i class="fa fa-fw fa-caret-down"></i>
             </a>
@@ -153,7 +163,7 @@
         </li>
         <li>
             <a href="#" data-toggle="collapse" data-target="#membership">
-                <i class="fa fa-fw fa-users"></i> Membership <i class="fa fa-fw fa-caret-down"></i>
+                <i class="fa fa-fw fa-users"></i> Tài khoản <i class="fa fa-fw fa-caret-down"></i>
             </a>
             <ul id="membership" class="collapse">
                 <li>

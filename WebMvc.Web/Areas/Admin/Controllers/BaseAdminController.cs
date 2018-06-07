@@ -74,5 +74,19 @@ namespace WebMvc.Web.Areas.Admin.Controllers
             // Not allowed in here so
             return RedirectToAction("Index", "Home");
         }
+
+        protected internal AdminPageingViewModel CalcPaging(int limit, int? page, int count)
+        {
+            var paging = new AdminPageingViewModel
+            {
+                Count = count,
+                Page = page ?? 1,
+                MaxPage = (count / limit) + ((count % limit > 0) ? 1 : 0),
+            };
+
+            if (paging.Page > paging.MaxPage) paging.Page = paging.MaxPage;
+
+            return paging;
+        }
     }
 }

@@ -1,0 +1,67 @@
+﻿@model WebMvc.Web.ViewModels.PluginComputerBuildingViewModel
+@{
+    ViewBag.Title = "Xây dựng máy tính";
+}
+<script type="text/javascript" src="@Html.ThemeUrl()/Content/js/CoputerBuilding.js"></script>
+<div class="container">
+    <div class="buid-title"><span class="cssSymbol">&nbsp;</span><h1>Xây dựng máy tính</h1></div>
+    <h2 class="buid-title">Cấu hình tham khảo</h2>
+
+    <div style="border: solid 1px #ddd;">
+    </div><!--prouduct_list-->
+
+    <div class="clear"></div>
+    <h2 class="buid-title">Xây dựng cấu hình</h2>
+    <input type="hidden" id="pc_part_id" value="," />
+    <input type="hidden" id="pcbuilder_step" value="1" />
+    <input type="hidden" id="pcbuilder_step_back" value="0" />
+    <input type="hidden" id="pc_total_price" value="0" />
+    <script type="text/javascript">
+        $(window).scroll(function () {
+            $("#pcbuilder_box").css("top", Math.max(0, 230 - $(this).scrollTop()));
+        });
+    </script>
+    <style>
+        #pc_part_process ul {
+            list-style: none;
+            padding: 0;
+        }
+    </style>
+    <div id="anchor_top"></div>
+    <table cellpadding="0" cellspacing="0" class="buid-table">
+        <tr>
+            <td valign="top" class="buid-process">
+                <div id="pc_part_process"></div>
+            </td>
+            <td valign="top" class="buid-view">
+
+                <b>Danh sách bạn đã chọn</b>
+                <div id="pcbuilder_box" class="view-content">
+
+                    <div id="pc_part_select">
+
+                        @{ int i = 0;}
+                        @foreach (var it in Model.ProductClass)
+                        {
+                            <script>
+                                COMPUTERBUILDING.AddProductType('@it.Id',@(++i));
+                            </script>
+                            <h2 onclick="COMPUTERBUILDING.SetProductType(@i)">@(i):@(it.Name):</h2>
+                            <div id="part_selected_@i"></div>
+                        }
+
+                        <script>
+                            COMPUTERBUILDING.SetProductType(1);
+                        </script>
+                    </div>
+                </div>
+                <div class="view-title">
+                    <p>Cấu hình - <a href="javascript:COMPUTERBUILDING.ViewSelect()">Xem & In</a></p>
+                    <div id="pc_part_total_price"></div>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+    <div class="clear10px"></div>
+</div>

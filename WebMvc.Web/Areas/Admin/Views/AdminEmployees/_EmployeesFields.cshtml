@@ -1,0 +1,26 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.CreateEditEmployeesViewModel
+<div class="form-group">
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Name)
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.RoleId)
+    @Html.DropDownListFor(model => model.RoleId, Model.Roles, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.RoleId)
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Phone)
+    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Phone)
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Email)
+    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Email)
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Skype)
+    @Html.TextBoxFor(model => model.Skype, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Skype)
+</div>

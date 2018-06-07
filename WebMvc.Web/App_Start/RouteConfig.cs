@@ -15,6 +15,30 @@ namespace WebMvc.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+               name: "ComputerBuilding",
+               url: "xay-dung-may-tinh",
+               defaults: new { controller = "Plugin", action = "ComputerBuilding" }
+           );
+
+            routes.MapRoute(
+                name: "login",
+                url: "dang-nhap",
+                defaults: new { controller = "Members", action = "Login" }
+            );
+
+            routes.MapRoute(
+                name: "logout",
+                url: "dang-xuat",
+                defaults: new { controller = "Members", action = "LogOut" }
+            );
+
+            routes.MapRoute(
+                name: "register",
+                url: "dang-ky",
+                defaults: new { controller = "Members", action = "Register" }
+            );
+
+            routes.MapRoute(
                 name: "category",
                 url: SiteConstants.Instance.CategoryUrlIdentifier,
                 defaults: new { controller = "Category", action = "Index" }

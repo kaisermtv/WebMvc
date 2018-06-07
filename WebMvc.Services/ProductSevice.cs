@@ -360,6 +360,63 @@ namespace WebMvc.Services
             return rt;
         }
 
+        public List<Product> GetListForClass(Guid Id, int limit = 10, int page = 1)
+        {
+            string cachekey = string.Concat(CacheKeys.Product.StartsWith, "GetListForClass-", Id);
+            var list = _cacheService.Get<List<Product>>(cachekey);
+            if (list == null)
+            {
+                var Cmd = _context.CreateCommand();
+
+                if (page == 0) page = 1;
+
+                Cmd.CommandText = "SELECT TOP " + limit + " * FROM ( SELECT *,(ROW_NUMBER() OVER(ORDER BY CreateDate DESC)) AS RowNum FROM  [Product] WHERE ProductClassId = @ProductClassId) AS MyDerivedTable WHERE RowNum > @Offset";
+
+                Cmd.Parameters.Add("ProductClassId", SqlDbType.UniqueIdentifier).Value = Id;
+                //Cmd.Parameters.Add("limit", SqlDbType.Int).Value = limit;
+                Cmd.Parameters.Add("Offset", SqlDbType.Int).Value = (page - 1) * limit;
+
+                DataTable data = Cmd.findAll();
+                Cmd.Close();
+
+                if (data == null) return null;
+
+                list = new List<Product>();
+                foreach (DataRow it in data.Rows)
+                {
+                    list.Add(DataRowToProduct(it));
+                }
+
+                _cacheService.Set(cachekey, list, CacheTimes.OneDay);
+            }
+            return list;
+        }
+
+        public int GetCount(ProductClass productClass)
+        {
+            string cachekey = string.Concat(CacheKeys.Product.StartsWith, "GetCountForClass-", productClass.Id);
+            var count = _cacheService.Get<int?>(cachekey);
+            if (count == null)
+            {
+                var Cmd = _context.CreateCommand();
+
+                Cmd.CommandText = "SELECT COUNT(*) FROM  [dbo].[Product] WHERE ProductClassId = @ProductClassId";
+
+                Cmd.Parameters.Add("ProductClassId", SqlDbType.UniqueIdentifier).Value = productClass.Id;
+
+                count = (int)Cmd.command.ExecuteScalar();
+                Cmd.Close();
+
+
+                _cacheService.Set(cachekey, count, CacheTimes.OneDay);
+            }
+            return (int)count;
+        }
+        public List<Product> GetList(ProductClass productClass, int limit = 10, int page = 1)
+        {
+            return GetListForClass(productClass.Id, limit, page);
+        }
+
         public List<Product> GetList(int limit = 10, int page = 1)
         {
             var Cmd = _context.CreateCommand();
@@ -726,6 +783,30 @@ namespace WebMvc.Services
                 foreach (ProductAttribute it in allcat)
                 {
                     if (it.Id == id)
+                    {
+                        cat = it;
+                        break;
+                    }
+                }
+
+                _cacheService.Set(cachekey, cat, CacheTimes.OneDay);
+            }
+            return cat;
+        }
+
+        public ProductAttribute GetAttribute(string name)
+        {
+            string cachekey = string.Concat(CacheKeys.Product.Attribute, "GetAttribute-Name-", name);
+
+            var cat = _cacheService.Get<ProductAttribute>(cachekey);
+            if (cat == null)
+            {
+                var allcat = GetAllAttribute();
+                if (allcat == null) return null;
+
+                foreach (ProductAttribute it in allcat)
+                {
+                    if (it.LangName == name)
                     {
                         cat = it;
                         break;

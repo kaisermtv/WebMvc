@@ -65,5 +65,27 @@
 
             return View(model);
         }
+        
+        [HttpPost]
+        public ActionResult AjaxProductForClass(Guid id, int? page)
+        {
+            var pcls = _productSevice.GetProductClass(id);
+            if (pcls == null) return HttpNotFound();
+
+            int limit = 12;
+            var count = _productSevice.GetCount(pcls);
+            
+            var Paging = CalcPaging(limit, page, count);
+
+            var model = new ClassProductViewModel
+            {
+                ProductClass = pcls,
+                Paging = Paging,
+                ListProduct = _productSevice.GetList(pcls, limit, Paging.Page)
+            };
+            
+            return PartialView("AjaxProductForClass",model);
+        }
+        
     }
 }

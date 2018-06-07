@@ -121,6 +121,18 @@ CREATE TABLE [dbo].[Category](
 	[IsProduct] [bit] NULL
 )
 
+CREATE TABLE [dbo].[Menu](
+	[Id] [uniqueidentifier] NOT NULL PRIMARY KEY,
+	[Menu_Id] [uniqueidentifier] NULL,
+	[Name] [nvarchar](450) NOT NULL,
+	[Image] [nvarchar](450) NULL,
+	[Description] [nvarchar](max) NULL,
+	[Colour] [nvarchar](50) NULL,
+	[iType] [int] NOT NULL,
+	[Link] [nvarchar](max),
+	[SortOrder] [int] NULL
+)
+
 
 CREATE TABLE [dbo].[Topic](
 	[Id] [uniqueidentifier] NOT NULL PRIMARY KEY,
@@ -270,3 +282,46 @@ CREATE TABLE [dbo].[Booking](
 	[CreateDate] [datetime] NOT NULL,
 )
 
+CREATE TABLE [dbo].[ShoppingCart](
+	[Id] [uniqueidentifier] NOT NULL PRIMARY KEY,
+	[Name] [nvarchar](150) NULL,
+	[Email] [nvarchar](150) NULL,
+	[Phone] [nvarchar](20) NULL,
+	[Addren] [nvarchar](256) NULL,
+	[ShipName] [nvarchar](150) NULL,
+	[ShipPhone] [nvarchar](20) NULL,
+	[ShipAddren] [nvarchar](256) NULL,
+	[ShipNote] [nvarchar](max) NULL,
+
+	[TotalMoney] [nvarchar](256) NULL,
+
+	[Note] [nvarchar](max) NULL,
+
+	[Status] [int] NULL,
+	[CreateDate] [datetime] NOT NULL,
+)
+
+
+CREATE TABLE [dbo].[ShoppingCartProduct](
+	[Id] [uniqueidentifier] NOT NULL PRIMARY KEY,
+	[ShoppingCartId] [uniqueidentifier] NOT NULL,
+	[ProductId] [uniqueidentifier] NOT NULL,
+	[Price] [nvarchar](150) NULL,
+	[CountProduct] [int] NOT NULL
+)
+
+CREATE TABLE [dbo].[EmployeesRole](
+	[Id] [uniqueidentifier] NOT NULL PRIMARY KEY,
+	[Name] [nvarchar](150) NOT NULL,
+	[Description] [nvarchar](max) NULL,
+	[SortOrder] [int] NULL
+)
+
+CREATE TABLE [dbo].[Employees](
+	[Id] [uniqueidentifier] NOT NULL PRIMARY KEY,
+	[RoleId] [uniqueidentifier] NOT NULL,
+	[Name] [nvarchar](150) NOT NULL,
+	[Phone] [nvarchar](20) NULL,
+	[Email] [nvarchar](150) NULL,
+	[Skype] [nvarchar](150) NULL
+)

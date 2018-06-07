@@ -1,0 +1,59 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.AdminEmployeesViewModel
+
+@{
+    ViewBag.Title = "Danh sách nhân vên";
+}
+
+
+@Html.Partial("_EmployeesNavButtons")
+
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        <div id="container">
+             <div class="tablescroll">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width:50px">Sửa</th>
+                            <th>Tên đầy đủ</th>
+                            <th>Chức vụ</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Skype</th>
+                            <th style="width:50px">Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var it in Model.ListEmployees)
+                        {
+                        <tr>
+                            <td>
+                                <span>
+                                    <a href="@Url.Action("Edit", new { id = it.Id })" class="btn-mvc">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a>
+                                </span>
+                            </td>
+                            <td>@it.Name</td>
+                            <td>@AppHelpers.GetNameEmployeesRole(it.RoleId)</td>
+                            <td>@it.Phone</td>
+                            <td>@it.Email</td>
+                            <td>@it.Skype</td>
+                            <td>
+                                <a href="@Url.Action("Delete", new { id = it.Id })" class="btn-mvc">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

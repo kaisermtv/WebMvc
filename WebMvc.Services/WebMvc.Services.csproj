@@ -72,9 +72,12 @@
     <Compile Include="Data\Context\WebMvcContext.cs" />
     <Compile Include="Data\UnitOfWork\UnitOfWork.cs" />
     <Compile Include="Data\UnitOfWork\UnitOfWorkManager.cs" />
+    <Compile Include="EmployeesRoleService.cs" />
+    <Compile Include="EmployeesService.cs" />
     <Compile Include="LocalizationService.cs" />
     <Compile Include="MembershipService.cs" />
     <Compile Include="LoggingService.cs" />
+    <Compile Include="MenuService.cs" />
     <Compile Include="PermissionService.cs" />
     <Compile Include="ProductPostSevice.cs" />
     <Compile Include="PostSevice.cs" />
@@ -83,6 +86,8 @@
     <Compile Include="RoleSevice.cs" />
     <Compile Include="ServiceHelpers.cs" />
     <Compile Include="SettingsService.cs" />
+    <Compile Include="ShoppingCartProductService.cs" />
+    <Compile Include="ShoppingCartService.cs" />
     <Compile Include="SiteConfig\SiteConfig.cs" />
     <Compile Include="TopicService.cs" />
     <Compile Include="TypeRoomSevice.cs" />

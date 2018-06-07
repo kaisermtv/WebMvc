@@ -68,6 +68,10 @@ namespace WebMvc.IOC
             container.BindInRequestScope<IBookingSevice, BookingSevice>();
             container.BindInRequestScope<ITypeRoomSevice, TypeRoomSevice>(); 
             container.BindInRequestScope<IProductSevice, ProductSevice>();
+            container.BindInRequestScope<IEmployeesService, EmployeesService>();
+            container.BindInRequestScope<IEmployeesRoleService, EmployeesRoleService>();
+            container.BindInRequestScope<IShoppingCartService, ShoppingCartService>();
+            container.BindInRequestScope<IShoppingCartProductService, ShoppingCartProductService>();
 
 
             CustomBindings(container);

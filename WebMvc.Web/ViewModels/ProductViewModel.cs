@@ -13,6 +13,13 @@ namespace WebMvc.Web.ViewModels
         public ProductPost post;
     }
 
+    public class ClassProductViewModel
+    {
+        public ProductClass ProductClass;
+        public List<Product> ListProduct;
+        public PageingViewModel Paging;
+    }
+
     public class ProductValueViewModel
     {
         public string Name;
