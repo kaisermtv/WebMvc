@@ -59,7 +59,7 @@ namespace WebMvc.Services
             Cmd.CommandText += " BEGIN INSERT INTO tblSetting(STKEY,VALUE) VALUES(@STKEY,@VALUE) END ";
             Cmd.CommandText += " ELSE BEGIN UPDATE tblSetting SET [VALUE] = @VALUE WHERE STKEY = @STKEY END";
             Cmd.Parameters.Add("STKEY", SqlDbType.NVarChar).Value = key;
-            Cmd.Parameters.Add("VALUE", SqlDbType.NVarChar).Value = value;
+            Cmd.AddParameters("VALUE", value);
 
             bool ret = Cmd.command.ExecuteNonQuery() > 0;
             Cmd.cacheStartsWithToClear(cachekey);

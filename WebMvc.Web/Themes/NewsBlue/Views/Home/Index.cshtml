@@ -1,0 +1,66 @@
+﻿@using WebMvc.Domain.Interfaces.Services;
+
+@{
+
+    var _topicServic = DependencyResolver.Current.GetService<ITopicService>();
+    var _categoryService = DependencyResolver.Current.GetService<ICategoryService>();
+    var _postSevice = DependencyResolver.Current.GetService<IPostSevice>();
+    MvcHtmlString show = null;
+
+    var id = ThemesSetting.getValue("HomeNews").ToString();
+    if (id != "")
+    {
+        var topic = _topicServic.Get(new Guid(id));
+
+        if (topic.Category_Id != null)
+        {
+            var cat = _categoryService.Get((Guid)topic.Category_Id);
+            if (cat != null)
+            {
+                Post post = new Post();
+
+                if (topic.Post_Id != null)
+                {
+                    post = _postSevice.Get((Guid)topic.Post_Id);
+                }
+
+                var modelview = new TopicViewModel
+                {
+                    Cat = cat,
+                    topic = topic,
+                    post = post
+                };
+
+                @section Meta
+                {
+                    <meta name="description" content="@modelview.topic.ShotContent" />
+                    <link rel="canonical" href="/" />
+                    <meta property="og:locale" content="vi_VN" />
+                    <meta property="og:type" content="website" />
+                    <meta property="og:title" content="@modelview.topic.Name" />
+                    <meta property="og:description" content="@modelview.topic.ShotContent" />
+                    <meta property="og:url" content="/" />
+                    <meta property="og:site_name" content="@modelview.topic.Name" />
+                    <meta name="twitter:card" content="summary" />
+                    <meta name="twitter:description" content="@modelview.topic.ShotContent" />
+                    <meta name="twitter:title" content="@modelview.topic.Name" />
+                    <meta name="twitter:image" content="@AppHelpers.CategoryImage(modelview.topic.Image, modelview.topic.Id)" />
+                    @*<script type='application/ld+json'>
+                            {"@context":"https:\/\/schema.org","@type":"WebSite","@id":"#website","url":"https:\/\/diennuochanoi24h.com\/","name":"D\u1ecbch V\u1ee5 S\u1eeda ch\u1eefa \u0111i\u1ec7n n\u01b0\u1edbc t\u1ea1i nh\u00e0 H\u00e0 N\u1ed9i","potentialAction":{"@type":"SearchAction","target":"https:\/\/diennuochanoi24h.com\/?s={search_term_string}","query-input":"required name=search_term_string"}}
+                        </script>
+                        <script type='application/ld+json'>
+                            {"@context":"https:\/\/schema.org","@type":"Organization","url":"https:\/\/diennuochanoi24h.com\/","sameAs":[],"@id":"https:\/\/diennuochanoi24h.com\/#organization","name":"S\u1eeda Ch\u1eefa \u0110i\u1ec7n N\u01b0\u1edbc H\u00e0 N\u1ed9i","logo":""}
+                        </script>*@
+                    <link rel='dns-prefetch' href='//s.w.org' />
+                    @*<link rel="alternate" type="application/rss+xml" title="Dòng thông tin Dịch Vụ Sửa chữa điện nước tại nhà Hà Nội &raquo;" href="https://diennuochanoi24h.com/feed/" />*@
+                    @*<link rel="alternate" type="application/rss+xml" title="Dòng phản hồi Dịch Vụ Sửa chữa điện nước tại nhà Hà Nội &raquo;" href="https://diennuochanoi24h.com/comments/feed/" />*@
+
+                }
+
+                show = Html.Partial(Html.ThemeUrl() + "/Views/Topic/ShowBySlug.cshtml", modelview);
+            }
+        }
+    }
+
+}
+@show

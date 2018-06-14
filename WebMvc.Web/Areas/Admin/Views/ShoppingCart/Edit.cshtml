@@ -1,0 +1,30 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.ShoppingCartEditViewModel
+@{
+    ViewBag.Title = "Kiểm tra đặt hàng";
+}
+
+@Html.Partial("_ShoppingCartNavButtons")
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        <div class="form-horizontal">
+            @using (Html.BeginForm("Edit", "ShoppingCart", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(false)
+                @Html.HiddenFor(model => model.Id)
+
+                @Html.Partial("_ShoppingCartFields", Model)
+
+                <div class="submit-holder">
+                    <input type="submit" class="btn-mvc-green btn-mvc-large" value="Cập nhật" />
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

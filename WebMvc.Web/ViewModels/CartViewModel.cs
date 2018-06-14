@@ -3,9 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace WebMvc.Web.ViewModels
 {
+    public class CartListProductViewModel
+    {
+        public List<CartAddViewModel> Products { get; set; }
+    }
+
     public class CartViewModel
     {
         public string Name { get; set; }
@@ -27,28 +33,30 @@ namespace WebMvc.Web.ViewModels
 
     public class CartAddViewModel
     {
-        public Guid Id;
+        [HiddenInput]
+        public Guid Id { get; set; }
+        public int Count { get; set; }
     }
     
     public class CartListViewModel
     {
-        public int State;
-        public string Message;
-        public List<CartItemViewModel> Products;
-        public int Count;
-        public Int64 TotalMoney;
+        public int State { get; set; }
+        public string Message { get; set; }
+        public List<CartItemViewModel> Products { get; set; }
+        public int Count { get; set; }
+        public Int64 TotalMoney { get; set; }
     }
 
     public class CartItemViewModel
     {
-        public Guid Id;
-        public string name;
-        public string Image;
-        public Int64 Count;
-        public string Price;
-        public Int64 Priceint;
-        public string Guarantee;
-        public string link;
+        public Guid Id { get; set; }
+        public string name { get; set; }
+        public string Image { get; set; }
+        public Int64 Count { get; set; }
+        public string Price { get; set; }
+        public Int64 Priceint { get; set; }
+        public string Guarantee { get; set; }
+        public string link { get; set; }
 
     }
 }

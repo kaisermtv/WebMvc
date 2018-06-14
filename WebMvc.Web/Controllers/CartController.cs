@@ -4,24 +4,33 @@
     using System.Collections;
     using System.Collections.Generic;
     using System.Web.Mvc;
+    using WebMvc.Domain.Constants;
+    using WebMvc.Domain.DomainModel.Entities;
     using WebMvc.Domain.Interfaces.Services;
     using WebMvc.Domain.Interfaces.UnitOfWork;
     using WebMvc.Web.Application;
+    using WebMvc.Web.Areas.Admin.ViewModels;
     using WebMvc.Web.ViewModels;
 
     public class CartController : BaseController
     {
         public readonly IProductSevice _productSevice;
+        public readonly IShoppingCartProductService _shoppingCartProductService;
+        public readonly IShoppingCartService _shoppingCartService;
 
         public CartController() : base()
         {
             _productSevice = ServiceFactory.Get<IProductSevice>();
+            _shoppingCartProductService = ServiceFactory.Get<IShoppingCartProductService>();
+            _shoppingCartService = ServiceFactory.Get<IShoppingCartService>();
         }
 
-        public CartController(IProductSevice productSevice,ILoggingService loggingService, IUnitOfWorkManager unitOfWorkManager, IMembershipService membershipService, ISettingsService settingsService, ICacheService cacheService, ILocalizationService localizationService)
+        public CartController(IShoppingCartService shoppingCartService, IShoppingCartProductService shoppingCartProductService,IProductSevice productSevice,ILoggingService loggingService, IUnitOfWorkManager unitOfWorkManager, IMembershipService membershipService, ISettingsService settingsService, ICacheService cacheService, ILocalizationService localizationService)
             : base(loggingService, unitOfWorkManager, membershipService, settingsService, cacheService, localizationService)
         {
             _productSevice = productSevice;
+            _shoppingCartService = shoppingCartService;
+            _shoppingCartProductService = shoppingCartProductService;
         }
 
         public ActionResult Index()
@@ -95,6 +104,7 @@
                 {
                     viewModel.Products.Add(item);
 
+                    item.name = pr.Name;
                     item.Image = pr.Image;
                     item.link = AppHelpers.ProductUrls(pr.Category_Id, pr.Slug);
                     
@@ -128,15 +138,15 @@
         [ValidateAntiForgeryToken]
         public ActionResult Commit(CartViewModel viewModel)
         {
-            var rq = Request.Form;
             var pricmodel = _productSevice.GetAttribute("Price");
             if (viewModel.Products == null) viewModel.Products = new List<CartItemViewModel>();
-            
+
             foreach (var it in viewModel.Products)
             {
                 var pr = _productSevice.Get(it.Id);
                 if (pr != null)
                 {
+                    it.name = pr.Name;
                     it.Image = pr.Image;
                     it.link = AppHelpers.ProductUrls(pr.Category_Id, pr.Slug);
 
@@ -163,6 +173,61 @@
                 }
             }
 
+            if (ModelState.IsValid)
+            {
+                using (var unitOfWork = UnitOfWorkManager.NewUnitOfWork())
+                {
+                    try
+                    {
+                        var shop = new ShoppingCart
+                        {
+                            Name = viewModel.Name,
+                            Phone = viewModel.Phone,
+                            Email = viewModel.Email,
+                            Addren = viewModel.Addren,
+                            ShipName = viewModel.Ship_Name,
+                            ShipAddren = viewModel.Ship_Addren,
+                            ShipPhone = viewModel.Ship_Phone,
+                            ShipNote = viewModel.Ship_Note,
+                            TotalMoney = viewModel.TotalMoney.ToString("N0").Replace(",", "."),
+                        };
+                        _shoppingCartService.Add(shop);
+
+                        foreach (var it in viewModel.Products)
+                        {
+                            var cartproduct = new ShoppingCartProduct
+                            {
+                                CountProduct = (int)it.Count,
+                                Price = it.Price,
+                                ProductId = it.Id,
+                                ShoppingCartId = shop.Id
+                            };
+
+                            _shoppingCartProductService.Add(cartproduct);
+                        }
+
+                        unitOfWork.Commit();
+                        // We use temp data because we are doing a redirect
+                        TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                        {
+                            Message = "Đặt hàng thành công",
+                            MessageType = GenericMessages.success
+                        };
+
+                        var list = GetShoppingCart();
+                        list.Clear();
+
+                        return View("Success");
+                    }
+                    catch(Exception ex)
+                    {
+                        unitOfWork.Rollback();
+                        LoggingService.Error(ex.Message);
+                        ModelState.AddModelError(string.Empty, LocalizationService.GetResourceString("Errors.ShoppingCartMessage"));
+                    }
+                }
+            }
+            
             return View(viewModel);
         }
 
@@ -199,6 +264,45 @@
 
             }
 
+            viewModel.Products = new List<CartItemViewModel>();
+            foreach (DictionaryEntry it in list)
+            {
+                viewModel.Products.Add((CartItemViewModel)it.Value);
+            }
+
+
+            return Json(viewModel);
+        }
+
+        [HttpPost]
+        public JsonResult SetListProduct(CartListProductViewModel post)
+        {
+            var viewModel = new CartListViewModel();
+            var list = GetShoppingCart();
+            list.Clear();
+
+            foreach (var it in post.Products)
+            {
+                if (!list.ContainsKey(it.Id.ToString()))
+                {
+                    var product = _productSevice.Get(it.Id);
+
+                    if (product != null)
+                    {
+                        var a = new CartItemViewModel
+                        {
+                            name = product.Name,
+                            Count = it.Count,
+                            Id = product.Id,
+                        };
+
+                        list.Add(a.Id.ToString(), a);
+                        viewModel.Count = list.Count;
+                    }
+                }
+            }
+
+            viewModel.State = 1;
             viewModel.Products = new List<CartItemViewModel>();
             foreach (DictionaryEntry it in list)
             {

@@ -1,0 +1,39 @@
+﻿@{ 
+    var allmenus = AppHelpers.GetAllMenus();
+    List<Menu> menus;
+    var rootid = ThemesSetting.getValue("MainMenu").ToString();
+    if (rootid == "")
+    {
+        menus = allmenus.Where(x => x.Menu_Id == null).ToList();
+    }
+    else {
+        menus = allmenus.Where(x => x.Menu_Id == new Guid(rootid) ).ToList();
+    }
+}
+
+
+<header id="site-header" role="banner" class="main-header" itemscope itemtype="http://schema.org/WPHeader">
+    <div id="header">
+        <div class="container"><div class="header-inner"><div class="logo-wrap"><h1 id="logo" class="image-logo" itemprop="headline"> <a href="https://diennuochanoi24h.com"><img src="https://diennuochanoi24h.com/wp-content/uploads/2017/02/logo.png" alt="Dịch Vụ Sửa chữa điện nước tại nhà Hà Nội"></a></h1></div><div id="mts_ad_728_widget-2" class="widget-header"><div class="ad-728"></div></div></div></div><div class="clear" id="catcher"></div><div class="secondary-navigation sticky-navigation" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+            <div class="container clearfix">
+                <a href="#" id="pull" class="toggle-mobile-menu">Menu</a>
+                <nav id="navigation" class="clearfix">
+                    <ul id="menu-menu-1" class="menu clearfix">
+                        @foreach (var it in menus)
+                        {
+                            <li id="menu-item-@it.Id" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-@it.Id"><a href="@it.Link">@it.Name.ToUpper()</a></li>
+                        }
+                    </ul>
+                </nav>
+                <nav id="navigation" class="mobile-only clearfix mobile-menu-wrapper">
+                    <ul id="menu-menu-2" class="menu clearfix">
+                        @foreach (var it in menus)
+                        {
+                            <li id="menu-item-@it.Id" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-@it.Id"><a href="@it.Link">@it.Name.ToUpper()</a></li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

@@ -12,6 +12,10 @@ namespace WebMvc.Web.ViewModels
         [Required]
         [WebMvcResourceDisplayName("Contact.Name")]
         public string Name { get; set; }
+        
+        [Required]
+        [WebMvcResourceDisplayName("Contact.Phone")]
+        public string Phone { get; set; }
 
         [Required]
         [WebMvcResourceDisplayName("Contact.Email")]
@@ -26,5 +30,10 @@ namespace WebMvc.Web.ViewModels
 
         [WebMvcResourceDisplayName("Contact.Note")]
         public string Note { get; set; }
+    }
+
+    public class ContactReturnJson {
+        public int Status { get; set; }
+        public string Message { get; set; }
     }
 }

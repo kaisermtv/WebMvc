@@ -1,0 +1,16 @@
+﻿@model WebMvc.Web.ViewModels.CategoryTopicListViewModel
+@{
+    ViewBag.Title = string.Concat(Model.Cat.Name);
+}
+<h1 class="postsby"> <span>Chuyên mục: @Model.Cat.Name</span></h1>
+<section id="latest-posts" class="clearfix">
+    @foreach (var it in Model.ListTopic)
+    {
+        if (it.Category_Id == null)
+        {
+            continue;
+        }
+        @Html.Partial("_NewsItem", it)
+    }
+</section>
+@Html.Partial("_Paging", Model.Paging)

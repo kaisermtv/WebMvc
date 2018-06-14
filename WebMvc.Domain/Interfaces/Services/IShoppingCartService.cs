@@ -9,6 +9,8 @@ namespace WebMvc.Domain.Interfaces.Services
 {
     public partial interface IShoppingCartService
     {
+        void Add(ShoppingCart cat);
+        void Update(ShoppingCart cat);
         ShoppingCart Get(Guid Id);
         int GetCount();
         List<ShoppingCart> GetList(int limit = 10, int page = 1);

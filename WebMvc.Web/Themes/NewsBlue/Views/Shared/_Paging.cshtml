@@ -1,0 +1,45 @@
+﻿@model WebMvc.Web.ViewModels.PageingViewModel
+@{
+    var url = Request.Path + "?";
+
+    foreach (string key in Request.QueryString.AllKeys)
+    {
+        if (key != "p")
+        {
+            url = string.Concat(url, key, "=", HttpUtility.UrlEncode((string)Request.QueryString[key]), "&");
+        }
+
+    }
+
+    url += "p=";
+
+    int pl = Model.Page - 5;
+    if (pl < 2)
+    {
+        pl = 2;
+    }
+}
+<nav class="navigation pagination" role="navigation">
+    <h2 class="screen-reader-text">Điều hướng bài viết</h2>
+    <div class="nav-links">
+        @if (Model.Page > 1)
+        {
+            <a href="@(url + (Model.Page-1))" class="prev page-numbers">Previous</a>
+            <a href="@(url + 1)" class="page-numbers">1</a>
+        }
+        @for (var i = pl; i < Model.Page; i++)
+        {
+            <a href="@(url + i)" class="page-numbers">@i</a>
+        }
+        <span aria-current="page" class="page-numbers current">@Model.Page</span>
+        @for (var i = Model.Page + 1; i < (Model.MaxPage - 1) && i < Model.Page + 5; i++)
+        {
+            <a href="@(url + i)" class="page-numbers">@i</a>
+        }
+        @if (Model.Page < Model.MaxPage)
+        {
+            <a href="@(url + Model.MaxPage)" class="page-numbers">@Model.MaxPage</a>
+            <a href="@(url + (Model.Page+1))" class="next page-numbers">Next</a>
+        }
+    </div>
+</nav>

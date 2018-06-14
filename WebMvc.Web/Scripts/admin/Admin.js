@@ -688,3 +688,55 @@ function ResponsiveTable() {
         }
     }
 }
+
+SHOWROOM = {
+    ListShowroom: [],
+    Count: 0,
+
+    Add: function () {
+        var i = this.Count++;
+
+        var iDiv = document.createElement('div');
+        iDiv.id = "Showroom_container_" + i;
+        
+        var html = "<div class=\"form-group\" >";
+        html += "<label for=\"Showroom_" + i + "\">Địa chỉ Showroom(" + this.Count+")</label>";
+        html += "<input class=\"form-control\" id=\"Showroom_" + i + "\" name=\"Addrens[" + i +"].Addren\" type=\"text\" />";
+        html += "</div>";
+
+        html += "<div class=\"form-group\" >";
+        html += "<label for=\"Showroom_Map_" + i + "\">Google Map Showroom(" + this.Count + ")</label>";
+        html += "<input class=\"form-control\" id=\"Showroom_Map_" + i + "\" name=\"Addrens[" + i + "].iFrameMap\" type=\"text\" />";
+        html += "</div>";
+
+
+        iDiv.innerHTML = html;
+
+        var ShowroomList = document.getElementById("ShowroomList");
+        
+        ShowroomList.appendChild(iDiv);
+
+        if (i == 0) {
+            var repbutton = document.getElementById("repbutton");
+            repbutton.className = repbutton.className.replace(" hidden","");
+        }
+    },
+
+    Repmove: function () {
+        var i = --this.Count;
+
+        //var ShowroomList = document.getElementById("ShowroomList");
+        var element = document.getElementById("Showroom_container_" + i);
+
+        element.remove();
+
+        if (i == 0) {
+            var repbutton = document.getElementById("repbutton");
+            repbutton.className += " hidden"; 
+        }
+
+    },
+
+
+
+}

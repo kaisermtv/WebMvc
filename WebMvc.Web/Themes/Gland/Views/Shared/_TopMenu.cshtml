@@ -6,14 +6,14 @@
         <ul class="ul">
             <li id="view-showroom">
                 <i class="bg icon_cskh1"></i><span style="display: inline-block;">
-                    <a href="/huong-dan-khach-hang/lien-he-hop-tac/a391.html" rel="nofollow">
+                    <a href="/" rel="nofollow">
                         <!--<img class="icon-top" src="/media/lib/icon-htsr.png" />-->Hệ thống Showroom
                     </a>
                 </span>
                 <div id="hnc-showroom"></div>
                 <script>
                     $("#view-showroom").hover(function () {
-                        if ($("#hnc-showroom").html() == '') $("#hnc-showroom").load("/he-thong-showroom.html?type=ajax");
+                        if ($("#hnc-showroom").html() == '') $("#hnc-showroom").load("/Ajax/TopShowroom");
                         $("#hnc-showroom").show();
                     }, function () {
                         $("#hnc-showroom").hide();
@@ -49,7 +49,7 @@
                     }
                 </ul>
             </li>
-            <li><a href="https://www.facebook.com/glandcomputer/" rel="nofollow">Fanpage</a>  </li>
+            <li><a href="@Html.Settings("Fanpage")" rel="nofollow">Fanpage</a>  </li>
             <li>
                 <a href="/xay-dung-may-tinh" rel="nofollow"><span style="color:red; font-weight: bold">XÂY DỰNG CẤU HÌNH</span></a>
 

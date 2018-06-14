@@ -47,9 +47,9 @@ namespace WebMvc.Web.Areas.Admin.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Edit(Guid guid)
+        public ActionResult Edit(Guid id)
         {
-            var cart = _shoppingCartService.Get(guid);
+            var cart = _shoppingCartService.Get(id);
             if (cart == null) return RedirectToAction("Index", "ShoppingCart");
 
             var viewModel = new ShoppingCartEditViewModel
@@ -66,7 +66,9 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                 TotalMoney = cart.TotalMoney,
                 Note = cart.Note,
                 Status = cart.Status,
-                CreateDate = cart.CreateDate
+                CreateDate = cart.CreateDate,
+
+                products = _shoppingCartProductService.GetList(cart),
             };
 
             
@@ -80,16 +82,48 @@ namespace WebMvc.Web.Areas.Admin.Controllers
             var cart = _shoppingCartService.Get(viewModel.Id);
             if (cart == null) return RedirectToAction("Index", "ShoppingCart");
 
+            viewModel.Id = cart.Id;
+            viewModel.Name = cart.Name;
+            viewModel.Email = cart.Email;
+            viewModel.Phone = cart.Phone;
+            viewModel.Addren = cart.Addren;
+            viewModel.ShipName = cart.ShipName;
+            viewModel.ShipPhone = cart.ShipPhone;
+            viewModel.ShipAddren = cart.ShipAddren;
+            viewModel.ShipNote = cart.ShipNote;
+            viewModel.TotalMoney = cart.TotalMoney;
+            viewModel.CreateDate = cart.CreateDate;
+
             if (ModelState.IsValid)
             {
                 using (var unitOfWork = UnitOfWorkManager.NewUnitOfWork())
                 {
+                    try
+                    {
+                        var t = Request.Form;
+                        cart.Note = viewModel.Note;
+                        cart.Status = viewModel.Status;
 
+                        _shoppingCartService.Update(cart);
 
-
+                        unitOfWork.Commit();
+                        // We use temp data because we are doing a redirect
+                        TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                        {
+                            Message = "Cập nhật thành công",
+                            MessageType = GenericMessages.success
+                        };
+                    }
+                    catch(Exception ex)
+                    {
+                        unitOfWork.Rollback();
+                        LoggingService.Error(ex.Message);
+                        ModelState.AddModelError(string.Empty, LocalizationService.GetResourceString("Lỗi khi cập nhật!"));
+                    }
                 }
             }
 
+            viewModel.products = _shoppingCartProductService.GetList(cart);
             return View(viewModel);
         }
     }

@@ -41,7 +41,7 @@
                             <td>@it.Name</td>
                             <td>@it.Phone</td>
                             <td>@it.Email</td>
-                            <td>@it.Status</td>
+                            <td>@(it.Status.ToString().Replace("0","Chờ duyệt").Replace("1", "Liên lạc khách hàng").Replace("2", "Đang giao hàng").Replace("3", "Hoàn thành giao dịch").Replace("4", "Hủy bỏ giao dịch") )</td>
                             <td>@it.CreateDate.ToString("hh:mm dd/MM/yyyy")</td>
                             <td>
                                 <a href="@Url.Action("Delete", new { id = it.Id })" class="btn-mvc">

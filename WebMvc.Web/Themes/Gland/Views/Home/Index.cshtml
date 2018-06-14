@@ -108,15 +108,10 @@
                 <div class="title_box_center">
                     <h2 class="h_title">@it.Name</h2>
                     <div class="sub_cat_title">
-
-
-                        <a href="/pc-gaming/zadak-pc-gaming/">ZADAK PC GAMING</a>
-
-
-
-                        <a href="/gland-pc-custom/">GLAND PC CUSTOM</a>
-
-
+                        @foreach (var sub in AppHelpers.SubCategories(it,true))
+                        {
+                            <a href="@Url.Action("ShowBySlugProduct","Category", new { Slug = sub.Slug })">@sub.Name</a>
+                        }
                     </div>
                     <a href="@Url.Action("ShowBySlugProduct","Category", new { Slug = it.Slug })" class="viewall">Xem tất cả</a>
                 </div><!--title_box_center-->

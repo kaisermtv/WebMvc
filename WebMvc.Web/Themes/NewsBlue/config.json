@@ -1,0 +1,22 @@
+{
+  "HomeNews": {
+    "LabelName": "Chọn bài tin hiển thị trên trang chủ",
+    "Type": "NewsID",
+    "Value": "8C8BA81A-6BFD-433D-9FEC-A8FF0037C054"
+  },
+  "MainMenu": {
+    "LabelName": "Chọn menu ngang",
+    "Type": "MenuID",
+    "Value": ""
+  },
+  "ServiceCategory": {
+    "LabelName": "Chọn danh mục dịch vụ",
+    "Type": "CategoryID",
+    "Value": "45a323b4-4d7a-4c29-90fa-a8fe010dbdb4"
+  },
+  "NewsCategory": {
+    "LabelName": "Chọn danh mục tin tức",
+    "Type": "CategoryID",
+    "Value": "04ed5f6f-198c-468f-b708-a8fe010dc454"
+  }
+}

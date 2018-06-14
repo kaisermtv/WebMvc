@@ -72,7 +72,8 @@ namespace WebMvc.IOC
             container.BindInRequestScope<IEmployeesRoleService, EmployeesRoleService>();
             container.BindInRequestScope<IShoppingCartService, ShoppingCartService>();
             container.BindInRequestScope<IShoppingCartProductService, ShoppingCartProductService>();
-
+            container.BindInRequestScope<IMenuService, MenuService>();
+            
 
             CustomBindings(container);
 

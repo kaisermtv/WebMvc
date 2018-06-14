@@ -1,0 +1,125 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.ShoppingCartEditViewModel
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.Name)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Email)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Email)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Phone)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Phone)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Addren)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Addren)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.ShipName)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.ShipName)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.ShipPhone)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.ShipPhone)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.ShipAddren)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.ShipAddren)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.ShipNote)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.ShipNote)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.TotalMoney)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.TotalMoney)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.CreateDate)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.CreateDate)
+    </dd>
+
+</dl>
+<div class="form-group">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+        </tr>
+        @foreach (var it in Model.products)
+        {
+            var pr = AppHelpers.GetProduct(it.ProductId);
+            string name = "";
+            string link = "";
+            if (pr != null)
+            {
+                name = pr.Name;
+                link = AppHelpers.ProductUrls(pr.Category_Id, pr.Slug);
+            }
+            <tr>
+                <td><a href="@link">@name</a></td>
+                <td>@it.Price</td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div class="form-group">
+    <label>Trạng thái</label>
+    <select id="Status" name="Status" class="form-control">
+        <option value="0" @Html.Raw(Model.Status == 0?"selected=\"selected\"":"")>Chờ duyệt</option>
+        <option value="1" @Html.Raw(Model.Status == 1?"selected=\"selected\"":"")>Liên lạc khách hàng</option>
+        <option value="2" @Html.Raw(Model.Status == 2?"selected=\"selected\"":"")>Đang giao hàng</option>
+        <option value="3" @Html.Raw(Model.Status == 3?"selected=\"selected\"":"")>Hoàn thành giao dịch</option>
+        <option value="4" @Html.Raw(Model.Status == 4?"selected=\"selected\"":"")>Hủy bỏ giao dịch</option>
+    </select>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Note)
+    @Html.TextAreaFor(model => model.Note)
+    @Html.ValidationMessageFor(model => model.Note)
+    <script>
+        CKEDITOR.replace("Note");
+    </script>
+</div>

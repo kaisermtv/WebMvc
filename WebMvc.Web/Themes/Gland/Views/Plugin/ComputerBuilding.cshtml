@@ -63,5 +63,401 @@
             </td>
         </tr>
     </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog" style="width: 800px">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="display:table;width:800px;min-height:1000px">
+                <div class="modal-body" id="pcConfig">
+
+                    <style type="text/css">
+                        body {
+                            margin: 0px;
+                            font-family: Tahoma;
+                            font-size: 12px;
+                        }
+
+                        img {
+                            border: 0px;
+                        }
+
+                        p {
+                            margin: 0px;
+                        }
+
+                        h1 {
+                            margin: 0px;
+                            font-size: 12px;
+                        }
+
+                        .clear {
+                            clear: both;
+                        }
+
+                        .error {
+                            color: Red;
+                            font-weight: bold;
+                        }
+
+                        #imageThumnailPanel ul {
+                            list-style: none;
+                            margin: 0;
+                            padding-left: 0px
+                        }
+
+                            #imageThumnailPanel ul li {
+                                float: left;
+                                margin-right: 2px;
+                                padding: 3px;
+                                border: 1px solid #CCC
+                            }
+
+                        .cssHiddenSend {
+                            float: left;
+                            padding-top: 10px;
+                            padding-bottom: 20px;
+                            border: solid 1px #C0C0C0;
+                            background-color: #fcfcf1
+                        }
+
+                        .imageThumnail {
+                            border: 1px solid #CCC;
+                            padding: 1px;
+                            vertical-align: middle;
+                            text-align: center;
+                            display: inline-block;
+                            margin-right: 2px;
+                            width: 50px;
+                            height: 50px;
+                        }
+
+                        ul, li {
+                            list-style: none outside none;
+                            margin: 0 auto;
+                            padding: 0;
+                            position: relative;
+                        }
+
+                        .ulFrom2_Temp1 {
+                            float: left;
+                            width: 100%;
+                            padding-top: 5px;
+                            padding-bottom: 5px;
+                        }
+
+                            .ulFrom2_Temp1 .liCols1 {
+                                float: left;
+                                width: 20%;
+                                text-align: right;
+                                padding-right: 25px;
+                            }
+
+                            .ulFrom2_Temp1 .liCols2 {
+                                float: left;
+                            }
+
+                        .pcConfig-header {
+                            float: left;
+                            width: 100%;
+                            border-bottom: solid #666666 1px;
+                        }
+
+                        .pcConfig-logo {
+                            float: left;
+                        }
+
+                        .pcConfig-address {
+                            float: right;
+                            line-height: 18px;
+                            border-bottom: 1px sold #333333;
+                            text-align: right;
+                        }
+
+                            .pcConfig-address b {
+                                color: Blue;
+                                font-size: 24px;
+                                display: inline-block;
+                                padding-bottom: 10px;
+                                font-family: Times New Roman;
+                            }
+
+                        .pcConfig-title {
+                            text-align: center;
+                            border-top: 1px solid #666666;
+                            margin-top: 1px;
+                            display: block;
+                            padding-top: 5px;
+                        }
+
+                            .pcConfig-title .cssH1 {
+                                font-weight: bold;
+                                font-size: 22px;
+                                font-family: Times New Roman;
+                            }
+
+                        .pcConfig-customers {
+                            float: left;
+                            width: 70%;
+                        }
+
+                        .pcConfig-date {
+                            float: left;
+                            width: 30%;
+                            font-weight: bold;
+                            padding-top: 10px;
+                        }
+
+                        .pcConfig-customers .ulCustomers {
+                            float: left;
+                            width: 100%;
+                            padding-bottom: 5px;
+                        }
+
+                            .pcConfig-customers .ulCustomers .liCols1 {
+                                float: left;
+                                padding-top: 5px;
+                            }
+
+                            .pcConfig-customers .ulCustomers .liCols2 {
+                                float: left;
+                                padding-left: 5px;
+                            }
+
+                        .pcConfig-customers input {
+                            border: 0px;
+                            border-bottom: 1px dotted #C0C0C0;
+                            font-weight: bold;
+                        }
+
+                        .pcConfig-customers .ulCustomers-temp2 {
+                            float: left;
+                            width: 100%;
+                            padding-bottom: 5px;
+                        }
+
+                            .pcConfig-customers .ulCustomers-temp2 .liCols1 {
+                                float: left;
+                                padding-top: 5px;
+                            }
+
+                            .pcConfig-customers .ulCustomers-temp2 .liCols2 {
+                                float: left;
+                            }
+
+                            .pcConfig-customers .ulCustomers-temp2 .liCols3 {
+                                float: left;
+                                padding-top: 5px;
+                            }
+
+                            .pcConfig-customers .ulCustomers-temp2 .liCols4 {
+                                float: left;
+                            }
+
+                        .pcConfig-hello {
+                            display: block;
+                            text-align: center;
+                            font-weight: bold;
+                            padding-bottom: 5px;
+                        }
+
+                        .pcConfig-customers-content {
+                            padding-top: 5px;
+                            padding-bottom: 5px;
+                        }
+
+                            .pcConfig-customers-content .liCols1 {
+                                padding-top: 5px;
+                                display: inline-block;
+                            }
+
+                            .pcConfig-customers-content input {
+                                border: 0px;
+                                border-bottom: 1px dotted #C0C0C0;
+                                font-weight: bold;
+                            }
+
+                        .pcConfig-footer {
+                            display: inline-block;
+                            padding-bottom: 10px;
+                            width: 100%;
+                        }
+
+                            .pcConfig-footer .cssCols1 {
+                                float: left;
+                                width: 15%;
+                            }
+
+                            .pcConfig-footer .cssCols2 {
+                                float: left;
+                                width: 85%;
+                                line-height: 18px;
+                            }
+
+                        .cssUpdate {
+                            width: 100px;
+                            height: 25px;
+                            border: 0px;
+                            background-image: url("/Images/Common/pc-send.gif");
+                            cursor: pointer;
+                        }
+
+                        .pcConfig-customer {
+                            padding-top: 10px;
+                        }
+
+                            .pcConfig-customer .customerLeft {
+                                float: left;
+                                width: 50%;
+                            }
+
+                            .pcConfig-customer .customerRight {
+                                float: left
+                            }
+
+                            .pcConfig-customer p {
+                                padding: 1px 0px;
+                            }
+
+                        .footer-left {
+                            float: left;
+                            width: 75%;
+                        }
+
+                        .footer-right {
+                            float: left;
+                            font-weight: bold;
+                        }
+
+                        .footer-left p {
+                            padding: 1px 0px;
+                        }
+
+                        .footer-right p {
+                            padding: 1px 0px;
+                        }
+
+                        .currencyVND {
+                            display: none;
+                        }
+
+                        .pcSKU {
+                            padding: 3px;
+                            color: #666666;
+                        }
+
+                        .pcOffer {
+                            padding-top: 5px;
+                            color: Red;
+                        }
+
+                        #tb_config {
+                            width: 100%;
+                            border-collapse: collapse;
+                        }
+
+                            #tb_config td {
+                                padding: 6px;
+                            }
+
+                        #row_config {
+                            background-color: #EEEEEE;
+                            font-weight: bold;
+                        }
+                    </style>
+                    <div class="pcConfig-header">
+                        <p class="pcConfig-logo">
+                            <a href="http://hanoicomputer.vn/"><img src="@Html.ThemeUrl()/Content/images/logoglandnho.png" alt=""></a>
+                        </p>
+                        <p class="pcConfig-address">
+                            <b>CỬA HÀNG MÁY TÍNH GLAND</b><br>
+                            Người đại diện:    Ông Nguyễn Thành Trung    Chức vụ:    Chủ cửa hàng  <br>
+                            Địa chỉ:     Số 17 ngách 224 Ngõ Quỳnh - Phường Quỳnh Lôi - Quận Hai Bà Trưng - Hà Nội<br>
+                            Mã số thuế:    8110700249<br>
+                            Điện thoại:      0976.155.499    <br>
+                            Website:           gland.vn<br>
+                            Email:                  thanhtrung@gland.vn<br>
+                        </p>
+                    </div>
+                    <div id="pnSendFlase">
+
+                        <div class="clear"></div>
+                        <div class="pcConfig-title">
+                            <div>
+                                <h1 class="cssH1">BẢNG CHÀO GIÁ </h1>
+                            </div>
+                            <div style="font-size:11px;">Sat, 09/06/2018 10:10am</div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="pcConfig-customer">
+                            <div class="customerLeft">
+                                <p>Ông/bà: Quý khách hàng</p>
+                                <p>Đơn vị:</p>
+                                <p>Địa chỉ:</p>
+                                <p>Điện thoại:</p>
+                            </div>
+                            <div class="customerRight">
+                                <p>&nbsp;</p>
+                                <p>&nbsp;</p>
+                                <p>Email:</p>
+                                <p>Fax:</p>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="pcConfig-hello">
+                            Cửa hàng máy tính Gland xin trân trọng gửi tới quý khách hàng bảng chào giá sau :
+                        </div>
+                        <table id="tb_config" cellpading="0" cellspacing="0" border="1" bordercolor="#999999">
+                            <tr id="row_config">
+                                <td style="text-align:center; width:12px; ">STT</td>
+                                <td>Tên sản phẩm</td>
+                                <td style="text-align:center; width:20px;">Số lượng</td>
+                                <td style="text-align:center; width:80px;">Đơn giá (VNĐ)</td>
+                                <td style="text-align:center; width:80px;">Thành tiền (VNĐ)</td>
+                                <td style="text-align:center; width:50px;">Bảo hành</td>
+                                <td>Xóa</td>
+                            </tr>
+                            <tbody id="productData">
+                                
+                            </tbody>
+                            <tr>
+                                <td colspan="4" align="right"><b>Tổng tiền : </b></td>
+                                <td colspan="3" style=" font-weight:bold;">
+                                    <span id="TotalPrice" rel="0">0</span> VNĐ
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div align="center" style="padding:10px 0px;">
+                        &nbsp;
+                        <a href="javascript:COMPUTERBUILDING.Commit();"><img src="@Html.ThemeUrl()/Content/images/Cart1.gif" alt="cart"></a>
+                        <a href="javascript:PrintElem('pcConfig');"><img src="@Html.ThemeUrl()/Content/images/print.gif" alt="Print"></a>
+                    </div>
+
+                    <div class="clear"></div>
+                    <div class="footer-left">
+                        <p><b>Cung cấp:</b> Tại Hà Nội ngay sau khi khách hàng thanh toán</p>
+                        <p><b>Thanh toán:</b> Tiền mặt, séc hoặc chuyển khoản</p><br>
+                        <p><b>Số tài khoản:</b> Nguyễn Thành Trung</p>
+                        <p>Ngân Hàng Vietcombank - Chi Nhánh Thành Công</p>
+                        <p>Số tài khoản VND: 0451 000 333 423</p>
+                        <p> <a href="/quy-dinh-va-hinh-thuc-thanh-toan.html" target="_blank">Xem thêm hướng dẫn thanh toán tại đây</a></p><p>
+
+                        </p>
+                        <br />
+                    </div>
+                    <div class="footer-right">
+                        <p>Người lập: </p>
+                        <p>Chức vụ:</p>
+                        <p>Điện thoại</p>
+                        <p>Mobile: </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="clear10px"></div>
 </div>

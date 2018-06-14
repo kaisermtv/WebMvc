@@ -49,6 +49,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="@Url.Action("Business", "Setting", new { area = "Admin" })" class="@(currentController == "setting" && currentAction == "business" ? "active" : "")">
+                        Business Setting
+                    </a>
+                </li>
+                <li>
                     <a href="@Url.Action("TermsConditions", "Setting", new { area = "Admin" }, null)" class="@(currentController == "setting" && currentAction == "termsconditions" ? "active" : "")">
                         Terms & Conditions
                     </a>

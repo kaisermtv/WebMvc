@@ -33,7 +33,7 @@ namespace WebMvc.Web
 
             // Set the view engine
             ViewEngines.Engines.Clear();
-            ViewEngines.Engines.Add(new WebMvcViewEngine("Gland"));
+            ViewEngines.Engines.Add(new WebMvcViewEngine("NewsBlue"));
 
             
             ScheduledRunner.Run(unityContainer);

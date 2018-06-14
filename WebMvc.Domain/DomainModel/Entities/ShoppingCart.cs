@@ -24,7 +24,7 @@ namespace WebMvc.Domain.DomainModel.Entities
         public string ShipNote { get; set; }
         public string TotalMoney { get; set; }
         public string Note { get; set; }
-        public string Status { get; set; }
+        public int Status { get; set; }
         public DateTime CreateDate { get; set; }
     }
 }

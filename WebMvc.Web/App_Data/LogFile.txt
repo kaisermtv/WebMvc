@@ -1,38 +1,40 @@
-03/06/2018 04:23:03 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-03/06/2018 04:36:15 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Object reference not set to an instance of an object.
-03/06/2018 04:36:48 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-03/06/2018 06:12:04 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'AjaxProductForClass1' was not found on controller 'WebMvc.Web.Controllers.ProductController'.
-03/06/2018 08:51:40 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-03/06/2018 08:58:34 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-03/06/2018 10:20:19 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-03/06/2018 10:23:35 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Object reference not set to an instance of an object.
-03/06/2018 10:26:39 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-03/06/2018 10:52:32 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-03/06/2018 10:53:16 | WebMvc.Web.dll | Create | WebMvc.Web.Areas.Admin.Controllers.AdminEmployeesController | 91 | The variable name '@Id' has already been declared. Variable names must be unique within a query batch or stored procedure.
-Must declare the scalar variable "@Name".
-03/06/2018 10:54:09 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-03/06/2018 10:54:17 | WebMvc.Web.dll | Create | WebMvc.Web.Areas.Admin.Controllers.AdminEmployeesController | 91 | Must declare the scalar variable "@Name".
-03/06/2018 10:55:09 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-03/06/2018 10:55:13 | WebMvc.Web.dll | Create | WebMvc.Web.Areas.Admin.Controllers.AdminEmployeesController | 91 | Must declare the scalar variable "@Description".
-03/06/2018 10:55:20 | WebMvc.Web.dll | Create | WebMvc.Web.Areas.Admin.Controllers.AdminEmployeesController | 91 | Must declare the scalar variable "@Description".
-03/06/2018 10:56:21 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-03/06/2018 11:03:55 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-03/06/2018 11:12:06 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-03/06/2018 11:13:53 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The model item passed into the dictionary is of type 'WebMvc.Web.Areas.Admin.ViewModels.CreateEditEmployeesViewModel', but this dictionary requires a model item of type 'WebMvc.Web.Areas.Admin.ViewModels.CreateEditEmployeesRoleViewModel'.
-03/06/2018 11:41:15 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-03/06/2018 11:41:15 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Path '/Themes/Gland/Views/Employees/OnlineOrder.cshtml' was not found.
-04/06/2018 03:41:41 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-04/06/2018 03:41:58 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Cannot open database "mvp105a21_senvang" requested by the login. The login failed.
-Login failed for user 'mvp105a21_sa'.
-05/06/2018 06:19:35 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-05/06/2018 06:22:39 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Object reference not set to an instance of an object.
-05/06/2018 07:14:31 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-05/06/2018 08:37:07 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-05/06/2018 08:40:55 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-06/06/2018 10:26:54 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-06/06/2018 10:27:09 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - The network location cannot be reached. For information about network troubleshooting, see Windows Help.) INNER EXCEPTION: The network location cannot be reached. For information about network troubleshooting, see Windows Help
-06/06/2018 15:13:38 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-06/06/2018 15:14:01 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-06/06/2018 15:14:08 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Column 'IsProduct' does not belong to table Table.
-06/06/2018 15:16:47 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Object reference not set to an instance of an object.
-06/06/2018 15:26:20 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+14/06/2018 12:57:18 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\NewsBlue\Views\Shared\_Footer.cshtml(15): error CS1002: ; expected
+14/06/2018 12:57:30 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\NewsBlue\Views\Shared\_Footer.cshtml(15): error CS1002: ; expected
+14/06/2018 12:57:37 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\NewsBlue\Views\Shared\_Footer.cshtml(15): error CS1002: ; expected
+14/06/2018 13:19:28 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\NewsBlue\Views\Topic\ShowBySlug.cshtml(9): error CS0103: The name 'it' does not exist in the current context
+14/06/2018 13:19:48 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\NewsBlue\Views\Topic\ShowBySlug.cshtml(14): error CS0103: The name 'it' does not exist in the current context
+14/06/2018 14:07:02 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+14/06/2018 14:11:19 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+14/06/2018 14:32:52 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The file "~/Themes/NewsBlue/Views/Home/Index.cshtml" cannot be requested directly because it calls the "RenderSection" method.
+14/06/2018 14:41:56 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+14/06/2018 14:41:57 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The partial view 'ShowBySlug' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Themes/NewsBlue/Views/Home/ShowBySlug.cshtml
+~/Themes/NewsBlue/Views/Shared/ShowBySlug.cshtml
+~/Themes/NewsBlue/Views/Shared/Home/ShowBySlug.cshtml
+~/Themes/NewsBlue/Views/Extensions/Home/ShowBySlug.cshtml
+~/Views/Extensions/Home/ShowBySlug.cshtml
+~/Views/Home/ShowBySlug.cshtml
+~/Views/Home/ShowBySlug.vbhtml
+~/Views/Shared/ShowBySlug.cshtml
+~/Views/Shared/ShowBySlug.vbhtml
+14/06/2018 14:42:20 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\NewsBlue\Views\Home\Index.cshtml(58): error CS1503: Argument 4: cannot convert from 'WebMvc.Web.ViewModels.TopicViewModel' to 'System.Web.Mvc.ViewDataDictionary'
+14/06/2018 14:42:46 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The partial view 'Topic/ShowBySlug' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Themes/NewsBlue/Views/Home/Topic/ShowBySlug.cshtml
+~/Themes/NewsBlue/Views/Shared/Topic/ShowBySlug.cshtml
+~/Themes/NewsBlue/Views/Shared/Home/Topic/ShowBySlug.cshtml
+~/Themes/NewsBlue/Views/Extensions/Home/Topic/ShowBySlug.cshtml
+~/Views/Extensions/Home/Topic/ShowBySlug.cshtml
+~/Views/Home/Topic/ShowBySlug.cshtml
+~/Views/Home/Topic/ShowBySlug.vbhtml
+~/Views/Shared/Topic/ShowBySlug.cshtml
+~/Views/Shared/Topic/ShowBySlug.vbhtml
+14/06/2018 14:43:26 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The partial view '~/Topic/ShowBySlug' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Topic/ShowBySlug
+14/06/2018 14:43:33 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The partial view '/Topic/ShowBySlug' was not found or no view engine supports the searched locations. The following locations were searched:
+/Topic/ShowBySlug
+14/06/2018 14:44:07 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The partial view '/Themes/NewsBlue/View/Topic/ShowBySlug' was not found or no view engine supports the searched locations. The following locations were searched:
+/Themes/NewsBlue/View/Topic/ShowBySlug
+14/06/2018 14:45:11 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The partial view '/Themes/NewsBlue/Views/Topic/ShowBySlug' was not found or no view engine supports the searched locations. The following locations were searched:
+/Themes/NewsBlue/Views/Topic/ShowBySlug
+14/06/2018 14:48:08 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\NewsBlue\Views\Home\Index.cshtml(60): error CS0029: Cannot implicitly convert type 'System.Web.Mvc.MvcHtmlString' to 'string'
+14/06/2018 14:48:53 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP

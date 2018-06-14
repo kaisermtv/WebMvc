@@ -2,7 +2,8 @@
 @{
     ViewBag.Title = "Theme config";
 
-    //var _menuService = DependencyResolver.Current.GetService<IMenuService>();
+    var _menuService = DependencyResolver.Current.GetService<IMenuService>();
+    var _categoryService = DependencyResolver.Current.GetService<ICategoryService>();
 }
 @using (Html.BeginForm("ThemeConfig", "Setting", FormMethod.Post))
 {
@@ -22,10 +23,20 @@
                             <label for="@item.Name">@item.Value.LabelName</label>
                             <select class="form-control" id="@item.Name" name="@item.Name">
                                 <option value="">--No Select--</option>
-                                @*@foreach (var it in _menuService.GetAll().ToList())
+                                @foreach (var it in _menuService.GetAll().ToList())
                                 {
                                     <option value="@it.Id" @((it.Id.ToString() == (string)item.Value.Value) ? "selected=\"selected\"" : "")>@it.Name</option>
-                                }*@
+                                }
+                            </select>
+                            break;
+                         case "CategoryID":
+                            <label for="@item.Name">@item.Value.LabelName</label>
+                            <select class="form-control" id="@item.Name" name="@item.Name">
+                                <option value="">--No Select--</option>
+                                @foreach (var it in _categoryService.GetAll().ToList())
+                                {
+                                    <option value="@it.Id" @((it.Id.ToString() == (string)item.Value.Value) ? "selected=\"selected\"" : "")>@it.Name</option>
+                                }
                             </select>
                             break;
                     }

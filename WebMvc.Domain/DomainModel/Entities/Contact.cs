@@ -17,6 +17,7 @@ namespace WebMvc.Domain.DomainModel.Entities
 
         public string Name { get; set; }
         public string Email { get; set; }
+        public string Phone { get; set; }
         public string Content { get; set; }
         public bool IsCheck { get; set; }
         public string Note { get; set; }

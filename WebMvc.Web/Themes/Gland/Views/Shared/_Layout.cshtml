@@ -14,7 +14,6 @@
     //string uptitle = ViewBag.Title;
     //uptitle = uptitle.ToUpper();
 }
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -32,6 +31,9 @@
     @Html.Partial("_JavaScript", theme)
 
     @RenderSection("head", required: false)
+    <script>
+        var ThemeUrl = '@Html.ThemeUrl()';
+    </script>
 </head>
 <body>
     @Html.Partial("_Header", theme)

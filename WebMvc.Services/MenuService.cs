@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using WebMvc.Domain.Constants;
 using WebMvc.Domain.DomainModel.Entities;
 using WebMvc.Domain.DomainModel.Enums;
@@ -42,12 +43,11 @@ namespace WebMvc.Services
             menu.Colour = data["Colour"].ToString();
             menu.Image = data["Image"].ToString();
             if(data["iType"] != DBNull.Value) menu.iType = (int)data["iType"];
+            menu.Link = data["Link"].ToString();
             menu.Image = data["Image"].ToString();
 
-            string menuid = data["Menu_Id"].ToString();
-            if (!menuid.IsNullEmpty())
-                menu.Menu_Id = new Guid(menuid);
-            
+            if(data["Menu_Id"] != DBNull.Value) menu.Menu_Id = new Guid(data["Menu_Id"].ToString());
+
             return menu;
         }
         #endregion
@@ -82,7 +82,7 @@ namespace WebMvc.Services
         {
             var Cmd = _context.CreateCommand();
 
-            Cmd.CommandText = "UPDATE [dbo].[Category] SET [Menu_Id] = @Menu_Id,[Name] = @Name,[Description] = @Description,[iType] = @iType,"
+            Cmd.CommandText = "UPDATE [dbo].[Menu] SET [Menu_Id] = @Menu_Id,[Name] = @Name,[Description] = @Description,[iType] = @iType,"
                                 + "[Link] = @Link,[Image] = @Image,[Colour] = @Colour,[SortOrder] = @SortOrder WHERE [Id] = @Id";
 
 
@@ -156,13 +156,126 @@ namespace WebMvc.Services
                 {
                     allCat.Add(DataRowToMenu(it));
                 }
-                
+
+
+                foreach (var it in allCat)
+                {
+                    if (it.Menu_Id == null)
+                    {
+                        SetLiveMenu(it, allCat);
+                    }
+                }
+
                 _cacheService.Set(cachekey, allCat, CacheTimes.OneDay);
             }
             return allCat;
         }
 
 
+        private void SetLiveMenu(Menu cat, List<Menu> allcat, int leve = 2)
+        {
+            foreach (var it in allcat)
+            {
+                if (cat.Id == it.Menu_Id)
+                {
+                    it.Level = leve;
+                    SetLiveMenu(it, allcat, leve + 1);
+                }
+            }
+        }
 
+
+        public List<SelectListItem> GetBaseSelectListMenus(List<Menu> allowedCategories)
+        {
+            var cacheKey = string.Concat(CacheKeys.Menu.StartsWith, "GetBaseSelectListMenus-", allowedCategories.GetHashCode());
+            var list = _cacheService.Get<List<SelectListItem>>(cacheKey);
+            if(list == null)
+            {
+                list = new List<SelectListItem> { new SelectListItem { Text = "", Value = "" } };
+                foreach (var cat in allowedCategories)
+                {
+                    var catName = string.Concat(LevelDashes(cat.Level), cat.Level > 1 ? " " : "", cat.Name);
+                    list.Add(new SelectListItem { Text = catName, Value = cat.Id.ToString() });
+                }
+                
+
+                _cacheService.Set(cacheKey, list, CacheTimes.OneDay);
+            }
+            return list;
+        }
+
+
+        public List<Menu> GetAllSubMenus(Menu cat, List<Menu> allowedCategories)
+        {
+            var cacheKey = string.Concat(CacheKeys.Menu.StartsWith, "GetAllSubMenus", "-", cat, "-", allowedCategories.GetHashCode());
+            var list = _cacheService.Get<List<Menu>>(cacheKey);
+            if (list == null)
+            {
+                var cats = GetAll();
+                list = new List<Menu>();
+
+                int i = 0, x = 0;
+                while (true)
+                {
+                    if (cats[i].Menu_Id == cat.Id)
+                    {
+                        list.Add(cats[i]);
+                    }
+
+                    i++;
+                    if (i >= cats.Count)
+                    {
+                        if (x >= list.Count) break;
+                        cat = list[x];
+                        x++;
+                        i = 0;
+                    }
+                }
+
+                _cacheService.Set(cacheKey, list, CacheTimes.OneDay);
+            }
+
+            return list;
+        }
+
+        #region GetMenusParenMenu
+
+        public List<Menu> GetMenusParenMenu(Menu cat)
+        {
+            var cacheKey = string.Concat(CacheKeys.Menu.StartsWith, "GetMenusParenMenu", "-", cat);
+            var list = _cacheService.Get<List<Menu>>(cacheKey);
+            if (list == null)
+            {
+                var cats = GetAll();
+                list = new List<Menu>(cats);
+                list.Remove(cat);
+
+                var sublist = GetAllSubMenus(cat, cats);
+
+                foreach (Menu it in sublist)
+                {
+                    list.Remove(it);
+                }
+
+                _cacheService.Set(cacheKey, list, CacheTimes.OneDay);
+            }
+            return list;
+        }
+        #endregion
+
+
+        private static string LevelDashes(int level)
+        {
+            if (level > 1)
+            {
+                var sb = new StringBuilder();
+                for (var i = 0; i < level - 1; i++)
+                {
+                    sb.Append("-");
+                }
+                return sb.ToString();
+            }
+            return string.Empty;
+        }
     }
 }

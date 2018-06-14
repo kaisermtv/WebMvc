@@ -98,5 +98,10 @@ namespace WebMvc.Domain.Constants
         {
             public const string StartsWith = "ShoppingCart.";
         }
+
+        public static class ShoppingCartProduct
+        {
+            public const string StartsWith = "ShoppingCartProduct.";
+        }
     }
 }

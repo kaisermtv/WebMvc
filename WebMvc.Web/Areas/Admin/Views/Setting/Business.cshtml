@@ -1,0 +1,96 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.AdminBusinessSettingViewModel
+
+@{
+    ViewBag.Title = "Thông tin doanh nghiệp";
+}
+
+@using (Html.BeginForm("Business", "Setting", FormMethod.Post))
+{
+    @Html.ValidationSummary(false)
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">@ViewBag.Title</h4>
+        </div>
+        <div class="panel-collapse">
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BusinessName)
+                    @Html.TextBoxFor(model => model.BusinessName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.BusinessName)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Introduce)
+                    @Html.TextAreaFor(model => model.Introduce, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Introduce)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Greeting)
+                    @Html.TextAreaFor(model => model.Greeting, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Greeting)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Hotline)
+                    @Html.TextBoxFor(model => model.Hotline, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Hotline)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Fanpage)
+                    @Html.TextBoxFor(model => model.Fanpage, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Fanpage)
+                </div>
+                <hr />
+                <div id="ShowroomList">
+                    @for (int i = 0; i < Model.Addrens.Count; i++)
+                    {
+                        var it = Model.Addrens[i];
+                        <div id="Showroom_container_@i">
+                            <div class="form-group">
+                                <label for="Showroom_@i">Địa chỉ Showroom(@(i + 1))</label>
+                                <input class="form-control" id="Showroom_@i" name="Addrens[@i].Addren" type="text" value="@it.Addren" />
+                            </div>
+                            <div class="form-group">
+                                <label for="Showroom_Map_@i">Google Map Showroom(@(i + 1))</label>
+                                <input class="form-control" id="Showroom_Map_@i" name="Addrens[@i].iFrameMap" type="text" value="@it.iFrameMap" />
+                            </div>
+                        </div>
+                    }
+                </div>
+                <script>
+                    SHOWROOM.Count = @Model.Addrens.Count ;
+                </script>
+                <div style="text-align:right;width:100%;">
+                    <button type="button" onclick="SHOWROOM.Repmove();" id="repbutton" class="btn btn-danger@(Model.Addrens.Count>0?"":" hidden")">Xóa Showroom</button>
+                    <button type="button" onclick="SHOWROOM.Add();" class="btn btn-primary">Thêm Showroom</button>
+                </div>
+                <hr />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BankID)
+                    @Html.TextBoxFor(model => model.BankID, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.BankID)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BankUser)
+                    @Html.TextBoxFor(model => model.BankUser, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.BankUser)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BankName)
+                    @Html.TextBoxFor(model => model.BankName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.BankName)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="submit-holder">
+        <button type="submit" class="btn-mvc-green btn-mvc-large">Save Settings</button>
+    </div>
+}

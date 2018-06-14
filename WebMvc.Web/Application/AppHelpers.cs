@@ -386,6 +386,18 @@ namespace WebMvc.Web.Application
             return null;
         }
 
+        public static string CategoryImage(string image, Guid categoryId, int sizex,int sizey)
+        {
+            var sizeFormat = string.Format("?width={0}&crop=0,0,{0},{1}", sizex, sizey);
+            if (!string.IsNullOrEmpty(image))
+            {
+                var storageProvider = StorageProvider.Current;
+                return storageProvider.BuildFileUrl(categoryId, "/", image, sizeFormat);
+            }
+            //TODO - Return default image for category
+            return null;
+        }
+
         public static string CategoryImage(string image, Guid categoryId)
         {
             if (!string.IsNullOrEmpty(image))
@@ -551,11 +563,24 @@ namespace WebMvc.Web.Application
         #endregion
 
         #region Catergory
+        public static Category Categorie(Guid id)
+        {
+            var categoryService = ServiceFactory.Get<ICategoryService>();
+            return categoryService.Get(id);
+        }
+
         public static List<Category> Categories()
         {
             var categoryService = ServiceFactory.Get<ICategoryService>();
 
             return categoryService.GetList();
+        }
+
+        public static List<Category> SubCategories(Category cat)
+        {
+            var categoryService = Categories();
+
+            return categoryService.Where(x => x.Category_Id != null && x.Category_Id == cat.Id).ToList();
         }
 
         public static List<Category> Categories(bool isProduct)
@@ -564,9 +589,23 @@ namespace WebMvc.Web.Application
 
             return categoryService.GetList(isProduct);
         }
+
+        public static List<Category> SubCategories(Category cat,bool isProduct)
+        {
+            var categoryService = Categories(isProduct);
+
+            return categoryService.Where(x => x.Category_Id != null && x.Category_Id == cat.Id).ToList();
+        }
         #endregion
 
         #region Topic
+        public static int TopicCount()
+        {
+            var topicService = ServiceFactory.Get<ITopicService>();
+
+            return topicService.GetCount();
+        }
+
         public static List<Topic> TopTopics(int limit,int page = 1)
         {
             var topicService = ServiceFactory.Get<ITopicService>();
@@ -597,6 +636,24 @@ namespace WebMvc.Web.Application
         #endregion
 
         #region Product
+        public static string GetNameProduct(Guid id)
+        {
+            try
+            {
+                return GetProduct(id).Name;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
+        public static Product GetProduct(Guid id)
+        {
+            var productService = ServiceFactory.Get<IProductSevice>();
+            return productService.Get(id);
+        }
+
         public static List<Product> Products(int limit)
         {
             var productService = ServiceFactory.Get<IProductSevice>();
@@ -719,6 +776,46 @@ namespace WebMvc.Web.Application
             var emp = ServiceFactory.Get<IEmployeesRoleService>();
 
             return emp.Get(Id).Name;
+        }
+        #endregion
+
+        #region Showroom
+        public static List<AjaxShowroomItemViewModel> GetShowroom()
+        {
+            var key = "AppHelpers.GetShowroom";
+            var ListShowrooms = (List<AjaxShowroomItemViewModel>)HttpContext.Current.Items[key];
+            if (ListShowrooms != null) return ListShowrooms;
+
+            ListShowrooms = new List<AjaxShowroomItemViewModel>();
+
+            var SettingsService = ServiceFactory.Get<ISettingsService>();
+            var ShowroomCount = SettingsService.GetSetting("ShowroomCount");
+            int count = 0;
+            try
+            {
+                count = int.Parse(ShowroomCount);
+            }
+            catch { }
+
+            for (int i = 0; i < count; i++)
+            {
+                ListShowrooms.Add(new AjaxShowroomItemViewModel
+                {
+                    Addren = SettingsService.GetSetting("Showroom[" + i + "].Address"),
+                    iFrameMap = SettingsService.GetSetting("Showroom[" + i + "].iFrameMap"),
+                });
+            }
+
+            HttpContext.Current.Items[key] = ListShowrooms;
+            return ListShowrooms;
+        }
+        #endregion
+
+        #region Menu
+        public static List<Menu> GetAllMenus()
+        {
+            var MenuService = ServiceFactory.Get<IMenuService>();
+            return MenuService.GetAll();
         }
         #endregion
     }

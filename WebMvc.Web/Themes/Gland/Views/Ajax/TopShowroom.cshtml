@@ -1,0 +1,17 @@
+﻿@model WebMvc.Web.ViewModels.AjaxShowroomViewModel
+    <table style="height: 21px;" width="736">
+        <tbody>
+            <tr>
+                @for (int i =0;i < Model.Showrooms.Count;i++)
+                {
+                    <td>
+                        <p><span style="font-size: 12pt;"><strong>ĐỊA CHỈ @(i+1)</strong></span>:
+                        <br><br>
+                        <span style="color: #333333;"><a style="color: #333333;" href="#">@Model.Showrooms[i].Addren</a></span></p>
+                        <p><iframe style="border: 0;" src="@Model.Showrooms[i].iFrameMap" width="300" height="220" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+                    </td>
+                }
+            </tr>
+        </tbody>
+    </table>
+   

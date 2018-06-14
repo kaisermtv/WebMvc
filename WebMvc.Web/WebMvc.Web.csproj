@@ -221,6 +221,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminEmployeesController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminLanguageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminMenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminTopicController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseAdminController.cs" />
@@ -235,6 +236,7 @@
     <Compile Include="Areas\Admin\ViewModels\AdminContactViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\AdminEmployeesViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\AdminLanguageViewModels.cs" />
+    <Compile Include="Areas\Admin\ViewModels\AdminMenuViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\AdminProductViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\AdminSettingViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\DashboardViewModels.cs" />
@@ -243,6 +245,7 @@
     <Compile Include="Areas\Admin\ViewModels\PageingViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\ShoppingCartViewModel.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -261,6 +264,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AjaxViewModel.cs" />
     <Compile Include="ViewModels\BookingViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
@@ -1123,6 +1127,17 @@
     <Content Include="Areas\Admin\Views\ShoppingCart\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ShoppingCart\_ShoppingCartNavButtons.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Paging.cshtml" />
+    <Content Include="Areas\Admin\Views\ShoppingCart\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ShoppingCart\_ShoppingCartFields.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminMenu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminMenu\_MenuFields.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminMenu\_MenuNavButtons.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminMenu\GetMainMenus.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminMenu\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminMenu\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminMenu\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Setting\Business.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminCategory\List.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1738,6 +1753,7 @@
     <Content Include="Scripts\topic-post.js" />
     <Content Include="Themes\Gland\Content\captcha\captchad41d.png" />
     <Content Include="Themes\Gland\Content\captcha\captchaec92.png" />
+    <Content Include="Themes\Gland\Content\css\Modal.css" />
     <Content Include="Themes\Gland\Content\css\style222.css" />
     <Content Include="Themes\Gland\Content\images\.-x42.html" />
     <Content Include="Themes\Gland\Content\images\.html" />
@@ -1775,6 +1791,8 @@
     <Content Include="Themes\Gland\Content\images\btn_carousel2.png" />
     <Content Include="Themes\Gland\Content\images\btn_orange_large.png" />
     <Content Include="Themes\Gland\Content\images\bullets.png" />
+    <Content Include="Themes\Gland\Content\images\Cart1.gif" />
+    <Content Include="Themes\Gland\Content\images\cart_del.png" />
     <Content Include="Themes\Gland\Content\images\dathongbao.png" />
     <Content Include="Themes\Gland\Content\images\fancybox_loading.html" />
     <Content Include="Themes\Gland\Content\images\fancybox_overlay.png" />
@@ -1813,6 +1831,7 @@
     <Content Include="Themes\Gland\Content\images\new_icon_tragop.png" />
     <Content Include="Themes\Gland\Content\images\new_icon_vanchuyen.png" />
     <Content Include="Themes\Gland\Content\images\prev_next.png" />
+    <Content Include="Themes\Gland\Content\images\print.gif" />
     <Content Include="Themes\Gland\Content\images\register_reset.html" />
     <Content Include="Themes\Gland\Content\images\register_submit.html" />
     <Content Include="Themes\Gland\Content\images\right_001.png" />
@@ -9609,6 +9628,31 @@
     <Content Include="Views\Employees\OnlineOrder.cshtml" />
     <Content Include="Themes\Gland\Views\Employees\OnlineOrder.cshtml" />
     <Content Include="Views\Cart\Commit.cshtml" />
+    <Content Include="Themes\Gland\Views\Cart\Success.cshtml" />
+    <Content Include="Themes\Gland\Views\Ajax\TopShowroom.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\_ViewStart.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Cart\Commit.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Category\ShowBySlug.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Category\ShowBySlugProduct.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Employees\OnlineOrder.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Home\About.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Home\Index.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Members\Index.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Members\Login.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Members\Register.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Shared\_Layout.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Shared\Error.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Topic\Create.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Topic\ShowBySlug.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Web.config" />
+    <Content Include="Themes\NewsBlue\config.json" />
+    <Content Include="Themes\NewsBlue\Views\Shared\_Menu.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Shared\_Header.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Shared\_Footer.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Shared\_Sidebar.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Category\Index.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Category\_NewsItem.cshtml" />
+    <Content Include="Themes\NewsBlue\Views\Shared\_Paging.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Carousel\" />
@@ -9616,7 +9660,17 @@
     <Folder Include="Content\uploads\32233e8b-8b19-4c9a-8c20-a827003b2d7d\" />
     <Folder Include="Content\uploads\803dec66-f161-461a-b598-a82a0041b510\" />
     <Folder Include="Content\uploads\af6845bf-be26-48d7-b54c-a82a00414172\" />
+    <Folder Include="Themes\NewsBlue\Content\" />
+    <Folder Include="Themes\NewsBlue\Views\About\" />
+    <Folder Include="Themes\NewsBlue\Views\Ajax\" />
+    <Folder Include="Themes\NewsBlue\Views\Booking\" />
+    <Folder Include="Themes\NewsBlue\Views\Contact\" />
+    <Folder Include="Themes\NewsBlue\Views\Plugin\" />
+    <Folder Include="Themes\NewsBlue\Views\Post\" />
+    <Folder Include="Themes\NewsBlue\Views\Product\" />
+    <Folder Include="Themes\NewsBlue\Views\Services\" />
     <Folder Include="Views\About\" />
+    <Folder Include="Views\Ajax\" />
     <Folder Include="Views\Booking\" />
     <Folder Include="Views\Contact\" />
     <Folder Include="Views\Plugin\" />

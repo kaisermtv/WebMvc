@@ -34,6 +34,16 @@ namespace WebMvc.Web.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult List()
+        {
+            var viewModel = new ListCategoriesViewModel
+            {
+                Categories = _categoryService.GetAll()
+            };
+            return View(viewModel);
+        }
+
+
 
         [ChildActionOnly]
         public PartialViewResult GetMainCategories()
@@ -194,6 +204,7 @@ namespace WebMvc.Web.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(CategoryViewModel categoryViewModel)
         {
             if (ModelState.IsValid)
@@ -211,6 +222,7 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                         if (lst.Count == 0) categoryViewModel.ParentCategory = null;
                         //categoryViewModel.AllCategories = _categoryService.GetBaseSelectListCategories(cats);
 
+                        categoryViewModel.Image = category.Image;
                         // Sort image out first
                         if (categoryViewModel.Files != null)
                         {
@@ -239,7 +251,7 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                                 }
 
                                 // Save avatar to user
-                                category.Image = uploadResult.UploadedFileName;
+                                categoryViewModel.Image = uploadResult.UploadedFileName;
                             }
 
                         }
@@ -250,6 +262,7 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                         category.ModeratePosts = categoryViewModel.ModeratePosts;
                         category.ModerateTopics = categoryViewModel.ModerateTopics;
                         category.Name = categoryViewModel.Name;
+                        category.Image = categoryViewModel.Image;
                         category.SortOrder = categoryViewModel.SortOrder;
                         category.PageTitle = categoryViewModel.PageTitle;
                         category.MetaDescription = categoryViewModel.MetaDesc;

@@ -42,6 +42,7 @@
 
                     ct.Name = contact.Name;
                     ct.Email = contact.Email;
+                    ct.Phone = contact.Phone;
                     ct.Content = contact.Content;
 
                     try
@@ -74,6 +75,43 @@
         {
 
             return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public JsonResult Ajax(ContactCreateViewModel contact)
+        {
+            var jsonview = new ContactReturnJson();
+
+            using (var unitOfWork = UnitOfWorkManager.NewUnitOfWork())
+            {
+                Contact ct = new Contact();
+
+                ct.Name = contact.Name;
+                ct.Email = contact.Email;
+                ct.Phone = contact.Phone;
+                ct.Content = contact.Content;
+
+                try
+                {
+                    _contactService.Add(ct);
+
+                    unitOfWork.Commit();
+
+                    jsonview.Status = 1;
+                }
+                catch (Exception ex)
+                {
+                    unitOfWork.Rollback();
+                    LoggingService.Error(ex);
+
+                    jsonview.Status = 0;
+                    jsonview.Message = "";
+                }
+
+                return Json(jsonview);
+            }
         }
     }
 }

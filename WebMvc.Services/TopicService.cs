@@ -170,7 +170,7 @@ namespace WebMvc.Services
             Cmd.cacheStartsWithToClear(CacheKeys.Topic.StartsWith);
             Cmd.Close();
 
-            if (!ret) throw new Exception("Add Topic false");
+            if (!ret) throw new Exception("Update Topic false");
         }
 
         public Topic Get(Guid Id)

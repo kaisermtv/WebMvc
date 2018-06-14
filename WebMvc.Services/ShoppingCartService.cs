@@ -41,12 +41,45 @@ namespace WebMvc.Services
             cart.ShipAddren = data["ShipAddren"].ToString();
             cart.ShipNote = data["ShipNote"].ToString();
             cart.TotalMoney = data["TotalMoney"].ToString();
+            if(data["Status"] != DBNull.Value) cart.Status = (int)data["Status"];
             cart.Note = data["Note"].ToString();
             cart.CreateDate = (DateTime)data["CreateDate"];
 
             return cart;
         }
         #endregion
+
+
+        public void Add(ShoppingCart cat)
+        {
+            var Cmd = _context.CreateCommand();
+
+            cat.CreateDate = DateTime.UtcNow;
+            
+            Cmd.CommandText = "INSERT INTO [dbo].[ShoppingCart]([Id],[Name],[Email] ,[Phone],[Addren],[ShipName],[ShipPhone] ,[ShipAddren] ,[ShipNote],[TotalMoney],[Note],[Status],[CreateDate])"
+                + " VALUES(@Id,@Name,@Email,@Phone,@Addren,@ShipName,@ShipPhone,@ShipAddren,@ShipNote,@TotalMoney,@Note,@Status,@CreateDate)";
+
+            Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = cat.Id;
+            Cmd.AddParameters("Name", cat.Name);
+            Cmd.AddParameters("Email", cat.Email);
+            Cmd.AddParameters("Phone", cat.Phone);
+            Cmd.AddParameters("Addren", cat.Addren);
+            Cmd.AddParameters("ShipName", cat.ShipName);
+            Cmd.AddParameters("ShipPhone", cat.ShipPhone);
+            Cmd.AddParameters("ShipAddren", cat.ShipAddren);
+            Cmd.AddParameters("ShipNote", cat.ShipNote);
+            Cmd.AddParameters("TotalMoney", cat.TotalMoney);
+            Cmd.AddParameters("Note", cat.Note);
+            Cmd.AddParameters("Status", cat.Status);
+            Cmd.AddParameters("CreateDate", cat.CreateDate);
+
+            bool rt = Cmd.command.ExecuteNonQuery() > 0;
+            Cmd.cacheStartsWithToClear(CacheKeys.ShoppingCart.StartsWith);
+            Cmd.Close();
+
+            if (!rt) throw new Exception("Add ShoppingCart false");
+        }
+
 
         public ShoppingCart Get(Guid Id)
         {
@@ -69,6 +102,35 @@ namespace WebMvc.Services
                 _cacheService.Set(cachekey, cart, CacheTimes.OneHour);
             }
             return cart;
+        }
+
+
+        public void Update(ShoppingCart cat)
+        {
+            var Cmd = _context.CreateCommand();
+
+            //Cmd.CommandText = "IF NOT EXISTS (SELECT * FROM [Topic] WHERE [Id] = @Id)";
+            Cmd.CommandText = "UPDATE [dbo].[ShoppingCart] SET [Name] = @Name,[Email] = @Email,[Phone] = @Phone,[Addren] = @Addren,[ShipName] = @ShipName,[ShipPhone] =@ShipPhone,[ShipAddren] = @ShipAddren,[ShipNote] = @ShipNote,[TotalMoney] = @TotalMoney,[Note] = @Note,[Status] = @Status,[CreateDate] = @CreateDate WHERE [Id] = @Id";
+
+            Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = cat.Id;
+            Cmd.AddParameters("Name", cat.Name);
+            Cmd.AddParameters("Email", cat.Email);
+            Cmd.AddParameters("Phone", cat.Phone);
+            Cmd.AddParameters("Addren", cat.Addren);
+            Cmd.AddParameters("ShipName", cat.ShipName);
+            Cmd.AddParameters("ShipPhone", cat.ShipPhone);
+            Cmd.AddParameters("ShipAddren", cat.ShipAddren);
+            Cmd.AddParameters("ShipNote", cat.ShipNote);
+            Cmd.AddParameters("TotalMoney", cat.TotalMoney);
+            Cmd.AddParameters("Note", cat.Note);
+            Cmd.AddParameters("Status", cat.Status);
+            Cmd.AddParameters("CreateDate", cat.CreateDate);
+
+            bool ret = Cmd.command.ExecuteNonQuery() > 0;
+            Cmd.cacheStartsWithToClear(CacheKeys.ShoppingCart.StartsWith);
+            Cmd.Close();
+
+            if (!ret) throw new Exception("Update ShoppingCart false");
         }
 
         public int GetCount()

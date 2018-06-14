@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using WebMvc.Domain.Constants;
 using WebMvc.Domain.Interfaces.Services;
@@ -53,6 +54,11 @@ namespace WebMvc.Web.Areas.Admin.Controllers
 
 
                         unitOfWork.Commit();
+                        TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                        {
+                            Message = LocalizationService.GetResourceString("Cập nhật thành công!"),
+                            MessageType = GenericMessages.success
+                        };
                     }
                     catch (Exception ex)
                     {
@@ -69,6 +75,104 @@ namespace WebMvc.Web.Areas.Admin.Controllers
         }
 
         #endregion General Setting
+
+        #region company information
+        public ActionResult Business()
+        {
+            var model = new AdminBusinessSettingViewModel
+            {
+                BusinessName = SettingsService.GetSetting("BusinessName"),
+                Introduce = SettingsService.GetSetting("Introduce"),
+                Greeting = SettingsService.GetSetting("Greeting"),
+
+                Fanpage = SettingsService.GetSetting("Fanpage"),
+                Hotline = SettingsService.GetSetting("Hotline"),
+                Addrens = new List<AdminShowroomSettingViewModel>(),
+
+                BankID = SettingsService.GetSetting("BankID"),
+                BankName = SettingsService.GetSetting("BankName"),
+                BankUser = SettingsService.GetSetting("BankUser"),
+            };
+
+            var ShowroomCount = SettingsService.GetSetting("ShowroomCount");
+            int count = 0;
+            try
+            {
+                count = int.Parse(ShowroomCount);
+            }
+            catch { }
+
+            for(int i = 0; i < count; i++)
+            {
+                model.Addrens.Add(new AdminShowroomSettingViewModel {
+                   Addren = SettingsService.GetSetting("Showroom["+i+"].Address"),
+                   iFrameMap = SettingsService.GetSetting("Showroom[" + i + "].iFrameMap"),
+                });
+            }
+
+            return View( model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Business(AdminBusinessSettingViewModel setting)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var unitOfWork = UnitOfWorkManager.NewUnitOfWork())
+                {
+                    try
+                    {
+                        SettingsService.SetSetting("BusinessName", setting.BusinessName);
+                        SettingsService.SetSetting("Introduce", setting.Introduce);
+                        SettingsService.SetSetting("Greeting", setting.Greeting);
+                        SettingsService.SetSetting("Fanpage", setting.Fanpage);
+                        SettingsService.SetSetting("Hotline", setting.Hotline);
+
+
+                        SettingsService.SetSetting("BankID", setting.BankID);
+                        SettingsService.SetSetting("BankName", setting.BankName);
+                        SettingsService.SetSetting("BankUser", setting.BankUser);
+
+                        if (setting.Addrens != null)
+                        {
+                            int count = setting.Addrens.Count;
+                            SettingsService.SetSetting("ShowroomCount", count.ToString());
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                SettingsService.SetSetting("Showroom[" + i + "].Address", setting.Addrens[i].Addren);
+                                SettingsService.SetSetting("Showroom[" + i + "].iFrameMap", setting.Addrens[i].iFrameMap);
+                            }
+                        }
+                        else
+                        {
+                            SettingsService.SetSetting("ShowroomCount", "0");
+                            setting.Addrens = new List<AdminShowroomSettingViewModel>();
+                        }
+                        
+
+                        unitOfWork.Commit();
+                        TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                        {
+                            Message = LocalizationService.GetResourceString("Cập nhật thành công!"),
+                            MessageType = GenericMessages.success
+                        };
+                    }
+                    catch (Exception ex)
+                    {
+                        unitOfWork.Rollback();
+                        LoggingService.Error(ex);
+                    }
+                }
+
+            }
+
+
+
+            return View(setting);
+        }
+        #endregion
 
         #region TermsConditions Setting
         public ActionResult TermsConditions()
@@ -230,6 +334,11 @@ namespace WebMvc.Web.Areas.Admin.Controllers
 
 
                         unitOfWork.Commit();
+                        TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                        {
+                            Message = LocalizationService.GetResourceString("Cập nhật thành công!"),
+                            MessageType = GenericMessages.success
+                        };
                     }
                     catch (Exception ex)
                     {

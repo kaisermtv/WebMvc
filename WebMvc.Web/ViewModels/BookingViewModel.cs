@@ -8,6 +8,7 @@ namespace WebMvc.Web.ViewModels
 {
     public class BookingCreateViewModel
     {
+        [HiddenInput]
         public Guid Id { get; set; }
         public string NamePartner { get; set; }
         public DateTime CheckIn { get; set; }

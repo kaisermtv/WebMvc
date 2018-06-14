@@ -60,22 +60,27 @@
         <div class="box_footer">
             <h3>Liên hệ</h3>
             <ul>
-                <li>
-                    <a href="#">
-                        <b>Địa Chỉ 1</b>: Gland– Số Nhà 47 – Ngõ 187 Phố Hồng Mai – Hai Bà Trưng – Hà Nội
-                    </a>
-                </li>
-                <li><a href="#"><b>Địa Chỉ 2</b> Số Nhà 17/224 Ngõ Quỳnh Phố Thanh Nhàn Hai Bà Trưng – HN</a></li>
-                <li><a href="#"><b>Điện Thoại</b> : 0976.155.499</a></li>
+                @{
+                    var showroom = AppHelpers.GetShowroom();
+                }
+                @for (int i = 0; i < showroom.Count; i++)
+                {
+                    <li>
+                        <a href="#">
+                            <b>Địa Chỉ @(i+1)</b>: @showroom[i].Addren
+                        </a>
+                    </li>
+                }
+                <li><a href="#"><b>Điện Thoại</b> : @Html.Settings("Hotline")</a></li>
             </ul>
         </div>
         <div class="box_footer">
             <h3>TÀI KHOẢN NGÂN HÀNG</h3>
             <ul>
-                <li><b>0451 000 333 423</b></li>
+                <li><b>@Html.Settings("BankID")</b></li>
                 <li>
-                    Chủ Tài Khoản : Nguyễn Thành Trung<br />
-                    Ngân Hàng Vietcombank - Chi Nhánh Thành Công
+                    Chủ Tài Khoản: @Html.Settings("BankUser")<br />
+                    Ngân Hàng: @Html.Settings("BankName")
                 </li>
 
                 <li><a href="http://www.online.gov.vn/CustomWebsiteDisplay.aspx?DocId=35399" target="_blank"><img src="@Html.ThemeUrl()/Content/images/dathongbao.png" alt="Đắng ký bộ công thương" /></a></li>
@@ -120,7 +125,7 @@
         </table>
     </div>
 </div>
-<div id="tag_footer">
+@*<div id="tag_footer">
     <div class="container">
         <b>Hot tags:</b>
         <a href="/game-gear-cooling/c105.html">hi-end</a>
@@ -137,7 +142,7 @@
         <a href="/tan-nhiet-nuoc/c187.html">Tản nhiệt nước</a>
         <a href="/msi/c296.html">Laptop Gaming</a>
     </div>
-</div><!--tag_footer-->
+</div>*@<!--tag_footer-->
 @*<div class="container" style="padding:10px 0 40px 0;">
     <div id="copyright">Copyright &copy;2018 Gland Hà Nội</div>
 

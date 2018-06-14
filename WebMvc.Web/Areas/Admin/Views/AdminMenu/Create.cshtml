@@ -1,0 +1,27 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.AdminMenuEditViewModel
+@{
+    ViewBag.Title = "Thêm Menu";
+}
+
+@Html.Partial("_MenuNavButtons")
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        @using (Html.BeginForm("Create", "AdminMenu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(false)
+            @Html.AntiForgeryToken()
+
+            @Html.Partial("_MenuFields", Model)
+
+
+            <div class="submit-holder">
+                <input type="submit" class="btn-mvc-green btn-mvc-large" value="Khởi tạo" />
+            </div>
+        }
+    </div>
+</div>
+

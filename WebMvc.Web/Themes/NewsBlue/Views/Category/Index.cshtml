@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Chuyên mục";
+    int p = 1;
+    try
+    {
+        p = int.Parse(Request["p"]);
+    }
+    catch { }
+    int limit = 10;
+    int count = AppHelpers.TopicCount();
+
+    var paging = new PageingViewModel
+    {
+        Count = count,
+        Page = p,
+        MaxPage = (count / limit) + ((count % limit > 0) ? 1 : 0),
+    };
+
+    if (paging.Page > paging.MaxPage) {
+        paging.Page = paging.MaxPage;
+    } 
+    }
+<section id="latest-posts" class="clearfix">
+    @foreach (var it in AppHelpers.TopTopics(limit, p))
+    {
+        if (it.Category_Id == null)
+        {
+            continue;
+        }
+        @Html.Partial("_NewsItem", it)
+    }
+</section>
+@Html.Partial("_Paging", paging)

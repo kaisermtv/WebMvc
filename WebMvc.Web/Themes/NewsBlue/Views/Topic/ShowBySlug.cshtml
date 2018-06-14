@@ -1,0 +1,74 @@
+﻿@model WebMvc.Web.ViewModels.TopicViewModel
+@{
+    ViewBag.Title = string.Concat(Model.topic.Name, " - ", Model.Cat.Name);
+    var link = AppHelpers.TopicUrls(Model.Cat.Slug, Model.topic.Slug);
+}
+
+@section Meta
+{
+    <meta name="description" content="@Model.topic.ShotContent" />
+    <link rel="canonical" href="@link" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="@Model.topic.Name" />
+    <meta property="og:description" content="@Model.topic.ShotContent" />
+    <meta property="og:url" content="@link" />
+    <meta property="og:site_name" content="@Model.topic.Name" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:description" content="@Model.topic.ShotContent" />
+    <meta name="twitter:title" content="@Model.topic.Name" />
+    <meta name="twitter:image" content="@AppHelpers.CategoryImage(Model.topic.Image, Model.topic.Id)" />
+    @*<script type='application/ld+json'>
+            {"@context":"https:\/\/schema.org","@type":"WebSite","@id":"#website","url":"https:\/\/diennuochanoi24h.com\/","name":"D\u1ecbch V\u1ee5 S\u1eeda ch\u1eefa \u0111i\u1ec7n n\u01b0\u1edbc t\u1ea1i nh\u00e0 H\u00e0 N\u1ed9i","potentialAction":{"@type":"SearchAction","target":"https:\/\/diennuochanoi24h.com\/?s={search_term_string}","query-input":"required name=search_term_string"}}
+        </script>
+        <script type='application/ld+json'>
+            {"@context":"https:\/\/schema.org","@type":"Organization","url":"https:\/\/diennuochanoi24h.com\/","sameAs":[],"@id":"https:\/\/diennuochanoi24h.com\/#organization","name":"S\u1eeda Ch\u1eefa \u0110i\u1ec7n N\u01b0\u1edbc H\u00e0 N\u1ed9i","logo":""}
+        </script>*@
+    <link rel='dns-prefetch' href='//s.w.org' />
+    @*<link rel="alternate" type="application/rss+xml" title="Dòng thông tin Dịch Vụ Sửa chữa điện nước tại nhà Hà Nội &raquo;" href="https://diennuochanoi24h.com/feed/" />*@
+    @*<link rel="alternate" type="application/rss+xml" title="Dòng phản hồi Dịch Vụ Sửa chữa điện nước tại nhà Hà Nội &raquo;" href="https://diennuochanoi24h.com/comments/feed/" />*@
+
+}
+<div id="post-216" class="g post post-216 page type-page status-publish">
+    <div class="single_page">
+        <div class="breadcrumb" xmlns:v="http://rdf.data-vocabulary.org/#">
+            <div>
+                <i class="fa fa-home"></i>
+            </div>
+            <div typeof="v:Breadcrumb" class="root">
+                <a rel="v:url" property="v:title" href="/">Trang chủ</a>
+            </div>
+            <div>
+                <i class="fa fa-caret-right"></i>
+            </div>
+            <div>
+                <a rel="v:url" property="v:title" href="@Url.Action("ShowBySlug","Category",new { slug = Model.Cat.Slug })">@Model.Cat.Name</a>
+            </div>
+            <div>
+                <i class="fa fa-caret-right"></i>
+            </div>
+            <div>
+                <span>@Model.topic.Name</span>
+            </div>
+        </div>
+        <header>
+            <h1 class="title entry-title">@Model.topic.Name</h1>
+        </header>
+        <div class="post-content box mark-links entry-content">
+            <div class="shareit top">
+                <span class="share-item facebookbtn">
+                    <div id="fb-root"></div>
+                    <div class="fb-like" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div>
+                </span>
+                <span class="share-item facebooksharebtn">
+                    <div class="fb-share-button" data-layout="button_count"></div>
+                </span>
+                <span class="share-item twitterbtn">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+                </span> <span class="share-item gplusbtn"> <g:plusone size="medium"></g:plusone> </span>
+            </div>
+            @Html.Raw(Model.post.PostContent)
+        </div>
+    </div>
+</div>
+<p class="nocomments"></p>

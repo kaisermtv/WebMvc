@@ -1,0 +1,36 @@
+﻿@model WebMvc.Domain.DomainModel.Entities.Topic
+@{
+    var it = Model;
+}
+@if (it.Category_Id != null)
+{
+    var cat = AppHelpers.Categorie((Guid)it.Category_Id);
+    var link = AppHelpers.TopicUrls(cat.Slug, it.Slug);
+
+
+    <article class="test latestPost post-box vertical  ">
+        <div class="post-img">
+            <a href="@link" title="@it.Name" rel="nofollow">
+                <img width="390" height="250" src="@AppHelpers.CategoryImage(it.Image, it.Id, 390,250)" class="attachment-best-featured size-best-featured wp-post-image" alt="" title="@it.Name">
+            </a>
+        </div>
+        <div class="post-data">
+            <div class="post-data-container">
+                <header>
+                    <h2 class="title post-title">
+                        <a href="@link" title="@it.Name">@it.Name</a>
+                    </h2>
+                    <div class="post-info">
+                        <span class="thecategory">
+                            <a href="@Url.Action("ShowBySlug","Category",new { slug = cat.Slug })" title="@cat.Description">@cat.Name</a>
+                        </span>
+                    </div>
+                </header>
+                <div class="post-excerpt">@Html.Raw(it.ShotContent)</div>
+                <div class="readMore">
+                    <a href="@link" title="@it.Name"> Read More </a>
+                </div>
+            </div>
+        </div>
+    </article>
+}

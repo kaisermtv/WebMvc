@@ -116,4 +116,39 @@ namespace WebMvc.Web.Areas.Admin.ViewModels
     {
 
     }
+    public class AdminBusinessSettingViewModel
+    {
+        [DisplayName("Tên doanh nghiệp")]
+        public string BusinessName { get; set; }
+        [DisplayName("Giới thiệu")]
+        public string Introduce { get; set; }
+        
+        [DisplayName("Lời chào")]
+        public string Greeting { get; set; }
+        
+
+        [DisplayName("Hotline")]
+        public string Hotline { get; set; }
+        [DisplayName("Fanpage")]
+        public string Fanpage { get; set; }
+        public List<AdminShowroomSettingViewModel> Addrens { get; set; }
+
+
+        [DisplayName("Tài khoản ngân hàng")]
+        public string BankID { get; set; }
+        [DisplayName("Chủ tài khoản ngân hàng")]
+        public string BankUser { get; set; }
+        [DisplayName("Tên ngân hàng")]
+        public string BankName { get; set; }
+    }
+
+    public class AdminShowroomSettingViewModel
+    {
+        public string Addren { get; set; }
+
+        [AllowHtml]
+        public string iFrameMap { get; set; }
+    }
+
+
 }

@@ -64,13 +64,30 @@
         if (check_message.length < 4) error += "- Bạn chưa nhập nội dung\n";
 
         if (error == "") {
-            $.post("/ajax/post.php", { action: 'customer', action_type: 'contact', from: 'ajax', type: 'contact', 'info[name]': check_name, 'info[email]': check_email, 'info[tel]': check_tel, 'info[title]': 'Khách hàng gửi liên hệ', 'info[message]': check_message }
-                , function (data) {
+            var obj = new Object();
+            obj.Name = check_name;
+            obj.Phone = check_tel;
+            obj.Email = check_email;
+            obj.Content = check_message;
+
+            // Ajax call to post the view model to the controller
+            var strung = JSON.stringify(obj);
+
+            $.ajax({
+                url: '/Contact/Ajax',
+                type: 'POST',
+                data: strung,
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
                     console.log(data);
                     alert("Bạn gửi liên hệ thành công");
                     closePopup();
                     return true;
-                });
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError)
+                }
+            });
         }
         else alert(error);
         return false;

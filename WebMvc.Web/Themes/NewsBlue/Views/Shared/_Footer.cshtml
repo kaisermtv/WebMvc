@@ -1,0 +1,34 @@
+﻿<footer id="site-footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+    <div class="container">
+        <div class="footer-widgets top-footer-widgets widgets-num-3">
+            <div class="f-widget f-widget-1">
+                <div id="text-2" class="widget widget_text">
+                    <div class="textwidget">
+                        <strong>@Html.Settings("BusinessName")</strong><br />
+                        <strong>@Html.Raw(HttpUtility.HtmlEncode(Html.Settings("Introduce")).Replace("\n", "</strong><br /><strong>"))</strong><br />
+                        @{
+                            var showroom = AppHelpers.GetShowroom();
+                        }
+                        @for (int i = 0; i < showroom.Count; i++)
+                        {
+                            @Html.Raw($"» <strong>Cơ sở {i+1}</strong>: {showroom[i].Addren}<br />");
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="f-widget f-widget-2"></div>
+            <div class="f-widget f-widget-3">
+                <div id="mts_ad_300_widget-2" class="widget mts_ad_300_widget">
+                    <div class="ad-300"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyrights">
+        <div class="container">
+            <div id="copyright-note">
+                <span><a href="@Html.Settings("WebsiteUrl")" title="" rel="nofollow">@Html.Settings("WebsiteName")</a> Copyright &copy; 2018.</span><div class="right"></div>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -96,7 +96,7 @@
             </div><!--paging-->
 
         </div><!--top_area_list_page-->
-        Tổng 11sp
+        Tổng @(Model.Paging.Count)sp
 
         <div class="clear"></div>
 
@@ -205,13 +205,10 @@
             <div class="content_box">
                 <div class="bg_gradient_bottom_title"></div>
                 <ul class="ul">
-
-
-                    <li>» <a href="/pc-gaming/zadak-pc-gaming/">ZADAK PC GAMING</a> </li>
-
-                    <li>» <a href="/gland-pc-custom/">GLAND PC CUSTOM</a> </li>
-
-
+                    @foreach (var sub in AppHelpers.SubCategories(Model.Cat,true))
+                    {
+                        <li>» <a href="@Url.Action("ShowBySlugProduct","Category", new { Slug = sub.Slug })">@sub.Name</a> </li>
+                    }
                 </ul>
             </div>
         </div><!--box_right-->

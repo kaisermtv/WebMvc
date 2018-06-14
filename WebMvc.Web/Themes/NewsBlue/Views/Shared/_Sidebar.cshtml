@@ -1,0 +1,72 @@
+﻿@{ 
+    var id = ThemesSetting.getValue("ServiceCategory").ToString();
+    Category cat = null;
+    if(id != "")
+    {
+        cat = AppHelpers.Categorie(new Guid(id));
+    }
+
+    var newsid = ThemesSetting.getValue("NewsCategory").ToString();
+    Category news = null;
+    if (newsid != "")
+    {
+        news = AppHelpers.Categorie(new Guid(newsid));
+    }
+}
+
+<aside id="sidebar" class="sidebar c-4-12" role="complementary" itemscope itemtype="http://schema.org/WPSideBar">
+    @if (cat != null)
+    {
+        <div id="text-3" class="widget widget_text">
+            <h3 class="widget-title">DANH MỤC DỊCH VỤ</h3>
+            <div class="textwidget">
+                <div class="danhmuc-ngang danhmucx">
+                    <ul class="ds_dichvu">
+                        @foreach (var it in AppHelpers.TopTopics(cat, 10, 1))
+                        {
+                            <li> <a href="@AppHelpers.TopicUrls(cat.Slug, it.Slug)"> @it.Name</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+    @if (news != null)
+    {
+        <div id="search-2" class="widget widget_search">
+            <form method="get" id="searchform" class="search-form" action="https://diennuochanoi24h.com" _lpchecked="1">
+                <fieldset>
+                    <input type="text" name="s" id="s" value="" placeholder="Tìm kiếm" />
+                    <button id="search-image" class="sbutton" type="submit" value="">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </fieldset>
+            </form>
+        </div>
+        <div id="mts_recent_posts_widget-2" class="widget widget_mts_recent_posts_widget horizontal-small">
+            <h3 class="widget-title">TIN TỨC</h3>
+            <ul class="advanced-recent-posts">
+                @foreach (var it in AppHelpers.TopTopics(news, 10, 1))
+                {
+                    var link = AppHelpers.TopicUrls(news.Slug, it.Slug);
+                    <li class="post-box horizontal-small horizontal-container">
+                        <div class="horizontal-container-inner">
+                            <div class="post-img">
+                                <a href="@link" title="@it.Name">
+                                    <img class="wp-post-image" src="@AppHelpers.CategoryImage(it.Image, it.Id, 115,115)" alt="@it.Name" />
+                                </a>
+                            </div>
+                            <div class="post-data">
+                                <div class="post-data-container">
+                                    <div class="post-title">
+                                        <a href="@link" title="@it.Name">@it.Name</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+</aside>

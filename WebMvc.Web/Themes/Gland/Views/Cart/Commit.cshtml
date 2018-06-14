@@ -8,7 +8,7 @@
             <a href="/"><i class="bg icon_home"></i></a>
             <span>»</span><a href="/gio-hang">Giỏ hàng của bạn</a>
         </div>
-        @using (Html.BeginForm("Commit", "Cart", FormMethod.Post))
+        @using (Html.BeginForm("Commit", "Cart", FormMethod.Post,new { onsubmit = "return check_field()" }))
         {
             @Html.AntiForgeryToken()
             <div class="hori_line"></div>
@@ -54,8 +54,8 @@
                     <div class="title_box_cart"> Thông tin khách hàng</div>
                     <div>
                         Họ tên Quý khách <span class="txt2">*</span>
-                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                        @*<input type="text" name="Name" id="buyer_name" value="@Model.Name">*@
+                        @*@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })*@
+                        <input type="text" name="Name" id="buyer_name" value="@Model.Name">
                     </div>
                     <div>
                         Địa chỉ Email <span class="txt2">*</span>
