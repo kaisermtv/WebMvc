@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlTypes;
 using WebMvc.Domain.Constants;
 using WebMvc.Domain.DomainModel.Entities;
+using WebMvc.Domain.DomainModel.Enums;
 using WebMvc.Domain.Interfaces;
 using WebMvc.Domain.Interfaces.Services;
 using WebMvc.Services.Data.Context;
@@ -137,6 +138,28 @@ namespace WebMvc.Services
             Cmd.Close();
 
             if (ret) throw new Exception("Add MembershipUser false");
+        }
+
+        public MembershipUser Get(Guid Id)
+        {
+            string cachekey = string.Concat(CacheKeys.Member.StartsWith, "Get-", Id);
+            var topic = _cacheService.Get<MembershipUser>(cachekey);
+            if (topic == null)
+            {
+                var Cmd = _context.CreateCommand();
+
+                Cmd.CommandText = "SELECT * FROM [MembershipUser] WHERE Id = @Id";
+
+                Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = Id;
+
+                DataRow data = Cmd.findFirst();
+                if (data == null) return null;
+
+                topic = DataRowToMembershipUser(data);
+
+                _cacheService.Set(cachekey, topic, CacheTimes.OneDay);
+            }
+            return topic;
         }
 
         public MembershipCreateStatus NewUser (MembershipUser newUser)
@@ -359,5 +382,53 @@ namespace WebMvc.Services
         }
 
 
+        public int GetCount()
+        {
+            string cachekey = string.Concat(CacheKeys.Member.StartsWith, "GetCount");
+            var count = _cacheService.Get<int?>(cachekey);
+            if (count == null)
+            {
+                var Cmd = _context.CreateCommand();
+
+                Cmd.CommandText = "SELECT COUNT(*) FROM  [MembershipUser]";
+
+                count = (int)Cmd.command.ExecuteScalar();
+                Cmd.Close();
+
+                _cacheService.Set(cachekey, count, CacheTimes.OneDay);
+            }
+            return (int)count;
+        }
+
+        public List<MembershipUser> GetList(int limit = 10, int page = 1)
+        {
+            string cachekey = string.Concat(CacheKeys.Topic.StartsWith, "GetList-", limit, "-", page);
+            var list = _cacheService.Get<List<MembershipUser>>(cachekey);
+            if (list == null)
+            {
+                var Cmd = _context.CreateCommand();
+
+                if (page == 0) page = 1;
+
+                Cmd.CommandText = "SELECT TOP " + limit + " * FROM ( SELECT *,(ROW_NUMBER() OVER(ORDER BY UserName ASC)) AS RowNum FROM  [MembershipUser]) AS MyDerivedTable WHERE RowNum > @Offset";
+
+                //Cmd.Parameters.Add("limit", SqlDbType.Int).Value = limit;
+                Cmd.Parameters.Add("Offset", SqlDbType.Int).Value = (page - 1) * limit;
+
+                DataTable data = Cmd.findAll();
+                Cmd.Close();
+
+                if (data == null) return null;
+
+                list = new List<MembershipUser>();
+                foreach (DataRow it in data.Rows)
+                {
+                    list.Add(DataRowToMembershipUser(it));
+                }
+
+                _cacheService.Set(cachekey, list, CacheTimes.OneDay);
+            }
+            return list;
+        }
     }
 }

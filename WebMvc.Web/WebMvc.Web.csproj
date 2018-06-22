@@ -221,6 +221,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminEmployeesController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminLanguageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminMembersController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminMenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminTopicController.cs" />
@@ -236,6 +237,7 @@
     <Compile Include="Areas\Admin\ViewModels\AdminContactViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\AdminEmployeesViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\AdminLanguageViewModels.cs" />
+    <Compile Include="Areas\Admin\ViewModels\AdminMembersViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\AdminMenuViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\AdminProductViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\AdminSettingViewModel.cs" />
@@ -1140,6 +1142,8 @@
     <Content Include="Areas\Admin\Views\AdminCategory\List.cshtml" />
     <Content Include="Areas\Admin\Views\AdminTopic\PopupSelect.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProduct\PopupSelect.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminMembers\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminMembers\_MembersNavButtons.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>

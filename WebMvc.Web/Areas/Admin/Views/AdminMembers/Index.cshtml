@@ -1,0 +1,54 @@
+﻿@model WebMvc.Web.Areas.Admin.ViewModels.AdminListMembersViewModel
+
+@{
+    ViewBag.Title = "Quản lý tài khoản";
+}
+
+
+@Html.Partial("_MembersNavButtons")
+
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        <div id="container">
+            <div class="tablescroll">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width:50px">Sửa</th>
+                            <th>Tài khoản</th>
+                            <th style="width:100px">Kíck hoạt</th>
+                            <th style="width:50px">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var it in Model.ListMembers)
+                        {
+                        <tr>
+                            <td>
+                                <span>
+                                    <a href="@Url.Action("Edit", new { id = it.Id })" class="btn-mvc">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a>
+                                </span>
+                            </td>
+                            <td>@it.UserName</td>
+                            <td>@it.IsApproved</td>
+                            <td>
+                                <a href="@Url.Action("Delete", new { id = it.Id })" class="btn-mvc">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            @Html.Partial("_Paging",Model.Paging)
+        </div>
+    </div>
+</div>
+

@@ -736,6 +736,26 @@ namespace WebMvc.Web.Application
         }
         #endregion
 
+        #region Members
+        public static string GetMembersAccount(Guid id)
+        {
+            try
+            {
+                return GetMembers(id).UserName;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
+        public static MembershipUser GetMembers(Guid id)
+        {
+            var membershipService = ServiceFactory.Get<IMembershipService>();
+            return membershipService.Get(id);
+        }
+        #endregion
+
         #region ShoppingCart
         public static string GetJsonShoppingCart()
         {

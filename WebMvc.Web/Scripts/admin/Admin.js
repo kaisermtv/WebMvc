@@ -736,7 +736,7 @@ POPUPSELECT = {
             this.DataPage = 1;
             this.SeachText = "";
             this.Catergory = "";
-            $("#PopupSelectTitle").html("<span class=\"glyphicon glyphicon - th - list\"></span> Chọn sản phẩm");
+            $("#PopupSelectTitle").html("<span class=\"glyphicon glyphicon-th-list\"></span> Chọn sản phẩm");
             $("#PopupSelectData").html("");
             this.GetDataProduct();
         }
@@ -748,7 +748,7 @@ POPUPSELECT = {
             this.DataPage = 1;
             this.SeachText = "";
             this.Catergory = "";
-            $("#PopupSelectTitle").html("<span class=\"glyphicon glyphicon - th - list\"></span> Chọn bài viết");
+            $("#PopupSelectTitle").html("<span class=\"glyphicon glyphicon-th-list\"></span> Chọn bài viết");
             $("#PopupSelectData").html("");
             this.GetDataNews();
         }

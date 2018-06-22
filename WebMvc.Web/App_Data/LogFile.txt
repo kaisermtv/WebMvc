@@ -42,3 +42,9 @@ Parameter name: g
 22/06/2018 09:52:24 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
 22/06/2018 09:56:13 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
 22/06/2018 10:23:11 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/06/2018 15:25:11 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/06/2018 15:25:14 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The action 'MainAdminNav' is accessible only by a child request.
+22/06/2018 15:25:30 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The model item passed into the dictionary is of type 'WebMvc.Web.Areas.Admin.ViewModels.AdminPageingViewModel', but this dictionary requires a model item of type 'WebMvc.Web.ViewModels.PageingViewModel'.
+22/06/2018 15:37:58 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Cannot open database "mvp105a21_senvang" requested by the login. The login failed.
+Login failed for user 'mvp105a21_sa'.
+22/06/2018 15:38:29 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP

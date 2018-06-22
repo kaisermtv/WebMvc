@@ -20,6 +20,8 @@ namespace WebMvc.Domain.Interfaces.Services
 
     public partial interface IMembershipService
     {
+        MembershipUser Get(Guid Id);
+
         string ErrorCodeToString(MembershipCreateStatus createStatus);
         MembershipUser GetUser(string username);
         MembershipCreateStatus NewUser(MembershipUser newUser);
@@ -27,5 +29,8 @@ namespace WebMvc.Domain.Interfaces.Services
 
         LoginAttemptStatus LastLoginStatus { get; }
         MembershipUser ValidateUser(string userName, string password, int maxInvalidPasswordAttempts);
+
+        int GetCount();
+        List<MembershipUser> GetList(int limit = 10, int page = 1);
     }
 }

@@ -167,12 +167,12 @@
             </ul>
         </li>
         <li>
-            <a href="#" data-toggle="collapse" data-target="#membership">
+            <a href="#" data-toggle="collapse" data-target="#membership" class="@(currentController == "adminmembers" ? "active" : "")">
                 <i class="fa fa-fw fa-users"></i> Tài khoản <i class="fa fa-fw fa-caret-down"></i>
             </a>
-            <ul id="membership" class="collapse">
+            <ul id="membership" class="collapse @(currentController == "adminmembers" ? "in" : "")" >
                 <li>
-                    <a href="@Url.Action("Manage", "Account", new { area = "Admin" }, null)" class="@(currentController == "account" && currentAction == "manage" ? "active" : "")">Manage Users</a>
+                    <a href="@Url.Action("Index", "AdminMembers", new { area = "Admin" }, null)" class="@(currentController == "adminmembers" && currentAction == "index" ? "active" : "")">Quản lý tài khoản</a>
                 </li>
                 <li>
                     <a href="@Url.Action("ListAllRoles", "Account", new { area = "Admin" }, null)" class="@(currentController == "account" && currentAction == "listallroles" ? "active" : "")">Manage Roles</a>
