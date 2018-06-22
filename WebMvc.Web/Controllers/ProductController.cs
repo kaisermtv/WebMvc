@@ -1,6 +1,7 @@
 ﻿namespace WebMvc.Web.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Web.Mvc;
     using WebMvc.Domain.Constants;
     using WebMvc.Domain.DomainModel.Entities;
@@ -87,5 +88,34 @@
             return PartialView("AjaxProductForClass",model);
         }
         
+        public ActionResult AjaxGetSearch(string search)
+        {
+            var lst = _productSevice.GetList(search);
+            List<ProductAjaxItem> rlst = new List<ProductAjaxItem>();
+            if (lst != null)
+            {
+                var pricmodel = _productSevice.GetAttribute("Price");
+
+                foreach (var it in lst)
+                {
+                    var val = AppHelpers.ProductValues(it);
+
+
+                    rlst.Add(new ProductAjaxItem
+                    {
+                        productName = it.Name,
+                        productUrl = AppHelpers.ProductUrls(it.Category_Id, it.Slug),
+                        productImage = new ProductAjaxImageItem
+                        {
+                            fullimg = AppHelpers.CategoryImage(it.Image, it.Id),
+                            medium = AppHelpers.CategoryImage(it.Image, it.Id,160),
+                        },
+                        price = _productSevice.GetAttributeValue(it.Id, pricmodel.Id).Value,
+                    });
+                }
+            }
+            
+            return Json(rlst, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -6,7 +6,7 @@
     <div id="location">
         <a href="/"><i class="bg icon_home"></i></a>
 
-        <span>»</span><a href="/pc-gaming/">PC GAMING</a>
+        <span>»</span><a href="@Url.Action("ShowBySlugProduct","Category",new { slug = Model.Cat.Slug })">@Model.Cat.Name</a>
 
     </div>
     <script type="text/javascript">

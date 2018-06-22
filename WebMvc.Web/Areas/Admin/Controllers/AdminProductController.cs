@@ -35,6 +35,21 @@ namespace WebMvc.Web.Areas.Admin.Controllers
             _productPostSevice = productPostSevice;
         }
 
+        public ActionResult PopupSelect(string seach, string cat, int? p)
+        {
+            int limit = 10;
+            var count = _productSevice.GetCount();
+
+            var Paging = CalcPaging(limit, p, count);
+
+            var viewModel = new AdminProductViewModel
+            {
+                Paging = Paging,
+                ListProduct = _productSevice.GetList(limit, Paging.Page)
+            };
+            return PartialView(viewModel);
+        }
+
         #region ProductClass
         public ActionResult Index()
         {

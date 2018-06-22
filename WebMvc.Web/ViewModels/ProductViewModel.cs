@@ -26,4 +26,17 @@ namespace WebMvc.Web.ViewModels
         public string Value;
         public bool IsShow;
     }
+
+    public class ProductAjaxItem
+    {
+        public string productName;
+        public string productUrl;
+        public string price;
+        public ProductAjaxImageItem productImage;
+    }
+    public class ProductAjaxImageItem
+    {
+        public string fullimg;
+        public string medium;
+    }
 }

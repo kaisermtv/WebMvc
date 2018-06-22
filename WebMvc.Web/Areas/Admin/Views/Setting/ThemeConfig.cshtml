@@ -16,40 +16,79 @@
         <div class="panel-content">
             @foreach (var item in ViewBag.json)
             {
-                <div class="form-group">
-                    @switch ((string)item.Value.Type)
-                    {
-                        case "MenuID":
-                            <label for="@item.Name">@item.Value.LabelName</label>
-                            <select class="form-control" id="@item.Name" name="@item.Name">
-                                <option value="">--No Select--</option>
-                                @foreach (var it in _menuService.GetAll().ToList())
-                                {
-                                    <option value="@it.Id" @((it.Id.ToString() == (string)item.Value.Value) ? "selected=\"selected\"" : "")>@it.Name</option>
-                                }
-                            </select>
-                            break;
-                         case "CategoryID":
-                            <label for="@item.Name">@item.Value.LabelName</label>
-                            <select class="form-control" id="@item.Name" name="@item.Name">
-                                <option value="">--No Select--</option>
-                                @foreach (var it in _categoryService.GetAll().ToList())
-                                {
-                                    <option value="@it.Id" @((it.Id.ToString() == (string)item.Value.Value) ? "selected=\"selected\"" : "")>@it.Name</option>
-                                }
-                            </select>
-                            break;
-                    }
+            <div class="form-group">
+                @switch ((string)item.Value.Type)
+                {
+                    case "MenuID":
+                        <label for="@item.Name">@item.Value.LabelName</label>
+                        <select class="form-control" id="@item.Name" name="@item.Name">
+                            <option value="">--No Select--</option>
+                            @foreach (var it in _menuService.GetAll().ToList())
+                            {
+                                <option value="@it.Id" @((it.Id.ToString() == (string)item.Value.Value) ? "selected=\"selected\"" : "")>@it.Name</option>
+                            }
+                        </select>
+                        break;
+                    case "CategoryID":
+                        <label for="@item.Name">@item.Value.LabelName</label>
+                        <select class="form-control" id="@item.Name" name="@item.Name">
+                            <option value="">--No Select--</option>
+                            @foreach (var it in _categoryService.GetAll().ToList())
+                            {
+                                <option value="@it.Id" @((it.Id.ToString() == (string)item.Value.Value) ? "selected=\"selected\"" : "")>@it.Name</option>
+                            }
+                        </select>
+                        break;
+                    case "NewsID":
+                        Topic news = null;
+                        string title = "";
+                        if (item.Value.Value != null && item.Value.Value != "")
+                        {
+                            news = AppHelpers.GetTopic(new Guid((string)item.Value.Value));
+                            if(news != null)
+                            {
+                                title = news.Name;
+                            }
+
+                        }
+
+                        <label for="@item.Name">@item.Value.LabelName</label>
+                        <div style="display:table;width:100%">
+                            <input id="@(item.Name)_title" value="@title" class="form-control" style="float:left; width: calc(100% - 100px)" readonly="readonly" />
+                            <input type="hidden" id="@item.Name" name="@item.Name" value="@item.Value.Value" />
+                            <button type="button" onclick="popupSelectNews('@item.Name','@(item.Name)_title')" class="btn btn-default" style="width:90px;float:right">Chọn</button>
+                        </div>
+                        break;
+                    case "ProductID":
+                        Product prod = null;
+                        string titlep = "";
+                        if (item.Value.Value != null && item.Value.Value != "")
+                        {
+                            prod = AppHelpers.GetProduct(new Guid((string)item.Value.Value));
+                            if (prod != null)
+                            {
+                                titlep = prod.Name;
+                            }
+                        }
+
+                        <label for="@item.Name">@item.Value.LabelName</label>
+                        <div style="display:table;width:100%">
+                            <input id="@(item.Name)_title" value="@titlep" class="form-control" style="float:left; width: calc(100% - 100px)" readonly="readonly" />
+                            <input type="hidden" id="@item.Name" name="@item.Name" value="@item.Value.Value" />
+                            <button type="button" onclick="popupSelectProduct('@item.Name','@(item.Name)_title')" class="btn btn-default" style="width:90px;float:right">Chọn</button>
+                        </div>
+                        break;
+                }
 
 
 
-                </div>
+            </div>
             }
 
-                <div class="submit-holder">
-                    <button type="submit" class="btn-mvc-green btn-mvc-large">Save Config</button>
-                    <a class="btn-mvc-red btn-mvc-large" href="@Url.Action("Themes", "Setting", new { area = "Admin" }, null)">Back</a>
-                </div>
+            <div class="submit-holder">
+                <button type="submit" class="btn-mvc-green btn-mvc-large">Save Config</button>
+                <a class="btn-mvc-red btn-mvc-large" href="@Url.Action("Themes", "Setting", new { area = "Admin" }, null)">Back</a>
+            </div>
         </div>
     </div>
 }

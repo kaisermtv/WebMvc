@@ -599,6 +599,13 @@ namespace WebMvc.Web.Application
         #endregion
 
         #region Topic
+        public static Topic GetTopic(Guid Id)
+        {
+            var topicService = ServiceFactory.Get<ITopicService>();
+
+            return topicService.Get(Id);
+        }
+
         public static int TopicCount()
         {
             var topicService = ServiceFactory.Get<ITopicService>();
@@ -816,6 +823,63 @@ namespace WebMvc.Web.Application
         {
             var MenuService = ServiceFactory.Get<IMenuService>();
             return MenuService.GetAll();
+        }
+
+        public static string GetLinkByMenu(Menu menu)
+        {
+            if (menu.Link.IsNullEmpty()) return "/";  
+
+            switch (menu.iType)
+            {
+                case 0:
+                    return menu.Link;
+                case 1:
+                    //var context = HttpContext.Current.
+                    switch(menu.Link)
+                    {
+                        case "0":
+                            return "/";
+                        case "1":
+                            return "/tin-tuc";
+                        case "2":
+                            return "/san-pham";
+                        case "3":
+                            return "/lien-he";
+                    }
+                    break;
+                case 2:
+                    var cat = Categorie(new Guid(menu.Link));
+                    if(cat != null)
+                    {
+                        if (cat.IsProduct)
+                        {
+                            return string.Concat("/", SiteConstants.Instance.ProductUrlIdentifier, "/", cat.Slug);
+                        }
+                        return string.Concat("/", SiteConstants.Instance.CategoryUrlIdentifier, "/", cat.Slug); 
+                    }
+                    break;
+                case 3:
+                    var news = GetTopic(new Guid(menu.Link));
+                    if (news != null && news.Category_Id != null)
+                    {
+                        var cat1 = Categorie((Guid)news.Category_Id);
+
+                        return string.Concat("/", SiteConstants.Instance.CategoryUrlIdentifier, "/", cat1.Slug,"/",news.Slug);
+                    }
+                    break;
+                case 4:
+                    var prod = GetProduct(new Guid(menu.Link));
+                    if (prod != null && prod.Category_Id != null)
+                    {
+                        var cat1 = Categorie((Guid)prod.Category_Id);
+
+                        return string.Concat("/", SiteConstants.Instance.ProductUrlIdentifier, "/", cat1.Slug, "/", prod.Slug);
+                    }
+                    break;
+            }
+
+
+            return "/";
         }
         #endregion
     }

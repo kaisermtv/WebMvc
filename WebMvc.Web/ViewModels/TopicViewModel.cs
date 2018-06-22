@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using WebMvc.Domain.Constants;
 using WebMvc.Domain.DomainModel.Entities;
 using WebMvc.Web.Application;
+using WebMvc.Web.Areas.Admin.ViewModels;
 
 namespace WebMvc.Web.ViewModels
 {
@@ -65,10 +66,9 @@ namespace WebMvc.Web.ViewModels
 
     public class TopicListViewModel
     {
+        public Category Cat;
         public List<Topic> ListTopic;
-
-        public int Page;
-        public int MaxPage;
+        public AdminPageingViewModel Paging;
     }
     public class TopicViewModel
     {

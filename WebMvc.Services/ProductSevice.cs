@@ -417,6 +417,24 @@ namespace WebMvc.Services
             return GetListForClass(productClass.Id, limit, page);
         }
 
+        public int GetCount()
+        {
+            string cachekey = string.Concat(CacheKeys.Product.StartsWith, "GetCount");
+            var count = _cacheService.Get<int?>(cachekey);
+            if (count == null)
+            {
+                var Cmd = _context.CreateCommand();
+
+                Cmd.CommandText = "SELECT COUNT(*) FROM  [dbo].[Product]";
+                
+                count = (int)Cmd.command.ExecuteScalar();
+                Cmd.Close();
+
+
+                _cacheService.Set(cachekey, count, CacheTimes.OneDay);
+            }
+            return (int)count;
+        }
         public List<Product> GetList(int limit = 10, int page = 1)
         {
             var Cmd = _context.CreateCommand();
@@ -441,6 +459,51 @@ namespace WebMvc.Services
 
             return rt;
         }
+
+        public int GetCount(string seach)
+        {
+            string cachekey = string.Concat(CacheKeys.Product.StartsWith, "GetCountForCatergory-seach-", seach);
+            var count = _cacheService.Get<int?>(cachekey);
+            if (count == null)
+            {
+                var Cmd = _context.CreateCommand();
+
+                Cmd.CommandText = "SELECT COUNT(*) FROM  [dbo].[Product] WHERE [Name] LIKE  N'%'+UPPER(RTRIM(LTRIM(@Seach)))+'%'";
+                Cmd.Parameters.Add("Seach", SqlDbType.NVarChar).Value = seach;
+
+                count = (int)Cmd.command.ExecuteScalar();
+                Cmd.Close();
+
+
+                _cacheService.Set(cachekey, count, CacheTimes.OneMinute);
+            }
+            return (int)count;
+        }
+        public List<Product> GetList(string seach, int limit = 10, int page = 1)
+        {
+            var Cmd = _context.CreateCommand();
+
+            if (page == 0) page = 1;
+
+            Cmd.CommandText = "SELECT TOP " + limit + " * FROM ( SELECT *,(ROW_NUMBER() OVER(ORDER BY CreateDate DESC)) AS RowNum FROM  [Product] WHERE [Name] LIKE  N'%'+UPPER(RTRIM(LTRIM(@Seach)))+'%') AS MyDerivedTable WHERE RowNum > @Offset";
+
+            Cmd.Parameters.Add("Seach", SqlDbType.NVarChar).Value = seach;
+            Cmd.Parameters.Add("Offset", SqlDbType.Int).Value = (page - 1) * limit;
+
+            DataTable data = Cmd.findAll();
+            Cmd.Close();
+
+            if (data == null) return null;
+
+            var rt = new List<Product>();
+            foreach (DataRow it in data.Rows)
+            {
+                rt.Add(DataRowToProduct(it));
+            }
+
+            return rt;
+        }
+
         #endregion
 
         #region ProductAttributeValue

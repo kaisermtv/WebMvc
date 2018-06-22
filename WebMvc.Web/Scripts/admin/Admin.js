@@ -689,6 +689,116 @@ function ResponsiveTable() {
     }
 }
 
+POPUPSELECT = {
+    SelectInputId: "",
+    SelectInputName: "",
+
+    Catergory : "",
+    SeachText: "",
+    DataPage: 1,
+    DataType: "",
+
+    Select: function (id, name) {
+        $("#" + this.SelectInputId).val(id);
+        $("#" + this.SelectInputName).val(name);
+
+        $("#PopupSelect").modal("hide");
+    },
+
+    SetPage: function (page) {
+        this.DataPage = page;
+        this.UpdateData();
+    },
+
+    SetCatergory: function (cat) {
+        this.Catergory = cat;
+        this.DataPage = 1;
+        this.UpdateData();
+    },
+
+    SetSeach: function (seach) {
+        this.SeachText = seach;
+        this.DataPage = 1;
+        this.UpdateData();
+    },
+
+    UpdateData: function () {
+        if (this.DataType == "Product") {
+            this.GetDataProduct();
+        } else if (this.DataType == "News") {
+            this.GetDataNews();
+        }
+    },
+
+    GetProduct: function () {
+        if (this.DataType != "Product") {
+            this.DataType = "Product";
+            this.DataPage = 1;
+            this.SeachText = "";
+            this.Catergory = "";
+            $("#PopupSelectTitle").html("<span class=\"glyphicon glyphicon - th - list\"></span> Chọn sản phẩm");
+            $("#PopupSelectData").html("");
+            this.GetDataProduct();
+        }
+    },
+
+    GetNews: function () {
+        if (this.DataType != "News") {
+            this.DataType = "News";
+            this.DataPage = 1;
+            this.SeachText = "";
+            this.Catergory = "";
+            $("#PopupSelectTitle").html("<span class=\"glyphicon glyphicon - th - list\"></span> Chọn bài viết");
+            $("#PopupSelectData").html("");
+            this.GetDataNews();
+        }
+    },
+    
+    GetDataNews: function () {
+        var moderateActionViewModel = new Object();
+        moderateActionViewModel.p = this.DataPage;
+        moderateActionViewModel.seach = this.SeachText;
+        moderateActionViewModel.cat = this.Catergory;
+        var strung = JSON.stringify(moderateActionViewModel);
+
+        $.ajax({
+            url: app_base + 'Admin/AdminTopic/PopupSelect',
+            type: 'POST',
+            data: strung,
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                $("#PopupSelectData").html(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                ShowUserMessage("Error: " + xhr.status + " " + thrownError);
+            }
+        });
+    },
+
+    GetDataProduct: function () {
+        var moderateActionViewModel = new Object();
+        moderateActionViewModel.p = this.DataPage;
+        moderateActionViewModel.seach = this.SeachText;
+        moderateActionViewModel.cat = this.Catergory;
+        var strung = JSON.stringify(moderateActionViewModel);
+
+        $.ajax({
+            url: app_base + 'Admin/AdminProduct/PopupSelect',
+            type: 'POST',
+            data: strung,
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                $("#PopupSelectData").html(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                ShowUserMessage("Error: " + xhr.status + " " + thrownError);
+            }
+        });
+    },
+
+}
+
+
 SHOWROOM = {
     ListShowroom: [],
     Count: 0,

@@ -1,11 +1,11 @@
 ﻿@(
-     Bundle.Css()
-                .Add("~/Content/admin/Imports.css")
-                .Add("~/Content/bootstrap/css/bootstrap.css")
-                .Add("~/Scripts/fancybox/jquery.fancybox.css")
-                .Add("~/Content/admin/sb-admin.css")
-                .Add("~/Content/admin/Admin.css")
-                .MvcRender("~/content/cache/combinedadmin_#.css")
+         Bundle.Css()
+                    .Add("~/Content/admin/Imports.css")
+                    .Add("~/Content/bootstrap/css/bootstrap.css")
+                    .Add("~/Scripts/fancybox/jquery.fancybox.css")
+                    .Add("~/Content/admin/sb-admin.css")
+                    .Add("~/Content/admin/Admin.css")
+                    .MvcRender("~/content/cache/combinedadmin_#.css")
 )
 <!--<link href="/css/bootstrap-responsive.css" rel="stylesheet">-->
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -16,14 +16,44 @@
     var app_base = '@Url.Content("~/")';
 </script>
 @(Bundle.JavaScript()
-            .Add("~/Scripts/jquery-3.1.0.min.js")
-            .Add("~/Scripts/jquery.unobtrusive-ajax.js")
-            .Add("~/Content/bootstrap/js/bootstrap.min.js")
-            .Add("~/Scripts/fancybox/jquery.fancybox.js")
-            .Add("~/scripts/pushy/pushy.js")
-            .Add("~/Scripts/jquery.validate.min.js")
-            .Add("~/Scripts/jquery.validate.unobtrusive.min.js")
-            .Add("~/Scripts/admin/admin.js")
-            .Add("/Scripts/ckeditor/ckeditor.js")
-            .MvcRender("~/scripts/cache/combinedadmin_#.js")
+                .Add("~/Scripts/jquery-3.1.0.min.js")
+                .Add("~/Scripts/jquery.unobtrusive-ajax.js")
+                .Add("~/Content/bootstrap/js/bootstrap.min.js")
+                .Add("~/Scripts/fancybox/jquery.fancybox.js")
+                .Add("~/scripts/pushy/pushy.js")
+                .Add("~/Scripts/jquery.validate.min.js")
+                .Add("~/Scripts/jquery.validate.unobtrusive.min.js")
+                .Add("~/Scripts/admin/admin.js")
+                .Add("/Scripts/ckeditor/ckeditor.js")
+                .MvcRender("~/scripts/cache/combinedadmin_#.js")
 )
+
+<script>
+    function popupSelectNews(id, titlle) {
+        POPUPSELECT.SelectInputId = id;
+        POPUPSELECT.SelectInputName = titlle;
+        POPUPSELECT.GetNews();
+        $("#PopupSelect").modal();
+    }
+
+    function popupSelectProduct(id, titlle) {
+        POPUPSELECT.SelectInputId = id;
+        POPUPSELECT.SelectInputName = titlle;
+        POPUPSELECT.GetProduct();
+        $("#PopupSelect").modal();
+    }
+</script>
+<!-- Modal -->
+<div class="modal fade" id="PopupSelect" role="dialog">
+    <div class="modal-dialog" style="width:90%">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 style="color:red;" id="PopupSelectTitle"></h4>
+            </div>
+            <div class="modal-body" id="PopupSelectData">
+            </div>
+        </div>
+    </div>
+</div>

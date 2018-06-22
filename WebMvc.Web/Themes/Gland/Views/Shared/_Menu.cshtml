@@ -501,10 +501,24 @@
                     });
             </script>
             <div id="nav_horizontal">
-                <a href="https://gland.vn/gioi-thieu"><img src="@Html.ThemeUrl()/Content/images/new_icon_chinhhang.png" alt="" />Giới Thiệu Về Gland</a>
-                <a href="https://gland.vn/chinh-sach-giao-hang.html"><img src="@Html.ThemeUrl()/Content/images/new_icon_vanchuyen.png" alt="" />Miễn phí vận chuyển</a>
-                <a href="https://gland.vn/chinh-sach-bao-hanh-doi-tra.html"><img src="@Html.ThemeUrl()/Content/images/new_icon_baohanh.png" alt="" />Bảo hành tận nơi</a>
-                <a href="#"><img src="@Html.ThemeUrl()/Content/images/icon-doi-tra.png" alt="" />Giá Cạnh Tranh Nhất</a>
+                @{
+                    var allmenus = AppHelpers.GetAllMenus();
+                    List<Menu> menus;
+                    var rootid = ThemesSetting.getValue("MainMenu").ToString();
+                    if (rootid == "")
+                    {
+                        menus = allmenus.Where(x => x.Menu_Id == null).ToList();
+                    }
+                    else
+                    {
+                        menus = allmenus.Where(x => x.Menu_Id == new Guid(rootid)).ToList();
+                    }
+
+                    foreach (var it in menus)
+                    {
+                        <a href="@AppHelpers.GetLinkByMenu(it)"><img src="@AppHelpers.CategoryImage(it.Image,it.Id)" alt="@it.Name" />@it.Name</a>
+                    }
+                }
             </div><!--nav-->
             <div class="clear"></div>
         </div><!--container-->

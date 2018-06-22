@@ -14,24 +14,60 @@
     @Html.DropDownListFor(model => model.ParentMenu, Model.AllMenus, new { @class = "form-control" })
     @Html.ValidationMessageFor(model => model.ParentMenu)
 </div>
+
 <div class="form-group">
     @Html.LabelFor(model => model.iType)
-    @Html.DropDownListFor(model => model.iType,Model.AllType, new { @class = "form-control" })
+    @Html.DropDownListFor(model => model.iType, Model.AllType, new { @class = "form-control", @onchange= "iTypeOnchang(this.value)" })
     @Html.ValidationMessageFor(model => model.iType)
 </div>
-<div class="form-group">
+<div class="form-group@(Model.iType == 0?"":" hidden")" id="iTypeLink">
     @Html.LabelFor(model => model.Link)
     @Html.TextBoxFor(model => model.Link, new { @class = "form-control" })
     @Html.ValidationMessageFor(model => model.Link)
 </div>
-<div class="form-group">
-    @Html.LabelFor(model => model.Description)
-    @Html.EditorFor(model => model.Description)
-    @Html.ValidationMessageFor(model => model.Description)
-    @*<script>
-        CKEDITOR.replace("Description");
-    </script>*@
+<div class="form-group@(Model.iType == 1?"":" hidden")" id="iTypeLinkPage">
+    @Html.LabelFor(model => model.LinkPage)
+    @Html.DropDownListFor(model => model.LinkPage,Model.AllPage, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.LinkPage)
 </div>
+<div class="form-group@(Model.iType == 2?"":" hidden")" id="iTypeLinkCat">
+    @Html.LabelFor(model => model.LinkCat)
+    @Html.DropDownListFor(model => model.LinkCat,Model.AllCat, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.LinkCat)
+</div>
+<div class="form-group@(Model.iType == 3?"":" hidden")" id="iTypeLinkNews">
+    @Html.LabelFor(model => model.LinkNews)
+    <div style="display:table;width:100%">
+        <input id="LinkNewsTitle" name="TitleNews" value="@Model.TitleNews" class="form-control" style = "float:left; width: calc(100% - 100px)" readonly="readonly" />
+        @Html.HiddenFor(model => model.LinkNews)
+        <button type="button" onclick="popupSelectNews('LinkNews','LinkNewsTitle')" class="btn btn-default" style="width:90px;float:right">Chọn</button>
+    </div>
+    @Html.ValidationMessageFor(model => model.LinkNews)
+</div>
+<div class="form-group@(Model.iType == 4?"":" hidden")" id="iTypeLinkProduct">
+    @Html.LabelFor(model => model.LinkProduct)
+    <div style="display:table;width:100%">
+        <input id="LinkProductTitle" name="TitleProduct" value="@Model.TitleProduct" class="form-control" style="float:left; width: calc(100% - 100px)" readonly="readonly" />
+        @Html.HiddenFor(model => model.LinkProduct)
+        <button type="button" onclick="popupSelectProduct('LinkProduct','LinkProductTitle')" class="btn btn-default" style="width:90px;float:right">Chọn</button>
+    </div>
+    @Html.ValidationMessageFor(model => model.LinkProduct)
+</div>
+<script>
+    var tlink = new Array();
+    tlink[0] = document.getElementById("iTypeLink");
+    tlink[1] = document.getElementById("iTypeLinkPage");
+    tlink[2] = document.getElementById("iTypeLinkCat");
+    tlink[3] = document.getElementById("iTypeLinkNews");
+    tlink[4] = document.getElementById("iTypeLinkProduct");
+    var tlinkactive = tlink[@Model.iType];
+
+    function iTypeOnchang(itype) {
+        tlinkactive.className += " hidden";
+        tlink[itype].className = "form-group";
+        tlinkactive = tlink[itype];
+    }
+</script>
 <div class="row categoryimage">
     @if (!string.IsNullOrEmpty(Model.Image))
     {
@@ -51,6 +87,14 @@
         </div>
         @Html.ValidationMessageFor(x => x.Files)
     </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Description)
+    @Html.EditorFor(model => model.Description)
+    @Html.ValidationMessageFor(model => model.Description)
+    @*<script>
+            CKEDITOR.replace("Description");
+        </script>*@
 </div>
 <div class="form-group">
     @Html.LabelFor(model => model.SortOrder)

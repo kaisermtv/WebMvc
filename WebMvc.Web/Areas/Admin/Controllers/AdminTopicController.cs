@@ -50,6 +50,23 @@ namespace WebMvc.Web.Areas.Admin.Controllers
             }
         }
 
+
+        public ActionResult PopupSelect(string seach, string cat, int? p)
+        {
+            int limit = 10;
+            var count = _topicServic.GetCount();
+
+            var Paging = CalcPaging(limit, p, count);
+
+            var viewModel = new TopicListViewModel
+            {
+                Paging = Paging,
+                ListTopic = _topicServic.GetList(limit, Paging.Page)
+            };
+            return PartialView(viewModel);
+        }
+        
+
         #region Create Topic
         //[Authorize]
         public ActionResult Create()

@@ -21,7 +21,7 @@
                     <ul id="menu-menu-1" class="menu clearfix">
                         @foreach (var it in menus)
                         {
-                            <li id="menu-item-@it.Id" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-@it.Id"><a href="@it.Link">@it.Name.ToUpper()</a></li>
+                            <li id="menu-item-@it.Id" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-@it.Id"><a href="@AppHelpers.GetLinkByMenu(it)">@it.Name.ToUpper()</a></li>
                         }
                     </ul>
                 </nav>
@@ -29,7 +29,7 @@
                     <ul id="menu-menu-2" class="menu clearfix">
                         @foreach (var it in menus)
                         {
-                            <li id="menu-item-@it.Id" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-@it.Id"><a href="@it.Link">@it.Name.ToUpper()</a></li>
+                            <li id="menu-item-@it.Id" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-@it.Id"><a href="@AppHelpers.GetLinkByMenu(it)">@it.Name.ToUpper()</a></li>
                         }
                     </ul>
                 </nav>

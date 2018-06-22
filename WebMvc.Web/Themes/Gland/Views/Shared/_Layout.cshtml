@@ -62,9 +62,10 @@
                         $("#keySearchResult").html(inputString);
                         if (inputString.trim() != '') {
                             $(".autocomplete-suggestions").show();
-                            urlSearch = '/ajax/get_json.php?action=search&content=product&q=' + encodeURIComponent(inputString);
+                            urlSearch = '/product/AjaxGetSearch?search=' + encodeURIComponent(inputString);
 
                             $.getJSON(urlSearch, function (result) {
+
                                 var data = result;
                                 Object.keys(data).forEach(function (key, keyIndex) {
                                     var name = data[keyIndex].productName;

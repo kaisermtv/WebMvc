@@ -48,6 +48,22 @@
         {
             return View();
         }
+
+        public ActionResult PopupSelectList(string inputid, string inputname ,int? p)
+        {
+            int limit = 12;
+            var count = _topicServic.GetCount();
+
+            var Paging = CalcPaging(limit, p, count);
+
+            var model = new CategoryTopicListViewModel
+            {
+                Paging = Paging,
+                ListTopic = _topicServic.GetList(limit, Paging.Page)
+            };
+
+            return View(model);
+        }
         #endregion
 
         #region Show

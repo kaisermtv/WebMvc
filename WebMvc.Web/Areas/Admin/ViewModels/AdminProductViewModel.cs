@@ -71,6 +71,7 @@ namespace WebMvc.Web.Areas.Admin.ViewModels
     {
         public Guid ProductClass { get; set; }
         public List<Product> ListProduct { get; set; }
+        public AdminPageingViewModel Paging { get; set; }
     }
 
     public class AdminProductClassViewModel

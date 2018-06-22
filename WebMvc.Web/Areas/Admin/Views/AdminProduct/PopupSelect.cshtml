@@ -1,0 +1,28 @@
+﻿<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th style="width:150px">Ngày đăng</th>
+            <th style="width:250px">Người đăng</th>
+            <th style="width:50px">Chọn</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var it in Model.ListProduct)
+        {
+            <tr>
+
+                <td>@it.Name</td>
+                <td>@it.CreateDate.ToString("hh:mm dd/MM/yyyy")</td>
+                <td>@it.MembershipUser_Id</td>
+                <td>
+                    <span>
+                        <a class="btn-mvc" onclick="POPUPSELECT.Select('@it.Id','@it.Name')">
+                            <span class="glyphicon glyphicon-saved"></span>
+                        </a>
+                    </span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

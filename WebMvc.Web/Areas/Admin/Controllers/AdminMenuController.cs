@@ -11,22 +11,33 @@ using WebMvc.Domain.Interfaces.Services;
 using WebMvc.Domain.Interfaces.UnitOfWork;
 using WebMvc.Web.Application;
 using WebMvc.Web.Areas.Admin.ViewModels;
+using WebMvc.Utilities;
 
 namespace WebMvc.Web.Areas.Admin.Controllers
 {
     public class AdminMenuController : BaseAdminController
     {
         public readonly IMenuService _menuService;
+        public readonly ICategoryService _categoryService;
+        public readonly ITopicService _topicService;
+        public readonly IProductSevice _productSevice;
 
         public AdminMenuController() : base()
         {
             _menuService = ServiceFactory.Get<IMenuService>();
+            _categoryService = ServiceFactory.Get<ICategoryService>();
+            _topicService = ServiceFactory.Get<ITopicService>();
+            _productSevice = ServiceFactory.Get<IProductSevice>();
         }
 
-        public AdminMenuController(IMenuService menuService, ILoggingService loggingService, IUnitOfWorkManager unitOfWorkManager, IMembershipService membershipService, ISettingsService settingsService, ILocalizationService localizationService)
+        public AdminMenuController(IProductSevice productSevice, ITopicService topicService, ICategoryService categoryService, IMenuService menuService, ILoggingService loggingService, IUnitOfWorkManager unitOfWorkManager, IMembershipService membershipService, ISettingsService settingsService, ILocalizationService localizationService)
             : base(loggingService, unitOfWorkManager, membershipService, settingsService, localizationService)
         {
             _menuService = menuService;
+
+            _categoryService = categoryService;
+            _topicService = topicService;
+            _productSevice = productSevice;
         }
 
         // GET: Admin/AdminMenu
@@ -63,6 +74,8 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                 {
                     AllMenus = _menuService.GetBaseSelectListMenus(_menuService.GetAll()),
                     AllType = GetTypeLink(),
+                    AllPage = GetPageLink(),
+                    AllCat = _categoryService.GetBaseSelectListCategories(_categoryService.GetAll()),
                 };
                 return View(ViewModel);
         }
@@ -85,9 +98,26 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                             Description = viewModel.Description,
                             Colour = viewModel.Colour,
                             iType = viewModel.iType,
-                            Link = viewModel.Link,
                             SortOrder = viewModel.SortOrder
                         };
+                        switch (menu.iType)
+                        {
+                            case 0:
+                                menu.Link = viewModel.Link;
+                                break;
+                            case 1:
+                                menu.Link = viewModel.LinkPage;
+                                break;
+                            case 2:
+                                menu.Link = viewModel.LinkCat;
+                                break;
+                            case 3:
+                                menu.Link = viewModel.LinkNews;
+                                break;
+                            case 4:
+                                menu.Link = viewModel.LinkProduct;
+                                break;
+                        }
 
                         // Sort image out first
                         if (viewModel.Files != null)
@@ -156,6 +186,8 @@ namespace WebMvc.Web.Areas.Admin.Controllers
 
             viewModel.AllMenus = _menuService.GetBaseSelectListMenus(_menuService.GetAll());
             viewModel.AllType = GetTypeLink();
+            viewModel.AllPage = GetPageLink();
+            viewModel.AllCat = _categoryService.GetBaseSelectListCategories(_categoryService.GetAll());
             return View(viewModel);
         }
 
@@ -165,20 +197,57 @@ namespace WebMvc.Web.Areas.Admin.Controllers
         #region Edit Category
         private AdminMenuEditViewModel CreateEditMenuViewModel(Menu menu)
         {
-            var ViewModel = new AdminMenuEditViewModel
+            var viewModel = new AdminMenuEditViewModel
             {
                 ParentMenu = menu.Menu_Id,
                 Name = menu.Name,
                 Description = menu.Description,
                 Colour = menu.Colour,
                 iType = menu.iType,
-                Link = menu.Link,
                 SortOrder = menu.SortOrder,
                 AllMenus = _menuService.GetBaseSelectListMenus(_menuService.GetMenusParenMenu(menu)),
                 AllType = GetTypeLink(),
+                AllPage = GetPageLink(),
+                AllCat = _categoryService.GetBaseSelectListCategories(_categoryService.GetAll()),
             };
 
-            return ViewModel;
+            switch (menu.iType)
+            {
+                case 0:
+                    viewModel.Link = menu.Link;
+                    break;
+                case 1:
+                    viewModel.LinkPage = menu.Link;
+                    break;
+                case 2:
+                    viewModel.LinkCat = menu.Link;
+                    break;
+                case 3:
+                    if (!menu.Link.IsNullEmpty())
+                    {
+                        var a = _topicService.Get(new Guid(menu.Link));
+                        if (a != null)
+                        {
+                            viewModel.LinkNews = menu.Link;
+                            viewModel.TitleNews = a.Name;
+                        }
+                    }
+                    break;
+                case 4:
+                    if (!menu.Link.IsNullEmpty())
+                    {
+                        var b = _productSevice.Get(new Guid(menu.Link));
+                        if (b != null)
+                        {
+                            viewModel.LinkProduct = menu.Link;
+                            viewModel.TitleProduct = b.Name;
+                        }
+                    }
+                     
+                    break;
+            }
+
+            return viewModel;
         }
 
         public ActionResult Edit(Guid id)
@@ -242,13 +311,30 @@ namespace WebMvc.Web.Areas.Admin.Controllers
 
                         }
 
-
+                        menu.Image = viewModel.Image;
                         menu.Menu_Id = viewModel.ParentMenu;
                         menu.Name = viewModel.Name;
                         menu.Description = viewModel.Description;
                         menu.Colour = viewModel.Colour;
                         menu.iType = viewModel.iType;
-                        menu.Link = viewModel.Link;
+                        switch (menu.iType)
+                        {
+                            case 0:
+                                menu.Link = viewModel.Link;
+                                break;
+                            case 1:
+                                menu.Link = viewModel.LinkPage;
+                                break;
+                            case 2:
+                                menu.Link = viewModel.LinkCat;
+                                break;
+                            case 3:
+                                menu.Link = viewModel.LinkNews;
+                                break;
+                            case 4:
+                                menu.Link = viewModel.LinkProduct;
+                                break;
+                        }
                         menu.SortOrder = viewModel.SortOrder;
 
                         _menuService.Update(menu);
@@ -277,6 +363,8 @@ namespace WebMvc.Web.Areas.Admin.Controllers
 
             viewModel.AllMenus = _menuService.GetBaseSelectListMenus(_menuService.GetMenusParenMenu(menu));
             viewModel.AllType = GetTypeLink();
+            viewModel.AllPage = GetPageLink();
+            viewModel.AllCat = _categoryService.GetBaseSelectListCategories(_categoryService.GetAll());
             return View(viewModel);
         }
         #endregion
@@ -288,8 +376,20 @@ namespace WebMvc.Web.Areas.Admin.Controllers
             lst.Add(new SelectListItem { Text = "Liên kết url",Value = "0" });
             lst.Add(new SelectListItem { Text = "Trang có sẵn",Value = "1" });
             lst.Add(new SelectListItem { Text = "Liên kết danh mục",Value = "2" });
-            lst.Add(new SelectListItem { Text = "Liên kết sản phẩm",Value = "3" });
-            lst.Add(new SelectListItem { Text = "Liên kết bài viết",Value = "4" });
+            lst.Add(new SelectListItem { Text = "Liên kết bài viết",Value = "3" });
+            lst.Add(new SelectListItem { Text = "Liên kết sản phẩm", Value = "4" });
+
+
+            return lst;
+        }
+
+        private List<SelectListItem> GetPageLink()
+        {
+            var lst = new List<SelectListItem>();
+            lst.Add(new SelectListItem { Text = "Trang chủ", Value = "0" });
+            lst.Add(new SelectListItem { Text = "Tin tức", Value = "1" });
+            lst.Add(new SelectListItem { Text = "Sản phẩm", Value = "2" });
+            lst.Add(new SelectListItem { Text = "Liên hệ", Value = "3" });
 
 
             return lst;

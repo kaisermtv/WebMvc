@@ -1,40 +1,44 @@
-14/06/2018 12:57:18 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\NewsBlue\Views\Shared\_Footer.cshtml(15): error CS1002: ; expected
-14/06/2018 12:57:30 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\NewsBlue\Views\Shared\_Footer.cshtml(15): error CS1002: ; expected
-14/06/2018 12:57:37 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\NewsBlue\Views\Shared\_Footer.cshtml(15): error CS1002: ; expected
-14/06/2018 13:19:28 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\NewsBlue\Views\Topic\ShowBySlug.cshtml(9): error CS0103: The name 'it' does not exist in the current context
-14/06/2018 13:19:48 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\NewsBlue\Views\Topic\ShowBySlug.cshtml(14): error CS0103: The name 'it' does not exist in the current context
-14/06/2018 14:07:02 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-14/06/2018 14:11:19 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-14/06/2018 14:32:52 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The file "~/Themes/NewsBlue/Views/Home/Index.cshtml" cannot be requested directly because it calls the "RenderSection" method.
-14/06/2018 14:41:56 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
-14/06/2018 14:41:57 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The partial view 'ShowBySlug' was not found or no view engine supports the searched locations. The following locations were searched:
-~/Themes/NewsBlue/Views/Home/ShowBySlug.cshtml
-~/Themes/NewsBlue/Views/Shared/ShowBySlug.cshtml
-~/Themes/NewsBlue/Views/Shared/Home/ShowBySlug.cshtml
-~/Themes/NewsBlue/Views/Extensions/Home/ShowBySlug.cshtml
-~/Views/Extensions/Home/ShowBySlug.cshtml
-~/Views/Home/ShowBySlug.cshtml
-~/Views/Home/ShowBySlug.vbhtml
-~/Views/Shared/ShowBySlug.cshtml
-~/Views/Shared/ShowBySlug.vbhtml
-14/06/2018 14:42:20 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\NewsBlue\Views\Home\Index.cshtml(58): error CS1503: Argument 4: cannot convert from 'WebMvc.Web.ViewModels.TopicViewModel' to 'System.Web.Mvc.ViewDataDictionary'
-14/06/2018 14:42:46 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The partial view 'Topic/ShowBySlug' was not found or no view engine supports the searched locations. The following locations were searched:
-~/Themes/NewsBlue/Views/Home/Topic/ShowBySlug.cshtml
-~/Themes/NewsBlue/Views/Shared/Topic/ShowBySlug.cshtml
-~/Themes/NewsBlue/Views/Shared/Home/Topic/ShowBySlug.cshtml
-~/Themes/NewsBlue/Views/Extensions/Home/Topic/ShowBySlug.cshtml
-~/Views/Extensions/Home/Topic/ShowBySlug.cshtml
-~/Views/Home/Topic/ShowBySlug.cshtml
-~/Views/Home/Topic/ShowBySlug.vbhtml
-~/Views/Shared/Topic/ShowBySlug.cshtml
-~/Views/Shared/Topic/ShowBySlug.vbhtml
-14/06/2018 14:43:26 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The partial view '~/Topic/ShowBySlug' was not found or no view engine supports the searched locations. The following locations were searched:
-~/Topic/ShowBySlug
-14/06/2018 14:43:33 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The partial view '/Topic/ShowBySlug' was not found or no view engine supports the searched locations. The following locations were searched:
-/Topic/ShowBySlug
-14/06/2018 14:44:07 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The partial view '/Themes/NewsBlue/View/Topic/ShowBySlug' was not found or no view engine supports the searched locations. The following locations were searched:
-/Themes/NewsBlue/View/Topic/ShowBySlug
-14/06/2018 14:45:11 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The partial view '/Themes/NewsBlue/Views/Topic/ShowBySlug' was not found or no view engine supports the searched locations. The following locations were searched:
-/Themes/NewsBlue/Views/Topic/ShowBySlug
-14/06/2018 14:48:08 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Themes\NewsBlue\Views\Home\Index.cshtml(60): error CS0029: Cannot implicitly convert type 'System.Web.Mvc.MvcHtmlString' to 'string'
-14/06/2018 14:48:53 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+16/06/2018 16:23:59 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+16/06/2018 16:23:59 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+16/06/2018 16:24:15 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+16/06/2018 16:25:06 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+16/06/2018 16:25:08 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+16/06/2018 16:25:30 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+16/06/2018 16:25:33 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+16/06/2018 16:25:35 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+16/06/2018 16:25:37 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+16/06/2018 16:26:08 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+16/06/2018 16:26:11 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+16/06/2018 16:26:19 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+16/06/2018 16:26:19 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+16/06/2018 16:26:33 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+16/06/2018 16:27:26 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+16/06/2018 16:27:27 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+16/06/2018 16:27:32 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+16/06/2018 16:27:39 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | This request has been blocked because sensitive information could be disclosed to third party web sites when this is used in a GET request. To allow GET requests, set JsonRequestBehavior to AllowGet.
+16/06/2018 16:29:04 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/06/2018 05:28:10 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/06/2018 06:28:55 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Areas\Admin\Views\AdminMenu\_MenuFields.cshtml(28): error CS1061: 'AdminMenuEditViewModel' does not contain a definition for 'LinkPage' and no extension method 'LinkPage' accepting a first argument of type 'AdminMenuEditViewModel' could be found (are you missing a using directive or an assembly reference?)
+22/06/2018 06:34:10 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/06/2018 06:52:52 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/06/2018 07:28:55 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/06/2018 07:30:39 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Unrecognized Guid format.
+22/06/2018 07:32:13 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/06/2018 08:48:14 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/06/2018 08:49:40 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | A public action method 'PopupSelect' was not found on controller 'WebMvc.Web.Areas.Admin.Controllers.AdminTopicController'.
+22/06/2018 08:58:37 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/06/2018 09:23:43 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/06/2018 09:24:01 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | 'WebMvc.Web.Areas.Admin.ViewModels.AdminProductViewModel' does not contain a definition for 'ListTopic'
+22/06/2018 09:48:27 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | D:\IT\C#\Project\WebMvc\WebMvc.Web\Areas\Admin\Views\Setting\ThemeConfig.cshtml(47): error CS0117: 'AppHelpers' does not contain a definition for 'GetTopic'
+22/06/2018 09:48:44 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/06/2018 09:48:49 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The best overloaded method match for 'System.Guid.Guid(byte[])' has some invalid arguments
+22/06/2018 09:49:34 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | The best overloaded method match for 'System.Guid.Guid(byte[])' has some invalid arguments
+22/06/2018 09:50:05 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Value cannot be null.
+Parameter name: g
+22/06/2018 09:50:39 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Value cannot be null.
+Parameter name: g
+22/06/2018 09:50:43 | WebMvc.Web.dll | Application_Error | WebMvc.Web.WebApiApplication | 53 | Value cannot be null.
+Parameter name: g
+22/06/2018 09:52:24 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/06/2018 09:56:13 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP
+22/06/2018 10:23:11 | WebMvc.Web.dll | Application_Start | WebMvc.Web.WebApiApplication | 32 | START APP

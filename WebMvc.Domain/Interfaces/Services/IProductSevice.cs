@@ -30,6 +30,7 @@ namespace WebMvc.Domain.Interfaces.Services
         int GetCount(Category cat);
         List<Product> GetList(Guid Id, int limit = 10, int page = 1);
         List<Product> GetList(Category cat, int limit = 10, int page = 1);
+        int GetCount();
         List<Product> GetList(int limit = 10, int page = 1);
         List<ProductClassAttribute> GetListProductClassAttributeForProductClassId(Guid id);
 
@@ -41,5 +42,8 @@ namespace WebMvc.Domain.Interfaces.Services
         ProductAttribute GetAttribute(string name);
         void Update(ProductAttribute cat);
         List<ProductClass> GetAllProductClass();
+
+        int GetCount(string seach);
+        List<Product> GetList(string seach, int limit = 10, int page = 1);
     }
 }

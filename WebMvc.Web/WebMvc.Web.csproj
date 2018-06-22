@@ -1138,6 +1138,8 @@
     <Content Include="Areas\Admin\Views\AdminMenu\List.cshtml" />
     <Content Include="Areas\Admin\Views\Setting\Business.cshtml" />
     <Content Include="Areas\Admin\Views\AdminCategory\List.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminTopic\PopupSelect.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProduct\PopupSelect.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -9653,6 +9655,7 @@
     <Content Include="Themes\NewsBlue\Views\Category\Index.cshtml" />
     <Content Include="Themes\NewsBlue\Views\Category\_NewsItem.cshtml" />
     <Content Include="Themes\NewsBlue\Views\Shared\_Paging.cshtml" />
+    <Content Include="Views\Topic\PopupSelectList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Carousel\" />
