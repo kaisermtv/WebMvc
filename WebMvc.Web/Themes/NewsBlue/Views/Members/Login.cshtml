@@ -3,15 +3,12 @@
 @{
     ViewBag.Title = "Login";
 }
-
-<h2>Login</h2>
-
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>LogOnViewModel</h4>
+    <h2>Đăng nhập</h2>
     <hr />
     <div class="form-group">
         @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })

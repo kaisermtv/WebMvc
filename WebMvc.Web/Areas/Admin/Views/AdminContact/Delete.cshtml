@@ -1,0 +1,23 @@
+﻿@model WebMvc.Domain.DomainModel.Entities.Contact
+@{
+    ViewBag.Title = "Xóa liên hệ";
+}
+@Html.Partial("_ContactNavButtons")
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        <h2>Xác nhận xóa liên hệ?</h2>
+        <p>Liên hệ sẽ được xóa hoàn toàn và không thể khôi phục.</p>
+        <div class="form-group">
+            <input type="text" class="form-control" readonly="readonly" value="@Model.Name" />
+        </div>
+        @using (Html.BeginForm("Delete", "AdminContact", FormMethod.Post))
+        {
+            <div class="submit-holder">
+                <input type="submit" class="btn-mvc btn-mvc-large" value="Xác nhận xóa" />
+            </div>
+        }
+    </div>
+</div>

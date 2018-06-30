@@ -15,8 +15,10 @@ namespace WebMvc.Domain.Interfaces.Services
         void Update(Menu menu);
         Menu Get(string id);
         Menu Get(Guid id);
+        void Del(Menu menu);
 
         List<Menu> GetMenusParenMenu(Menu cat);
+        List<Menu> GetSubMenus(Menu cat);
 
         List<SelectListItem> GetBaseSelectListMenus(List<Menu> allowedCategories);
     }

@@ -735,6 +735,25 @@ namespace WebMvc.Web.Application
             return productService.GetListProductClassAttributeForProductClassId((Guid)product.Category_Id);
         }
         #endregion
+        #region ProductClass
+        public static ProductClass GetGroupProduct(Guid id)
+        {
+            var productService = ServiceFactory.Get<IProductSevice>();
+            return productService.GetProductClass(id);
+        }
+
+        public static string GetNameGroupProduct(Guid id)
+        {
+            try
+            {
+                return GetGroupProduct(id).Name;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+        #endregion
 
         #region Members
         public static string GetMembersAccount(Guid id)

@@ -40,6 +40,12 @@
                 </div>
 
                 <div class="form-group">
+                    @Html.LabelFor(model => model.HotlineImg)
+                    @Html.TextBoxFor(model => model.HotlineImg, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.HotlineImg)
+                </div>
+
+                <div class="form-group">
                     @Html.LabelFor(model => model.Fanpage)
                     @Html.TextBoxFor(model => model.Fanpage, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Fanpage)

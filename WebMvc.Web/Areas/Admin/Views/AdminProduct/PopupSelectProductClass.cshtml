@@ -1,0 +1,24 @@
+﻿<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Tên nhóm sản phẩm</th>
+            <th style="width:50px">Chọn</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var it in Model.ListProductClass)
+        {
+            <tr>
+
+                <td>@it.Name</td>
+                <td>
+                    <span>
+                        <a class="btn-mvc" onclick="POPUPSELECT.Select('@it.Id','@it.Name')">
+                            <span class="glyphicon glyphicon-saved"></span>
+                        </a>
+                    </span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -58,7 +58,7 @@
                             <td>
                                 <input name="quantity_product_0" id="quantity_product_0" value="@it.Count" onchange="ShoppingCart.addVariant ('@it.Id',this.value);location.reload();" size="5">
                             </td>
-                            <td class="product_cart"><span id="sell_price_product_@(i-1)">@it.Price</span> VND </td>
+                            <td class="product_cart"><span id="sell_price_product_@(i-1)">@it.Price</span></td>
 
                             <td class="product_cart"><b><span id="price_product_@(i-1)">@((it.Priceint*it.Count).ToString("N0").Replace(",",".") ) </span> VND</b></td>
                             <td><a href="javascript:if(confirm('Bạn muốn xóa sản phẩm này?')==true){ShoppingCart.removeItem('@it.Id'); location.reload();}"><img src="@Html.ThemeUrl()/Content/images/icon_del.png"></a></td>

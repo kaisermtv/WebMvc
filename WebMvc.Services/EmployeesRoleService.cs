@@ -76,6 +76,21 @@ namespace WebMvc.Services
             if (!rt) throw new Exception("Update EmployeesRole false");
         }
 
+
+        public void Del(EmployeesRole emp)
+        {
+            var Cmd = _context.CreateCommand();
+            Cmd.CommandText = "DELETE FROM [EmployeesRole] WHERE Id = @Id";
+
+            Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = emp.Id;
+
+            Cmd.command.ExecuteNonQuery();
+            Cmd.cacheStartsWithToClear(CacheKeys.EmployeesRole.StartsWith);
+            Cmd.Close();
+
+        }
+
+
         public EmployeesRole Get(string id)
         {
             return Get(new Guid(id));

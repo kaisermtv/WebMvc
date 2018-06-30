@@ -178,6 +178,20 @@ namespace WebMvc.Services
             if (!rt) throw new Exception("Update Category false");
         }
 
+
+        public void Del(Category menu)
+        {
+            var Cmd = _context.CreateCommand();
+            Cmd.CommandText = "DELETE FROM [Category] WHERE Id = @Id";
+
+            Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = menu.Id;
+
+            Cmd.command.ExecuteNonQuery();
+            Cmd.cacheStartsWithToClear(CacheKeys.Category.StartsWith);
+            Cmd.Close();
+        }
+
+
         public Category Get(string id)
         {
             return Get(new Guid(id));
@@ -205,6 +219,42 @@ namespace WebMvc.Services
             }
             return cat;
         }
+
+
+
+        public List<Category> GetSubCategory(Category cat)
+        {
+            var cacheKey = string.Concat(CacheKeys.Category.StartsWith, "GetSubCategory", "-", cat);
+            var list = _cacheService.Get<List<Category>>(cacheKey);
+            if (list == null)
+            {
+                var cats = GetAll();
+                list = new List<Category>();
+
+                int i = 0, x = 0;
+                while (true)
+                {
+                    if (cats[i].Category_Id == cat.Id)
+                    {
+                        list.Add(cats[i]);
+                    }
+
+                    i++;
+                    if (i >= cats.Count)
+                    {
+                        if (x >= list.Count) break;
+                        cat = list[x];
+                        x++;
+                        i = 0;
+                    }
+                }
+
+                _cacheService.Set(cacheKey, list, CacheTimes.OneMinute);
+            }
+
+            return list;
+        }
+
 
         public Category GetBySlug (string slug)
         {

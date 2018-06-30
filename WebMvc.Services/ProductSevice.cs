@@ -226,6 +226,20 @@ namespace WebMvc.Services
             if (!ret) throw new Exception("Update Product false");
         }
 
+
+        public void Del(Product product)
+        {
+            var Cmd = _context.CreateCommand();
+            Cmd.CommandText = "DELETE FROM [Product] WHERE Id = @Id";
+
+            Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = product.Id;
+
+            Cmd.command.ExecuteNonQuery();
+            Cmd.cacheStartsWithToClear(CacheKeys.Product.StartsWith);
+            Cmd.Close();
+
+        }
+
         public Product Get(Guid Id)
         {
             var Cmd = _context.CreateCommand();
@@ -791,7 +805,7 @@ namespace WebMvc.Services
             return cachedSettings;
         }
         #endregion
-        
+
         #region ProductAttribute
         public void Add(ProductAttribute cat)
         {

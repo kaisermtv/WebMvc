@@ -35,6 +35,8 @@ namespace WebMvc.Web.Areas.Admin.Controllers
             _productPostSevice = productPostSevice;
         }
 
+        #region Popup
+
         public ActionResult PopupSelect(string seach, string cat, int? p)
         {
             int limit = 10;
@@ -49,6 +51,17 @@ namespace WebMvc.Web.Areas.Admin.Controllers
             };
             return PartialView(viewModel);
         }
+
+        public ActionResult PopupSelectProductClass()
+        {
+            var model = new AdminProductClassViewModel
+            {
+                ListProductClass = _productSevice.GetAllProductClass()
+            };
+
+            return PartialView(model);
+        }
+        #endregion
 
         #region ProductClass
         public ActionResult Index()
@@ -633,6 +646,77 @@ namespace WebMvc.Web.Areas.Admin.Controllers
             return View(model);
         }
         #endregion
+
+
+        #region delete
+        public ActionResult Del(Guid id)
+        {
+            var model = _productSevice.Get(id);
+            if (model == null)
+            {
+                TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                {
+                    Message = "Sản phẩm không tồn tại",
+                    MessageType = GenericMessages.warning
+                };
+
+                return RedirectToAction("index");
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Del")]
+        public ActionResult Del1(Guid id)
+        {
+            var model = _productSevice.Get(id);
+            if (model == null)
+            {
+                TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                {
+                    Message = "Sản phẩm không tồn tại",
+                    MessageType = GenericMessages.warning
+                };
+
+                return RedirectToAction("index");
+            }
+
+            using (var unitOfWork = UnitOfWorkManager.NewUnitOfWork())
+            {
+                try
+                {
+                    _productSevice.Del(model);
+                    _productPostSevice.Del(model);
+
+
+                    unitOfWork.Commit();
+
+                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                    {
+                        Message = "Xóa sản phẩm thành công",
+                        MessageType = GenericMessages.success
+                    };
+                    return RedirectToAction("index");
+                }
+                catch (Exception ex)
+                {
+                    LoggingService.Error(ex.Message);
+                    unitOfWork.Rollback();
+
+                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                    {
+                        Message = "Có lỗi xảy ra khi xóa sản phẩm",
+                        MessageType = GenericMessages.warning
+                    };
+                }
+            }
+
+
+            return View(model);
+        }
+        #endregion
+
 
         #region Attribute
         public ActionResult Attribute()

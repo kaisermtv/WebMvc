@@ -1,1 +1,17 @@
-{"MainMenu":{"LabelName":"Chọn menu ngang","Type":"MenuID","Value":"5ed2d515-6ddd-481c-a223-a900010faee6"},"ComputerBuilding":{"LabelName":"List element computer","Type":"ListProductClass","Value":null}}
+{
+  "MainMenu": {
+    "LabelName": "Chọn menu ngang",
+    "Type": "MenuID",
+    "Value": "5ed2d515-6ddd-481c-a223-a900010faee6"
+  },
+  "MainCattegory": {
+    "LabelName": "Chọn menu danh mục sản phẩm",
+    "Type": "MenuID",
+    "Value": "c552d746-2348-411e-91ad-a901006ff236"
+  },
+  "ComputerBuilding": {
+    "LabelName": "danh sách nhóm sản phẩm xây dựng cấu hình",
+    "Type": "ListProductClass",
+    "Value": [ "c2f85d01-6e37-418f-b728-a8e800f184c1", "c2f85d01-6e37-418f-b728-a8e800f184c1" ]
+  }
+}

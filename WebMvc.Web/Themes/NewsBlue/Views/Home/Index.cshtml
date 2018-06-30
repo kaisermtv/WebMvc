@@ -12,7 +12,7 @@
     {
         var topic = _topicServic.Get(new Guid(id));
 
-        if (topic.Category_Id != null)
+        if (topic != null && topic.Category_Id != null)
         {
             var cat = _categoryService.Get((Guid)topic.Category_Id);
             if (cat != null)

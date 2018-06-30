@@ -103,6 +103,10 @@
 
         @foreach (var it in AppHelpers.Categories(true))
         {
+            if(it.Category_Id != null)
+            {
+                continue;
+            }
             <div class="clear"></div>
             <div class="box-pro-home" data-cat="boxcat1">
                 <div class="title_box_center">
@@ -125,7 +129,7 @@
                         }
                     </ul>
                 </div><!--prouduct_list-->
-                <div class="banner_right_pro" id="banner-right-1"><a href=""><img src="https://gland.vn/media/banner/banner_8f14e45f.jpg"></a></div>
+                <div class="banner_right_pro" id="banner-right-1"><a href=""><img src="@AppHelpers.CategoryImage(it.Image,it.Id)"></a></div>
                 <script>
                     AjaxGetBanner('product_list', 14, 1, 'banner-right-1');
                 </script>

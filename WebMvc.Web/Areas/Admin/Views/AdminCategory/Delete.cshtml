@@ -1,0 +1,23 @@
+﻿@model WebMvc.Domain.DomainModel.Entities.Category
+@{
+    ViewBag.Title = "Xóa danh mục";
+}
+@Html.Partial("_CategoryNavButtons")
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        <h2>Xác nhận xóa danh mục?</h2>
+        <p>Danh mục sẽ được xóa hoàn toàn và không thể khôi phục.</p>
+        <div class="form-group">
+            <input type="text" class="form-control" readonly="readonly" value="@Model.Name" />
+        </div>
+        @using (Html.BeginForm("Delete", "AdminCategory", FormMethod.Post))
+        {
+            <div class="submit-holder">
+                <input type="submit" class="btn-mvc btn-mvc-large" value="Xác nhận xóa" />
+            </div>
+        }
+    </div>
+</div>

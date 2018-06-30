@@ -115,5 +115,74 @@ namespace WebMvc.Web.Areas.Admin.Controllers
 
             return View(viewModel);
         }
+
+
+        #region delete
+        public ActionResult Delete(Guid id)
+        {
+            var model = _contactSevice.Get(id);
+            if (model == null)
+            {
+                TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                {
+                    Message = "Liê hệ không tồn tại",
+                    MessageType = GenericMessages.warning
+                };
+
+                return RedirectToAction("index");
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult Delete1(Guid id)
+        {
+            var model = _contactSevice.Get(id);
+            if (model == null)
+            {
+                TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                {
+                    Message = "Liên hệ không tồn tại",
+                    MessageType = GenericMessages.warning
+                };
+
+                return RedirectToAction("index");
+            }
+
+            using (var unitOfWork = UnitOfWorkManager.NewUnitOfWork())
+            {
+                try
+                {
+                    _contactSevice.Del(model);
+
+
+                    unitOfWork.Commit();
+
+                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                    {
+                        Message = "Xóa liên hệ thành công",
+                        MessageType = GenericMessages.success
+                    };
+                    return RedirectToAction("index");
+                }
+                catch (Exception ex)
+                {
+                    LoggingService.Error(ex.Message);
+                    unitOfWork.Rollback();
+
+                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                    {
+                        Message = "Có lỗi xảy ra khi xóa liên hệ",
+                        MessageType = GenericMessages.warning
+                    };
+                }
+            }
+
+
+            return View(model);
+        }
+        #endregion
     }
 }

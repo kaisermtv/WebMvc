@@ -82,6 +82,35 @@ namespace WebMvc.Services
             if (!rt) throw new Exception("Add Booking false");
         }
 
+
+        public Booking Get(Guid Id)
+        {
+            var Cmd = _context.CreateCommand();
+
+            Cmd.CommandText = "SELECT * FROM [Booking] WHERE Id = @Id";
+
+            Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = Id;
+
+            DataRow data = Cmd.findFirst();
+            if (data == null) return null;
+
+            return DataRowToBooking(data);
+        }
+
+
+        public void Del(Booking emp)
+        {
+            var Cmd = _context.CreateCommand();
+            Cmd.CommandText = "DELETE FROM [Booking] WHERE Id = @Id";
+
+            Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = emp.Id;
+
+            Cmd.command.ExecuteNonQuery();
+            Cmd.cacheStartsWithToClear(CacheKeys.Booking.StartsWith);
+            Cmd.Close();
+
+        }
+
         public List<Booking> GetList(int limit = 10, int page = 1)
         {
             var Cmd = _context.CreateCommand();

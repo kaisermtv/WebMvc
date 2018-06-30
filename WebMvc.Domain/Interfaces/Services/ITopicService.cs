@@ -12,6 +12,8 @@ namespace WebMvc.Domain.Interfaces.Services
         void Add(Topic topic);
         Topic Get(Guid Id);
         void Update(Topic topic);
+        void Del(Topic topic);
+
 
         Topic GetBySlug(string Slug);
 

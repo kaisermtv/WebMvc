@@ -77,7 +77,7 @@ namespace WebMvc.Services
             Cmd.Parameters.Add("MembershipUser_Id", SqlDbType.UniqueIdentifier).Value = post.MembershipUser_Id;
 
             bool ret = Cmd.command.ExecuteNonQuery() > 0;
-
+            Cmd.cacheStartsWithToClear(CacheKeys.Post.StartsWith);
             Cmd.Close();
 
             if (!ret) throw new Exception("Add Post false");
@@ -88,9 +88,7 @@ namespace WebMvc.Services
             post.DateEdited = DateTime.UtcNow;
 
             var Cmd = _context.CreateCommand();
-            Cmd.cacheStartsWithToClear(CacheKeys.Permission.StartsWith);
-
-
+            
             Cmd.CommandText = "UPDATE [Post] SET [PostContent] = @PostContent, [DateCreated] = @DateCreated, [VoteCount] = @VoteCount, [DateEdited] = @DateEdited, [IsSolution] = @IsSolution, [IsTopicStarter] = @IsTopicStarter," 
                             + " [FlaggedAsSpam] = @FlaggedAsSpam, [IpAddress] = @IpAddress, [Pending] = @Pending, [SearchField] = @SearchField, [InReplyTo] = @InReplyTo, [Topic_Id] = @Topic_Id, [MembershipUser_Id] = @MembershipUser_Id " 
                             + " WHERE [Id] = @Id";
@@ -111,7 +109,7 @@ namespace WebMvc.Services
             Cmd.Parameters.Add("MembershipUser_Id", SqlDbType.UniqueIdentifier).Value = post.MembershipUser_Id;
 
             bool ret = Cmd.command.ExecuteNonQuery() > 0;
-
+            Cmd.cacheStartsWithToClear(CacheKeys.Post.StartsWith);
             Cmd.Close();
 
             if (!ret) throw new Exception("Update Post false");
@@ -119,19 +117,56 @@ namespace WebMvc.Services
 
         public Post Get(Guid Id)
         {
-            var Cmd = _context.CreateCommand();
+            string cachekey = string.Concat(CacheKeys.Post.StartsWith, "Get-", Id);
 
-            Cmd.CommandText = "SELECT * FROM [Post] WHERE Id = @Id";
+            var cat = _cacheService.Get<Post>(cachekey);
+            if (cat == null)
+            {
+                var Cmd = _context.CreateCommand();
+
+                Cmd.CommandText = "SELECT * FROM [Post] WHERE Id = @Id";
+
+                Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = Id;
+
+                DataRow data = Cmd.findFirst();
+                if (data == null) return null;
+
+                cat = DataRowToPost(data);
+                _cacheService.Set(cachekey, cat, CacheTimes.OneDay);
+            }
+            return cat;
+        }
+
+        public void Del(Post post)
+        {
+            var Cmd = _context.CreateCommand();
+            Cmd.CommandText = "DELETE FROM [Post] WHERE Id = @Id";
+
+            Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = post.Id;
+
+            Cmd.command.ExecuteNonQuery();
+            Cmd.cacheStartsWithToClear(CacheKeys.Post.StartsWith);
+            Cmd.Close();
+
+        }
+
+        public void Del(Topic topic)
+        {
+            DelByTopic(topic.Id);
+        }
+
+        public void DelByTopic(Guid Id)
+        {
+            var Cmd = _context.CreateCommand();
+            Cmd.CommandText = "DELETE FROM [Post] WHERE Topic_Id = @Id";
 
             Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = Id;
 
-            DataRow data = Cmd.findFirst();
-            if (data == null) return null;
+            Cmd.command.ExecuteNonQuery();
+            Cmd.cacheStartsWithToClear(CacheKeys.Post.StartsWith);
+            Cmd.Close();
 
-            return DataRowToPost(data);
         }
-
-
 
 
     }

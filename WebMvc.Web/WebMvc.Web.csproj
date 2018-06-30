@@ -971,6 +971,7 @@
     <Content Include="Content\uploads\afe9517a-2139-40ca-a7f4-a02800e572a4\e7928396-d57a-404a-be5d-a1a501287fbd_capture.jpg" />
     <Content Include="Content\uploads\readme.txt" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\admin\Admin.js" />
@@ -1144,6 +1145,23 @@
     <Content Include="Areas\Admin\Views\AdminProduct\PopupSelect.cshtml" />
     <Content Include="Areas\Admin\Views\AdminMembers\Index.cshtml" />
     <Content Include="Areas\Admin\Views\AdminMembers\_MembersNavButtons.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProduct\PopupSelectProductClass.cshtml" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Areas\Admin\Views\AdminTopic\Del.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProduct\Del.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminMenu\Del.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminMenu\NotDel.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminEmployees\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminEmployees\DelRole.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminEmployees\NotDel.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminContact\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminBooking\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminCategory\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminCategory\NotDel.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -9549,6 +9567,13 @@
     <Content Include="Themes\Gland\Content\script\scrollToFixed.js" />
     <Content Include="Themes\Gland\Content\script\style.css" />
     <Content Include="Themes\Gland\Content\script\style222a89d.css" />
+    <Content Include="Themes\NewsBlue\Content\css\style.css" />
+    <Content Include="Themes\NewsBlue\Content\img\hotline-diennuoc.png" />
+    <Content Include="Themes\NewsBlue\Content\img\logo.png" />
+    <Content Include="Themes\NewsBlue\Content\js\jquery.js" />
+    <Content Include="Themes\NewsBlue\Content\js\wp-content.js" />
+    <Content Include="Themes\NewsBlue\Content\js\wp-emoji-release.min.js" />
+    <Content Include="Themes\NewsBlue\Content\js\wp-json.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -9667,7 +9692,6 @@
     <Folder Include="Content\uploads\32233e8b-8b19-4c9a-8c20-a827003b2d7d\" />
     <Folder Include="Content\uploads\803dec66-f161-461a-b598-a82a0041b510\" />
     <Folder Include="Content\uploads\af6845bf-be26-48d7-b54c-a82a00414172\" />
-    <Folder Include="Themes\NewsBlue\Content\" />
     <Folder Include="Themes\NewsBlue\Views\About\" />
     <Folder Include="Themes\NewsBlue\Views\Ajax\" />
     <Folder Include="Themes\NewsBlue\Views\Booking\" />

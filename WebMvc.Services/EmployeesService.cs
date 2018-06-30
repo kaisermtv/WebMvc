@@ -84,6 +84,20 @@ namespace WebMvc.Services
             if (!rt) throw new Exception("Update Employees false");
         }
 
+
+        public void Del(Employees emp)
+        {
+            var Cmd = _context.CreateCommand();
+            Cmd.CommandText = "DELETE FROM [Employees] WHERE Id = @Id";
+
+            Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = emp.Id;
+
+            Cmd.command.ExecuteNonQuery();
+            Cmd.cacheStartsWithToClear(CacheKeys.Employees.StartsWith);
+            Cmd.Close();
+
+        }
+
         public Employees Get(string id)
         {
             return Get(new Guid(id));
@@ -110,6 +124,39 @@ namespace WebMvc.Services
                 _cacheService.Set(cachekey, cat, CacheTimes.OneDay);
             }
             return cat;
+        }
+
+
+        public List<Employees> GetList(EmployeesRole employeesRole)
+        {
+            string cachekey = string.Concat(CacheKeys.Employees.StartsWith, "GetList-", employeesRole.Id);
+
+            var allCat = _cacheService.Get<List<Employees>>(cachekey);
+            if (allCat == null)
+            {
+                var Cmd = _context.CreateCommand();
+
+                Cmd.CommandText = "SELECT * FROM  [Employees] WHERE RoleId = @RoleId";
+                Cmd.Parameters.Add("RoleId", SqlDbType.UniqueIdentifier).Value = employeesRole.Id;
+
+                DataTable data = Cmd.findAll();
+                Cmd.Close();
+
+                if (data == null) return null;
+
+                allCat = new List<Employees>();
+
+                foreach (DataRow it in data.Rows)
+                {
+                    allCat.Add(DataRowToEmployees(it));
+                }
+
+                _cacheService.Set(cachekey, allCat, CacheTimes.OneHour);
+
+                //_cacheService.ClearStartsWith(string.Concat(CacheKeys.Category.StartsWith, "GetList-"));
+
+            }
+            return allCat;
         }
 
         public List<Employees> GetAll()

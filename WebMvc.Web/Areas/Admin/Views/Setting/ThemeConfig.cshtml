@@ -45,7 +45,7 @@
                         if (item.Value.Value != null && item.Value.Value != "")
                         {
                             news = AppHelpers.GetTopic(new Guid((string)item.Value.Value));
-                            if(news != null)
+                            if (news != null)
                             {
                                 title = news.Name;
                             }
@@ -77,6 +77,74 @@
                             <input type="hidden" id="@item.Name" name="@item.Name" value="@item.Value.Value" />
                             <button type="button" onclick="popupSelectProduct('@item.Name','@(item.Name)_title')" class="btn btn-default" style="width:90px;float:right">Chọn</button>
                         </div>
+                        break;
+                    case "ListProductClass":
+                        int i = 0;
+                        <label>@item.Value.LabelName</label>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Tên nhóm sản phẩm</th>
+                                    <th>Chọn</th>
+                                </tr>
+                            </thead>
+                            <tbody id="Container@(item.Name)">
+                                @if (item.Value.Value != null)
+                                {
+                                    foreach (var it in item.Value.Value)
+                                    {
+                                        string titlep1 = "";
+                                        if (it != null && (string)it != "")
+                                        {
+                                            titlep1 = AppHelpers.GetNameGroupProduct(new Guid((string)it));
+                                        }
+                                        <tr id="@(item.Name)_@(++i)">
+                                            <td>
+                                                <input id="@(item.Name)_@(i)_title" value="@titlep1" class="form-control" readonly="readonly" />
+                                                <input type="hidden" id="@(item.Name)_@(i)_id" name="@(item.Name)[@(i)]" value="@it" />
+                                            </td>
+                                            <td>
+                                                <button type="button" onclick="popupSelectGroupProduct('@(item.Name)_@(i)_id','@(item.Name)_@(i)_title')" class="btn btn-default">Chọn</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                            <tr>
+                                <td colspan="2">
+                                    <button type="button" onclick="Add@(item.Name)();" class="btn btn-default">Thêm nhóm sản phẩm</button>
+                                    <button type="button" onclick="Repmove@(item.Name)();" class="btn btn-default">xóa nhóm sản phẩm</button>
+                                </td>
+                            </tr>
+                        </table>
+                        <script>
+                            var Num@(item.Name) = @i ;
+                            function Add@(item.Name)() {
+                                //alert("svs");
+                                var iTr = document.createElement('tr');
+                                iTr.id = "@(item.Name)_" + (++Num@(item.Name)) ;
+
+                                var html = "<td>";
+                                html += "<input id=\"@(item.Name)_"+ Num@(item.Name) +"_title\" class=\"form-control\" readonly=\"readonly\" />";
+                                html += "<input type=\"hidden\" id=\"@(item.Name)_"+ Num@(item.Name) +"_id\" name=\"@(item.Name)["+ Num@(item.Name) +"]\" />";
+                                html += "</td>";
+                                html += "<td>";
+                                html += "<button type=\"button\" onclick=\"popupSelectGroupProduct('@(item.Name)_"+ Num@(item.Name) +"_id','@(item.Name)_"+ Num@(item.Name) +"_title')\" class=\"btn btn-default\">Chọn</button>";
+                                html += "</td>";
+
+                                iTr.innerHTML = html;
+
+                                var sList = document.getElementById("Container@(item.Name)");
+                                sList.appendChild(iTr);
+                            }
+
+                            function Repmove@(item.Name)() {
+                                if (Num@(item.Name) > 0) {
+                                    $("#@(item.Name)_" + (Num@(item.Name)--)).remove();
+                                }
+                            }
+                        </script>
                         break;
                 }
 

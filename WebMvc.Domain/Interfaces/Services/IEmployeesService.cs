@@ -11,5 +11,7 @@ namespace WebMvc.Domain.Interfaces.Services
         Employees Get(string id);
         Employees Get(Guid id);
         List<Employees> GetAll();
+        void Del(Employees emp);
+        List<Employees> GetList(EmployeesRole employeesRole);
     }
 }

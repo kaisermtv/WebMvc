@@ -138,7 +138,37 @@ namespace WebMvc.Services
             }
             return cat;
         }
-        
 
+
+        public void Del(ProductPost post)
+        {
+            var Cmd = _context.CreateCommand();
+            Cmd.CommandText = "DELETE FROM [ProductPost] WHERE Id = @Id";
+
+            Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = post.Id;
+
+            Cmd.command.ExecuteNonQuery();
+            Cmd.cacheStartsWithToClear(CacheKeys.ProductPost.StartsWith);
+            Cmd.Close();
+
+        }
+
+        public void Del(Product product)
+        {
+            DelByProduct(product.Id);
+        }
+
+        public void DelByProduct(Guid Id)
+        {
+            var Cmd = _context.CreateCommand();
+            Cmd.CommandText = "DELETE FROM [ProductPost] WHERE Product_Id = @Id";
+
+            Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = Id;
+
+            Cmd.command.ExecuteNonQuery();
+            Cmd.cacheStartsWithToClear(CacheKeys.ProductPost.StartsWith);
+            Cmd.Close();
+
+        }
     }
 }

@@ -12,5 +12,8 @@ namespace WebMvc.Domain.Interfaces.Services
         void Add(Post post);
         Post Get(Guid Id);
         void Update(Post post);
+        void Del(Post post);
+        void Del(Topic topic);
+        void DelByTopic(Guid Id);
     }
 }

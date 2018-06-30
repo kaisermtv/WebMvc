@@ -38,9 +38,9 @@
                                 </td>
                                 <td>@it.Name</td>
                                 <td>@it.CreateDate.ToString("hh:mm dd/MM/yyyy")</td>
-                                <td>@AppHelpers.GetMembersAccount(it.MembershipUser_Id)</td>
+                                <td>@AppHelpers.GetMembersAccount((Guid)it.MembershipUser_Id)</td>
                                 <td>
-                                    <a href="@Url.Action("Delete", new { id = it.Id })" class="btn-mvc">
+                                    <a href="@Url.Action("Del", new { id = it.Id })" class="btn-mvc">
                                         <span class="glyphicon glyphicon-remove"></span>
                                     </a>
                                 </td>

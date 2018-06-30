@@ -20,6 +20,8 @@ namespace WebMvc.Domain.Interfaces.Services
         void Update(ProductClass cat);
         void Update(Product topic);
 
+        void Del(Product product);
+
         void DelAllAttributeForProductClass(Guid guid);
 
         ProductClass GetProductClass(Guid Id);

@@ -194,11 +194,12 @@ namespace WebMvc.Web.Areas.Admin.Controllers
         #endregion
 
 
-        #region Edit Category
+        #region Edit Menu
         private AdminMenuEditViewModel CreateEditMenuViewModel(Menu menu)
         {
             var viewModel = new AdminMenuEditViewModel
             {
+                Id = menu.Id,
                 ParentMenu = menu.Menu_Id,
                 Name = menu.Name,
                 Description = menu.Description,
@@ -368,6 +369,90 @@ namespace WebMvc.Web.Areas.Admin.Controllers
             return View(viewModel);
         }
         #endregion
+
+
+        #region delete
+        public ActionResult Del(Guid id)
+        {
+            var model = _menuService.Get(id);
+            if (model == null)
+            {
+                TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                {
+                    Message = "Menu không tồn tại",
+                    MessageType = GenericMessages.warning
+                };
+
+                return RedirectToAction("index");
+            }
+
+            var submenu = _menuService.GetSubMenus(model);
+            if(submenu.Count > 0)
+            {
+
+                return View("NotDel",model);
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Del")]
+        public ActionResult Del1(Guid id)
+        {
+            var model = _menuService.Get(id);
+            if (model == null)
+            {
+                TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                {
+                    Message = "Menu không tồn tại",
+                    MessageType = GenericMessages.warning
+                };
+
+                return RedirectToAction("index");
+            }
+
+            var submenu = _menuService.GetSubMenus(model);
+            if (submenu.Count > 0)
+            {
+
+                return View("NotDel", model);
+            }
+
+
+            using (var unitOfWork = UnitOfWorkManager.NewUnitOfWork())
+            {
+                try
+                {
+                    _menuService.Del(model);
+
+                    unitOfWork.Commit();
+
+                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                    {
+                        Message = "Xóa menu thành công",
+                        MessageType = GenericMessages.success
+                    };
+                    return RedirectToAction("index");
+                }
+                catch (Exception ex)
+                {
+                    LoggingService.Error(ex.Message);
+                    unitOfWork.Rollback();
+
+                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                    {
+                        Message = "Có lỗi xảy ra khi xóa menu",
+                        MessageType = GenericMessages.warning
+                    };
+                }
+            }
+
+
+            return View(model);
+        }
+        #endregion
+
 
         #region Private Function
         private List<SelectListItem> GetTypeLink()

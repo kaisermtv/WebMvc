@@ -33,5 +33,41 @@ namespace WebMvc.Web.Areas.Admin.Controllers
 
             return View(viewModel);
         }
+
+        #region Create Accout
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+        #endregion
+
+        #region Edit info Accout
+        public ActionResult Edit()
+        {
+            return View();
+        }
+        #endregion
+
+        #region New pass
+        public ActionResult NewPass()
+        {
+            return View();
+        }
+        #endregion
+
+        #region change info
+        public ActionResult ChangeInfo()
+        {
+            return View();
+        }
+        #endregion
+
+        #region change pass
+        public ActionResult ChangePass()
+        {
+            return View();
+        }
+        #endregion
     }
 }

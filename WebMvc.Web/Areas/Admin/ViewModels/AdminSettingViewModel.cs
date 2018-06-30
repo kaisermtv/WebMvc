@@ -129,6 +129,10 @@ namespace WebMvc.Web.Areas.Admin.ViewModels
 
         [DisplayName("Hotline")]
         public string Hotline { get; set; }
+        [DisplayName("Hotline Image")]
+        public HttpPostedFileBase[] Files { get; set; }
+        public string HotlineImg { get; set; }
+
         [DisplayName("Fanpage")]
         public string Fanpage { get; set; }
         public List<AdminShowroomSettingViewModel> Addrens { get; set; }

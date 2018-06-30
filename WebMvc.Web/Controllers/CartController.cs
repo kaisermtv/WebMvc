@@ -66,7 +66,7 @@
                         {
                             int p = int.Parse(price.Value);
                             item.Priceint = p;
-                            item.Price = p.ToString("N0").Replace(",", ".");
+                            item.Price = p.ToString("N0").Replace(",", ".") + " VND";
                             viewModel.TotalMoney += p*item.Count;
                         }
                         catch
@@ -115,7 +115,7 @@
                         {
                             int p = int.Parse(price.Value);
                             item.Priceint = p;
-                            item.Price = p.ToString("N0").Replace(",", ".");
+                            item.Price = p.ToString("N0").Replace(",", ".") + "đ";
                             viewModel.TotalMoney += p * item.Count;
                         }
                         catch

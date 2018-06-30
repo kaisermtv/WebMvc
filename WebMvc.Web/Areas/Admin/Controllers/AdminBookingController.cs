@@ -43,6 +43,74 @@ namespace WebMvc.Web.Areas.Admin.Controllers
             return View(viewModel);
         }
 
+        #region delete
+        public ActionResult Delete(Guid id)
+        {
+            var model = _bookingSevice.Get(id);
+            if (model == null)
+            {
+                TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                {
+                    Message = "Đơn đặt phòng không tồn tại",
+                    MessageType = GenericMessages.warning
+                };
+
+                return RedirectToAction("index");
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult Delete1(Guid id)
+        {
+            var model = _bookingSevice.Get(id);
+            if (model == null)
+            {
+                TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                {
+                    Message = "Đơn đặt phòng không tồn tại",
+                    MessageType = GenericMessages.warning
+                };
+
+                return RedirectToAction("index");
+            }
+
+            using (var unitOfWork = UnitOfWorkManager.NewUnitOfWork())
+            {
+                try
+                {
+                    _bookingSevice.Del(model);
+
+
+                    unitOfWork.Commit();
+
+                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                    {
+                        Message = "Xóa đơn đặt phòng thành công",
+                        MessageType = GenericMessages.success
+                    };
+                    return RedirectToAction("index");
+                }
+                catch (Exception ex)
+                {
+                    LoggingService.Error(ex.Message);
+                    unitOfWork.Rollback();
+
+                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                    {
+                        Message = "Có lỗi xảy ra khi xóa đơn đặt phòng",
+                        MessageType = GenericMessages.warning
+                    };
+                }
+            }
+
+
+            return View(model);
+        }
+        #endregion
+
         #region TypeRoom Action
         public ActionResult TypeRoom()
         {

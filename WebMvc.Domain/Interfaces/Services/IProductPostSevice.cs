@@ -12,5 +12,8 @@ namespace WebMvc.Domain.Interfaces.Services
         void Add(ProductPost post);
         ProductPost Get(Guid Id);
         void Update(ProductPost post);
+        void Del(ProductPost post);
+        void Del(Product product);
+        void DelByProduct(Guid Id);
     }
 }

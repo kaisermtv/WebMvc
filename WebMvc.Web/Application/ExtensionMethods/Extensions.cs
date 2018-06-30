@@ -35,7 +35,9 @@ namespace WebMvc.Web.Application
         /// <returns></returns>
         public static string Settings(this HtmlHelper helper, string key)
         {
-            return ServiceFactory.Get<ISettingsService>().GetSetting(key);
+            string ret = ServiceFactory.Get<ISettingsService>().GetSetting(key);
+            if (ret == null) ret = "";
+            return ret;
         }
 
         public static string ThemePath(this HtmlHelper helper)

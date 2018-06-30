@@ -742,6 +742,18 @@ POPUPSELECT = {
         }
     },
 
+    GetGroupProduct: function () {
+        if (this.DataType != "GroupProduct") {
+            this.DataType = "GroupProduct";
+            this.DataPage = 1;
+            this.SeachText = "";
+            this.Catergory = "";
+            $("#PopupSelectTitle").html("<span class=\"glyphicon glyphicon-th-list\"></span> Chọn nhóm sản phẩm");
+            $("#PopupSelectData").html("");
+            this.GetDataGroupProduct();
+        }
+    },
+
     GetNews: function () {
         if (this.DataType != "News") {
             this.DataType = "News";
@@ -796,6 +808,26 @@ POPUPSELECT = {
         });
     },
 
+    GetDataGroupProduct: function () {
+        var moderateActionViewModel = new Object();
+        moderateActionViewModel.p = this.DataPage;
+        moderateActionViewModel.seach = this.SeachText;
+        moderateActionViewModel.cat = this.Catergory;
+        var strung = JSON.stringify(moderateActionViewModel);
+
+        $.ajax({
+            url: app_base + 'Admin/AdminProduct/PopupSelectProductClass',
+            type: 'POST',
+            data: strung,
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                $("#PopupSelectData").html(data);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                ShowUserMessage("Error: " + xhr.status + " " + thrownError);
+            }
+        });
+    },
 }
 
 

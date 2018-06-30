@@ -320,5 +320,20 @@ namespace WebMvc.Services
             }
             return list;
         }
+
+
+        public void Del(Topic topic)
+        {
+            var Cmd = _context.CreateCommand();
+            Cmd.CommandText = "DELETE FROM [Topic] WHERE Id = @Id";
+
+            Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = topic.Id;
+
+            Cmd.command.ExecuteNonQuery();
+            Cmd.cacheStartsWithToClear(CacheKeys.Topic.StartsWith);
+            Cmd.Close();
+
+        }
+
     }
 }

@@ -289,7 +289,7 @@ namespace WebMvc.Web.Areas.Admin.Controllers
 
                         TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
                         {
-                            Message = "Category Update Failed",
+                            Message = "Có lỗi xảy ra khi cập nhật danh mục",
                             MessageType = GenericMessages.danger
                         };
                     }
@@ -297,6 +297,117 @@ namespace WebMvc.Web.Areas.Admin.Controllers
             }
 
             return View(categoryViewModel);
+        }
+        #endregion
+
+
+        #region delete
+        public ActionResult Delete(Guid id)
+        {
+            var model = _categoryService.Get(id);
+            if (model == null)
+            {
+                TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                {
+                    Message = "Danh mục không tồn tại",
+                    MessageType = GenericMessages.warning
+                };
+
+                return RedirectToAction("index");
+            }
+
+            var submenu = _categoryService.GetSubCategory(model);
+            if (submenu.Count > 0)
+            {
+                return View("NotDel", model);
+            }
+
+            var _topicService = ServiceFactory.Get<ITopicService>();
+            var subnews = _topicService.GetList(model.Id);
+            if (subnews.Count > 0)
+            {
+                return View("NotDel", model);
+            }
+
+            var _productService = ServiceFactory.Get<IProductSevice>();
+            var subproduct = _productService.GetList(model.Id);
+            if (subnews.Count > 0)
+            {
+                return View("NotDel", model);
+            }
+
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public ActionResult Delete1(Guid id)
+        {
+            var model = _categoryService.Get(id);
+            if (model == null)
+            {
+                TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                {
+                    Message = "Danh mục không tồn tại",
+                    MessageType = GenericMessages.warning
+                };
+
+                return RedirectToAction("index");
+            }
+
+            var submenu = _categoryService.GetSubCategory(model);
+            if (submenu.Count > 0)
+            {
+                return View("NotDel", model);
+            }
+
+
+            var _topicService = ServiceFactory.Get<ITopicService>();
+            var subnews = _topicService.GetList(model.Id);
+            if (subnews.Count > 0)
+            {
+                return View("NotDel", model);
+            }
+
+            var _productService = ServiceFactory.Get<IProductSevice>();
+            var subproduct = _productService.GetList(model.Id);
+            if (subnews.Count > 0)
+            {
+                return View("NotDel", model);
+            }
+            
+
+            using (var unitOfWork = UnitOfWorkManager.NewUnitOfWork())
+            {
+                try
+                {
+                    _categoryService.Del(model);
+
+                    unitOfWork.Commit();
+
+                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                    {
+                        Message = "Xóa danh mục thành công",
+                        MessageType = GenericMessages.success
+                    };
+                    return RedirectToAction("index");
+                }
+                catch (Exception ex)
+                {
+                    LoggingService.Error(ex.Message);
+                    unitOfWork.Rollback();
+
+                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                    {
+                        Message = "Có lỗi xảy ra khi xóa danh mục",
+                        MessageType = GenericMessages.warning
+                    };
+                }
+            }
+
+
+            return View(model);
         }
         #endregion
 

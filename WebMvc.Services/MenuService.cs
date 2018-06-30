@@ -102,7 +102,18 @@ namespace WebMvc.Services
 
             if (!rt) throw new Exception("Update Menu false");
         }
+        
+        public void Del(Menu menu)
+        {
+            var Cmd = _context.CreateCommand();
+            Cmd.CommandText = "DELETE FROM [Menu] WHERE Id = @Id";
 
+            Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = menu.Id;
+
+            Cmd.command.ExecuteNonQuery();
+            Cmd.cacheStartsWithToClear(CacheKeys.Menu.StartsWith);
+            Cmd.Close();
+        }
 
         public Menu Get(string id)
         {
@@ -133,6 +144,38 @@ namespace WebMvc.Services
         }
 
 
+        public List<Menu> GetSubMenus(Menu cat)
+        {
+            var cacheKey = string.Concat(CacheKeys.Menu.StartsWith, "GetSubMenus", "-", cat);
+            var list = _cacheService.Get<List<Menu>>(cacheKey);
+            if (list == null)
+            {
+                var cats = GetAll();
+                list = new List<Menu>();
+
+                int i = 0, x = 0;
+                while (true)
+                {
+                    if (cats[i].Menu_Id == cat.Id)
+                    {
+                        list.Add(cats[i]);
+                    }
+
+                    i++;
+                    if (i >= cats.Count)
+                    {
+                        if (x >= list.Count) break;
+                        cat = list[x];
+                        x++;
+                        i = 0;
+                    }
+                }
+
+                _cacheService.Set(cacheKey, list, CacheTimes.OneMinute);
+            }
+
+            return list;
+        }
 
         public List<Menu> GetAll()
         {
@@ -211,19 +254,18 @@ namespace WebMvc.Services
             var list = _cacheService.Get<List<Menu>>(cacheKey);
             if (list == null)
             {
-                var cats = GetAll();
                 list = new List<Menu>();
 
                 int i = 0, x = 0;
                 while (true)
                 {
-                    if (cats[i].Menu_Id == cat.Id)
+                    if (allowedCategories[i].Menu_Id == cat.Id)
                     {
-                        list.Add(cats[i]);
+                        list.Add(allowedCategories[i]);
                     }
 
                     i++;
-                    if (i >= cats.Count)
+                    if (i >= allowedCategories.Count)
                     {
                         if (x >= list.Count) break;
                         cat = list[x];
@@ -262,6 +304,8 @@ namespace WebMvc.Services
             return list;
         }
         #endregion
+
+
 
 
         private static string LevelDashes(int level)

@@ -380,6 +380,77 @@ namespace WebMvc.Web.Areas.Admin.Controllers
         }
         #endregion
 
+
+        #region delete
+        public ActionResult Del(Guid id)
+        {
+            var model = _topicServic.Get(id);
+            if (model == null)
+            {
+                TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                {
+                    Message = "Bài viết không tồn tại",
+                    MessageType = GenericMessages.warning
+                };
+
+                return RedirectToAction("index");
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Del")]
+        public ActionResult Del1(Guid id)
+        {
+            var model = _topicServic.Get(id);
+            if (model == null)
+            {
+                TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                {
+                    Message = "Bài viết không tồn tại",
+                    MessageType = GenericMessages.warning
+                };
+
+                return RedirectToAction("index");
+            }
+
+            using (var unitOfWork = UnitOfWorkManager.NewUnitOfWork())
+            {
+                try
+                {
+                    _postSevice.Del(model);
+                    _topicServic.Del(model);
+
+
+                    unitOfWork.Commit();
+
+                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                    {
+                        Message = "Xóa bài viết thành công",
+                        MessageType = GenericMessages.success
+                    };
+                    return RedirectToAction("index");
+                }
+                catch(Exception ex)
+                {
+                    LoggingService.Error(ex.Message);
+                    unitOfWork.Rollback();
+
+                    TempData[AppConstants.MessageViewBagName] = new GenericMessageViewModel
+                    {
+                        Message = "Có lỗi xảy ra khi xóa bài viết",
+                        MessageType = GenericMessages.warning
+                    };
+                }
+            }
+
+            
+            return View(model);
+        }
+        #endregion
+
+
         #region Function 
         private bool CheckCats(Guid? Id, List<Category> cats)
         {

@@ -42,6 +42,13 @@
         POPUPSELECT.GetProduct();
         $("#PopupSelect").modal();
     }
+
+    function popupSelectGroupProduct(id, titlle) {
+        POPUPSELECT.SelectInputId = id;
+        POPUPSELECT.SelectInputName = titlle;
+        POPUPSELECT.GetGroupProduct();
+        $("#PopupSelect").modal();
+    }
 </script>
 <!-- Modal -->
 <div class="modal fade" id="PopupSelect" role="dialog">

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Web.Mvc;
 using WebMvc.Domain.Constants;
 using WebMvc.Domain.Interfaces.Services;
@@ -79,7 +81,7 @@ namespace WebMvc.Web.Areas.Admin.Controllers
         #region company information
         public ActionResult Business()
         {
-            var model = new AdminBusinessSettingViewModel
+            var model = new AdminBusinessSettingViewModel 
             {
                 BusinessName = SettingsService.GetSetting("BusinessName"),
                 Introduce = SettingsService.GetSetting("Introduce"),
@@ -87,6 +89,7 @@ namespace WebMvc.Web.Areas.Admin.Controllers
 
                 Fanpage = SettingsService.GetSetting("Fanpage"),
                 Hotline = SettingsService.GetSetting("Hotline"),
+                HotlineImg = SettingsService.GetSetting("HotlineImg"),
                 Addrens = new List<AdminShowroomSettingViewModel>(),
 
                 BankID = SettingsService.GetSetting("BankID"),
@@ -128,7 +131,7 @@ namespace WebMvc.Web.Areas.Admin.Controllers
                         SettingsService.SetSetting("Greeting", setting.Greeting);
                         SettingsService.SetSetting("Fanpage", setting.Fanpage);
                         SettingsService.SetSetting("Hotline", setting.Hotline);
-
+                        SettingsService.SetSetting("HotlineImg", setting.HotlineImg);
 
                         SettingsService.SetSetting("BankID", setting.BankID);
                         SettingsService.SetSetting("BankName", setting.BankName);
@@ -297,9 +300,38 @@ namespace WebMvc.Web.Areas.Admin.Controllers
 
             foreach (var item in ViewBag.json)
             {
-                string buf = Request.Form[(string)item.Name];
+                switch ((string)item.Value.Type)
+                {
+                    case "MenuID":
+                    case "CategoryID":
+                    case "NewsID":
+                    case "ProductID":
+                    case "ProductClassID":
+                        string buf = Request.Form[(string)item.Name];
+                        item.Value.Value = buf;
+                        break;
+                    case "ListProductClass":
+                        var lst = new List<string>();
 
-                item.Value.Value = buf;
+                        int i = 1;
+                        while (true)
+                        {
+                            string key = string.Concat(item.Name,"[",i,"]");
+                            string text = Request.Form[key];
+                            if (text == null) break;
+                            if(text != "")
+                            {
+                                lst.Add(text);
+                            }
+                            i++;
+                        }
+
+                        item.Value.Value = JsonConvert.DeserializeObject(JsonConvert.SerializeObject(lst));
+                        break;
+                }
+                
+
+                
             }
 
             ThemesSetting.setSettingTheme(id, ViewBag.json);

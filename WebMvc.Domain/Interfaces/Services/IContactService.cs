@@ -12,6 +12,8 @@ namespace WebMvc.Domain.Interfaces.Services
         void Add(Contact contact);
         Contact Get(Guid Id);
         void Update(Contact contact);
+        void Del(Contact emp);
+        int GetCount();
         List<Contact> GetList(int limit = 10, int page = 1);
     }
 }

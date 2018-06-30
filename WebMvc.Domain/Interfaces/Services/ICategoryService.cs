@@ -12,9 +12,11 @@ namespace WebMvc.Domain.Interfaces.Services
     {
         void Add(Category cat);
         void Update(Category cat);
+        void Del(Category menu);
         Category Get(string id);
         Category Get(Guid id);
         Category GetBySlug(string slug);
+        List<Category> GetSubCategory(Category cat);
         List<Category> GetAll();
         List<Category> GetList(Guid? paren = null);
         List<Category> GetList(bool isProduct);

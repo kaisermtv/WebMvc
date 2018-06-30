@@ -50,7 +50,7 @@
 
         <input type="hidden" id="product_compare_list" value="">
         <div class="top_area_list_page">
-            <h1>PC GAMING</h1>
+            <h1>@Model.Cat.Name</h1>
             <div class="compare_area">
                 <button type="button" class="btn_compare bg" onclick="compare_product('https://gland.vn:443/pc-gaming/')" style="display:none;"></button>
             </div>
@@ -104,57 +104,8 @@
             <ul class="ul">
                 @foreach (var it in Model.ListProduct)
                 {
-                    <li class="p-item" data-id="@it.Id">
-                        <div class="bg iconSaleOff"></div>
-                        <div class="bg iconHot"></div>
-                        <div class="bg iconNew"></div>
-                        <!---->
-                        <div class="p_container container-icon">
-                            @*<div class="p_sku">Mã SP: </div>*@
-                            <a href="/san-pham/zadak-pc-gaming-moab-red/" class="p_img"><img class="lazy" src="@Html.ThemeUrl()/Content/images/blank.gif" data-src="@AppHelpers.CategoryImage(it.Image, it.Id, 160)" alt="@it.Name" style="visibility: visible; zoom: 1; opacity: 1;"></a>
-                            <div class="p_price img_price">
-                                <span class="price-number-small-9"></span>
-                                <span class="price-number-small-9"></span>
-                                <span class="price-number-small-dot"></span>
-                                <span class="price-number-small-9"></span>
-                                <span class="price-number-small-9"></span>
-                                <span class="price-number-small-0"></span>
-                                <span class="price-number-small-dot"></span>
-                            </div>
-                            <div class="container_old_price">
-
-                            </div>
-                            <div class="clear"></div>
-                            <a href="/san-pham/zadak-pc-gaming-moab-red/" class="p_name">@it.Name</a>
-                            <div class="p_quantity">
-
-                                <i class="bg icon_in_stock"></i>
-
-                            </div>
-                            <a href="javascript:ShoppingCart.addVariant('product',8,8, 0,'ZADAK Pc gaming MOAB Red (Limited)', 1,99990000,'');reloadCart();" class="btn-cart-stop">Giỏ hàng</a>
-                        </div><!--wrap_pro-->
-                        <div class="hover_content_pro tooltip" style="left: 143.5px; top: -93px; display: none;">
-                            <a href="/san-pham/zadak-pc-gaming-moab-red/" class="hover_name">ZADAK Pc gaming MOAB Red (Limited)</a>
-
-                            <div class="hori_line"></div>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td><b>Giá bán:</b></td>
-                                        <td>
-                                            <span class="img_price_full"><span class="price-number-small-9"></span><span class="price-number-small-9"></span><span class="price-number-small-dot"></span><span class="price-number-small-9"></span><span class="price-number-small-9"></span><span class="price-number-small-0"></span><span class="price-number-small-dot"></span><span class="price-number-small-0"></span><span class="price-number-small-0"></span><span class="price-number-small-0"></span></span>
-                                        </td>
-                                    </tr>
-                                    <tr><td><b>Bảo hành:</b></td><td>0</td></tr>
-                                </tbody>
-                            </table>
-
-
-                        </div><!--hover_content_pro-->
-                    </li>
+                    @Html.Partial("_ProductItem", it)
                 }
-
-
             </ul>
         </div><!--prouduct_list-->
 
@@ -200,7 +151,7 @@
     <div id="content_right">
         <div class="box_right">
             <div class="title_box_right">
-                <h2>PC GAMING</h2>
+                <h2>@Model.Cat.Name</h2>
             </div>
             <div class="content_box">
                 <div class="bg_gradient_bottom_title"></div>

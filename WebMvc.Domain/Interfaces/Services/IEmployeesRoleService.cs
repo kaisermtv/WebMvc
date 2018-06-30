@@ -15,6 +15,7 @@ namespace WebMvc.Domain.Interfaces.Services
         EmployeesRole Get(string id);
         EmployeesRole Get(Guid id);
         List<EmployeesRole> GetAll();
+        void Del(EmployeesRole emp);
 
         List<SelectListItem> GetBaseSelectListEmployeesRole(List<EmployeesRole> allowedCategories);
     }

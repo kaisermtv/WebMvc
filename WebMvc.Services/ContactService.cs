@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WebMvc.Domain.Constants;
 using WebMvc.Domain.DomainModel.Entities;
+using WebMvc.Domain.DomainModel.Enums;
 using WebMvc.Domain.Interfaces;
 using WebMvc.Domain.Interfaces.Services;
 using WebMvc.Services.Data.Context;
@@ -103,6 +104,39 @@ namespace WebMvc.Services
             if (!rt) throw new Exception("Update Contact false");
         }
 
+
+        public void Del(Contact emp)
+        {
+            var Cmd = _context.CreateCommand();
+            Cmd.CommandText = "DELETE FROM [Contact] WHERE Id = @Id";
+
+            Cmd.Parameters.Add("Id", SqlDbType.UniqueIdentifier).Value = emp.Id;
+
+            Cmd.command.ExecuteNonQuery();
+            Cmd.cacheStartsWithToClear(CacheKeys.Contact.StartsWith);
+            Cmd.Close();
+
+        }
+
+
+        public int GetCount()
+        {
+            string cachekey = string.Concat(CacheKeys.Contact.StartsWith, "GetCount");
+            var count = _cacheService.Get<int?>(cachekey);
+            if (count == null)
+            {
+                var Cmd = _context.CreateCommand();
+
+                Cmd.CommandText = "SELECT COUNT(*) FROM  [dbo].[Contact]";
+
+                count = (int)Cmd.command.ExecuteScalar();
+                Cmd.Close();
+
+
+                _cacheService.Set(cachekey, count, CacheTimes.OneDay);
+            }
+            return (int)count;
+        }
         public List<Contact> GetList(int limit = 10, int page = 1)
         {
             var Cmd = _context.CreateCommand();
